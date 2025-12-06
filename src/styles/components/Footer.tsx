@@ -1,59 +1,60 @@
+// components/Footer.tsx
 import Link from 'next/link';
 import React from 'react';
-// Hapus impor 'Facebook', biarkan ikon yang tersisa
-import { Mail, Phone, MapPin, Instagram } from 'lucide-react'; 
-import { TikTok_Sans } from 'next/font/google';
+// Jika kamu pakai lucide-react untuk ikon lain:
+import { FaTiktok } from 'react-icons/fa6';
+import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
 
-// Komponen SVG Ikon TikTok
-// Menggunakan komponen terpisah agar lebih bersih
-const TikTokIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg
-    {...props}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    stroke="none"
-    className={`h-6 w-6 ${props.className || ''}`} 
-  >
-    {/* Path dasar ikon TikTok */}
-    <path d="M16.5 6.096A4.5 4.5 0 0 0 12 1.5v9a1.5 1.5 0 0 1-3 0V1.5h-3v14.453c0 3.992 3.253 7.247 7.245 7.247 4.088 0 7.355-3.414 7.355-7.618V6.096h-3z"/>
-  </svg>
-);
+// Komponen SVG custom untuk TikTok
+// const TikTokIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+//   <svg
+//     {...props}
+//     xmlns="http://www.w3.org/2000/svg"
+//     viewBox="0 0 24 24"
+//     fill="currentColor"
+//     stroke="none"
+//     className={`h-6 w-6 ${props.className || ''}`}
+//   >
+//     <path d="M16.5 6.096A4.5 4.5 0 0 0 12 1.5v9a1.5 1.5 0 0 1-3 0V1.5h-3v14.453c0 3.992 3.253 7.247 7.245 7.247 4.088 0 7.355-3.414 7.355-7.618V6.096h-3z"/>
+//   </svg>
+// );
 
-
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    // Gunakan warna kontras tipikal (misalnya, abu-abu gelap) untuk membedakan dari body
     <footer className="bg-gray-800 text-white pt-12 pb-8">
       <div className="mx-auto max-w-7xl px-6">
-        
-        {/* Grid Footer - Dipisahkan menjadi 4 Kolom */}
+        {/* Grid Footer: 1 kolom (mobile) → 4 kolom (md ke atas) */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:gap-16">
-
+          
           {/* Kolom 1: Logo & Deskripsi */}
           <div>
             <Link href="/" className="flex items-center mb-4">
-              {/* Logo Aishiro Gakuen */}
               <div className="h-8 w-8 bg-red-700 rounded-full flex items-center justify-center text-white font-bold text-sm">あ</div>
-              <span className="ml-2 text-xl font-bold text-white">AIKURO GAKUEN</span>
+              <span className="ml-2 text-xl font-bold text-white">AISHIRO GAKUEN</span>
             </Link>
             <p className="text-sm text-gray-400 mt-2">
               Jalur sukses menuju karir impian di Jepang dengan pelatihan bahasa dan fisik terbaik.
             </p>
           </div>
 
-          {/* Kolom 2: Navigasi Cepat (Berdasarkan Konsolidasi Header) */}
+          {/* Kolom 2: Navigasi */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">Navigasi</h3>
             <ul className="space-y-2">
-              <li><Link href="/program" target="_blank" className="text-sm text-gray-400 hover:text-red-400 transition-colors">Semua Program</Link></li>
-              <li><Link href="/profil" target="_blank" className="text-sm text-gray-400 hover:text-red-400 transition-colors">Tentang Kami</Link></li>
-              <li><Link href="https://jisannihon.vercel.app" className="text-sm text-gray-400 hover:text-red-400 transition-colors">Blog & Berita</Link></li>
-              <li><Link href="/daftar" target="_blank" className="text-sm text-gray-400 hover:text-red-400 transition-colors">Pendaftaran</Link></li>
+              <li>
+                <Link href="/profil" className="text-sm text-gray-400 hover:text-red-400 transition-colors">
+                  Tentang Kami
+                </Link>
+              </li>
+              <li>
+                <Link href="https://jisannihon.vercel.app" className="text-sm text-gray-400 hover:text-red-400 transition-colors">
+                  Blog & Berita
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Kolom 3: Kontak Kami */}
+          {/* Kolom 3: Kontak */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">Hubungi Kami</h3>
             <ul className="space-y-3">
@@ -76,30 +77,33 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">Ikuti Kami</h3>
             <div className="flex space-x-4">
-              {/* Mengganti Facebook dengan TikTok */}
-              <a 
-                href="URL_AKUN_TIKTOK_ANDA" 
-                aria-label="TikTok" 
+              {/* TikTok */}
+              <a
+                href="https://www.tiktok.com/@lpk_aishirogakuen"
+                aria-label="FaTiktok"
                 className="text-gray-400 hover:text-red-400 transition-colors"
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
               >
-                <TikTokIcon className="h-6 w-6" /> {/* Menggunakan komponen SVG custom */}
+                <FaTiktok className="h-6 w-6" />
               </a>
-              <a 
-              href="https://www.instagram.com/lpk_aishiro/" 
-              aria-label="Instagram" 
-              className="text-gray-400 
-              hover:text-red-400 
-              transition-colors">
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/lpk_aishiro/"
+                aria-label="Instagram"
+                className="text-gray-400 hover:text-red-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Instagram className="h-6 w-6" />
               </a>
-              {/* Tambahkan ikon media sosial lainnya di sini */}
+              {/* Tambahkan ikon media sosial lain jika perlu */}
             </div>
           </div>
+
         </div>
 
-        {/* Garis Pemisah & Copyright */}
+        {/* Garis pemisah & copyright */}
         <div className="mt-12 pt-8 border-t border-gray-700 text-center">
           <p className="text-sm text-gray-500">
             &copy; {new Date().getFullYear()} LPK Aishiro Gakuen Semarang. All rights reserved.

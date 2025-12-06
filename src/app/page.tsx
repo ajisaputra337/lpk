@@ -105,12 +105,6 @@ const Page = () => {
                     ))}
                 </div>
                 
-                {/* Tombol CTA di bawah program (Jika ada lebih banyak program) */}
-                <div className="text-center mt-12">
-                    <Link href="/program" className="inline-block rounded-md border border-red-700 text-red-700 px-6 py-3 font-semibold hover:bg-red-50 transition-colors">
-                        Lihat Semua Program
-                    </Link>
-                </div>
 
             </div>
         </section>
@@ -135,12 +129,6 @@ const Page = () => {
                     ))}
                 </div>
                 
-                {/* Tombol ke halaman Sukses Story lengkap */}
-                <div className="text-center mt-12">
-                    <Link href="/profil/sukses-story" className="inline-block rounded-md bg-red-700 text-white px-6 py-3 font-semibold hover:bg-red-800 transition-colors">
-                        Baca Lebih Banyak Kisah Sukses
-                    </Link>
-                </div>
             </div>
         </section>
         
