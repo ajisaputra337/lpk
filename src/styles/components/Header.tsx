@@ -35,7 +35,6 @@ const navItems: NavItem[] = [
     label: 'MEDIA & INFO',
     href: '#',
     subMenu: [
-      { label: 'Belajar Online', href: '/media/belajar-online' },
       { label: 'BLOG', href: 'https://jisannihon.vercel.app'},
       { label: 'Galeri', href: '/media/galeri' },
     ],
@@ -135,7 +134,7 @@ const Header = () => {
                         <li key={subItem.label}>
                           <Link 
                             href={subItem.href} 
-                            target="_blank" 
+                            // target="_blank" 
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700 transition-colors"
                             onClick={() => setOpenDropdown(null)} // Tutup setelah klik sub item
                           >
@@ -226,7 +225,7 @@ const Header = () => {
                                     <li key={subItem.label}>
                                         <Link 
                                             href={subItem.href}
-                                            target="_blank"
+                                            // target="_blank"
                                             className="block rounded-md p-2 text-sm text-gray-600 hover:bg-red-50 hover:text-red-700"
                                             onClick={closeMobileMenu}
                                         >
