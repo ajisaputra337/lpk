@@ -18,7 +18,7 @@ const VisiMisiPage = () => {
 
     // Asumsi: Foto Shinkansen (atau foto lain yang relevan) disimpan di public/images/shinkansen.jpg
     const heroImage = {
-        src: "/images/shinkansen.jpg", 
+        src: "/Images/shinkansen.jpg", 
         alt: "Kereta Cepat Shinkansen, melambangkan masa depan dan profesionalisme",
         width: 300,
         height: 200,

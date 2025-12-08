@@ -4,6 +4,9 @@ import { useState, useRef, useEffect } from 'react'; // 👈 Import useRef dan u
 import Image from 'next/image'; // 👈 Import Image dari Next.js
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react'; // Ikon untuk Mobile
 
+// Data nomor wa
+const whatsappLink = "https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut.";
+
 // Tipe link dropdown (Tidak Berubah)
 interface NavItem {
   label: string;
@@ -19,7 +22,8 @@ const navItems: NavItem[] = [
     label: 'PROGRAM',
     href: '#',
     subMenu: [
-      { label: 'Alur Magang Jepang', href: '/program/alur-magang' },
+      { label: 'Magang Jepang', href: '/program/magang-jepang' },
+      { label: 'Sekolah di Jepang', href: '/program/sekolah-jepang' },
       { label: 'Kegiatan Fisik Sore', href: '/program/fisik-sore' }
     ],
   },
@@ -152,7 +156,9 @@ const Header = () => {
 
         {/* Tombol CTA Desktop */}
         <Link 
-          href="/daftar" 
+          href={whatsappLink} // Menggunakan variabel WhatsApp
+          target="_blank" // Membuka di tab baru
+          rel="noopener noreferrer" // Praktik keamanan 
           className="rounded-md bg-red-700 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-red-800 transition-colors hidden lg:block"
           onClick={() => setOpenDropdown(null)}
         >

@@ -36,7 +36,7 @@ const ResponsiveYouTubeEmbed: React.FC<{ videoId: string, title: string }> = ({ 
 const KegiatanFisikSorePage = () => {
     // Asumsi: Anda menyimpan foto grup di public/images/fisik-sore-grup.jpg
     const heroImage = {
-        src: "/images/kegiatan_fisik.jpg", 
+        src: "/Images/kegiatan_fisik1.jpg", 
         alt: "Foto kegiatan fisik sore LPK Aishiro Gakuen",
         width: 1200, // Tentukan lebar dan tinggi agar Next/Image bekerja
         height: 600,

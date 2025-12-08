@@ -131,12 +131,7 @@ const GalleryPage: React.FC = () => {
               <p className="text-lg text-gray-300 mb-2 max-w-2xl mx-auto mt-4">
                 Saksikan langsung dedikasi dan perjalanan para siswa melalui foto dan video eksklusif. 
                 Inilah bukti nyata dari pelatihan disiplin dan keberangkatan ke Jepang.
-              </p>
-              
-               <Link href="/program" className="mt-8 inline-flex items-center justify-center text-red-300 hover:text-red-100 font-semibold transition duration-300">
-                Lihat Semua Program Kami
-                <ArrowRight className="h-5 w-5 ml-2" />
-              </Link>
+              </p>              
             </div>
         </section>
         
