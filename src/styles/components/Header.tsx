@@ -1,8 +1,9 @@
+// src/styles/components/Header.tsx
 'use client';
 import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react'; // 👈 Import useRef dan useEffect
-import Image from 'next/image'; // 👈 Import Image dari Next.js
-import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react'; // Ikon untuk Mobile
+import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image'; // ✅ Pastikan ini diimpor
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 
 // Data nomor wa
 const whatsappLink = "https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut.";
@@ -24,6 +25,7 @@ const navItems: NavItem[] = [
     subMenu: [
       { label: 'Magang Jepang', href: '/program/magang-jepang' },
       { label: 'Sekolah di Jepang', href: '/program/sekolah-jepang' },
+      { label: 'Kaigo', href: '/program/kaigo' },
       { label: 'Kegiatan Fisik Sore', href: '/program/fisik-sore' }
     ],
   },
@@ -45,22 +47,24 @@ const navItems: NavItem[] = [
   },
 ];
 
+// ************************************************************
+// 🎯 Variabel Konfigurasi Logo BARU
+// ************************************************************
+const LOGO_PATH = '/Images/logo_aishiro.png';
+const LOGO_ALT = 'Logo LPK Aishiro Gakuen';
+
+
 const Header = () => {
-  // State untuk melacak menu desktop
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
-  
-  // Tambahan State untuk Mobile (Diperlukan untuk Responsif Penuh)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileSubMenu, setOpenMobileSubMenu] = useState<string | null>(null);
 
 
-  // Handler untuk toggle dropdown (Desktop)
   const toggleDropdown = (label: string) => {
     setOpenDropdown(openDropdown === label ? null : label);
   };
   
-  // Handler untuk menutup menu Mobile
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     setOpenMobileSubMenu(null);
@@ -68,41 +72,48 @@ const Header = () => {
   
   
   /* ------------------------------------------------------------
-     1. LOGIKA KLIK DI LUAR (CLICK OUTSIDE LISTENER)
-     ------------------------------------------------------------ */
+    1. LOGIKA KLIK DI LUAR (CLICK OUTSIDE LISTENER)
+    ------------------------------------------------------------ */
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // Jika dropdown terbuka DAN klik tidak terjadi di dalam header, tutup dropdown
       if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
         setOpenDropdown(null);
       }
     };
 
-    // Tambahkan listener saat komponen di-mount
     document.addEventListener('mousedown', handleClickOutside);
     
-    // Bersihkan listener saat komponen di-unmount
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [openDropdown]); // Dependency: hanya berjalan jika openDropdown berubah
+  }, [openDropdown]); 
 
 
   return (
-    <header ref={headerRef} className="fixed top-0 z-50 w-full bg-white shadow-md"> {/* 👈 Pasang ref di sini */}
+    <header ref={headerRef} className="fixed top-0 z-50 w-full bg-white shadow-md"> 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         
         {/* Area Logo */}
         <div className="flex items-center space-x-4">
           <Link href="/" className="flex items-center" onClick={() => { setOpenDropdown(null); closeMobileMenu(); }}>
-            {/* 2. Menggunakan komponen Image untuk Logo */}
-            {/* Ganti dengan URL Logo Anda yang sebenarnya, pastikan file ada di /public/ */}
-            <div className="h-10 w-10 bg-red-700 rounded-full flex items-center justify-center text-white font-bold">あ</div>
+            
+            {/* Logo */}
+            <div className="relative h-10 w-10 flex-shrink-0">
+                <Image
+                    src={LOGO_PATH} // Menggunakan path ke file logo
+                    alt={LOGO_ALT}
+                    fill // Mengisi div parent (h-10 w-10)
+                    style={{ objectFit: 'contain' }} // Memastikan logo tidak terpotong
+                    priority // Memprioritaskan pemuatan karena ini adalah logo header
+                />
+            </div>
+            
+            {/* Teks Nama Lembaga */}
             <span className="ml-2 text-lg font-semibold text-gray-800">AISHIRO GAKUEN</span>
           </Link>
         </div>
 
-        {/* Navigasi Minimalis (Desktop) */}
+        {/* Navigasi Minimalis (Desktop) - (Sama seperti sebelumnya) */}
         <nav className="hidden lg:flex">
           <ul className="flex items-center space-x-6">
             {navItems.map((item) => {
@@ -138,9 +149,8 @@ const Header = () => {
                         <li key={subItem.label}>
                           <Link 
                             href={subItem.href} 
-                            // target="_blank" 
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700 transition-colors"
-                            onClick={() => setOpenDropdown(null)} // Tutup setelah klik sub item
+                            onClick={() => setOpenDropdown(null)} 
                           >
                             {subItem.label}
                           </Link>
@@ -156,9 +166,9 @@ const Header = () => {
 
         {/* Tombol CTA Desktop */}
         <Link 
-          href={whatsappLink} // Menggunakan variabel WhatsApp
-          target="_blank" // Membuka di tab baru
-          rel="noopener noreferrer" // Praktik keamanan 
+          href={whatsappLink} 
+          target="_blank" 
+          rel="noopener noreferrer" 
           className="rounded-md bg-red-700 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-red-800 transition-colors hidden lg:block"
           onClick={() => setOpenDropdown(null)}
         >
@@ -175,7 +185,7 @@ const Header = () => {
         </button>
       </div>
       
-      {/* 3. Area Menu Mobile (Diintegrasikan dari langkah sebelumnya) */}
+      {/* 3. Area Menu Mobile (Sama seperti sebelumnya) */}
       <div
           className={`
             fixed inset-0 z-50 transform bg-white shadow-xl transition-transform duration-300 ease-in-out lg:hidden
@@ -231,7 +241,6 @@ const Header = () => {
                                     <li key={subItem.label}>
                                         <Link 
                                             href={subItem.href}
-                                            // target="_blank"
                                             className="block rounded-md p-2 text-sm text-gray-600 hover:bg-red-50 hover:text-red-700"
                                             onClick={closeMobileMenu}
                                         >
@@ -249,7 +258,9 @@ const Header = () => {
         {/* Tombol CTA Mobile */}
         <div className="p-6">
             <Link 
-                href="/daftar" 
+                href={whatsappLink} // Mengganti href ke WhatsApp
+                target="_blank" // Membuka di tab baru
+                rel="noopener noreferrer"
                 className="block w-full rounded-md bg-red-700 px-4 py-3 text-center text-lg font-semibold text-white shadow-lg hover:bg-red-800 transition-colors"
                 onClick={closeMobileMenu}
             >

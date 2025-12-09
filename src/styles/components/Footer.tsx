@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
           {/* Kolom 1: Logo & Deskripsi */}
           <div>
             <Link href="/" className="flex items-center mb-4">
-              <div className="h-8 w-8 bg-red-700 rounded-full flex items-center justify-center text-white font-bold text-sm">あ</div>
+              {/* <div className="h-8 w-8 bg-red-700 rounded-full flex items-center justify-center text-white font-bold text-sm">あ</div> */}
               <span className="ml-2 text-xl font-bold text-white">AISHIRO GAKUEN</span>
             </Link>
             <p className="text-sm text-gray-400 mt-2">
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-start text-sm text-gray-400">
                 <MapPin className="h-4 w-4 mr-2 mt-1 text-red-400 flex-shrink-0" />
-                <span>Jl. Pendidikan No. 12, Semarang, Jawa Tengah</span>
+                <span>Jl. Palebon VI No.5, Palebon, Kec. Pedurungan, Kota Semarang, Jawa Tengah 50199</span>
               </li>
             </ul>
           </div>

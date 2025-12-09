@@ -3,7 +3,7 @@
 'use client';
 import Link from 'next/link';
 // Import Image (tetap dipertahankan karena digunakan di komponen ProgramCard)
-import Image, { StaticImageData } from 'next/image'; 
+import Image from 'next/image'; 
 import Header from '../styles/components/Header';
 import Profile from '../styles/components/Profile'
 import ProgramCard from '../styles/components/ProgramCard';
