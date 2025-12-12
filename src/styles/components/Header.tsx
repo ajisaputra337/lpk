@@ -150,6 +150,8 @@ const Header = () => {
                             href={subItem.href}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700 transition-colors"
                             onClick={() => setOpenDropdown(null)}
+                            target={subItem.label === 'BLOG' ? '_blank' : undefined}
+                            rel={subItem.label === 'BLOG' ? 'noopener noreferrer' : undefined}
                           >
                             {subItem.label}
                           </Link>
@@ -242,6 +244,8 @@ const Header = () => {
                           href={subItem.href}
                           className="block rounded-md p-2 text-sm text-gray-600 hover:bg-red-50 hover:text-red-700"
                           onClick={closeMobileMenu}
+                          target={subItem.label === 'BLOG' ? '_blank' : undefined}
+                          rel={subItem.label === 'BLOG' ? 'noopener noreferrer' : undefined}
                         >
                           {subItem.label}
                         </Link>
