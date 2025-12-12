@@ -2,8 +2,8 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heart, Briefcase, FileText, Zap, DollarSign, MapPin } from 'lucide-react'; 
-import Header from '../../../styles/components/Header'; // Sesuaikan path jika perlu
+import { Heart, Briefcase, FileText, Zap, DollarSign, MapPin } from 'lucide-react';
+import Header from '../../../styles/components/Header';
 
 // Data spesifik program
 const programData = {
@@ -60,7 +60,7 @@ const Kaigo = () => {
                         alt="Perawat Care Giver di Jepang"
                         fill
                         // ✅ DI SINI: Gambar akan terfokus ke bagian atas
-                        style={{ objectFit: 'cover', objectPosition: 'top' }} 
+                        style={{ objectFit: 'cover', objectPosition: 'top' }}
                         className="filter brightness-[65%]"
                         priority
                     />
@@ -89,8 +89,6 @@ const Kaigo = () => {
                         </div>
                     </div>
                 </section>
-                
-                ---
 
                 {/* 2. Detail & Deskripsi Program */}
                 <section className="py-20 bg-white">
@@ -145,7 +143,7 @@ const Kaigo = () => {
                                     </div>
                                     <div className="flex justify-between items-center border-t pt-2">
                                         <span className="font-medium">Estimasi Gaji:</span>
-                                        <span className="flex items-center"><DollarSign className="h-4 w-4 mr-1"/> ¥180K - ¥220K / bulan</span>
+                                        <span className="flex items-center"><DollarSign className="h-4 w-4 mr-1" /> ¥180K - ¥220K / bulan</span>
                                     </div>
                                     <div className="flex justify-between items-center border-t pt-2">
                                         <span className="font-medium">Level Bahasa Minimal:</span>
@@ -156,8 +154,6 @@ const Kaigo = () => {
                         </div>
                     </div>
                 </section>
-
-                ---
 
                 {/* 3. Tahapan Proses Kaigo */}
                 <section className="py-20 bg-gray-50">
@@ -174,8 +170,8 @@ const Kaigo = () => {
                             <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-red-300"></div>
 
                             {stages.map((stage, index) => (
-                                <div 
-                                    key={index} 
+                                <div
+                                    key={index}
                                     className={`mb-8 flex flex-col items-center lg:flex-row lg:items-start ${index % 2 === 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}
                                 >
                                     {/* Content Card */}
@@ -198,7 +194,7 @@ const Kaigo = () => {
                                 </div>
                             ))}
                         </div>
-                        
+
                     </div>
                 </section>
 

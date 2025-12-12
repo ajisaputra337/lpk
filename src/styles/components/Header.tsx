@@ -41,7 +41,7 @@ const navItems: NavItem[] = [
     label: 'MEDIA & INFO',
     href: '#',
     subMenu: [
-      { label: 'BLOG', href: 'https://jisannihon.vercel.app'},
+      { label: 'BLOG', href: 'https://jisannihon.vercel.app' },
       { label: 'Galeri', href: '/media/galeri' },
     ],
   },
@@ -64,13 +64,13 @@ const Header = () => {
   const toggleDropdown = (label: string) => {
     setOpenDropdown(openDropdown === label ? null : label);
   };
-  
+
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     setOpenMobileSubMenu(null);
   };
-  
-  
+
+
   /* ------------------------------------------------------------
     1. LOGIKA KLIK DI LUAR (CLICK OUTSIDE LISTENER)
     ------------------------------------------------------------ */
@@ -82,32 +82,32 @@ const Header = () => {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [openDropdown]); 
+  }, [openDropdown]);
 
 
   return (
-    <header ref={headerRef} className="fixed top-0 z-50 w-full bg-white shadow-md"> 
+    <header ref={headerRef} className="fixed top-0 z-50 w-full bg-white shadow-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        
+
         {/* Area Logo */}
         <div className="flex items-center space-x-4">
           <Link href="/" className="flex items-center" onClick={() => { setOpenDropdown(null); closeMobileMenu(); }}>
-            
+
             {/* Logo */}
             <div className="relative h-10 w-10 flex-shrink-0">
-                <Image
-                    src={LOGO_PATH} // Menggunakan path ke file logo
-                    alt={LOGO_ALT}
-                    fill // Mengisi div parent (h-10 w-10)
-                    style={{ objectFit: 'contain' }} // Memastikan logo tidak terpotong
-                    priority // Memprioritaskan pemuatan karena ini adalah logo header
-                />
+              <Image
+                src={LOGO_PATH} // Menggunakan path ke file logo
+                alt={LOGO_ALT}
+                fill // Mengisi div parent (h-10 w-10)
+                style={{ objectFit: 'contain' }} // Memastikan logo tidak terpotong
+                priority // Memprioritaskan pemuatan karena ini adalah logo header
+              />
             </div>
-            
+
             {/* Teks Nama Lembaga */}
             <span className="ml-2 text-lg font-semibold text-gray-800">AISHIRO GAKUEN</span>
           </Link>
@@ -118,9 +118,9 @@ const Header = () => {
           <ul className="flex items-center space-x-6">
             {navItems.map((item) => {
               const isOpen = openDropdown === item.label;
-              
+
               return (
-                <li key={item.label} className="relative"> 
+                <li key={item.label} className="relative">
                   {item.subMenu ? (
                     <button
                       onClick={(e) => {
@@ -140,17 +140,16 @@ const Header = () => {
 
                   {/* Dropdown Content */}
                   {item.subMenu && (
-                    <ul 
-                      className={`absolute left-1/2 top-full mt-2 w-56 -translate-x-1/2 rounded-md bg-white py-2 shadow-xl transition-all duration-300 border-t-4 border-red-700 ${
-                        isOpen ? 'visible opacity-100' : 'invisible opacity-0'
-                      }`}
+                    <ul
+                      className={`absolute left-1/2 top-full mt-2 w-56 -translate-x-1/2 rounded-md bg-white py-2 shadow-xl transition-all duration-300 border-t-4 border-red-700 ${isOpen ? 'visible opacity-100' : 'invisible opacity-0'
+                        }`}
                     >
                       {item.subMenu.map((subItem) => (
                         <li key={subItem.label}>
-                          <Link 
-                            href={subItem.href} 
+                          <Link
+                            href={subItem.href}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700 transition-colors"
-                            onClick={() => setOpenDropdown(null)} 
+                            onClick={() => setOpenDropdown(null)}
                           >
                             {subItem.label}
                           </Link>
@@ -165,107 +164,107 @@ const Header = () => {
         </nav>
 
         {/* Tombol CTA Desktop */}
-        <Link 
-          href={whatsappLink} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <Link
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-md bg-red-700 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-red-800 transition-colors hidden lg:block"
           onClick={() => setOpenDropdown(null)}
         >
           DAFTAR SEKARANG
         </Link>
-        
+
         {/* Tombol Hamburger (Mobile) */}
-        <button 
-            className="lg:hidden text-gray-600 hover:text-red-700"
-            onClick={() => setIsMobileMenuOpen(true)}
-            aria-label="Open Menu"
+        <button
+          className="lg:hidden text-gray-600 hover:text-red-700"
+          onClick={() => setIsMobileMenuOpen(true)}
+          aria-label="Open Menu"
         >
-            <Menu className="h-6 w-6" />
+          <Menu className="h-6 w-6" />
         </button>
       </div>
-      
+
       {/* 3. Area Menu Mobile (Sama seperti sebelumnya) */}
       <div
-          className={`
+        className={`
             fixed inset-0 z-50 transform bg-white shadow-xl transition-transform duration-300 ease-in-out lg:hidden
             ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}
           `}
       >
         <div className="flex h-16 items-center justify-between border-b border-gray-100 px-6">
-            <span className="text-lg font-bold text-gray-800">NAVIGASI</span>
-            <button 
-                onClick={closeMobileMenu}
-                className="text-gray-600 hover:text-red-700"
-                aria-label="Close Menu"
-            >
-                <X className="h-6 w-6" />
-            </button>
+          <span className="text-lg font-bold text-gray-800">NAVIGASI</span>
+          <button
+            onClick={closeMobileMenu}
+            className="text-gray-600 hover:text-red-700"
+            aria-label="Close Menu"
+          >
+            <X className="h-6 w-6" />
+          </button>
         </div>
 
         {/* Daftar Link Mobile */}
         <nav className="p-6">
-            <ul className="space-y-1">
-                {navItems.map((item) => (
-                    <li key={item.label}>
-                        <div className="flex items-center justify-between rounded-md p-3 hover:bg-gray-50">
-                            <Link
-                                href={item.href}
-                                className="text-lg font-medium text-gray-700"
-                                onClick={() => { 
-                                    if (!item.subMenu) closeMobileMenu(); 
-                                }}
-                            >
-                                {item.label}
-                            </Link>
-                            
-                            {item.subMenu && (
-                                <button
-                                    onClick={() => setOpenMobileSubMenu(openMobileSubMenu === item.label ? null : item.label)}
-                                    className="text-gray-500 hover:text-red-700"
-                                    aria-expanded={openMobileSubMenu === item.label}
-                                >
-                                    {openMobileSubMenu === item.label ? (
-                                        <ChevronDown className="h-5 w-5" />
-                                    ) : (
-                                        <ChevronRight className="h-5 w-5" />
-                                    )}
-                                </button>
-                            )}
-                        </div>
+          <ul className="space-y-1">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                <div className="flex items-center justify-between rounded-md p-3 hover:bg-gray-50">
+                  <Link
+                    href={item.href}
+                    className="text-lg font-medium text-gray-700"
+                    onClick={() => {
+                      if (!item.subMenu) closeMobileMenu();
+                    }}
+                  >
+                    {item.label}
+                  </Link>
 
-                        {/* SubMenu Mobile */}
-                        {item.subMenu && openMobileSubMenu === item.label && (
-                            <ul className="mt-2 space-y-1 border-l-2 border-red-100 pl-4">
-                                {item.subMenu.map((subItem) => (
-                                    <li key={subItem.label}>
-                                        <Link 
-                                            href={subItem.href}
-                                            className="block rounded-md p-2 text-sm text-gray-600 hover:bg-red-50 hover:text-red-700"
-                                            onClick={closeMobileMenu}
-                                        >
-                                            {subItem.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </li>
-                ))}
-            </ul>
+                  {item.subMenu && (
+                    <button
+                      onClick={() => setOpenMobileSubMenu(openMobileSubMenu === item.label ? null : item.label)}
+                      className="text-gray-500 hover:text-red-700"
+                      aria-expanded={openMobileSubMenu === item.label}
+                    >
+                      {openMobileSubMenu === item.label ? (
+                        <ChevronDown className="h-5 w-5" />
+                      ) : (
+                        <ChevronRight className="h-5 w-5" />
+                      )}
+                    </button>
+                  )}
+                </div>
+
+                {/* SubMenu Mobile */}
+                {item.subMenu && openMobileSubMenu === item.label && (
+                  <ul className="mt-2 space-y-1 border-l-2 border-red-100 pl-4">
+                    {item.subMenu.map((subItem) => (
+                      <li key={subItem.label}>
+                        <Link
+                          href={subItem.href}
+                          className="block rounded-md p-2 text-sm text-gray-600 hover:bg-red-50 hover:text-red-700"
+                          onClick={closeMobileMenu}
+                        >
+                          {subItem.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
         </nav>
 
         {/* Tombol CTA Mobile */}
         <div className="p-6">
-            <Link 
-                href={whatsappLink} // Mengganti href ke WhatsApp
-                target="_blank" // Membuka di tab baru
-                rel="noopener noreferrer"
-                className="block w-full rounded-md bg-red-700 px-4 py-3 text-center text-lg font-semibold text-white shadow-lg hover:bg-red-800 transition-colors"
-                onClick={closeMobileMenu}
-            >
-                DAFTAR SEKARANG
-            </Link>
+          <Link
+            href={whatsappLink} // Mengganti href ke WhatsApp
+            target="_blank" // Membuka di tab baru
+            rel="noopener noreferrer"
+            className="block w-full rounded-md bg-red-700 px-4 py-3 text-center text-lg font-semibold text-white shadow-lg hover:bg-red-800 transition-colors"
+            onClick={closeMobileMenu}
+          >
+            DAFTAR SEKARANG
+          </Link>
         </div>
       </div>
     </header>

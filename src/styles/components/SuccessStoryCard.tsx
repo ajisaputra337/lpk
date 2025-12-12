@@ -13,7 +13,7 @@ const SuccessStoryCard: React.FC<SuccessStoryCardProps> = ({ quote, name, job, c
   return (
     // Kartu yang bersih dengan bayangan lembut (Japanese Minimalist)
     <div className="flex flex-col rounded-lg bg-white p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl">
-      
+
       {/* Kutipan Testimoni */}
       <blockquote className="mb-6 text-lg italic text-gray-700">
         <span className="text-3xl text-red-700 font-serif mr-1">“</span>
@@ -28,7 +28,7 @@ const SuccessStoryCard: React.FC<SuccessStoryCardProps> = ({ quote, name, job, c
       <div className="flex items-center">
         {/* Placeholder Foto Profil */}
         <div className="mr-4 h-12 w-12 rounded-full bg-red-100 flex items-center justify-center text-red-700 font-bold text-sm">
-          {name.charAt(0)} 
+          {name.charAt(0)}
         </div>
 
         <div>

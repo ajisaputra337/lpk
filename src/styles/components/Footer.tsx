@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
       <div className="mx-auto max-w-7xl px-6">
         {/* Grid Footer: 1 kolom (mobile) → 4 kolom (md ke atas) */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:gap-16">
-          
+
           {/* Kolom 1: Logo & Deskripsi */}
           <div>
             <Link href="/" className="flex items-center mb-4">
