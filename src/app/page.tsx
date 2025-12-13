@@ -40,17 +40,17 @@ const programs = [
     {
         title: 'Magang Jepang',
         description: 'Panduan lengkap tahapan magang kerja di Jepang mulai dari seleksi, pelatihan, hingga penempatan.',
-        icon: <BookOpen className="h-6 w-6" />,
+        icon: <Zap className="h-6 w-6" />,
         imageUrl: '/Images/magang.jpg', 
     },
     {
-        title: 'Program sekolah di jepang',
+        title: 'Sekolah jepang',
         description: 'Panduan lengkap tahapan sekolah di jepang hingga pemberangkatan.',
-        icon: <Zap className="h-6 w-6" />,
+        icon: <BookOpen className="h-6 w-6" />,
         imageUrl: '/Images/sekolah-jepang.webp', 
     },
     {
-        title: 'Program Care Giver (Kaigo)',
+        title: 'Kaigo',
         description: 'Persiapan intensif untuk kerja bagi job-job spesifik seperti Kaigo.',
         icon: <Users className="h-6 w-6" />,
         imageUrl: '/Images/kaigo.webp', 

@@ -98,14 +98,6 @@ const Profile: React.FC = () => {
                             </p>
                         </div>
 
-                        <div className="mt-8 text-center">
-                            <Link
-                                href="#Program"
-                                className="inline-flex items-center justify-center rounded-md bg-red-700 px-8 py-3 text-lg font-bold text-white shadow-xl hover:bg-red-800 transition-colors">
-                                Lihat Program Unggulan Kami
-                            </Link>
-                        </div>
-
                     </div>
                 </div>
             </div>
