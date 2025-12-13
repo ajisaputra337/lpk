@@ -61,7 +61,7 @@ const VisiMisiPage = () => {
                         {/* Teks Visi */}
                         <div className="md:w-2/3">
                             <p className="text-xl text-gray-800 font-medium leading-relaxed italic">
-                                "{visi}"
+                                &quot;{visi}&quot;
                             </p>
                         </div>
                     </div>

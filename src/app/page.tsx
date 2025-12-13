@@ -288,7 +288,7 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <div className="p-3 border-l-4 border-red-700 bg-gray-50 rounded-r-lg">
-                                        <p className="text-sm text-gray-600 italic">"Kualitas pendidikan adalah prioritas utama kami dalam membangun masa depan Anda."</p>
+                                        <p className="text-sm text-gray-600 italic">&quot;Kualitas pendidikan adalah prioritas utama kami dalam membangun masa depan Anda.&quot;</p>
                                     </div>
                                 </div>
                             </div>
