@@ -301,7 +301,7 @@ const Page = () => {
                                 <iframe
                                     title="Google Maps Lokasi LPK Aishiro Gakuen"
                                     // GANTI URL INI DENGAN EMBED MAPS LOKASI ASLI ANDA
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.297475149306!2d110.407629514773!3d-6.953587694982189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b47e233512b%3A0x7d2f9d6c7e2b1d6!2sJl.%20Pendidikan%20No.12%2C%20Banyumanik%2C%20Semarang%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1678822000000!5m2!1sid!2sid"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d643.6745228607759!2d110.46683188372741!3d-7.005259984878899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708cfc821d6ea7%3A0xad77b41447d11d3c!2sLPK.%20AISHIRO%20GAKUEN!5e0!3m2!1sid!2sid!4v1765081785824!5m2!1sid!2sid"
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}
