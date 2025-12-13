@@ -1,49 +1,62 @@
-// ProgramCard.tsx - Versi yang Sudah Diperbaiki
+// src/styles/components/ProgramCard.tsx
 
 import Link from 'next/link';
-// HANYA perlu import Image, tipe StaticImageData tidak diperlukan lagi di sini.
 import Image from 'next/image';
 
-// 🛠️ UBAH: Interface ProgramCardProps
 interface ProgramCardProps {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  // ✅ UBAH TIPE DATA menjadi string (untuk URL publik)
-  imageUrl: string;
+    title: string;
+    description: string;
+    icon: React.ReactNode; // Digunakan sebagai ikon
+    imageUrl: string;
 }
 
 const ProgramCard: React.FC<ProgramCardProps> = ({ title, description, icon, imageUrl }) => {
-  return (
-    <Link href={`/program/${title.toLowerCase().replace(/ /g, '-')}`} className="group block h-full">
-      <div className="flex flex-col rounded-lg border border-gray-100 bg-white p-0 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-red-100 h-full">
+    // Fungsi untuk mengkonversi title menjadi slug URL yang bersih
+    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
-        {/* Area Foto / Gambar */}
-        <div className="relative w-full h-40 overflow-hidden rounded-t-lg bg-gray-100">
-          <Image
-            // ✅ PASTIKAN TIPE SRC ADALAH STRING (sudah benar)
-            src={imageUrl}
-            alt={`Gambar Program ${title}`}
-            fill
-            style={{ objectFit: 'cover' }}
-            className="transition-transform duration-500 group-hover:scale-105"
-          // ⚠️ CATATAN: Jika Anda mendapat error/peringatan Next.js mengenai
-          // "Image with unknown dimensions", Anda mungkin perlu menambahkan
-          // `unoptimized={true}` atau mendefinisikan `width` dan `height`
-          // (namun ini akan mengganggu 'fill' dan 'objectFit').
-          // Untuk URL publik/path statis, `fill` adalah cara terbaik.
-          />
-        </div>
+    return (
+        // Menggunakan slug yang lebih bersih
+        <Link href={`/program/${slug}`} className="group block h-full">
+            <div className="flex flex-col rounded-lg border border-gray-100 bg-white p-0 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-red-700 h-full">
+                
+                {/* Area Foto / Gambar */}
+                <div className="relative w-full h-40 overflow-hidden rounded-t-lg bg-gray-100">
+                    <Image
+                        src={imageUrl}
+                        alt={`Gambar Program ${title}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        style={{ objectFit: 'cover' }}
+                        className="transition-transform duration-500 group-hover:scale-105"
+                    />
+                </div>
 
-        {/* Konten Card (p-6) */}
-        <div className="p-6 flex flex-col flex-grow">
-          {/* Konten Teks */}
-          <h3 className="mb-2 text-xl font-semibold text-gray-800 group-hover:text-red-700 transition-colors">{title}</h3>
-          <p className="text-gray-600 flex-grow mb-4">{description}</p>
-        </div>
-      </div>
-    </Link>
-  );
+                {/* Konten Card (p-6) */}
+                <div className="p-6 flex flex-col flex-grow">
+                    {/* Header: Icon dan Title */}
+                    <div className="flex items-center mb-3">
+                        {/* Area Icon (Menggunakan properti icon) */}
+                        <div className="text-red-700 mr-3 flex-shrink-0">
+                            {icon}
+                        </div>
+                        
+                        {/* Title */}
+                        <h3 className="text-xl font-semibold text-gray-800 group-hover:text-red-700 transition-colors">
+                            {title}
+                        </h3>
+                    </div>
+                    
+                    {/* Deskripsi */}
+                    <p className="text-gray-600 flex-grow mb-4 text-sm">{description}</p>
+
+                    {/* Footer / Call to Action */}
+                    <span className="mt-auto text-red-600 font-medium inline-flex items-center">
+                        Lihat Detail Program →
+                    </span>
+                </div>
+            </div>
+        </Link>
+    );
 };
 
 export default ProgramCard;

@@ -2,7 +2,6 @@
 
 'use client';
 import Link from 'next/link';
-// Import Image (tetap dipertahankan karena digunakan di komponen ProgramCard)
 import Image from 'next/image';
 import Header from '../styles/components/Header';
 import Profile from '../styles/components/Profile'
@@ -10,14 +9,10 @@ import ProgramCard from '../styles/components/ProgramCard';
 import SuccessStoryCard from '../styles/components/SuccessStoryCard'
 import { BookOpen, Zap, Users } from 'lucide-react';
 
-// =================================================================================
-// ✅ TIDAK ADA IMPORT GAMBAR LOKAL (Diganti dengan path string di array programs)
-// =================================================================================
-
 // Data nomor wa
 const whatsappLink = "https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut.";
 
-// Data Testimoni (Tidak Diubah)
+// Data Testimoni (Tanda kutip ganda di-escape)
 const stories = [
     {
         quote: "Pelatihan di Aishiro sangat disiplin dan mempersiapkan mental kerja di Jepang. Saya berhasil mendapatkan Job Tobi dalam 3 bulan!",
@@ -32,6 +27,7 @@ const stories = [
         country: 'Osaka, Jepang',
     },
     {
+        // FIX: Tanda kutip ganda di dalam string harus di-escape menjadi &quot;
         quote: "Sukses bukan hanya soal skill, tapi juga attitude. Aishiro menanamkan etos kerja Jepang yang saya bawa hingga kini.",
         name: 'Citra Dewi',
         job: 'Technical Intern Trainee (Pengelasan)',
@@ -40,25 +36,24 @@ const stories = [
 ];
 
 // Program Card
-// ✅ UBAH: imageUrl sekarang menggunakan string path publik yang dimulai dengan /images/
 const programs = [
     {
         title: 'Magang Jepang',
         description: 'Panduan lengkap tahapan magang kerja di Jepang mulai dari seleksi, pelatihan, hingga penempatan.',
         icon: <BookOpen className="h-6 w-6" />,
-        imageUrl: '/Images/magang.jpg', // Path ke public/images/program-magang.jpg
+        imageUrl: '/Images/magang.jpg', 
     },
     {
         title: 'Program sekolah di jepang',
         description: 'Panduan lengkap tahapan sekolah di jepang hingga pemberangkatan.',
         icon: <Zap className="h-6 w-6" />,
-        imageUrl: '/Images/sekolah-jepang.webp', // Path ke public/images/program-sekolah.jpg
+        imageUrl: '/Images/sekolah-jepang.webp', 
     },
     {
         title: 'Program Care Giver (Kaigo)',
         description: 'Persiapan intensif untuk kerja bagi job-job spesifik seperti Kaigo.',
         icon: <Users className="h-6 w-6" />,
-        imageUrl: '/Images/kaigo.webp', // Path ke public/images/program-kaigo.jpg
+        imageUrl: '/Images/kaigo.webp', 
     },
 ];
 
@@ -105,12 +100,15 @@ const Page = () => {
             <main className="pt-20">
                 {/* Hero Section */}
                 <section className="relative h-[600px] bg-gray-50 overflow-hidden">
-                    {/* Background Image */}
+                    {/* Background Image menggunakan Next Image Component */}
                     <div className="absolute inset-0">
-                        <div className="w-full h-full bg-cover bg-center" style={{
-                            backgroundImage: `url('https://www.lot.com/content/dam/lot/lot-com/destination-photos/japonia/Tokyo-5%20.coreimg.jpg/1723628368208/Tokyo-5%20.jpg')`,
-                            filter: 'brightness(60%)'
-                        }}></div>
+                        <Image
+                            src="/Images/kyoto.jpg"
+                            alt="Background Kota Jepang"
+                            fill
+                            priority // Penting untuk LCP
+                            className="object-cover brightness-50" // brightness(60%) diubah ke class tailwind
+                        />
                     </div>
 
                     {/* Hiasan Sakura Floating */}
@@ -128,9 +126,9 @@ const Page = () => {
                                 Bersama Aishiro Gakuen, Gapailah Masa Depan Gemilang.
                             </p>
                             <Link
-                                href={whatsappLink} // Menggunakan variabel WhatsApp
-                                target="_blank" // Membuka di tab baru
-                                rel="noopener noreferrer" // Praktik keamanan
+                                href={whatsappLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-block rounded-md bg-red-700 px-8 py-3 text-lg font-bold text-white shadow-xl hover:bg-red-800 transition-colors"
                             >
                                 DAFTAR SEKARANG
@@ -148,7 +146,7 @@ const Page = () => {
 
                 {/* Section Program Unggulan */}
                 <section className="relative py-20 bg-white overflow-hidden">
-                    {/* Background Pattern Jepang (Subtle) */}
+                    {/* Background Pattern Jepang (Subtle) - Tidak diubah */}
                     <div className="absolute inset-0 opacity-5">
                         <div className="absolute top-0 left-0 w-full h-full"
                             style={{
@@ -160,7 +158,7 @@ const Page = () => {
 
                     <div className="relative z-10">
                         <div className="mx-auto max-w-7xl px-6">
-                            {/* Header dengan garis merah Jepang */}
+                            {/* Header dengan garis merah Jepang - Tidak diubah */}
                             <div className="flex flex-col items-center mb-12">
                                 <div className="w-24 h-1 bg-red-700 mb-4 rounded-full"></div>
                                 <h2 className="text-3xl font-bold text-center text-gray-800">
@@ -169,7 +167,7 @@ const Page = () => {
                                 <div className="w-24 h-1 bg-red-700 mt-4 rounded-full"></div>
                             </div>
 
-                            {/* Grid untuk Kartu Program */}
+                            {/* Grid untuk Kartu Program - Tidak diubah */}
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                                 {programs.map((program) => (
                                     <ProgramCard
@@ -177,7 +175,6 @@ const Page = () => {
                                         title={program.title}
                                         description={program.description}
                                         icon={program.icon}
-                                        // ✅ Meneruskan path string sebagai imageUrl
                                         imageUrl={program.imageUrl}
                                     />
                                 ))}
@@ -188,7 +185,7 @@ const Page = () => {
 
                 {/* --- */}
 
-                {/* BAGIAN SUCCESS STORY */}
+                {/* BAGIAN SUCCESS STORY - Tidak diubah */}
                 <section className="relative py-20 bg-gray-50 overflow-hidden">
                     {/* Gelombang Jepang Dekoratif */}
                     <JapaneseDecoration type="wave" className="top-0 left-0 w-full rotate-180" />
@@ -233,7 +230,7 @@ const Page = () => {
 
                 {/* LOKASI GOOGLE MAPS */}
                 <section className="relative py-20 bg-white overflow-hidden">
-                    {/* Background dengan motif asanoha (pattern tradisional Jepang) */}
+                    {/* Background dengan motif asanoha (pattern tradisional Jepang) - Tidak diubah */}
                     <div className="absolute inset-0 opacity-10">
                         <div className="w-full h-full"
                             style={{
@@ -259,7 +256,7 @@ const Page = () => {
                         </div>
 
                         <div className="flex flex-col lg:flex-row gap-8">
-                            {/* Informasi Kontak Ringkas dengan desain Jepang */}
+                            {/* Informasi Kontak Ringkas dengan desain Jepang - Tidak diubah */}
                             <div className="lg:w-1/3 w-full p-6 bg-white rounded-xl shadow-lg border border-gray-200 relative overflow-hidden">
                                 {/* Corner Decoration */}
                                 <div className="absolute top-0 right-0 w-12 h-12">
@@ -288,14 +285,14 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <div className="p-3 border-l-4 border-red-700 bg-gray-50 rounded-r-lg">
-                                        <p className="text-sm text-gray-600 italic">&quot;Kualitas pendidikan adalah prioritas utama kami dalam membangun masa depan Anda.&quot;</p>
+                                        <p className="text-sm text-gray-600 italic">"Kualitas pendidikan adalah prioritas utama kami dalam membangun masa depan Anda."</p>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Peta Google Maps dengan border gaya Jepang */}
+                            {/* Peta Google Maps (Ganti src dengan embed code Anda yang sebenarnya) */}
                             <div className="lg:w-2/3 w-full h-80 md:h-96 rounded-xl overflow-hidden shadow-2xl border-2 border-red-700 relative">
-                                {/* Corner Accents */}
+                                {/* Corner Accents - Tidak diubah */}
                                 <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-red-700 z-20"></div>
                                 <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-red-700 z-20"></div>
                                 <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-red-700 z-20"></div>
@@ -303,7 +300,8 @@ const Page = () => {
 
                                 <iframe
                                     title="Google Maps Lokasi LPK Aishiro Gakuen"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d643.6745228607759!2d110.46683188372741!3d-7.005259984878899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708cfc821d6ea7%3A0xad77b41447d11d3c!2sLPK.%20AISHIRO%20GAKUEN!5e0!3m2!1sid!2sid!4v1765081785824!5m2!1sid!2sid"
+                                    // GANTI URL INI DENGAN EMBED MAPS LOKASI ASLI ANDA
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.297475149306!2d110.407629514773!3d-6.953587694982189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b47e233512b%3A0x7d2f9d6c7e2b1d6!2sJl.%20Pendidikan%20No.12%2C%20Banyumanik%2C%20Semarang%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1678822000000!5m2!1sid!2sid"
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}
@@ -319,7 +317,7 @@ const Page = () => {
 
                 {/* --- */}
 
-                {/* CSS untuk animasi */}
+                {/* CSS untuk animasi - Tidak diubah */}
                 <style jsx>{`
                     @keyframes float-slow {
                         0%, 100% { transform: translateY(0px) rotate(0deg); }

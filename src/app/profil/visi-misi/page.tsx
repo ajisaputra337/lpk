@@ -2,6 +2,32 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next'; // Gunakan 'import type' untuk tipe
+
+// 1. DEFINISI METADATA
+// Export metadata (bisa berupa objek atau promise)
+export const metadata: Metadata = {
+    title: 'Visi, Misi, dan Tujuan | LPK Aishiro Gakuen',
+    description: 'Pelajari Visi, Misi, dan Tujuan LPK Aishiro Gakuen dalam mewujudkan lulusan yang profesional, mandiri, dan berkarakter untuk berkarir di Jepang.',
+    keywords: ['Visi Misi LPK', 'Tujuan LPK Aishiro', 'Lembaga Pelatihan Jepang', 'Visi Lembaga Profesional'],
+    openGraph: {
+        title: 'Visi, Misi, dan Tujuan LPK Aishiro Gakuen',
+        description: 'Menjadikan lembaga pendidikan dan pelatihan yang profesional, mandiri dan berkarakter.',
+        url: 'https://aishiro-gakuen.com/profil/visi-misi', // Ganti dengan URL domain Anda
+        siteName: 'LPK Aishiro Gakuen',
+        type: 'website',
+        // Jika Anda memiliki gambar khusus untuk Visi Misi, tambahkan di sini
+        images: [
+            {
+                url: '/Images/shinkansen.jpg', // Gambar yang relevan untuk dibagikan
+                width: 800,
+                height: 600,
+                alt: 'Visi Misi LPK Aishiro Gakuen',
+            },
+        ],
+    },
+};
+
 
 const VisiMisiPage = () => {
     // Data Visi Misi berdasarkan contoh yang Anda berikan
@@ -18,24 +44,24 @@ const VisiMisiPage = () => {
 
     // Asumsi: Foto Shinkansen (atau foto lain yang relevan) disimpan di public/images/shinkansen.jpg
     const heroImage = {
-        src: "/Images/shinkansen.jpg", 
+        src: "/Images/shinkansen.jpg",
         alt: "Kereta Cepat Shinkansen, melambangkan masa depan dan profesionalisme",
         width: 300,
         height: 200,
     };
-    
+
     return (
         // pt-24 untuk mengimbangi fixed header
         <main className="pt-24 pb-16 bg-white">
             <div className="mx-auto max-w-5xl px-6">
-    
+
                 {/* Breadcrumb */}
                 <div className="text-sm text-gray-500 mb-6">
                     <Link href="/" className="hover:text-red-700">Home</Link>
-                    <span className="mx-1 text-gray-400">/</span> 
+                    <span className="mx-1 text-gray-400">/</span>
                     <span className="font-semibold text-gray-700">Visi Misi Lembaga</span>
                 </div>
-                
+
                 <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 text-center">
                     Visi, Misi, dan Tujuan Lembaga
                 </h1>
@@ -96,7 +122,7 @@ const VisiMisiPage = () => {
                         ))}
                     </ul>
                 </section>
-                
+
             </div>
         </main>
     );

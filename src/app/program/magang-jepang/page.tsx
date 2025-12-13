@@ -1,8 +1,31 @@
-// src/app/program/alur-magang/page.tsx
+// src/app/program/magang-jepang/page.tsx
 import React from 'react';
 import { CheckCircle, Clock, BookOpen, Briefcase, Plane } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next'; // Import type Metadata
+
+// 1. DEFINISI METADATA
+export const metadata: Metadata = {
+    title: 'Alur Program Magang Jepang 5 Tahap | LPK Aishiro Gakuen',
+    description: 'Pahami 5 Tahap lengkap Program Magang Jepang, mulai dari seleksi awal, pelatihan intensif, tes kemampuan, pengurusan visa (CoE), hingga keberangkatan dan penempatan kerja di Jepang.',
+    keywords: ['Alur Magang Jepang', 'Tahapan Magang Jepang', 'Proses Pendaftaran Magang', 'Seleksi Magang Jepang', 'Visa CoE Jepang'],
+    openGraph: {
+        title: '5 Tahap Alur Program Magang ke Jepang',
+        description: 'Pelajari setiap tahapan secara detail, mulai dari persiapan awal di Indonesia hingga penempatan kerja Anda di Jepang.',
+        url: 'https://aishiro-gakuen.com/program/magang-jepang', // Ganti dengan URL domain Anda
+        siteName: 'LPK Aishiro Gakuen',
+        type: 'website',
+        images: [
+            {
+                url: '/Images/alur_penerimaan_magang.jpeg', // Gambar yang relevan (misalnya diagram alur)
+                width: 1200,
+                height: 630,
+                alt: 'Diagram Alur Program Magang Jepang',
+            },
+        ],
+    },
+};
 
 
 // Data Tahapan Program
@@ -45,7 +68,7 @@ interface TimelineStepProps {
 
 const TimelineStep: React.FC<TimelineStepProps> = ({ step, icon, title, description, isLast }) => (
     <div className="flex relative pb-12">
-        {/* Garis Vertikal (Timeline Connector) */}
+        {/* Garis Vertikal (Timeline Connector) - Dihilangkan untuk desain ini */}
         {/* {!isLast && (
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className="h-full w-0.5 bg-gray-200 pointer-events-none"></div>
@@ -71,91 +94,91 @@ const TimelineStep: React.FC<TimelineStepProps> = ({ step, icon, title, descript
 
 
 const AlurMagangPage = () => {
-  return (
-    // Menggunakan pt-24 untuk mengimbangi fixed header
-    <main className="pt-24 pb-16 bg-white">
-      <div className="mx-auto max-w-7xl px-6">
+    return (
+        // Menggunakan pt-24 untuk mengimbangi fixed header
+        <main className="pt-24 pb-16 bg-white">
+            <div className="mx-auto max-w-7xl px-6">
 
-        {/* Breadcrumb / Navigasi */}
-        <div className="text-sm text-gray-500 mb-6">
-            <Link href="/" className="hover:text-red-700">Home</Link> 
-            <span className="mx-1 text-gray-400">/</span> {/* PEMISAH 1 */}
-            
-            <span className="font-semibold text-gray-700">Alur Magang Jepang</span>
-        </div>
-        
-        {/* Hero Section Halaman Internal */}
-        <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-                Alur Program Magang Jepang
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Pelajari setiap tahapan secara detail, mulai dari persiapan awal di Indonesia hingga penempatan kerja Anda di Jepang.
-            </p>
-        </div>
+                {/* Breadcrumb / Navigasi */}
+                <div className="text-sm text-gray-500 mb-6">
+                    <Link href="/" className="hover:text-red-700">Home</Link>
+                    <span className="mx-1 text-gray-400">/</span> {/* PEMISAH 1 */}
+                    
+                    <span className="font-semibold text-gray-700">Alur Magang Jepang</span>
+                </div>
+                
+                {/* Hero Section Halaman Internal */}
+                <div className="text-center mb-12">
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+                        Alur Program Magang Jepang
+                    </h1>
+                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Pelajari setiap tahapan secara detail, mulai dari persiapan awal di Indonesia hingga penempatan kerja Anda di Jepang.
+                    </p>
+                </div>
 
-        {/* Bagian Timeline (Alur Program) */}
-        <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center md:text-left">
-                5 Tahap Menuju Karir di Jepang
-            </h2>
-            
-            <div className="p-6 md:p-10 border rounded-xl shadow-lg bg-gray-50">
-                {programSteps.map((step, index) => (
-                    <TimelineStep
-                        key={index}
-                        step={index + 1}
-                        icon={step.icon}
-                        title={step.title}
-                        description={step.description}
-                        isLast={index === programSteps.length - 1}
-                    />
-                ))}
-            </div>
-        </div>
+                {/* Bagian Timeline (Alur Program) */}
+                <div className="max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center md:text-left">
+                        5 Tahap Menuju Karir di Jepang
+                    </h2>
+                    
+                    <div className="p-6 md:p-10 border rounded-xl shadow-lg bg-gray-50">
+                        {programSteps.map((step, index) => (
+                            <TimelineStep
+                                key={index}
+                                step={index + 1}
+                                icon={step.icon}
+                                title={step.title}
+                                description={step.description}
+                                isLast={index === programSteps.length - 1}
+                            />
+                        ))}
+                    </div>
+                </div>
 
-        {/*Foto diagram alur*/}
-        <div className="max-w-6xl mx-auto mt-16 space-y-8">
-            <h2 className="text-3xl font-bold text-gray-800 text-center">
-                Visualisasi Diagram Alur
-            </h2>
-            
-            {/* Diagram Alur 1: Program Pemerintah (JM Japan) */}
-            <div className="text-center">
-                <h3 className="text-xl font-semibold mb-4 text-gray-700">
-                    Alur Pendidikan dan Pelatihan Aishiro Gakuen
-                </h3>
-                <div className="relative w-full h-auto" style={{ height: '500px' }}> {/* Gunakan tinggi relatif untuk layout */}
-                    <Image
-                        src="/Images/alur_penerimaan_magang.jpeg" // Ganti dengan path foto 1 Anda
-                        alt="Diagram Alur Program Magang Pemerintah JM Japan"
-                        fill // Mengisi div parent dan responsif
-                        style={{ objectFit: 'contain' }} // Memastikan gambar tidak terpotong
-                        priority // Karena ini konten utama
-                    />
+                {/*Foto diagram alur*/}
+                <div className="max-w-6xl mx-auto mt-16 space-y-8">
+                    <h2 className="text-3xl font-bold text-gray-800 text-center">
+                        Visualisasi Diagram Alur
+                    </h2>
+                    
+                    {/* Diagram Alur 1: Program Pemerintah (JM Japan) */}
+                    <div className="text-center">
+                        <h3 className="text-xl font-semibold mb-4 text-gray-700">
+                            Alur Pendidikan dan Pelatihan Aishiro Gakuen
+                        </h3>
+                        <div className="relative w-full h-auto" style={{ height: '500px' }}> {/* Pakai tinggi relatif untuk layout */}
+                            <Image
+                                src="/Images/alur_penerimaan_magang.jpeg"
+                                alt="Diagram Alur Program Magang Pemerintah JM Japan"
+                                fill // Mengisi div parent dan responsif
+                                style={{ objectFit: 'contain' }} // Memastikan gambar tidak terpotong
+                                priority // Karena ini konten utama
+                            />
+                        </div>
+                    </div>
+
+                    {/* Diagram Alur 2: Alur Pendidikan LPK */}
+                    <div className="text-center">
+                        <h3 className="text-xl font-semibold mb-4 text-gray-700">
+                            Alur Pendidikan dan Pelatihan IM JAPAN
+                        </h3>
+                           <div className="relative w-full h-auto" style={{ height: '500px' }}> {/* Gunakan tinggi relatif untuk layout */}
+                            <Image
+                                src="/Images/alur_im_japan.jpeg"
+                                alt="Diagram Alur Pendidikan dan Pelatihan LPK Aishiro"
+                                fill
+                                style={{ objectFit: 'contain' }}
+                                priority
+                            />
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
-
-            {/* Diagram Alur 2: Alur Pendidikan LPK */}
-            <div className="text-center">
-                <h3 className="text-xl font-semibold mb-4 text-gray-700">
-                    Alur Pendidikan dan Pelatihan IM JAPAN
-                </h3>
-                 <div className="relative w-full h-auto" style={{ height: '500px' }}> {/* Gunakan tinggi relatif untuk layout */}
-                    <Image
-                        src="/Images/alur_im_japan.jpeg" // Ganti dengan path foto 2 Anda
-                        alt="Diagram Alur Pendidikan dan Pelatihan LPK Aishiro"
-                        fill
-                        style={{ objectFit: 'contain' }}
-                        priority
-                    />
-                </div>
-            </div>
-            
-        </div>
-      </div>
-    </main>
-  );
+        </main>
+    );
 };
 
 export default AlurMagangPage;
