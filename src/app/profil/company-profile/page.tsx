@@ -1,5 +1,6 @@
 // src/app/profil/company-profile/page.tsx
 import React from "react";
+import Image from "next/image";
 
 export const metadata = {
   title: "Company Profile - Aishiro Gakuen",
@@ -110,11 +111,29 @@ export default function CompanyProfilePage() {
           </p>
 
           <div className="mt-6 flex items-center gap-6">
-            {/* Placeholder for director image — fill `src` later */}
-            <div className="h-24 w-24 rounded-full bg-gray-200 shadow-md" aria-hidden="true" />
+            <Image
+              src="/Images/Direktur.jpeg"
+              alt="Foto Direktur"
+              width={96}
+              height={96}
+              className="rounded-full object-cover shadow-md"
+            />
             <div>
               <p className="font-bold">YASMIN MASAMI, S.Pd</p>
               <p className="text-sm text-gray-600">DIREKTUR</p>
+            </div>
+          </div>
+
+          {/* Foto Gedung LPK (diletakkan di bawah profil direktur) */}
+          <div className="mt-6">
+            <div className="relative h-56 w-full overflow-hidden rounded-lg md:h-96">
+              <Image
+                src="/Images/gedunglpk.jpeg"
+                alt="Gedung LPK Aishiro"
+                fill
+                style={{ objectFit: "cover" }}
+                priority
+              />
             </div>
           </div>
         </section>

@@ -56,9 +56,8 @@ const programs = [
     imageUrl: "/Images/sekolah-jepang.webp",
   },
   {
-    title: "Kaigo",
-    description:
-      "Persiapan intensif untuk kerja bagi job-job spesifik seperti Kaigo.",
+    title: "Tokutei Ginou",
+    description: "Persiapan intensif untuk Tokutei Ginou",
     icon: <Users className="h-6 w-6" />,
     imageUrl: "/Images/kaigo.webp",
   },

@@ -6,8 +6,22 @@ import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
 const config = {
-    images: {
-    domains: ['images.unsplash.com'],
+  images: {
+    // Use remotePatterns instead of deprecated `domains` per Next.js guidance
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "randomuser.me",
+      },
+      {
+        protocol: "https",
+        hostname: "lpk-aishiro.com",
+      },
+    ],
   },
 };
 
