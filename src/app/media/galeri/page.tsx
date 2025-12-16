@@ -16,7 +16,7 @@ const galleryItems: GalleryItem[] = [
   { 
     type: 'image', 
     title: 'Sesi Pelatihan Fisik Pagi', 
-    src: 'https://images.unsplash.com/photo-1549487928-8b7a66129596?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Ganti dummy sementara agar valid url
+    src: '/', // Ganti dummy sementara agar valid url
     description: 'Membangun mental dan fisik yang kuat adalah prioritas utama.',
     icon: <Camera className="h-5 w-5 text-white" />
   },
@@ -30,14 +30,14 @@ const galleryItems: GalleryItem[] = [
   { 
     type: 'image', 
     title: 'Kelas Bahasa Jepang Intensif', 
-    src: 'https://images.unsplash.com/photo-1549487928-8b7a66129596?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/',
     description: 'Fokus pada N3/N4 untuk persiapan kerja langsung.',
     icon: <Camera className="h-5 w-5 text-white" />
   },
   { 
     type: 'image', 
     title: 'Upacara Pelepasan ke Jepang', 
-    src: 'https://images.unsplash.com/photo-1563207185-3e284a141d08?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/',
     description: 'Momen haru keberangkatan siswa menuju masa depan di Jepang.',
     icon: <Camera className="h-5 w-5 text-white" />
   },
@@ -51,7 +51,7 @@ const galleryItems: GalleryItem[] = [
   { 
     type: 'image', 
     title: 'Fasilitas Kelas & Belajar', 
-    src: 'https://images.unsplash.com/photo-1561732501-f2f281e01869?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
+    src: '/', 
     description: 'Lingkungan belajar yang kondusif dan modern.',
     icon: <Camera className="h-5 w-5 text-white" />
   },

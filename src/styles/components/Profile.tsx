@@ -74,16 +74,6 @@ const Profile: React.FC = () => {
                             </p>
                         </div>
 
-                        {/* Paragraf 2 */}
-                        {/* <div className="p-6 border-l-4 border-red-700">
-                    <h3 className="text-2xl font-semibold text-gray-800 mb-3">Fokus Pelatihan</h3>
-                    <p className="text-lg leading-relaxed">
-                        Didukung oleh tenaga profesional, LPK Aishiro Gakuen berfokus pada pelatihan Bahasa Asing berbasis penempatan kerja, terutama di Jepang. Siswa kami berkesempatan mengikuti program magang teknis di Jepang selama 3 tahun, atau bekerja hingga 5 tahun, dengan tunjangan/gaji yang kompetitif (dapat mencapai 10 kali lipat gaji awal setelah dipotong biaya hidup).
-                    </p>
-                    <p className="text-lg leading-relaxed mt-3">
-                        Kami percaya, kunci keberhasilan di negara maju seperti Jepang adalah disiplin (Kibishii). Setelah kembali, lulusan kami diharapkan dapat menularkan ilmu, keterampilan, dan etos kerja yang kuat, serta berpotensi menciptakan lapangan pekerjaan baru.
-                    </p>
-                </div> */}
 
                         {/* Paragraf 3: Kedisiplinan & Mindset */}
                         <div className="p-6 bg-red-50 rounded-lg shadow-lg">
