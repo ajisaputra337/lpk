@@ -110,11 +110,8 @@ export default function CompanyProfilePage() {
           </p>
 
           <div className="mt-6 flex items-center gap-6">
-            <img
-              src="/Images/Direktur.jpeg"
-              alt="Foto Direktur"
-              className="h-24 w-24 rounded-full object-cover shadow-md"
-            />
+            {/* Placeholder for director image — fill `src` later */}
+            <div className="h-24 w-24 rounded-full bg-gray-200 shadow-md" aria-hidden="true" />
             <div>
               <p className="font-bold">YASMIN MASAMI, S.Pd</p>
               <p className="text-sm text-gray-600">DIREKTUR</p>

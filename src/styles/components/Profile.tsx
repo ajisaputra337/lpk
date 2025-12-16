@@ -1,7 +1,6 @@
 // src/components/Profile.tsx
 
 import React from 'react';
-import Link from 'next/link';
 import { Landmark, Briefcase, Smile } from 'lucide-react';
 
 const Profile: React.FC = () => {
