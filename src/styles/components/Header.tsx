@@ -120,83 +120,91 @@ const Header = () => {
               Magang Jepang
             </span>
           </div>
-          <span className="ml-2 text-lg text-gray-800">
-            インドネシア送り出し機関
-          </span>
+          <div className="ml-2 flex flex-col">
+            <span className="ml-2 text-lg text-gray-800">
+              インドネシア送り出し機関
+            </span>
+            <span className="mt-1 text-sm leading-none text-gray-600">
+              Sending Organization
+            </span>
+          </div>
         </Link>
 
-        {/* NAV DESKTOP */}
-        <nav className="hidden lg:flex">
-          <ul className="flex items-center space-x-6">
-            {navItems.map((item) => {
-              const isOpen = openDropdown === item.label;
-              return (
-                <li key={item.label} className="relative">
-                  {item.subMenu ? (
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        toggleDropdown(item.label);
-                      }}
-                      className={`font-medium ${isOpen ? "text-red-700" : "text-gray-700 hover:text-red-700"}`}
-                    >
-                      {item.label}
-                    </button>
-                  ) : (
-                    <Link
-                      href={item.href}
-                      className="font-medium text-gray-700 hover:text-red-700"
-                    >
-                      {item.label}
-                    </Link>
-                  )}
+        {/* NAV + CTA DESKTOP (grouped to the right) */}
+        <div className="ml-auto hidden items-center gap-6 lg:flex">
+          <nav>
+            <ul className="flex items-center space-x-6">
+              {navItems.map((item) => {
+                const isOpen = openDropdown === item.label;
+                return (
+                  <li key={item.label} className="relative">
+                    {item.subMenu ? (
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleDropdown(item.label);
+                        }}
+                        className={`font-medium ${isOpen ? "text-red-700" : "text-gray-700 hover:text-red-700"}`}
+                      >
+                        {item.label}
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="font-medium text-gray-700 hover:text-red-700"
+                      >
+                        {item.label}
+                      </Link>
+                    )}
 
-                  {item.subMenu && (
-                    <ul
-                      className={`absolute top-full left-1/2 mt-2 w-56 -translate-x-1/2 rounded-md border-t-4 border-red-700 bg-white shadow-xl transition ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}
-                    >
-                      {item.subMenu.map((sub) => (
-                        <li key={sub.label}>
-                          <Link
-                            href={sub.href}
-                            onClick={() => setOpenDropdown(null)}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700"
-                            target={sub.label === "BLOG" ? "_blank" : undefined}
-                            rel={
-                              sub.label === "BLOG"
-                                ? "noopener noreferrer"
-                                : undefined
-                            }
-                          >
-                            {sub.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+                    {item.subMenu && (
+                      <ul
+                        className={`absolute top-full left-1/2 mt-2 w-56 -translate-x-1/2 rounded-md border-t-4 border-red-700 bg-white shadow-xl transition ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}
+                      >
+                        {item.subMenu.map((sub) => (
+                          <li key={sub.label}>
+                            <Link
+                              href={sub.href}
+                              onClick={() => setOpenDropdown(null)}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700"
+                              target={
+                                sub.label === "BLOG" ? "_blank" : undefined
+                              }
+                              rel={
+                                sub.label === "BLOG"
+                                  ? "noopener noreferrer"
+                                  : undefined
+                              }
+                            >
+                              {sub.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
 
-        {/* CTA DESKTOP */}
-        <div className="hidden items-center gap-3 lg:flex">
-          <button
-            onClick={scrollToBottom}
-            className="rounded-md border border-red-700 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50"
-          >
-            CONTACT
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={scrollToBottom}
+              className="rounded-md border border-red-700 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50"
+            >
+              CONTACT
+            </button>
 
-          <Link
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md bg-red-700 px-4 py-2 text-sm font-semibold text-white hover:bg-red-800"
-          >
-            DAFTAR SEKARANG
-          </Link>
+            <Link
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-md bg-red-700 px-4 py-2 text-sm font-semibold text-white hover:bg-red-800"
+            >
+              DAFTAR SEKARANG
+            </Link>
+          </div>
         </div>
 
         {/* HAMBURGER */}
