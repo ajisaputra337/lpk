@@ -8,36 +8,11 @@ import Profile from "../styles/components/Profile";
 import ProgramCard from "../styles/components/ProgramCard";
 import SuccessStoryCard from "../styles/components/SuccessStoryCard";
 import { BookOpen, Zap, Users } from "lucide-react";
+import { alumni } from "../data/alumni";
 
 // Data nomor wa
 const whatsappLink =
   "https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut.";
-
-// Data Testimoni (Tanda kutip ganda di-escape)
-const stories = [
-  {
-    quote:
-      "Pelatihan di Aishiro sangat disiplin dan mempersiapkan mental kerja di Jepang. Saya berhasil mendapatkan Job Tobi dalam 3 bulan!",
-    name: "Dani kusuma",
-    job: "Tobi",
-    country: "Tokyo, Jepang",
-  },
-  {
-    quote:
-      "Kurikulum bahasa dan fisik yang ketat membuat saya tidak canggung menghadapi lingkungan kerja. Ini lebih dari sekadar kursus.",
-    name: "Budi Kusuma",
-    job: "Technical Intern Trainee (Scaffolding)",
-    country: "Osaka, Jepang",
-  },
-  {
-    // FIX: Tanda kutip ganda di dalam string harus di-escape menjadi &quot;
-    quote:
-      "Sukses bukan hanya soal skill, tapi juga attitude. Aishiro menanamkan etos kerja Jepang yang saya bawa hingga kini.",
-    name: "Citra Dewi",
-    job: "Technical Intern Trainee (Pengelasan)",
-    country: "Fukuoka, Jepang",
-  },
-];
 
 // Program Card
 const programs = [
@@ -299,20 +274,19 @@ const Page = () => {
 
             {/* Grid untuk Testimoni */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {stories.map((story, index) => (
-                <div key={index} className="group relative">
-                  {/* Garis merah vertikal di sisi kiri */}
-                  <div className="absolute top-0 bottom-0 left-0 w-1 rounded-r-lg bg-red-700 transition-all duration-300 group-hover:h-full"></div>
-                  <div className="ml-4">
-                    <SuccessStoryCard
-                      quote={story.quote}
-                      name={story.name}
-                      job={story.job}
-                      country={story.country}
-                    />
-                  </div>
-                </div>
-              ))}
+              {alumni
+                .slice(-3)
+                .reverse()
+                .map((person) => (
+                  <SuccessStoryCard
+                    key={person.id}
+                    quote={person.quote}
+                    name={person.nama}
+                    role={person.job}
+                    perusahaan={person.perusahaan}
+                    img={person.img}
+                  />
+                ))}
             </div>
           </div>
         </section>

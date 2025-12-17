@@ -1,40 +1,48 @@
-import React from 'react';
-// import Image from 'next/image'; // Gunakan jika Anda mengimplementasikan gambar Next/Image
+import React from "react";
+import Image from "next/image";
 
 interface SuccessStoryCardProps {
   quote: string;
   name: string;
-  job: string;
-  country: string; // Misal: 'Osaka, Jepang'
-  // imageUrl: string; // Jika menggunakan gambar asli
+  role?: string;
+  perusahaan?: string;
+  img?: string;
 }
 
-const SuccessStoryCard: React.FC<SuccessStoryCardProps> = ({ quote, name, job, country }) => {
+const SuccessStoryCard: React.FC<SuccessStoryCardProps> = ({
+  quote,
+  name,
+  role,
+  perusahaan,
+  img,
+}) => {
   return (
-    // Kartu yang bersih dengan bayangan lembut (Japanese Minimalist)
-    <div className="flex flex-col rounded-lg bg-white p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl">
+    <div className="relative rounded-3xl border border-slate-100 bg-slate-50 p-8 shadow-sm transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+      {/* Kutipan */}
+      <div className="mb-6">
+        <span className="absolute top-4 right-6 font-serif text-6xl text-red-200">
+          &ldquo;
+        </span>
+        <p className="relative z-10 leading-relaxed text-slate-600 italic">
+          {quote}
+        </p>
+      </div>
 
-      {/* Kutipan Testimoni */}
-      <blockquote className="mb-6 text-lg italic text-gray-700">
-        <span className="text-3xl text-red-700 font-serif mr-1">“</span>
-        {quote}
-        <span className="text-3xl text-red-700 font-serif ml-1">”</span>
-      </blockquote>
-
-      {/* Garis pemisah yang halus */}
-      <hr className="mb-4 border-gray-100" />
-
-      {/* Profil Siswa */}
-      <div className="flex items-center">
-        {/* Placeholder Foto Profil */}
-        <div className="mr-4 h-12 w-12 rounded-full bg-red-100 flex items-center justify-center text-red-700 font-bold text-sm">
-          {name.charAt(0)}
+      {/* Profil */}
+      <div className="mt-8 flex items-center gap-4 border-t border-slate-200 pt-6">
+        <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-white shadow-md">
+          {img ? (
+            <Image src={img} alt={name} fill className="object-cover" />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-red-100 font-bold text-red-700">
+              {name.charAt(0)}
+            </div>
+          )}
         </div>
-
         <div>
-          <p className="font-semibold text-gray-900">{name}</p>
-          <p className="text-sm text-gray-500">{job}</p>
-          <p className="text-xs text-gray-400">{country}</p>
+          <h4 className="text-sm font-bold text-slate-900">{name}</h4>
+          {role && <p className="text-xs font-bold text-red-600">{role}</p>}
+          {perusahaan && <p className="text-xs text-slate-400">{perusahaan}</p>}
         </div>
       </div>
     </div>

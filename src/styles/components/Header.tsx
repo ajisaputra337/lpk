@@ -25,7 +25,6 @@ const navItems: NavItem[] = [
       { label: "Magang Jepang", href: "/program/magang-jepang" },
       { label: "Sekolah di Jepang", href: "/program/sekolah-jepang" },
       { label: "Tokutei Ginou", href: "/program/TokuteiGinou" },
-      { label: "Kegiatan Fisik Sore", href: "/program/fisik-sore" },
     ],
   },
   {
@@ -41,7 +40,9 @@ const navItems: NavItem[] = [
     href: "#",
     subMenu: [
       { label: "Galeri", href: "/media/galeri" },
-      { label: "Sukses Story", href: "/profil/success-story" },
+      { label: "Persyaratan", href: "/media/persyaratan" },
+      { label: "Sukses Story", href: "/media/success-story" },
+      { label: "Kegiatan Fisik Sore", href: "/media/fisik-sore" },
     ],
   },
 ];
@@ -103,7 +104,7 @@ const Header = () => {
             closeMobileMenu();
           }}
         >
-          <div className="relative h-10 w-10">
+          <div className="relative h-20 w-20">
             <Image
               src={LOGO_PATH}
               alt={LOGO_ALT}
@@ -113,18 +114,18 @@ const Header = () => {
             />
           </div>
           <div className="ml-2 flex flex-col">
-            <span className="text-lg leading-none font-semibold text-gray-800">
+            <span className="text-gray-1000 text-lg leading-none font-semibold">
               AISHIRO GAKUEN
             </span>
-            <span className="mt-1 text-sm leading-none text-gray-600">
+            <span className="text-lg leading-none text-gray-600">
               Magang Jepang
             </span>
           </div>
           <div className="ml-2 flex flex-col">
-            <span className="ml-2 text-lg text-gray-800">
+            <span className="text-gray-1000 text-lg leading-none font-semibold">
               インドネシア送り出し機関
             </span>
-            <span className="mt-1 text-sm leading-none text-gray-600">
+            <span className="text-lg leading-none text-gray-600">
               Sending Organization
             </span>
           </div>
@@ -167,14 +168,6 @@ const Header = () => {
                               href={sub.href}
                               onClick={() => setOpenDropdown(null)}
                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700"
-                              target={
-                                sub.label === "BLOG" ? "_blank" : undefined
-                              }
-                              rel={
-                                sub.label === "BLOG"
-                                  ? "noopener noreferrer"
-                                  : undefined
-                              }
                             >
                               {sub.label}
                             </Link>
