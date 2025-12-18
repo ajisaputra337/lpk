@@ -1,6 +1,5 @@
 // src/app/profil/company-profile/page.tsx
 import React from "react";
-import Image from "next/image";
 
 export const metadata = {
   title: "Profil Perusahaan - LPK Aishiro Gakuen",
