@@ -182,7 +182,9 @@ const Page = () => {
           <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
             <div className="w-full max-w-xl text-left">
               <h1 className="mb-4 text-4xl leading-tight font-extrabold text-white md:text-5xl">
-                Wujudkan Mimpimu <br /> Belajar & Berkarir di Jepang
+                Wujudkan <span className="text-yellow-500">Mimpimu</span> <br />{" "}
+                Belajar & Berkarir di{" "}
+                <span className="text-red-500">Jepang</span>
               </h1>
               <p className="mb-8 text-lg text-gray-200">
                 Bersama Aishiro Gakuen, Gapailah Masa Depan Gemilang.
@@ -191,7 +193,7 @@ const Page = () => {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-md bg-red-700 px-8 py-3 text-lg font-bold text-white shadow-xl transition-colors hover:bg-red-800"
+                className="inline-block rounded-md bg-red-700 px-8 py-3 text-lg font-bold text-yellow-400 shadow-xl transition-colors hover:bg-red-800"
               >
                 DAFTAR SEKARANG
               </Link>
@@ -267,7 +269,8 @@ const Page = () => {
                 成功ストーリー
               </h2>
               <p className="mb-6 text-center text-lg text-gray-600">
-                Mereka yang Sukses di Jepang
+                Mereka yang Sukses di{" "}
+                <span className="text-red-500">Jepang</span>
               </p>
               <div className="h-1 w-20 rounded-full bg-red-700"></div>
             </div>

@@ -10,7 +10,8 @@ const Profile: React.FC = () => {
         {/* Header Section dengan Aksen Merah */}
         <div className="mb-16 flex flex-col items-center">
           <h2 className="text-4xl font-extrabold tracking-wider text-gray-800">
-            Mengenal <span className="text-red-700">Aishiro Gakuen</span>
+            Mengenal <span className="text-red-700">Aishiro</span>{" "}
+            <span className="text-yellow-500">Gakuen</span>
           </h2>
           <p className="mt-2 text-xl text-gray-600 italic">
             Membangun Disiplin, Meraih Masa Depan

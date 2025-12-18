@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="id" className={`${geist.variable}`}>
       {/* 2. Tambahkan class di body untuk layout (flex-col, min-h-screen) */}
       <body className="flex min-h-screen flex-col font-sans antialiased">
-        
+
         {/* 3. Masukkan Header */}
         <Header />
 
@@ -33,10 +33,10 @@ export default function RootLayout({
         <main className="flex-grow">
           {children}
         </main>
-        
+
         {/* 5. Masukkan Footer */}
         <Footer />
-        
+
       </body>
     </html>
   );

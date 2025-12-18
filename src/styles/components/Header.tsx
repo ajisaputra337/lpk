@@ -47,7 +47,6 @@ const navItems: NavItem[] = [
   },
 ];
 
-// Logo
 const LOGO_PATH = "/Images/logo_aishiro.png";
 const LOGO_ALT = "Logo LPK Aishiro Gakuen";
 
@@ -68,14 +67,12 @@ const Header = () => {
     setOpenMobileSubMenu(null);
   };
 
-  // 🔽 SCROLL KE PALING BAWAH
   const scrollToBottom = () => {
     setOpenDropdown(null);
     closeMobileMenu();
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   };
 
-  // Klik di luar header
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -114,24 +111,24 @@ const Header = () => {
             />
           </div>
           <div className="ml-2 flex flex-col">
-            <span className="text-gray-1000 text-lg leading-none font-semibold">
+            <span className="text-lg leading-none font-semibold text-gray-900">
               AISHIRO GAKUEN
             </span>
-            <span className="text-lg leading-none text-gray-600">
+            <span className="text-lg leading-none text-red-600">
               Magang Jepang
             </span>
           </div>
-          <div className="ml-2 flex flex-col">
-            <span className="text-gray-1000 text-lg leading-none font-semibold">
+          <div className="ml-2 flex flex-col justify-center rounded-md bg-yellow-300 px-3 py-1">
+            <span className="text-lg leading-none font-semibold text-gray-900">
               インドネシア送り出し機関
             </span>
-            <span className="text-lg leading-none text-gray-600">
+            <span className="text-lg leading-none text-gray-800">
               Sending Organization
             </span>
           </div>
         </Link>
 
-        {/* NAV + CTA DESKTOP (grouped to the right) */}
+        {/* NAV + CTA DESKTOP */}
         <div className="ml-auto hidden items-center gap-6 lg:flex">
           <nav>
             <ul className="flex items-center space-x-6">
@@ -145,14 +142,16 @@ const Header = () => {
                           e.preventDefault();
                           toggleDropdown(item.label);
                         }}
-                        className={`font-medium ${isOpen ? "text-red-700" : "text-gray-700 hover:text-red-700"}`}
+                        // Warna Kuning (yellow-700) saat normal & merah saat diklik
+                        className={`font-bold transition-colors ${isOpen ? "text-red-700" : "text-red-700 hover:text-yellow-500"}`}
                       >
                         {item.label}
                       </button>
                     ) : (
                       <Link
                         href={item.href}
-                        className="font-medium text-gray-700 hover:text-red-700"
+                        // Warna Kuning (yellow-700)
+                        className="font-bold text-red-700 transition-colors hover:text-yellow-500"
                       >
                         {item.label}
                       </Link>
@@ -182,9 +181,10 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-3">
+            {/* Tombol Contact Tetap Pakai Kotak */}
             <button
               onClick={scrollToBottom}
-              className="rounded-md border border-red-700 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50"
+              className="rounded-md border-2 border-yellow-700 px-4 py-2 text-sm font-bold text-yellow-500 transition-all hover:bg-yellow-50"
             >
               CONTACT
             </button>
@@ -193,7 +193,7 @@ const Header = () => {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md bg-red-700 px-4 py-2 text-sm font-semibold text-white hover:bg-red-800"
+              className="rounded-md bg-red-700 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-red-800"
             >
               DAFTAR SEKARANG
             </Link>
@@ -218,12 +218,13 @@ const Header = () => {
         </div>
 
         <nav className="p-6">
-          <ul className="space-y-2">
+          <ul className="space-y-4">
             {navItems.map((item) => (
               <li key={item.label}>
-                <div className="flex items-center justify-between rounded-md p-3 hover:bg-gray-50">
+                <div className="flex items-center justify-between">
                   <Link
                     href={item.href}
+                    className="text-lg font-bold text-yellow-700"
                     onClick={() => !item.subMenu && closeMobileMenu()}
                   >
                     {item.label}
@@ -246,13 +247,13 @@ const Header = () => {
                 </div>
 
                 {item.subMenu && openMobileSubMenu === item.label && (
-                  <ul className="border-l-2 border-red-100 pl-4">
+                  <ul className="mt-2 space-y-2 border-l-2 border-red-600 pl-4">
                     {item.subMenu.map((sub) => (
                       <li key={sub.label}>
                         <Link
                           href={sub.href}
                           onClick={closeMobileMenu}
-                          className="block p-2 text-sm"
+                          className="block p-1 font-medium text-gray-700"
                         >
                           {sub.label}
                         </Link>
@@ -265,11 +266,10 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* CTA MOBILE */}
         <div className="space-y-3 p-6">
           <button
             onClick={scrollToBottom}
-            className="w-full rounded-md border border-red-700 px-4 py-3 font-semibold text-red-700"
+            className="w-full rounded-md border-2 border-yellow-700 px-4 py-3 font-bold text-yellow-700"
           >
             CONTACT
           </button>
@@ -278,7 +278,7 @@ const Header = () => {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full rounded-md bg-red-700 px-4 py-3 text-center font-semibold text-white"
+            className="block w-full rounded-md bg-red-700 px-4 py-3 text-center font-bold text-white"
             onClick={closeMobileMenu}
           >
             DAFTAR SEKARANG
