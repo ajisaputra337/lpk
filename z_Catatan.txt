@@ -1,27 +1,19 @@
-This XML file does not appear to have any style information associated with it. The document tree is shown below.
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://www.lpk-aishiro.com</loc>
-<lastmod>2025-12-17T16:23:17.675Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>1</priority>
-</url>
-<url>
-<loc>https://www.lpk-aishiro.com/company-profile</loc>
-<lastmod>2025-12-17T16:23:17.675Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.lpk-aishiro.com/gallery</loc>
-<lastmod>2025-12-17T16:23:17.675Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.lpk-aishiro.com/success</loc>
-<lastmod>2025-12-17T16:23:17.675Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-</urlset>
+## Error Type
+Runtime TypeError
+
+## Error Message
+Cannot read properties of undefined (reading 'charAt')
+
+
+    at SuccessStoryCard (src/app/media/success-story/page.tsx:49:25)
+
+## Code Frame
+  47 |               <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-red-500 to-red-600">
+  48 |                 <span className="text-5xl font-black text-white drop-shadow-lg">
+> 49 |                   {name.charAt(0)}
+     |                         ^
+  50 |                 </span>
+  51 |               </div>
+  52 |             )}
+
+Next.js version: 15.5.7 (Turbopack)

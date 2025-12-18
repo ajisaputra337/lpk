@@ -283,10 +283,13 @@ const Page = () => {
                 .map((person) => (
                   <SuccessStoryCard
                     key={person.id}
-                    quote={person.quote}
                     name={person.nama}
-                    role={person.job}
+                    angkatan={person.angkatan}
+                    tanggalLahir={person.tanggalLahir}
+                    alamat={person.alamat}
+                    job={person.job}
                     perusahaan={person.perusahaan}
+                    alamatPerusahaan={person.alamatPerusahaan}
                     img={person.img}
                   />
                 ))}
