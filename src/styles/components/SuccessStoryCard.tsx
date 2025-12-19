@@ -28,7 +28,7 @@ export default function SuccessStoryCard({
 
   // 🔒 Anti-crash guard
   const initial = name?.trim()?.charAt(0) ?? "?";
-  const safeName = name?.trim() || "Nama Tidak Diketahui";
+  const safeName = name?.trim() ?? "Nama Tidak Diketahui";
 
   return (
     <>
@@ -56,12 +56,12 @@ export default function SuccessStoryCard({
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
           {/* Badge Angkatan */}
-          <div className="absolute bottom-4 left-4 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white shadow-lg">
+          <div className="absolute bottom-1 left-1 rounded-full bg-red-600 px-1.5 py-0.5 text-[0.5rem] font-bold text-white shadow-md sm:bottom-4 sm:left-4 sm:px-3 sm:py-1 sm:text-xs sm:shadow-lg">
             🎓 {angkatan}
           </div>
 
           {/* Name Preview on Hover */}
-          <div className="absolute bottom-12 left-4 right-4 translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="absolute right-4 bottom-12 left-4 translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
             <p className="border-l-4 border-red-500 pl-3 font-bold text-white drop-shadow-md">
               {safeName}
             </p>
@@ -71,15 +71,18 @@ export default function SuccessStoryCard({
 
       {/* --- MODAL POPUP --- */}
       {isOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setIsOpen(false)}>
+        <div
+          className="animate-in fade-in fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm duration-200"
+          onClick={() => setIsOpen(false)}
+        >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white shadow-2xl transition-all animate-in zoom-in-95 duration-200"
+            className="animate-in zoom-in-95 relative w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-200"
           >
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute right-4 top-4 z-10 rounded-full bg-white/80 p-2 text-gray-500 backdrop-blur-sm transition-colors hover:bg-red-100 hover:text-red-600"
+              className="absolute top-4 right-4 z-10 rounded-full bg-white/80 p-2 text-gray-500 backdrop-blur-sm transition-colors hover:bg-red-100 hover:text-red-600"
             >
               <X className="h-5 w-5" />
             </button>
@@ -91,7 +94,7 @@ export default function SuccessStoryCard({
 
               <div className="relative flex flex-col gap-6 p-6 sm:flex-row">
                 {/* Foto */}
-                <div className="relative flex-shrink-0 mx-auto sm:mx-0">
+                <div className="relative mx-auto flex-shrink-0 sm:mx-0">
                   <div className="relative h-48 w-36 overflow-hidden rounded-lg border-4 border-white shadow-lg sm:h-56 sm:w-40">
                     {img ? (
                       <Image
@@ -116,8 +119,8 @@ export default function SuccessStoryCard({
                 </div>
 
                 {/* Info */}
-                <div className="min-w-0 flex-1 space-y-4 text-center sm:text-left pt-2">
-                  <h3 className="text-2xl font-black leading-tight text-slate-900 border-b-2 border-red-100 pb-2">
+                <div className="min-w-0 flex-1 space-y-4 pt-2 text-center sm:text-left">
+                  <h3 className="border-b-2 border-red-100 pb-2 text-2xl leading-tight font-black text-slate-900">
                     {safeName}
                   </h3>
 
@@ -153,7 +156,6 @@ export default function SuccessStoryCard({
       )}
     </>
   );
-
 }
 
 /* ---------- Helper ---------- */

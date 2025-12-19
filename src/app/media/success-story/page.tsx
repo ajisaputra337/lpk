@@ -1,13 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { alumni } from "../../../data/alumni";
 import SuccessStoryCard from "../../../styles/components/SuccessStoryCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function SuccessStoryPage() {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 32;
+  const [itemsPerPage, setItemsPerPage] = useState(32);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(8);
+      } else {
+        setItemsPerPage(32);
+      }
+    };
+
+    // Set initial value
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Calculate pagination
   const totalPages = Math.ceil(alumni.length / itemsPerPage);
@@ -40,7 +56,7 @@ export default function SuccessStoryPage() {
         </div>
 
         {/* Cards Grid (8 Columns) */}
-        <div className="mx-auto grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+        <div className="mx-auto grid grid-cols-4 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
           {currentData.map((person) => (
             <SuccessStoryCard
               key={person.id}
