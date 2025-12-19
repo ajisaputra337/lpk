@@ -1,19 +1,27 @@
-## Error Type
-Runtime TypeError
+https://srmokgwizcygltsqogft.supabase.co
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNybW9rZ3dpemN5Z2x0c3FvZ2Z0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYxNTY3NDIsImV4cCI6MjA4MTczMjc0Mn0.jCsgX83TrwXfBVyIdqUPrZ_eoJi1R0VMKv_9iQZvOCk
 
-## Error Message
-Cannot read properties of undefined (reading 'charAt')
+supabase.com
+npm install @supabase/supabase-js
+
+npm install @supabase/supabase-js --legacy-peer-deps
+
+PS C:\KazuSann\Coding\remake\lpk> npm install @supabase/supabase-js --legacy-peer-deps
+
+removed 2 packages, and audited 376 packages in 4s
+
+143 packages are looking for funding
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+PS C:\KazuSann\Coding\remake\lpk>
 
 
-    at SuccessStoryCard (src/app/media/success-story/page.tsx:49:25)
 
-## Code Frame
-  47 |               <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-red-500 to-red-600">
-  48 |                 <span className="text-5xl font-black text-white drop-shadow-lg">
-> 49 |                   {name.charAt(0)}
-     |                         ^
-  50 |                 </span>
-  51 |               </div>
-  52 |             )}
-
-Next.js version: 15.5.7 (Turbopack)
+NEXT_PUBLIC_SUPABASE_URL=https://srmokgwizcygltsqogft.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNybW9rZ3dpemN5Z2x0c3FvZ2Z0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYxNTY3NDIsImV4cCI6MjA4MTczMjc0Mn0.jCsgX83TrwXfBVyIdqUPrZ_eoJi1R0VMKv_9iQZvOCk

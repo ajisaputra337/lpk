@@ -91,7 +91,8 @@ export const alumni: Alumni[] = [
     nama: "ABDUL AZIZ",
     angkatan: "Angkatan 3",
     tanggalLahir: "7 April 2003",
-    alamat: "SITILUHUR, RT 001 / RW 003, KEL. SITILUHUR, KEC. GEMBONG, KAB. PATI",
+    alamat:
+      "SITILUHUR, RT 001 / RW 003, KEL. SITILUHUR, KEC. GEMBONG, KAB. PATI",
     job: "SAKAN",
     perusahaan: "KABUSHIKI GAISHA KAMIYA KOUGYOU",
     img: "https://lpk-aishiro.com/wp-content/gallery/sukses-story-di-jepang/thumbs/thumbs_faisol-1.jpg",
@@ -101,7 +102,8 @@ export const alumni: Alumni[] = [
     nama: "MOHAMMAD FIRGI AMRI SANI",
     angkatan: "Angkatan 3",
     tanggalLahir: "4 June 2000",
-    alamat: "DSN TEGALRANDU RT 002 RW 002 KEL. TEGALRANDU, KEC. SRUMBUNG, KAB. MAGELANG",
+    alamat:
+      "DSN TEGALRANDU RT 002 RW 002 KEL. TEGALRANDU, KEC. SRUMBUNG, KAB. MAGELANG",
     job: "SAKAN",
     perusahaan: "KABUSHIKI GAISHA KAMIYA KOUGYOU",
     img: "https://lpk-aishiro.com/wp-content/gallery/sukses-story-di-jepang/thumbs/thumbs_faisol-1.jpg",
@@ -111,7 +113,8 @@ export const alumni: Alumni[] = [
     nama: "MOHAMAD MAKROES",
     angkatan: "Angkatan 4",
     tanggalLahir: "27 April 1997",
-    alamat: "KENDAYAAN RT 005 / RW 001, DS. KENDAYAAN, KEC. NGAWEN, KAB. BLORA, JAWA TENGAH",
+    alamat:
+      "KENDAYAAN RT 005 / RW 001, DS. KENDAYAAN, KEC. NGAWEN, KAB. BLORA, JAWA TENGAH",
     job: "TEKKIN",
     perusahaan: "MAESHIRO TEKKIN",
     img: "https://lpk-aishiro.com/wp-content/gallery/sukses-story-di-jepang/thumbs/thumbs_faisol-1.jpg",

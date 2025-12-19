@@ -209,7 +209,7 @@ const Header = () => {
             closeMobileMenu();
           }}
         >
-          <div className="relative mr-2 h-20 w-20">
+          <div className="relative mr-2 h-12 w-12 lg:h-20 lg:w-20">
             <Image
               src={LOGO_PATH}
               alt={LOGO_ALT}
@@ -219,14 +219,14 @@ const Header = () => {
             />
           </div>
           <div className="ml-2 flex flex-col">
-            <span className="text-lg leading-none font-semibold text-gray-900">
+            <span className="text-sm font-semibold text-gray-900 lg:text-lg lg:leading-none">
               AISHIRO GAKUEN
             </span>
-            <span className="text-lg leading-none text-red-600">
+            <span className="text-sm text-red-600 lg:text-lg lg:leading-none">
               Magang Jepang
             </span>
           </div>
-          <div className="ml-2 flex flex-col justify-center rounded-md bg-yellow-300 px-3 py-1">
+          <div className="ml-2 hidden flex-col justify-center rounded-md bg-yellow-300 px-3 py-1 lg:flex">
             <span className="text-lg leading-none font-semibold text-gray-900">
               インドネシア送り出し機関
             </span>
