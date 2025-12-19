@@ -44,7 +44,7 @@ const JapaneseDecoration = ({ type = "sakura", className = "" }) => {
     case "sakura":
       return (
         <svg
-          className={`absolute opacity-10 ${className}`}
+          className={`absolute opacity-50 ${className}`}
           width="80"
           height="80"
           viewBox="0 0 80 80"
@@ -193,9 +193,15 @@ const Page = () => {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-md bg-red-700 px-8 py-3 text-lg font-bold text-yellow-400 shadow-xl transition-colors hover:bg-red-800"
+                className="rounded-md transition-colors hover:bg-red-800"
               >
-                DAFTAR SEKARANG
+                <Image
+                  src="/Images/daftarsekarang.png"
+                  alt="Daftar Sekarang"
+                  width={300}
+                  height={42}
+                  className="object-contain"
+                />
               </Link>
             </div>
           </div>
@@ -210,6 +216,24 @@ const Page = () => {
 
         {/* Section Program Unggulan */}
         <section className="relative overflow-hidden bg-white py-20">
+          {/* Hiasan Sakura Floating */}
+          <JapaneseDecoration
+            type="sakura"
+            className="animate-float-slow top-10 left-10"
+          />
+          <JapaneseDecoration
+            type="sakura"
+            className="animate-float-medium top-1/3 right-20"
+          />
+          <JapaneseDecoration
+            type="sakura"
+            className="animate-float-fast bottom-20 left-1/4"
+          />
+          <JapaneseDecoration
+            type="sakura"
+            className="animate-float-slow right-10 bottom-10"
+          />
+
           {/* Background Pattern Jepang (Subtle) - Tidak diubah */}
           <div className="absolute inset-0 opacity-5">
             <div
@@ -250,18 +274,25 @@ const Page = () => {
 
         {/* --- */}
 
-        {/* BAGIAN SUCCESS STORY - Tidak diubah */}
-        <section className="relative overflow-hidden bg-gray-50 py-20">
-          {/* Gelombang Jepang Dekoratif */}
+        {/* BAGIAN SUCCESS STORY */}
+        <section className="relative overflow-hidden bg-white py-20">
+          {/* Hiasan Sakura Floating */}
           <JapaneseDecoration
-            type="wave"
-            className="top-0 left-0 w-full rotate-180"
+            type="sakura"
+            className="animate-float-slow top-10 left-10"
           />
-          <JapaneseDecoration type="wave" className="bottom-0 left-0 w-full" />
-
-          {/* Hiasan Shippo Pattern */}
-          <JapaneseDecoration type="shippo" className="top-20 left-10" />
-          <JapaneseDecoration type="shippo" className="right-10 bottom-20" />
+          <JapaneseDecoration
+            type="sakura"
+            className="animate-float-medium top-1/4 right-16"
+          />
+          <JapaneseDecoration
+            type="sakura"
+            className="animate-float-fast bottom-20 left-1/4"
+          />
+          <JapaneseDecoration
+            type="sakura"
+            className="animate-float-slow right-10 bottom-10"
+          />
 
           <div className="relative z-10 mx-auto max-w-7xl px-6">
             <div className="mb-12 flex flex-col items-center">
@@ -289,7 +320,6 @@ const Page = () => {
                     alamat={person.alamat}
                     job={person.job}
                     perusahaan={person.perusahaan}
-                    alamatPerusahaan={person.alamatPerusahaan}
                     img={person.img}
                   />
                 ))}

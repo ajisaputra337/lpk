@@ -10,9 +10,9 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-800 pt-12 pb-8 text-white">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Grid Footer: 1 kolom (mobile) → 4 kolom (md ke atas) */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:gap-16">
-          {/* Kolom 1: Logo & Deskripsi */}
+        {/* Grid Footer: 1 kolom (mobile) → 3 kolom (md ke atas) */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-16">
+          {/* Kolom 1: Logo & Deskripsi + Navigasi */}
           <div>
             <Link href="/" className="mb-4 flex items-center">
               {/* <div className="h-8 w-8 bg-red-700 rounded-full flex items-center justify-center text-white font-bold text-sm">あ</div> */}
@@ -24,35 +24,43 @@ const Footer: React.FC = () => {
               Jalur sukses menuju karir impian di Jepang dengan pelatihan bahasa
               dan fisik terbaik.
             </p>
+
+            {/* Navigasi di bawah deskripsi */}
+            <div className="mt-6">
+              <h3 className="mb-4 text-lg font-semibold text-white">Navigation</h3>
+              <ul className="space-y-2">
+                {/* <li>
+                  <Link
+                    href="https://jisannihon.vercel.app"
+                    className="text-sm text-gray-400 transition-colors hover:text-red-400"
+                  >
+                    Blog & Berita
+                  </Link>
+                </li> */}
+                <li>
+                  <Link
+                    href="/profil/company-profile"
+                    className="text-sm text-gray-400 transition-colors hover:text-red-400"
+                  >
+                    Company Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/media/galeri"
+                    className="text-sm text-gray-400 transition-colors hover:text-red-400"
+                  >
+                    Gallery
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Kolom 2: Navigasi */}
-          <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">Navigasi</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#Profile"
-                  className="text-sm text-gray-400 transition-colors hover:text-red-400"
-                >
-                  Tentang Kami
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://jisannihon.vercel.app"
-                  className="text-sm text-gray-400 transition-colors hover:text-red-400"
-                >
-                  Blog & Berita
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Kolom 3: Kontak */}
+          {/* Kolom 2: Kontak */}
           <div>
             <h3 className="mb-4 text-lg font-semibold text-white">
-              Hubungi Kami
+              Contact Us
             </h3>
 
             <ul className="space-y-3">
@@ -106,10 +114,10 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Kolom 4: Media Sosial */}
+          {/* Kolom 3: Media Sosial */}
           <div>
             <h3 className="mb-4 text-lg font-semibold text-white">
-              Ikuti Kami
+              Follow Us
             </h3>
             <div className="flex space-x-4">
               {/* TikTok */}
@@ -146,7 +154,7 @@ const Footer: React.FC = () => {
                   className="rounded-md border border-gray-600 transition-transform hover:scale-105"
                 />
                 <p className="mt-2 text-center text-xs text-gray-400">
-                  Scan untuk chat via LINE
+                  Scan for chat via LINE
                 </p>
               </a>
               {/* Tambahkan ikon media sosial lain jika perlu */}

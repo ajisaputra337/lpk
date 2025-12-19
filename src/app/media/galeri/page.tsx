@@ -106,9 +106,9 @@ const GalleryPage: React.FC = () => {
   return (
     <main className="pt-20">
       {/* HERO GALERI */}
-      <section className="relative overflow-hidden bg-gray-900 py-24 text-white">
+      <section className="relative overflow-hidden bg-gray-900 py-16 text-white">
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 0 L50 25 L75 0 L100 25 L50 75 L0 25 L25 0 z M50 25 L75 50 L50 75 L25 50 L50 25 z' fill='none' stroke='%23ff0000' stroke-width='1.5' /%3E%3C/svg%3E")`,
             backgroundSize: "150px 150px",

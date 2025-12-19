@@ -50,6 +50,111 @@ const navItems: NavItem[] = [
 const LOGO_PATH = "/Images/logo_aishiro.png";
 const LOGO_ALT = "Logo LPK Aishiro Gakuen";
 
+// --- KOMPONEN DEKORASI SAKURA (VERSI 2D TEBAL & KIRI-KANAN) ---
+const SakuraDecor = () => (
+  <div className="pointer-events-none absolute inset-0 z-[-1] overflow-hidden">
+    {/* Ornamen Bunga 2D di Pojok Kanan Atas (Tebal) */}
+    <div className="absolute -top-6 -right-6 scale-110 opacity-100">
+      <svg width="140" height="140" viewBox="0 0 100 100" fill="#FFB7C5">
+        <circle cx="50" cy="50" r="8" fill="#F472B6" />
+        <path
+          d="M50 50 L50 20 A15 15 0 1 1 70 35 L50 50"
+          fill="#FFB7C5"
+          stroke="#F472B6"
+          strokeWidth="1"
+        />
+        <path
+          d="M50 50 L80 50 A15 15 0 1 1 65 70 L50 50"
+          fill="#FFB7C5"
+          stroke="#F472B6"
+          strokeWidth="1"
+        />
+        <path
+          d="M50 50 L50 80 A15 15 0 1 1 30 65 L50 50"
+          fill="#FFB7C5"
+          stroke="#F472B6"
+          strokeWidth="1"
+        />
+        <path
+          d="M50 50 L20 50 A15 15 0 1 1 35 30 L50 50"
+          fill="#FFB7C5"
+          stroke="#F472B6"
+          strokeWidth="1"
+        />
+      </svg>
+    </div>
+
+    {/* Ornamen Bunga 2D di Pojok Kiri Atas (Tebal) */}
+    <div className="absolute -top-6 -left-6 scale-110 rotate-45 opacity-90">
+      <svg width="140" height="140" viewBox="0 0 100 100" fill="#FFB7C5">
+        <circle cx="50" cy="50" r="8" fill="#F472B6" />
+        <path
+          d="M50 50 L50 20 A15 15 0 1 1 70 35 L50 50"
+          fill="#FFB7C5"
+          stroke="#F472B6"
+          strokeWidth="1"
+        />
+        <path
+          d="M50 50 L80 50 A15 15 0 1 1 65 70 L50 50"
+          fill="#FFB7C5"
+          stroke="#F472B6"
+          strokeWidth="1"
+        />
+        <path
+          d="M50 50 L50 80 A15 15 0 1 1 30 65 L50 50"
+          fill="#FFB7C5"
+          stroke="#F472B6"
+          strokeWidth="1"
+        />
+        <path
+          d="M50 50 L20 50 A15 15 0 1 1 35 30 L50 50"
+          fill="#FFB7C5"
+          stroke="#F472B6"
+          strokeWidth="1"
+        />
+      </svg>
+    </div>
+
+    {/* Kelopak Bunga 2D Melayang - Opasitas Tebal (80%) */}
+    <div className="animate-petal-fall absolute top-0 left-[10%] opacity-80">
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="#FFB7C5"
+        stroke="#F472B6"
+        strokeWidth="0.5"
+      >
+        <path d="M12,21.5C12,21.5 15,18 15,15C15,12 12,10.5 12,10.5C12,10.5 9,12 9,15C9,18 12,21.5 12,21.5Z" />
+      </svg>
+    </div>
+    <div className="animate-petal-fall-delayed absolute top-0 left-[40%] opacity-80">
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="#FFB7C5"
+        stroke="#F472B6"
+        strokeWidth="0.5"
+      >
+        <path d="M12,21.5C12,21.5 15,18 15,15C15,12 12,10.5 12,10.5C12,10.5 9,12 9,15C9,18 12,21.5 12,21.5Z" />
+      </svg>
+    </div>
+    <div className="animate-petal-fall absolute top-0 right-[35%] opacity-80">
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+        fill="#FDA4AF"
+        stroke="#F43F5E"
+        strokeWidth="0.5"
+      >
+        <path d="M12,21.5C12,21.5 15,18 15,15C15,12 12,10.5 12,10.5C12,10.5 9,12 9,15C9,18 12,21.5 12,21.5Z" />
+      </svg>
+    </div>
+  </div>
+);
+
 const Header = () => {
   const headerRef = useRef<HTMLElement>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -91,7 +196,10 @@ const Header = () => {
       ref={headerRef}
       className="fixed top-0 z-50 w-full bg-white shadow-md"
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      {/* Background Sakura - Ditambahkan di sini */}
+      <SakuraDecor />
+
+      <div className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* LOGO */}
         <Link
           href="/"
@@ -101,7 +209,7 @@ const Header = () => {
             closeMobileMenu();
           }}
         >
-          <div className="relative h-20 w-20">
+          <div className="relative mr-2 h-20 w-20">
             <Image
               src={LOGO_PATH}
               alt={LOGO_ALT}
@@ -135,14 +243,13 @@ const Header = () => {
               {navItems.map((item) => {
                 const isOpen = openDropdown === item.label;
                 return (
-                  <li key={item.label} className="relative">
+                  <li key={item.label} className="relative overflow-visible">
                     {item.subMenu ? (
                       <button
                         onClick={(e) => {
                           e.preventDefault();
                           toggleDropdown(item.label);
                         }}
-                        // Warna Kuning (yellow-700) saat normal & merah saat diklik
                         className={`font-bold transition-colors ${isOpen ? "text-red-700" : "text-red-700 hover:text-yellow-500"}`}
                       >
                         {item.label}
@@ -150,7 +257,6 @@ const Header = () => {
                     ) : (
                       <Link
                         href={item.href}
-                        // Warna Kuning (yellow-700)
                         className="font-bold text-red-700 transition-colors hover:text-yellow-500"
                       >
                         {item.label}
@@ -159,7 +265,7 @@ const Header = () => {
 
                     {item.subMenu && (
                       <ul
-                        className={`absolute top-full left-1/2 mt-2 w-56 -translate-x-1/2 rounded-md border-t-4 border-red-700 bg-white shadow-xl transition ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}
+                        className={`absolute top-full left-1/2 z-50 mt-2 w-56 -translate-x-1/2 overflow-visible rounded-md border-t-4 border-red-700 bg-white shadow-xl transition-all duration-200 ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}
                       >
                         {item.subMenu.map((sub) => (
                           <li key={sub.label}>
@@ -181,7 +287,6 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-3">
-            {/* Tombol Contact Tetap Pakai Kotak */}
             <button
               onClick={scrollToBottom}
               className="rounded-md border-2 border-yellow-700 px-4 py-2 text-sm font-bold text-yellow-500 transition-all hover:bg-yellow-50"
@@ -201,7 +306,10 @@ const Header = () => {
         </div>
 
         {/* HAMBURGER */}
-        <button className="lg:hidden" onClick={() => setIsMobileMenuOpen(true)}>
+        <button
+          className="relative z-20 lg:hidden"
+          onClick={() => setIsMobileMenuOpen(true)}
+        >
           <Menu className="h-6 w-6" />
         </button>
       </div>
@@ -285,6 +393,33 @@ const Header = () => {
           </Link>
         </div>
       </div>
+
+      {/* CSS Animasi Sakura */}
+      <style jsx>{`
+        @keyframes petal-fall {
+          0% {
+            transform: translateY(-20%) rotate(0deg);
+            opacity: 0;
+          }
+          20% {
+            opacity: 0.8;
+          }
+          80% {
+            opacity: 0.8;
+          }
+          100% {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0;
+          }
+        }
+        .animate-petal-fall {
+          animation: petal-fall 8s linear infinite;
+        }
+        .animate-petal-fall-delayed {
+          animation: petal-fall 11s linear infinite;
+          animation-delay: 3s;
+        }
+      `}</style>
     </header>
   );
 };
