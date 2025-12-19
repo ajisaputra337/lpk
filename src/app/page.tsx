@@ -307,9 +307,9 @@ const Page = () => {
             </div>
 
             {/* Grid untuk Testimoni */}
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="mx-auto grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
               {alumni
-                .slice(-3)
+                .slice(-5)
                 .reverse()
                 .map((person) => (
                   <SuccessStoryCard
@@ -323,6 +323,30 @@ const Page = () => {
                     img={person.img}
                   />
                 ))}
+            </div>
+
+            {/* Button Lihat Lebih Banyak */}
+            <div className="mt-12 text-center">
+              <Link
+                href="/media/success-story"
+                className="inline-flex items-center rounded-full bg-red-600 px-8 py-3 text-sm font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:bg-red-700 hover:shadow-red-600/30"
+              >
+                Lihat Selengkapnya
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="ml-2 h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </Link>
             </div>
           </div>
         </section>
