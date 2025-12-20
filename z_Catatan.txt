@@ -6,20 +6,6 @@ npm install @supabase/supabase-js
 
 npm install @supabase/supabase-js --legacy-peer-deps
 
-PS C:\KazuSann\Coding\remake\lpk> npm install @supabase/supabase-js --legacy-peer-deps
-
-removed 2 packages, and audited 376 packages in 4s
-
-143 packages are looking for funding
-  run `npm fund` for details
-
-1 high severity vulnerability
-
-To address all issues, run:
-  npm audit fix
-
-Run `npm audit` for details.
-PS C:\KazuSann\Coding\remake\lpk>
 
 
 

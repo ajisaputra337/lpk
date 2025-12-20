@@ -38,20 +38,24 @@ export default function SuccessStoryCard({
         className="group relative cursor-pointer overflow-hidden rounded-xl border-2 border-transparent bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-red-300 hover:shadow-xl"
       >
         <div className="aspect-[3/4] w-full overflow-hidden bg-gray-100">
-          {img ? (
-            <Image
-              src={img}
-              alt={safeName}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-red-500 to-red-600">
-              <span className="text-6xl font-black text-white">{initial}</span>
-            </div>
-          )}
-
+<div className="aspect-[3/4] w-full overflow-hidden bg-gray-100">
+  {/* Logika baru: Cek apakah img ada isinya? */}
+  {img && img.length > 5 ? (
+    <Image
+      src={img}
+      alt={safeName}
+      fill
+      className="object-cover transition-transform duration-500 group-hover:scale-110"
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+    />
+  ) : (
+    /* Kalau nggak ada gambar, kasih kotak merah dengan inisial nama */
+    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-red-500 to-red-600">
+      <span className="text-6xl font-black text-white">{initial}</span>
+    </div>
+  )}
+  {/* Sisa kode overlay dll biarkan saja */}
+</div>
           {/* Overlay Gradient on Hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 

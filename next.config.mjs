@@ -5,12 +5,19 @@ const nextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "randomuser.me" },
       { protocol: "https", hostname: "lpk-aishiro.com" },
+      { protocol: "https", hostname: "**.supabase.co" }, // Izin buat Supabase Storage
+      { protocol: "https", hostname: "imgs.search.brave.com" }, // Izin buat link tes lu
     ],
   },
 
   async redirects() {
     return [
       { source: "/program", destination: "/#program", permanent: true },
+      {
+        source: "/admin",
+        destination: "/admin-lpkaishiro",
+        permanent: true,
+      },
       {
         source: "/persyaratan",
         destination: "/media/persyaratan",
@@ -100,21 +107,6 @@ const nextConfig = {
       { source: "/tag/magang-jepang-2022", destination: "/", permanent: true },
       { source: "/formulir-pendaftaran", destination: "/", permanent: true },
       {
-        source: "/kunjungan-dari-kumiai-jepang",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/program-pelatihan-bahasa-dan-budaya-jepang-siswa-smk",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/penandatanganan-kontrak-kerja-job-tobi-dan-tekkin",
-        destination: "/",
-        permanent: true,
-      },
-      {
         source: "/business-trip-to-japan",
         destination: "/",
         permanent: true,
@@ -155,7 +147,6 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
-      { source: "/tag/magang-jepang-2022", destination: "/", permanent: true },
       { source: "/tag/seiketsu", destination: "/", permanent: true },
       {
         source: "/forums/forum/tentang-lpk-dan-magang-jepang",

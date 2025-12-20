@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
-// 1. IMPORT KOMPONEN (Pastikan file ini sudah lu buat di folder components)
-// Kalau foldernya beda, sesuaikan path-nya ya, Bro.
-import Header from "../styles/components/Header";
-import Footer from "../styles/components/Footer";
+import LayoutContent from "./LayoutContent"; // Import satpam yang kita buat tadi
 
 const inter = Inter({ subsets: ["latin"] });
 
-// --- BAGIAN METADATA (IDENTITAS WEB - Kita pertahankan versi SEO Tinggi) ---
+// --- METADATA LU TETAP DI SINI (SEO AMAN & TIDAK MODIFIKASI ISI) ---
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.lpk-aishiro.com"),
   title: {
@@ -57,18 +53,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      {/* 2. Gabungkan styling body agar Footer tetap di bawah (sticky footer) */}
-      <body
-        className={`${inter.className} flex min-h-screen flex-col antialiased`}
-      >
-        {/* 3. Header Global */}
-        <Header />
-
-        {/* 4. Main content yang fleksibel (flex-grow) agar mendorong footer ke bawah */}
-        <main className="flex-grow">{children}</main>
-
-        {/* 5. Footer Global */}
-        <Footer />
+      <body className={`${inter.className} flex min-h-screen flex-col antialiased`}>
+        {/* Panggil LayoutContent untuk filter Header/Footer tanpa merusak SEO */}
+        <LayoutContent>{children}</LayoutContent>
       </body>
     </html>
   );
