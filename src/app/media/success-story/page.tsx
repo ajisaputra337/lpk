@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 // import { alumni } from "../../../data/alumni"; // 1. Matikan import ini nanti kalau sudah fix
 import { supabase } from "../../../lib/supabase"; // 2. Import jembatan supabase
 import SuccessStoryCard from "../../../styles/components/SuccessStoryCard";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+
 
 // Definisikan tipe data sesuai database
 interface Alumni {
@@ -41,7 +41,7 @@ export default function SuccessStoryPage() {
       setLoading(false);
     };
 
-    fetchData();
+    fetchData().catch((e) => console.error(e));
   }, []);
 
   // Handle Resize tetap sama

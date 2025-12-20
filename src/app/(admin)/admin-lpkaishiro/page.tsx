@@ -22,11 +22,11 @@ export default function AdminOverview() {
         .select("*", { count: "exact", head: true });
 
       setStats({
-        totalAlumni: alumniCount || 0,
-        totalMedia: mediaCount || 0,
+        totalAlumni: alumniCount ?? 0,
+        totalMedia: mediaCount ?? 0,
       });
     }
-    getStats();
+    getStats().catch((error) => console.error("Error fetching stats:", error));
   }, []);
 
   return (
@@ -35,7 +35,7 @@ export default function AdminOverview() {
         <h3 className="text-slate-500 text-sm font-bold uppercase">Total Alumni Sukses</h3>
         <p className="text-4xl font-black text-red-600">{stats.totalAlumni}</p>
       </div>
-      
+
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
         <h3 className="text-slate-500 text-sm font-bold uppercase">Total Galeri Foto</h3>
         <p className="text-4xl font-black text-blue-600">{stats.totalMedia}</p>

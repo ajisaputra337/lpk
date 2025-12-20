@@ -1,6 +1,7 @@
 // src/app/page.tsx
-
 "use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "../styles/components/Header";
@@ -8,7 +9,18 @@ import Profile from "../styles/components/Profile";
 import ProgramCard from "../styles/components/ProgramCard";
 import SuccessStoryCard from "../styles/components/SuccessStoryCard";
 import { BookOpen, Zap, Users } from "lucide-react";
-import { alumni } from "../data/alumni";
+import { supabase } from "../lib/supabase";
+
+interface Alumni {
+  id: number;
+  nama: string;
+  angkatan: string;
+  tanggalLahir: string;
+  alamat: string;
+  job: string;
+  perusahaan: string;
+  img?: string;
+}
 
 // Data nomor wa
 const whatsappLink =
@@ -143,6 +155,26 @@ const JapaneseDecoration = ({ type = "sakura", className = "" }) => {
 };
 
 const Page = () => {
+  const [alumniData, setAlumniData] = useState<Alumni[]>([]);
+
+  useEffect(() => {
+    const fetchAlumni = async () => {
+      const { data, error } = await supabase
+        .from("success_story")
+        .select("*")
+        .order("id", { ascending: false })
+        .limit(5);
+
+      if (error) {
+        console.error("Error fetching alumni:", error);
+      } else {
+        setAlumniData(data || []);
+      }
+    };
+
+    fetchAlumni().catch((e) => console.error(e));
+  }, []);
+
   return (
     <>
       <Header />
@@ -308,21 +340,18 @@ const Page = () => {
 
             {/* Grid untuk Testimoni */}
             <div className="mx-auto grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
-              {alumni
-                .slice(-5)
-                .reverse()
-                .map((person) => (
-                  <SuccessStoryCard
-                    key={person.id}
-                    name={person.nama}
-                    angkatan={person.angkatan}
-                    tanggalLahir={person.tanggalLahir}
-                    alamat={person.alamat}
-                    job={person.job}
-                    perusahaan={person.perusahaan}
-                    img={person.img}
-                  />
-                ))}
+              {alumniData.map((person) => (
+                <SuccessStoryCard
+                  key={person.id}
+                  name={person.nama}
+                  angkatan={person.angkatan}
+                  tanggalLahir={person.tanggalLahir}
+                  alamat={person.alamat}
+                  job={person.job}
+                  perusahaan={person.perusahaan}
+                  img={person.img}
+                />
+              ))}
             </div>
 
             {/* Button Lihat Lebih Banyak */}

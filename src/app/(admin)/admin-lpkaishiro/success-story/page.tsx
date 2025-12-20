@@ -1,12 +1,21 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "../../../../lib/supabase"; 
+
+interface Alumni {
+  id: number;
+  nama: string;
+  img: string | null;
+  alamat?: string;
+  job?: string;
+  perusahaan?: string;
+}
+import { supabase } from "../../../../lib/supabase";
 import Image from "next/image";
 
 export default function AdminSuccessStory() {
-  const [alumni, setAlumni] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [alumni, setAlumni] = useState<Alumni[]>([]);
+
   const [showModal, setShowModal] = useState(false);
   const [uploading, setUploading] = useState(false);
 
@@ -17,12 +26,12 @@ export default function AdminSuccessStory() {
     job: "",
     perusahaan: "",
     tanggalLahir: "",
-    alamat: "", 
+    alamat: "",
   });
   const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
-    fetchAlumni();
+    fetchAlumni().catch((e) => console.error(e));
   }, []);
 
   const fetchAlumni = async () => {
@@ -31,7 +40,7 @@ export default function AdminSuccessStory() {
       .select("*")
       .order("id", { ascending: false });
     if (data) setAlumni(data);
-    setLoading(false);
+
   };
 
   const handleSimpan = async (e: React.FormEvent) => {
@@ -83,9 +92,9 @@ export default function AdminSuccessStory() {
       setShowModal(false);
       setFormData({ nama: "", angkatan: "", job: "", perusahaan: "", tanggalLahir: "", alamat: "" });
       setFile(null);
-      fetchAlumni();
-    } catch (error: any) {
-      alert("Waduh Error: " + (error.message || "Koneksi bermasalah"));
+      await fetchAlumni();
+    } catch (error: unknown) {
+      alert("Waduh Error: " + ((error as Error).message ?? "Koneksi bermasalah"));
     } finally {
       setUploading(false);
     }
@@ -94,7 +103,7 @@ export default function AdminSuccessStory() {
   const handleDelete = async (id: number) => {
     if (!confirm("Yakin mau hapus data ini?")) return;
     const { error } = await supabase.from("success_story").delete().eq("id", id);
-    if (!error) fetchAlumni();
+    if (!error) await fetchAlumni();
   };
 
   return (
@@ -134,11 +143,11 @@ export default function AdminSuccessStory() {
                 </td>
                 <td className="p-4">
                   <p className="font-bold text-slate-800">{item.nama}</p>
-                  <p className="text-xs text-slate-500">{item.alamat || "Alamat belum diisi"}</p>
+                  <p className="text-xs text-slate-500">{item.alamat ?? "Alamat belum diisi"}</p>
                 </td>
                 <td className="p-4 text-sm text-slate-600">
-                   <span className="font-semibold">{item.job}</span> <br/>
-                   <span className="text-xs">{item.perusahaan}</span>
+                  <span className="font-semibold">{item.job}</span> <br />
+                  <span className="text-xs">{item.perusahaan}</span>
                 </td>
                 <td className="p-4 text-right">
                   <button
@@ -160,7 +169,7 @@ export default function AdminSuccessStory() {
           <div className="bg-white p-6 rounded-2xl w-full max-w-md shadow-2xl overflow-y-auto max-h-[90vh]">
             <h2 className="text-xl font-bold mb-4">Tambah Data Alumni</h2>
             <form onSubmit={handleSimpan} className="space-y-4">
-              
+
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-bold text-slate-500 uppercase">Nama Lengkap</label>
@@ -226,13 +235,13 @@ export default function AdminSuccessStory() {
                   onChange={(e) => setFormData({ ...formData, perusahaan: e.target.value })}
                 />
               </div>
-              
+
               <div className="border-2 border-dashed p-4 rounded-lg text-center bg-slate-50">
                 <p className="text-[10px] text-slate-400 mb-2 uppercase font-bold text-left">Upload Foto (Max 2MB):</p>
                 <input
                   type="file"
                   accept="image/*"
-                  onChange={(e) => setFile(e.target.files?.[0] || null)}
+                  onChange={(e) => setFile(e.target.files?.[0] ?? null)}
                   className="text-xs w-full cursor-pointer"
                 />
               </div>
