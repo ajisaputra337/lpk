@@ -21,7 +21,7 @@ interface Alumni {
 export default function SuccessStoryPage() {
   const [alumniData, setAlumniData] = useState<Alumni[]>([]); // Simpan data dari DB
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(32);
 
   // FUNGSI AMBIL DATA DARI SUPABASE
@@ -59,17 +59,17 @@ export default function SuccessStoryPage() {
   }, []);
 
   // 3. Ubah kalkulasi pagination dari 'alumni' ke 'alumniData'
-  const totalPages = Math.ceil(alumniData.length / itemsPerPage);
+  // const totalPages = Math.ceil(alumniData.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData = alumniData.slice(startIndex, endIndex);
 
-  const handlePageChange = (page: number) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
+  // const handlePageChange = (page: number) => {
+  //   if (page >= 1 && page <= totalPages) {
+  //     setCurrentPage(page);
+  //     window.scrollTo({ top: 0, behavior: "smooth" });
+  //   }
+  // };
 
   if (loading) return <div className="py-20 text-center">Memuat kisah sukses...</div>;
 
