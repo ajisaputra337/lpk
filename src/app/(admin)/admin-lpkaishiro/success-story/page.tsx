@@ -19,6 +19,7 @@ export default function AdminSuccessStory() {
   const [alumni, setAlumni] = useState<Alumni[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [editingId, setEditingId] = useState<number | null>(null);
 
   // State Form
   const [formData, setFormData] = useState({
@@ -48,9 +49,9 @@ export default function AdminSuccessStory() {
     setUploading(true);
 
     try {
-      let publicUrl = "";
+      let publicUrl = editingId ? (alumni.find(a => a.id === editingId)?.img || "") : "";
 
-      // 1. PROSES UPLOAD FOTO
+      // 1. PROSES UPLOAD FOTO (Hanya jika ada file baru)
       if (file) {
         if (file.size > 2 * 1024 * 1024) {
           throw new Error("Ukuran foto terlalu besar! Maksimal 2MB bro.");
@@ -72,23 +73,36 @@ export default function AdminSuccessStory() {
         publicUrl = urlData.publicUrl;
       }
 
-      // 2. SIMPAN KE DATABASE
-      const { error: insertError } = await supabase.from("success_story").insert([
-        {
-          nama: formData.nama,
-          angkatan: formData.angkatan,
-          job: formData.job,
-          perusahaan: formData.perusahaan,
-          tanggalLahir: formData.tanggalLahir || new Date().toISOString().split('T')[0],
-          alamat: formData.alamat,
-          img: publicUrl,
-        },
-      ]);
+      // 2. SIMPAN KE DATABASE (Update atau Insert)
+      const dataToSave = {
+        nama: formData.nama,
+        angkatan: formData.angkatan,
+        job: formData.job,
+        perusahaan: formData.perusahaan,
+        tanggalLahir: formData.tanggalLahir || new Date().toISOString().split('T')[0],
+        alamat: formData.alamat,
+        img: publicUrl,
+      };
 
-      if (insertError) throw insertError;
+      if (editingId) {
+        const { error: updateError } = await supabase
+          .from("success_story")
+          .update(dataToSave)
+          .eq("id", editingId);
 
-      alert("Data berhasil ditambahkan!");
+        if (updateError) throw updateError;
+        alert("Data berhasil diperbarui!");
+      } else {
+        const { error: insertError } = await supabase
+          .from("success_story")
+          .insert([dataToSave]);
+
+        if (insertError) throw insertError;
+        alert("Data berhasil ditambahkan!");
+      }
+
       setShowModal(false);
+      setEditingId(null);
       setFormData({ nama: "", angkatan: "", job: "", perusahaan: "", tanggalLahir: "", alamat: "" });
       setFile(null);
       await fetchAlumni();
@@ -97,6 +111,20 @@ export default function AdminSuccessStory() {
     } finally {
       setUploading(false);
     }
+  };
+
+  const handleEdit = (item: Alumni) => {
+    setEditingId(item.id);
+    setFormData({
+      nama: item.nama,
+      angkatan: item.angkatan || "",
+      job: item.job || "",
+      perusahaan: item.perusahaan || "",
+      tanggalLahir: item.tanggalLahir || "",
+      alamat: item.alamat || "",
+    });
+    setFile(null);
+    setShowModal(true);
   };
 
   const handleDelete = async (id: number, imgUrl: string | null) => {
@@ -135,37 +163,44 @@ export default function AdminSuccessStory() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-slate-800">Kelola Alumni Card</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-xl md:text-2xl font-bold text-slate-800">Kelola Alumni Card</h1>
         <button
-          onClick={() => setShowModal(true)}
-          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-bold transition"
+          onClick={() => {
+            setEditingId(null);
+            setFormData({ nama: "", angkatan: "", job: "", perusahaan: "", tanggalLahir: "", alamat: "" });
+            setFile(null);
+            setShowModal(true);
+          }}
+          className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold transition shadow-lg shadow-red-200 active:scale-95 text-center"
         >
           + Tambah Alumni
         </button>
       </div>
 
-      {/* TABEL DATA */}
-      <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
-        <div className="overflow-x-auto">
+      {/* DATA LIST (Table desktop, Cards mobile) */}
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+
+        {/* DESKTOP TABLE */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left">
             <thead className="bg-slate-50 border-b">
               <tr>
-                <th className="p-4">Foto</th>
-                <th className="p-4">Nama & Alamat</th>
-                <th className="p-4">Job & Perusahaan</th>
-                <th className="p-4 text-right">Aksi</th>
+                <th className="p-4 text-xs font-bold text-slate-500 uppercase">Foto</th>
+                <th className="p-4 text-xs font-bold text-slate-500 uppercase">Nama & Alamat</th>
+                <th className="p-4 text-xs font-bold text-slate-500 uppercase">Job & Perusahaan</th>
+                <th className="p-4 text-xs font-bold text-slate-500 uppercase text-right">Aksi</th>
               </tr>
             </thead>
             <tbody>
               {alumni.map((item) => (
-                <tr key={item.id} className="border-b hover:bg-slate-50">
+                <tr key={item.id} className="border-b hover:bg-slate-50 transition">
                   <td className="p-4">
                     <div className="relative h-12 w-12 rounded-full overflow-hidden bg-gray-200 border">
                       {item.img ? (
                         <Image src={item.img} alt={item.nama} fill className="object-cover" />
                       ) : (
-                        <div className="flex items-center justify-center h-full text-[10px] text-gray-400">No Img</div>
+                        <div className="flex items-center justify-center h-full text-[10px] text-gray-400 font-bold">No Img</div>
                       )}
                     </div>
                   </td>
@@ -174,21 +209,74 @@ export default function AdminSuccessStory() {
                     <p className="text-xs text-slate-500">{item.alamat ?? "Alamat belum diisi"}</p>
                   </td>
                   <td className="p-4 text-sm text-slate-600">
-                    <span className="font-semibold">{item.job}</span> <br />
-                    <span className="text-xs">{item.perusahaan}</span>
+                    <span className="font-semibold text-slate-800">{item.job}</span> <br />
+                    <span className="text-xs text-slate-500 italic">{item.perusahaan}</span>
                   </td>
                   <td className="p-4 text-right">
-                    <button
-                      onClick={() => handleDelete(item.id, item.img)}
-                      className="text-red-500 hover:text-red-700 font-bold text-sm"
-                    >
-                      Hapus
-                    </button>
+                    <div className="flex justify-end gap-3">
+                      <button
+                        onClick={() => handleEdit(item)}
+                        className="text-blue-500 hover:text-blue-700 font-bold text-sm bg-blue-50 px-3 py-1 rounded-lg transition"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(item.id, item.img)}
+                        className="text-red-500 hover:text-red-700 font-bold text-sm bg-red-50 px-3 py-1 rounded-lg transition"
+                      >
+                        Hapus
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* MOBILE CARDS */}
+        <div className="md:hidden divide-y divide-slate-100">
+          {alumni.map((item) => (
+            <div key={item.id} className="p-4 space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="relative h-14 w-14 rounded-2xl overflow-hidden bg-gray-200 border shrink-0">
+                  {item.img ? (
+                    <Image src={item.img} alt={item.nama} fill className="object-cover" />
+                  ) : (
+                    <div className="flex items-center justify-center h-full text-[10px] text-gray-400 font-bold">No Img</div>
+                  )}
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-800">{item.nama}</h3>
+                  <p className="text-xs text-slate-500">{item.alamat || "Alamat belum diisi"}</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <div className="bg-slate-50 p-2 rounded-xl">
+                  <p className="text-[10px] uppercase font-bold text-slate-400">Pekerjaan</p>
+                  <p className="font-semibold text-slate-700">{item.job || "-"}</p>
+                </div>
+                <div className="bg-slate-50 p-2 rounded-xl">
+                  <p className="text-[10px] uppercase font-bold text-slate-400">Angkatan</p>
+                  <p className="font-semibold text-slate-700">{item.angkatan || "-"}</p>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleEdit(item)}
+                  className="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl font-bold text-sm active:scale-95 transition"
+                >
+                  Edit Data
+                </button>
+                <button
+                  onClick={() => handleDelete(item.id, item.img)}
+                  className="flex-1 bg-red-50 text-red-600 py-3 rounded-xl font-bold text-sm active:scale-95 transition"
+                >
+                  Hapus
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -196,7 +284,7 @@ export default function AdminSuccessStory() {
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-[999]">
           <div className="bg-white p-6 rounded-2xl w-full max-w-md shadow-2xl overflow-y-auto max-h-[90vh]">
-            <h2 className="text-xl font-bold mb-4">Tambah Data Alumni</h2>
+            <h2 className="text-xl font-bold mb-4">{editingId ? "Edit Data Alumni" : "Tambah Data Alumni"}</h2>
             <form onSubmit={handleSimpan} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>

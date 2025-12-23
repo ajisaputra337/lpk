@@ -10,6 +10,7 @@ export default function MediaPage() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [mediaList, setMediaList] = useState<any[]>([]);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const fetchMedia = async () => {
     const { data, error } = await supabase
@@ -25,40 +26,72 @@ export default function MediaPage() {
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file || !title) return alert("Isi judul dan pilih foto dulu bro!");
+    if (!title) return alert("Isi judul dulu bro!");
+    if (!file && !editingId) return alert("Pilih foto dulu bro!");
 
     setLoading(true);
     try {
-      const fileExt = file.name.split(".").pop();
-      const fileName = `${Math.random()}.${fileExt}`;
-      const filePath = `gallery/${fileName}`;
+      let publicUrl = mediaList.find(m => m.id === editingId)?.image_url || "";
 
-      const { error: uploadError } = await supabase.storage
-        .from("alumni-photos")
-        .upload(filePath, file);
+      if (file) {
+        const fileExt = file.name.split(".").pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `gallery/${fileName}`;
 
-      if (uploadError) throw uploadError;
+        const { error: uploadError } = await supabase.storage
+          .from("alumni-photos")
+          .upload(filePath, file);
 
-      const { data: { publicUrl } } = supabase.storage
-        .from("alumni-photos")
-        .getPublicUrl(filePath);
+        if (uploadError) throw uploadError;
 
-      const { error: insertError } = await supabase
-        .from("media_gallery")
-        .insert([{ title, description, image_url: publicUrl }]);
+        const { data: { publicUrl: newUrl } } = supabase.storage
+          .from("alumni-photos")
+          .getPublicUrl(filePath);
 
-      if (insertError) throw insertError;
+        publicUrl = newUrl;
+      }
 
-      alert("Foto & Deskripsi berhasil diupload!");
+      if (editingId) {
+        const { error: updateError } = await supabase
+          .from("media_gallery")
+          .update({ title, description, image_url: publicUrl })
+          .eq("id", editingId);
+
+        if (updateError) throw updateError;
+        alert("Data berhasil diperbarui!");
+      } else {
+        const { error: insertError } = await supabase
+          .from("media_gallery")
+          .insert([{ title, description, image_url: publicUrl }]);
+
+        if (insertError) throw insertError;
+        alert("Foto & Deskripsi berhasil diupload!");
+      }
+
       setTitle("");
       setDescription("");
       setFile(null);
-      fetchMedia(); 
+      setEditingId(null);
+      fetchMedia();
     } catch (error: any) {
       alert("Error: " + error.message);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleEdit = (item: any) => {
+    setEditingId(item.id);
+    setTitle(item.title);
+    setDescription(item.description || "");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleCancelEdit = () => {
+    setEditingId(null);
+    setTitle("");
+    setDescription("");
+    setFile(null);
   };
 
   const handleDelete = async (id: string, imageUrl: string) => {
@@ -97,8 +130,10 @@ export default function MediaPage() {
       </h1>
 
       {/* FORM UPLOAD */}
-      <div className="bg-white p-6 rounded-3xl shadow-xl shadow-slate-200/50 mb-10 border border-slate-100">
-        <h2 className="text-xl font-bold mb-6 text-slate-700">Tambah Foto & Cerita Baru</h2>
+      <div className="bg-white p-4 md:p-6 rounded-3xl shadow-xl shadow-slate-200/50 mb-10 border border-slate-100">
+        <h2 className="text-xl font-bold mb-6 text-slate-700">
+          {editingId ? "Edit Foto & Cerita" : "Tambah Foto & Cerita Baru"}
+        </h2>
         <form onSubmit={handleUpload} className="space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="space-y-4">
@@ -133,39 +168,60 @@ export default function MediaPage() {
             </div>
           </div>
 
-          <button
-            disabled={loading}
-            className="w-full bg-red-600 text-white py-4 rounded-2xl font-black hover:bg-red-700 transition-all shadow-lg shadow-red-200 disabled:opacity-50 active:scale-95"
-          >
-            {loading ? "PROSES UPLOAD..." : "PUBLIKASIKAN KE WEB UTAMA"}
-          </button>
+          <div className="flex gap-3">
+            <button
+              disabled={loading}
+              className={`flex-1 ${editingId ? 'bg-blue-600 hover:bg-blue-700' : 'bg-red-600 hover:bg-red-700'} text-white py-4 rounded-2xl font-black transition-all shadow-lg disabled:opacity-50 active:scale-95`}
+            >
+              {loading ? "PROSES..." : editingId ? "SIMPAN PERUBAHAN" : "PUBLIKASIKAN KE WEB UTAMA"}
+            </button>
+            {editingId && (
+              <button
+                type="button"
+                onClick={handleCancelEdit}
+                className="bg-slate-100 text-slate-600 px-8 py-4 rounded-2xl font-bold hover:bg-slate-200 transition"
+              >
+                BATAL
+              </button>
+            )}
+          </div>
         </form>
       </div>
 
       {/* LIST PREVIEW */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <h2 className="text-xl font-black text-slate-800 uppercase tracking-tight">Foto Terpublikasi</h2>
         <span className="bg-slate-100 text-slate-500 px-4 py-1 rounded-full text-sm font-bold">
           {mediaList.length} Items
         </span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {mediaList.map((item) => (
           <div key={item.id} className="group bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden relative hover:shadow-2xl transition-all duration-300">
-            
-            {/* TOMBOL HAPUS */}
-            <button 
-              onClick={() => handleDelete(item.id, item.image_url)}
-              className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-red-600 p-3 rounded-2xl opacity-0 group-hover:opacity-100 transition-all z-10 shadow-xl hover:bg-red-600 hover:text-white"
-            >
-              <Trash2 size={20} />
-            </button>
+
+            {/* TOMBOL AKSI */}
+            <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-all z-10">
+              <button
+                onClick={() => handleEdit(item)}
+                className="bg-white/90 backdrop-blur-sm text-blue-600 p-3 rounded-2xl shadow-xl hover:bg-blue-600 hover:text-white transition"
+                title="Edit"
+              >
+                <ImageIcon size={20} />
+              </button>
+              <button
+                onClick={() => handleDelete(item.id, item.image_url)}
+                className="bg-white/90 backdrop-blur-sm text-red-600 p-3 rounded-2xl shadow-xl hover:bg-red-600 hover:text-white transition"
+                title="Hapus"
+              >
+                <Trash2 size={20} />
+              </button>
+            </div>
 
             <div className="relative h-48 w-full overflow-hidden">
-                <img src={item.image_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+              <img src={item.image_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
             </div>
-            
+
             <div className="p-5">
               <h3 className="font-black text-slate-800 line-clamp-1 uppercase text-sm mb-2">{item.title}</h3>
               <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">

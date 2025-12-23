@@ -48,11 +48,11 @@ export default function AdminOverview() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-black text-slate-800 uppercase tracking-tight">Dashboard Overview</h2>
+      <h2 className="text-xl md:text-2xl font-black text-slate-800 uppercase tracking-tight">Dashboard Overview</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Card Alumni */}
-        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+        <div className="bg-white p-5 md:p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
           <div className="flex justify-between items-start mb-4">
             <h3 className="text-slate-500 text-xs font-bold uppercase tracking-widest">Total Alumni</h3>
             <Users className="text-red-600 h-5 w-5" />
@@ -62,7 +62,7 @@ export default function AdminOverview() {
         </div>
 
         {/* Card Galeri */}
-        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+        <div className="bg-white p-5 md:p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
           <div className="flex justify-between items-start mb-4">
             <h3 className="text-slate-500 text-xs font-bold uppercase tracking-widest">Galeri Foto</h3>
             <Images className="text-blue-600 h-5 w-5" />
@@ -72,7 +72,7 @@ export default function AdminOverview() {
         </div>
 
         {/* Card Storage Usage (Paling Penting buat Pantau Gratisan) */}
-        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+        <div className="bg-white p-5 md:p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-slate-500 text-xs font-bold uppercase tracking-widest">Storage (Limit 1GB)</h3>
             <HardDrive className={`${storagePercentage > 80 ? 'text-red-600 animate-pulse' : 'text-green-600'} h-5 w-5`} />
