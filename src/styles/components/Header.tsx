@@ -24,7 +24,7 @@ const navItems: NavItem[] = [
     subMenu: [
       { label: "Magang Jepang", href: "/program/magang-jepang" },
       { label: "Sekolah di Jepang", href: "/program/sekolah-jepang" },
-      { label: "Tokutei Ginou", href: "/program/TokuteiGinou" },
+      { label: "Tokutei Ginou", href: "/program/tokutei-ginou" },
     ],
   },
   {
