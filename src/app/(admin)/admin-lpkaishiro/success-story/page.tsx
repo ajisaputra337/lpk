@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { supabase } from "../../../../lib/supabase";
+import Image from "next/image";
 
 interface Alumni {
   id: number;
@@ -9,17 +11,16 @@ interface Alumni {
   alamat?: string;
   job?: string;
   perusahaan?: string;
+  angkatan?: string;
+  tanggalLahir?: string;
 }
-import { supabase } from "../../../../lib/supabase";
-import Image from "next/image";
 
 export default function AdminSuccessStory() {
   const [alumni, setAlumni] = useState<Alumni[]>([]);
-
   const [showModal, setShowModal] = useState(false);
   const [uploading, setUploading] = useState(false);
 
-  // State Form (Lengkap dengan Alamat dan Tanggal Lahir)
+  // State Form
   const [formData, setFormData] = useState({
     nama: "",
     angkatan: "",
@@ -40,7 +41,6 @@ export default function AdminSuccessStory() {
       .select("*")
       .order("id", { ascending: false });
     if (data) setAlumni(data);
-
   };
 
   const handleSimpan = async (e: React.FormEvent) => {
@@ -52,13 +52,12 @@ export default function AdminSuccessStory() {
 
       // 1. PROSES UPLOAD FOTO
       if (file) {
-        // Cek ukuran file (Max 2MB biar aman dari failed to fetch)
         if (file.size > 2 * 1024 * 1024) {
           throw new Error("Ukuran foto terlalu besar! Maksimal 2MB bro.");
         }
 
         const fileExt = file.name.split(".").pop();
-        const fileName = `${Date.now()}.${fileExt}`; // Pakai Date.now biar unik
+        const fileName = `${Date.now()}.${fileExt}`;
         const filePath = `alumni/${fileName}`;
 
         const { error: uploadError } = await supabase.storage
@@ -81,7 +80,7 @@ export default function AdminSuccessStory() {
           job: formData.job,
           perusahaan: formData.perusahaan,
           tanggalLahir: formData.tanggalLahir || new Date().toISOString().split('T')[0],
-          alamat: formData.alamat, // Simpan Alamat
+          alamat: formData.alamat,
           img: publicUrl,
         },
       ]);
@@ -93,17 +92,45 @@ export default function AdminSuccessStory() {
       setFormData({ nama: "", angkatan: "", job: "", perusahaan: "", tanggalLahir: "", alamat: "" });
       setFile(null);
       await fetchAlumni();
-    } catch (error: unknown) {
-      alert("Waduh Error: " + ((error as Error).message ?? "Koneksi bermasalah"));
+    } catch (error: any) {
+      alert("Waduh Error: " + (error.message ?? "Koneksi bermasalah"));
     } finally {
       setUploading(false);
     }
   };
 
-  const handleDelete = async (id: number) => {
-    if (!confirm("Yakin mau hapus data ini?")) return;
-    const { error } = await supabase.from("success_story").delete().eq("id", id);
-    if (!error) await fetchAlumni();
+  const handleDelete = async (id: number, imgUrl: string | null) => {
+    if (!confirm("Yakin mau hapus data dan foto ini secara permanen?")) return;
+
+    try {
+      // 1. HAPUS FOTO DI STORAGE (Jika ada)
+      if (imgUrl) {
+        // Ambil path setelah nama bucket
+        const pathAfterBucket = imgUrl.split("/alumni-photos/")[1];
+        if (pathAfterBucket) {
+          const { error: storageError } = await supabase.storage
+            .from("alumni-photos")
+            .remove([pathAfterBucket]);
+
+          if (storageError) {
+            console.error("Storage Error:", storageError.message);
+          }
+        }
+      }
+
+      // 2. HAPUS DATA DI TABEL
+      const { error: dbError } = await supabase
+        .from("success_story")
+        .delete()
+        .eq("id", id);
+
+      if (dbError) throw dbError;
+
+      await fetchAlumni();
+      alert("Data dan foto berhasil dihapus!");
+    } catch (error: any) {
+      alert("Gagal hapus: " + error.message);
+    }
   };
 
   return (
@@ -120,47 +147,49 @@ export default function AdminSuccessStory() {
 
       {/* TABEL DATA */}
       <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
-        <table className="w-full text-left">
-          <thead className="bg-slate-50 border-b">
-            <tr>
-              <th className="p-4">Foto</th>
-              <th className="p-4">Nama & Alamat</th>
-              <th className="p-4">Job & Perusahaan</th>
-              <th className="p-4 text-right">Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {alumni.map((item) => (
-              <tr key={item.id} className="border-b hover:bg-slate-50">
-                <td className="p-4">
-                  <div className="relative h-12 w-12 rounded-full overflow-hidden bg-gray-200 border">
-                    {item.img ? (
-                      <Image src={item.img} alt={item.nama} fill className="object-cover" />
-                    ) : (
-                      <div className="flex items-center justify-center h-full text-[10px] text-gray-400">No Img</div>
-                    )}
-                  </div>
-                </td>
-                <td className="p-4">
-                  <p className="font-bold text-slate-800">{item.nama}</p>
-                  <p className="text-xs text-slate-500">{item.alamat ?? "Alamat belum diisi"}</p>
-                </td>
-                <td className="p-4 text-sm text-slate-600">
-                  <span className="font-semibold">{item.job}</span> <br />
-                  <span className="text-xs">{item.perusahaan}</span>
-                </td>
-                <td className="p-4 text-right">
-                  <button
-                    onClick={() => handleDelete(item.id)}
-                    className="text-red-500 hover:text-red-700 font-bold text-sm"
-                  >
-                    Hapus
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead className="bg-slate-50 border-b">
+              <tr>
+                <th className="p-4">Foto</th>
+                <th className="p-4">Nama & Alamat</th>
+                <th className="p-4">Job & Perusahaan</th>
+                <th className="p-4 text-right">Aksi</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {alumni.map((item) => (
+                <tr key={item.id} className="border-b hover:bg-slate-50">
+                  <td className="p-4">
+                    <div className="relative h-12 w-12 rounded-full overflow-hidden bg-gray-200 border">
+                      {item.img ? (
+                        <Image src={item.img} alt={item.nama} fill className="object-cover" />
+                      ) : (
+                        <div className="flex items-center justify-center h-full text-[10px] text-gray-400">No Img</div>
+                      )}
+                    </div>
+                  </td>
+                  <td className="p-4">
+                    <p className="font-bold text-slate-800">{item.nama}</p>
+                    <p className="text-xs text-slate-500">{item.alamat ?? "Alamat belum diisi"}</p>
+                  </td>
+                  <td className="p-4 text-sm text-slate-600">
+                    <span className="font-semibold">{item.job}</span> <br />
+                    <span className="text-xs">{item.perusahaan}</span>
+                  </td>
+                  <td className="p-4 text-right">
+                    <button
+                      onClick={() => handleDelete(item.id, item.img)}
+                      className="text-red-500 hover:text-red-700 font-bold text-sm"
+                    >
+                      Hapus
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* MODAL FORM */}
@@ -169,7 +198,6 @@ export default function AdminSuccessStory() {
           <div className="bg-white p-6 rounded-2xl w-full max-w-md shadow-2xl overflow-y-auto max-h-[90vh]">
             <h2 className="text-xl font-bold mb-4">Tambah Data Alumni</h2>
             <form onSubmit={handleSimpan} className="space-y-4">
-
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-bold text-slate-500 uppercase">Nama Lengkap</label>
