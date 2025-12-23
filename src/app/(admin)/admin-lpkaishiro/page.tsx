@@ -49,7 +49,7 @@ export default function AdminOverview() {
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-black text-slate-800 uppercase tracking-tight">Dashboard Overview</h2>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Card Alumni */}
         <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
@@ -77,7 +77,7 @@ export default function AdminOverview() {
             <h3 className="text-slate-500 text-xs font-bold uppercase tracking-widest">Storage (Limit 1GB)</h3>
             <HardDrive className={`${storagePercentage > 80 ? 'text-red-600 animate-pulse' : 'text-green-600'} h-5 w-5`} />
           </div>
-          
+
           <div className="flex items-baseline gap-1">
             <p className="text-4xl font-black text-slate-900">{storageUsage.toFixed(1)}</p>
             <p className="text-slate-400 font-bold">MB</p>
@@ -86,7 +86,7 @@ export default function AdminOverview() {
           {/* Progress Bar */}
           <div className="mt-4">
             <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-              <div 
+              <div
                 className={`h-full transition-all duration-1000 ${storagePercentage > 80 ? 'bg-red-600' : 'bg-green-500'}`}
                 style={{ width: `${storagePercentage}%` }}
               ></div>

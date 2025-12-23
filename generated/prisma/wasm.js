@@ -125,7 +125,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/vero/Documents/project/lpk/generated/prisma",
+      "value": "C:\\KazuSann\\Coding\\remake\\lpk\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -134,16 +134,17 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/vero/Documents/project/lpk/prisma/schema.prisma",
+    "sourceFilePath": "C:\\KazuSann\\Coding\\remake\\lpk\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.19.0",
