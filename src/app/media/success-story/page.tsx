@@ -1,12 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-// import { alumni } from "../../../data/alumni"; // 1. Matikan import ini nanti kalau sudah fix
-import { supabase } from "../../../lib/supabase"; // 2. Import jembatan supabase
+import { supabase } from "../../../lib/supabase"; 
 import SuccessStoryCard from "../../../styles/components/SuccessStoryCard";
+import { Loader2, Plus } from "lucide-react";
 
-
-// Definisikan tipe data sesuai database
 interface Alumni {
   id: number;
   nama: string;
@@ -19,19 +17,20 @@ interface Alumni {
 }
 
 export default function SuccessStoryPage() {
-  const [alumniData, setAlumniData] = useState<Alumni[]>([]); // Simpan data dari DB
+  const [alumniData, setAlumniData] = useState<Alumni[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(32);
+  const [loadingMore, setLoadingMore] = useState(false);
+  
+  // Kita mulai dengan nampilin 24 data (3 baris di grid 8)
+  const [visibleCount, setVisibleCount] = useState(24);
 
-  // FUNGSI AMBIL DATA DARI SUPABASE
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       const { data, error } = await supabase
-        .from("success_story") // Nama tabel kamu
+        .from("success_story")
         .select("*")
-        .order("id", { ascending: false }); // Biar yang terbaru di atas
+        .order("id", { ascending: false });
 
       if (error) {
         console.error("Gagal ambil data:", error.message);
@@ -44,50 +43,44 @@ export default function SuccessStoryPage() {
     fetchData().catch((e) => console.error(e));
   }, []);
 
-  // Handle Resize tetap sama
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setItemsPerPage(8);
-      } else {
-        setItemsPerPage(32);
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const handleLoadMore = () => {
+    setLoadingMore(true);
+    // Simulasi delay dikit biar smooth pas loading
+    setTimeout(() => {
+      setVisibleCount((prev) => prev + 24); // Tambah 24 data lagi
+      setLoadingMore(false);
+    }, 500);
+  };
 
-  // 3. Ubah kalkulasi pagination dari 'alumni' ke 'alumniData'
-  // const totalPages = Math.ceil(alumniData.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentData = alumniData.slice(startIndex, endIndex);
+  const currentData = alumniData.slice(0, visibleCount);
 
-  // const handlePageChange = (page: number) => {
-  //   if (page >= 1 && page <= totalPages) {
-  //     setCurrentPage(page);
-  //     window.scrollTo({ top: 0, behavior: "smooth" });
-  //   }
-  // };
-
-  if (loading) return <div className="py-20 text-center">Memuat kisah sukses...</div>;
+  if (loading) {
+    return (
+      <div className="py-40 text-center flex flex-col items-center gap-4">
+        <Loader2 className="animate-spin text-red-600 w-10 h-10" />
+        <p className="font-bold text-slate-400 uppercase tracking-widest">Memuat Kisah Sukses...</p>
+      </div>
+    );
+  }
 
   return (
-    <main className="min-h-screen bg-white px-6 py-20 font-sans">
-      <div className="mx-auto max-w-[1400px]">
-        {/* Header Tetap Sama */}
-        <div className="mb-12 text-center">
-          <div className="mb-4 inline-block rounded-full bg-red-100 px-4 py-1 text-xs font-bold tracking-widest text-red-600 uppercase">
+    <main className="min-h-screen bg-white px-4 py-20 font-sans">
+      <div className="mx-auto max-w-[1600px]">
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <div className="mb-4 inline-block rounded-full bg-red-100 px-4 py-1 text-[10px] font-black tracking-[0.2em] text-red-600 uppercase">
             Hall of Fame
           </div>
-          <h1 className="mb-6 text-4xl font-black text-slate-900 md:text-5xl">
-            Kisah Sukses Alumni
+          <h1 className="mb-4 text-4xl font-black text-slate-900 md:text-6xl tracking-tight">
+            Kisah Sukses <span className="text-red-600">Alumni</span>
           </h1>
+          <p className="text-slate-500 font-medium italic">
+            Total {alumniData.length} siswa telah sukses berkarir di Jepang
+          </p>
         </div>
 
-        {/* Cards Grid - Data diambil dari currentData (hasil fetch) */}
-        <div className="mx-auto grid grid-cols-4 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
+        {/* Cards Grid - Responsif banget */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-3">
           {currentData.map((person) => (
             <SuccessStoryCard
               key={person.id}
@@ -102,8 +95,32 @@ export default function SuccessStoryPage() {
           ))}
         </div>
 
-        {/* Pagination & CTA Tetap Sama */}
-        {/* ... (kode pagination kamu di bawahnya) ... */}
+        {/* Tombol Load More / Status */}
+        <div className="mt-20 flex flex-col items-center">
+          {visibleCount < alumniData.length ? (
+            <button
+              onClick={handleLoadMore}
+              disabled={loadingMore}
+              className="group flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-sm hover:bg-red-600 transition-all shadow-xl active:scale-95 disabled:opacity-50"
+            >
+              {loadingMore ? (
+                <Loader2 className="animate-spin h-5 w-5" />
+              ) : (
+                <>
+                  <Plus className="h-5 w-5 group-hover:rotate-90 transition-transform" />
+                  LIHAT ALUMNI LAINNYA
+                </>
+              )}
+            </button>
+          ) : (
+            <div className="text-center">
+              <div className="h-px w-20 bg-slate-200 mx-auto mb-4"></div>
+              <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">
+                Semua alumni telah ditampilkan
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );

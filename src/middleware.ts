@@ -2,12 +2,10 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  // 1. Inisialisasi respon awal
   let response = NextResponse.next({
     request: { headers: request.headers },
   })
 
-  // 2. Konfigurasi Supabase Client untuk Middleware
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -26,43 +24,30 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // 3. Ambil session user saat ini
-  const { data: { session } } = await supabase.auth.getSession()
+  // GUNAKAN getUser() - Ini wajib untuk keamanan terbaru
+  const { data: { user }, error } = await supabase.auth.getUser()
 
   const pathname = request.nextUrl.pathname;
-  const isAdminPage = pathname.startsWith('/admin-lpkaishiro');
-  const isLoginPage = pathname === '/login';
+  
+  // LOG UNTUK DEBUG (Cek Terminal VS Code lu!)
+  console.log(`--- MIDDLEWARE CHECK ---`);
+  console.log(`Path: ${pathname}`);
+  console.log(`User ID: ${user?.id || 'TIDAK ADA'}`);
+  if (error) console.log(`Error: ${error.message}`);
 
-  // --- LOGIKA PROTEKSI ---
-
-  // A. Jika akses halaman ADMIN tapi BELUM LOGIN -> Tendang balik ke /login
-  if (isAdminPage && !session) {
-    const url = new URL('/login', request.url);
-    // Kita tambahkan 'next' parameter supaya setelah login bisa balik ke halaman yg tadi dituju
-    url.searchParams.set('next', pathname); 
-    return NextResponse.redirect(url);
+  // Proteksi Admin
+  if (pathname.startsWith('/admin-lpkaishiro') && !user) {
+    return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  // B. Jika sudah LOGIN tapi iseng mau akses /login lagi -> Lempar ke dashboard ADMIN
-  if (isLoginPage && session) {
-    const url = new URL('/admin-lpkaishiro', request.url);
-    return NextResponse.redirect(url);
+  // Proteksi Login Page
+  if (pathname === '/login' && user) {
+    return NextResponse.redirect(new URL('/admin-lpkaishiro', request.url));
   }
 
   return response
 }
 
-// 4. Tentukan path mana saja yang harus melewati filter ini
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    '/admin-lpkaishiro/:path*', 
-    '/login'
-  ],
+  matcher: ['/admin-lpkaishiro/:path*', '/login'],
 }
