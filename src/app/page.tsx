@@ -280,7 +280,7 @@ const Page = () => {
             ></div>
           </div>
 
-          <div className="relative z-10">
+          <div className="relative">
             <div className="mx-auto max-w-7xl px-6">
               {/* Header dengan garis merah Jepang - Tidak diubah */}
               <div className="mb-12 flex flex-col items-center">
@@ -329,7 +329,7 @@ const Page = () => {
             className="animate-float-slow right-10 bottom-10"
           />
 
-          <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <div className="relative mx-auto max-w-7xl px-6">
             <div className="mb-12 flex flex-col items-center">
               <h2 className="mb-4 text-center text-3xl font-bold text-gray-800">
                 成功ストーリー
@@ -398,7 +398,7 @@ const Page = () => {
             ></div>
           </div>
 
-          <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <div className="relative mx-auto max-w-7xl px-6">
             <div className="mb-12 flex flex-col items-center">
               <div className="mb-6 flex items-center">
                 <div className="mr-4 h-8 w-8 rounded-full border-2 border-red-700"></div>
