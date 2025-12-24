@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../../../lib/supabase";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Alumni {
   id: number;
@@ -20,6 +21,8 @@ export default function AdminSuccessStory() {
   const [showModal, setShowModal] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   // State Form
   const [formData, setFormData] = useState({
@@ -181,6 +184,12 @@ export default function AdminSuccessStory() {
     }
   };
 
+  const totalPages = Math.ceil(alumni.length / itemsPerPage);
+  const currentAlumni = alumni.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -213,7 +222,7 @@ export default function AdminSuccessStory() {
               </tr>
             </thead>
             <tbody>
-              {alumni.map((item) => (
+              {currentAlumni.map((item) => (
                 <tr key={item.id} className="border-b hover:bg-slate-50 transition">
                   <td className="p-4">
                     <div className="relative h-12 w-12 rounded-full overflow-hidden bg-gray-200 border">
@@ -256,7 +265,7 @@ export default function AdminSuccessStory() {
 
         {/* MOBILE CARDS */}
         <div className="md:hidden divide-y divide-slate-100">
-          {alumni.map((item) => (
+          {currentAlumni.map((item) => (
             <div key={item.id} className="p-4 space-y-4">
               <div className="flex items-center gap-4">
                 <div className="relative h-14 w-14 rounded-2xl overflow-hidden bg-gray-200 border shrink-0">
@@ -298,6 +307,42 @@ export default function AdminSuccessStory() {
             </div>
           ))}
         </div>
+
+        {/* PAGINATION CONTROLS */}
+        {totalPages > 1 && (
+          <div className="p-4 bg-slate-50 border-t flex items-center justify-between gap-4">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="flex items-center gap-1 px-4 py-2 bg-white border rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            >
+              <ChevronLeft size={18} /> Prev
+            </button>
+
+            <div className="flex items-center gap-2 overflow-x-auto py-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`min-w-[40px] h-10 rounded-xl font-bold text-sm transition ${currentPage === page
+                      ? "bg-red-600 text-white shadow-lg shadow-red-200"
+                      : "bg-white border text-slate-600 hover:bg-slate-100"
+                    }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className="flex items-center gap-1 px-4 py-2 bg-white border rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            >
+              Next <ChevronRight size={18} />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* MODAL FORM */}

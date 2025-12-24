@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "../../../../lib/supabase";
-import { Trash2, Image as ImageIcon, Pencil } from "lucide-react";
+import { Trash2, Image as ImageIcon, Pencil, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function MediaPage() {
   const [title, setTitle] = useState("");
@@ -11,6 +11,8 @@ export default function MediaPage() {
   const [loading, setLoading] = useState(false);
   const [mediaList, setMediaList] = useState<any[]>([]);
   const [editingId, setEditingId] = useState<any>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   const fetchMedia = async () => {
     const { data, error } = await supabase
@@ -136,6 +138,12 @@ export default function MediaPage() {
     }
   };
 
+  const totalPages = Math.ceil(mediaList.length / itemsPerPage);
+  const currentMedia = mediaList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   return (
     <div className="max-w-5xl mx-auto p-4">
       <h1 className="text-3xl font-black mb-8 text-slate-800 flex items-center gap-3">
@@ -210,7 +218,7 @@ export default function MediaPage() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        {mediaList.map((item) => (
+        {currentMedia.map((item) => (
           <div key={item.id} className="group bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden relative hover:shadow-2xl transition-all duration-300">
 
             {/* TOMBOL AKSI */}
@@ -244,6 +252,51 @@ export default function MediaPage() {
           </div>
         ))}
       </div>
+
+      {/* PAGINATION CONTROLS */}
+      {totalPages > 1 && (
+        <div className="mt-10 mb-6 flex items-center justify-between gap-4 py-6 border-t border-slate-100">
+          <button
+            onClick={() => {
+              setCurrentPage((prev) => Math.max(prev - 1, 1));
+              window.scrollTo({ top: 400, behavior: "smooth" });
+            }}
+            disabled={currentPage === 1}
+            className="flex items-center gap-1 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-sm font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition shadow-md active:scale-95"
+          >
+            <ChevronLeft size={20} /> Prev
+          </button>
+
+          <div className="flex items-center gap-2 overflow-x-auto py-1">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => {
+                  setCurrentPage(page);
+                  window.scrollTo({ top: 400, behavior: "smooth" });
+                }}
+                className={`min-w-[44px] h-11 rounded-2xl font-bold text-sm transition ${currentPage === page
+                    ? "bg-red-600 text-white shadow-lg shadow-red-200"
+                    : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
+                  }`}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => {
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+              window.scrollTo({ top: 400, behavior: "smooth" });
+            }}
+            disabled={currentPage === totalPages}
+            className="flex items-center gap-1 px-5 py-3 bg-white border border-slate-200 rounded-2xl text-sm font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition shadow-md active:scale-95"
+          >
+            Next <ChevronRight size={20} />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
