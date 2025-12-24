@@ -30,12 +30,19 @@ export default function AdminOverview() {
       });
 
       // 3. Hitung Estimasi Storage (dari bucket alumni-photos)
-      // Kita cek folder 'gallery' dan folder utama
-      const { data: files } = await supabase.storage.from("alumni-photos").list("gallery");
-      const { data: rootFiles } = await supabase.storage.from("alumni-photos").list("");
+      const folders = ["gallery", "alumni", ""];
+      let totalBytes = 0;
 
-      const allFiles = [...(files || []), ...(rootFiles || [])];
-      const totalBytes = allFiles.reduce((acc, file) => acc + (file.metadata?.size || 0), 0);
+      for (const folder of folders) {
+        const { data: files, error: storageError } = await supabase.storage
+          .from("alumni-photos")
+          .list(folder, { limit: 100 });
+
+        if (!storageError && files) {
+          totalBytes += files.reduce((acc, file) => acc + (file.metadata?.size || 0), 0);
+        }
+      }
+
       const totalMB = totalBytes / (1024 * 1024);
       setStorageUsage(totalMB);
     }
