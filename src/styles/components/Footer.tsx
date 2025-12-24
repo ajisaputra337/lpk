@@ -119,41 +119,58 @@ const Footer: React.FC = () => {
             <h3 className="mb-4 text-lg font-semibold text-white">
               Follow Us
             </h3>
-            <div className="flex space-x-4">
+            <div className="flex space-x-2">
               {/* TikTok */}
               <a
                 href="https://www.tiktok.com/@lpk_aishirogakuen"
-                aria-label="FaTiktok"
-                className="text-gray-400 transition-colors hover:text-red-400"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTiktok className="h-6 w-6" />
-              </a>
-              {/* Instagram */}
-              <a
-                href="https://www.instagram.com/lpk_aishiro/"
-                aria-label="Instagram"
-                className="text-gray-400 transition-colors hover:text-red-400"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Instagram className="h-6 w-6" />
-              </a>
-              <a
-                href="https://line.me/ti/p/~aishiro426"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 block"
               >
                 <Image
-                  src="/Images/line-qrcode.jpeg"
-                  alt="QR Code LINE Aishiro Gakuen"
-                  width={120}
-                  height={120}
+                  src="/Images/qr-tiktok-aishiro.png"
+                  alt="QR Code TikTok Aishiro Gakuen"
+                  width={100}
+                  height={100}
                   className="rounded-md border border-gray-600 transition-transform hover:scale-105"
                 />
-                <p className="mt-2 text-center text-xs text-gray-400">
+                <p className="mt-2 text-xs text-gray-400">
+                  Scan to follow us on TikTok
+                </p>
+              </a>
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/lpk_aishiro/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 block"
+              >
+                <Image
+                  src="/Images/qr-insta-aishiro.png"
+                  alt="QR Code Instagram Aishiro Gakuen"
+                  width={100}
+                  height={100}
+                  className="rounded-md border border-gray-600 transition-transform hover:scale-105"
+                />
+                <p className="mt-2 text-xs text-gray-400">
+                  Scan to follow us on Instagram
+                </p>
+                {/* <Instagram className="h-6 w-6" /> */}
+              </a>
+              <a
+                href="https://line.me/R/ti/p/~aishiro426"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 block"
+              >
+                <Image
+                  src="/Images/qr-line-aishiro.png"
+                  alt="QR Code LINE Aishiro Gakuen"
+                  width={100}
+                  height={100}
+                  className="rounded-md border border-gray-600 transition-transform hover:scale-105"
+                />
+                <p className="mt-2 text-xs text-gray-400">
                   Scan for chat via LINE
                 </p>
               </a>
