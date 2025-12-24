@@ -52,6 +52,19 @@ export default function MediaPage() {
       }
 
       if (editingId) {
+        // Hapus foto lama jika ada file baru yang diupload
+        if (file) {
+          const oldUrl = mediaList.find(m => String(m.id) === String(editingId))?.image_url;
+          if (oldUrl) {
+            const oldFileName = oldUrl.split('/').pop();
+            if (oldFileName) {
+              await supabase.storage
+                .from("alumni-photos")
+                .remove([`gallery/${oldFileName}`]);
+            }
+          }
+        }
+
         const { error: updateError } = await supabase
           .from("media_gallery")
           .update({ title, description, image_url: publicUrl })

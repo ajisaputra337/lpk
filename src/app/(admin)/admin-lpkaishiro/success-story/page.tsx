@@ -85,6 +85,19 @@ export default function AdminSuccessStory() {
       };
 
       if (editingId) {
+        // Hapus foto lama jika ada file baru yang diupload
+        if (file) {
+          const oldUrl = alumni.find(a => a.id === editingId)?.img;
+          if (oldUrl) {
+            const pathAfterBucket = oldUrl.split("/alumni-photos/")[1];
+            if (pathAfterBucket) {
+              await supabase.storage
+                .from("alumni-photos")
+                .remove([pathAfterBucket]);
+            }
+          }
+        }
+
         const { error: updateError } = await supabase
           .from("success_story")
           .update(dataToSave)
