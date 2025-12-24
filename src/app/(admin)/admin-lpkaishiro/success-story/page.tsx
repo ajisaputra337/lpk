@@ -12,7 +12,7 @@ interface Alumni {
   job?: string;
   perusahaan?: string;
   angkatan?: string;
-  tanggalLahir?: string;
+  tanggalBerangkat?: string;
 }
 
 export default function AdminSuccessStory() {
@@ -27,7 +27,7 @@ export default function AdminSuccessStory() {
     angkatan: "",
     job: "",
     perusahaan: "",
-    tanggalLahir: "",
+    tanggalBerangkat: "",
     alamat: "",
   });
   const [file, setFile] = useState<File | null>(null);
@@ -41,7 +41,14 @@ export default function AdminSuccessStory() {
       .from("success_story")
       .select("*")
       .order("id", { ascending: false });
-    if (data) setAlumni(data);
+    if (data) {
+      setAlumni(
+        data.map((item: any) => ({
+          ...item,
+          tanggalBerangkat: item.tanggalLahir,
+        }))
+      );
+    }
   };
 
   const handleSimpan = async (e: React.FormEvent) => {
@@ -79,7 +86,7 @@ export default function AdminSuccessStory() {
         angkatan: formData.angkatan,
         job: formData.job,
         perusahaan: formData.perusahaan,
-        tanggalLahir: formData.tanggalLahir || new Date().toISOString().split('T')[0],
+        tanggalLahir: formData.tanggalBerangkat || new Date().toISOString().split('T')[0],
         alamat: formData.alamat,
         img: publicUrl,
       };
@@ -116,7 +123,7 @@ export default function AdminSuccessStory() {
 
       setShowModal(false);
       setEditingId(null);
-      setFormData({ nama: "", angkatan: "", job: "", perusahaan: "", tanggalLahir: "", alamat: "" });
+      setFormData({ nama: "", angkatan: "", job: "", perusahaan: "", tanggalBerangkat: "", alamat: "" });
       setFile(null);
       await fetchAlumni();
     } catch (error: any) {
@@ -133,7 +140,7 @@ export default function AdminSuccessStory() {
       angkatan: item.angkatan || "",
       job: item.job || "",
       perusahaan: item.perusahaan || "",
-      tanggalLahir: item.tanggalLahir || "",
+      tanggalBerangkat: item.tanggalBerangkat || "",
       alamat: item.alamat || "",
     });
     setFile(null);
@@ -181,7 +188,7 @@ export default function AdminSuccessStory() {
         <button
           onClick={() => {
             setEditingId(null);
-            setFormData({ nama: "", angkatan: "", job: "", perusahaan: "", tanggalLahir: "", alamat: "" });
+            setFormData({ nama: "", angkatan: "", job: "", perusahaan: "", tanggalBerangkat: "", alamat: "" });
             setFile(null);
             setShowModal(true);
           }}
@@ -311,12 +318,12 @@ export default function AdminSuccessStory() {
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-bold text-slate-500 uppercase">Tgl Lahir</label>
+                  <label className="text-xs font-bold text-slate-500 uppercase">Tgl Berangkat</label>
                   <input
                     type="date"
                     className="w-full border p-2 rounded-lg text-sm"
-                    value={formData.tanggalLahir}
-                    onChange={(e) => setFormData({ ...formData, tanggalLahir: e.target.value })}
+                    value={formData.tanggalBerangkat}
+                    onChange={(e) => setFormData({ ...formData, tanggalBerangkat: e.target.value })}
                     required
                   />
                 </div>

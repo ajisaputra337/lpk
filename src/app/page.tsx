@@ -15,7 +15,7 @@ interface Alumni {
   id: number;
   nama: string;
   angkatan: string;
-  tanggalLahir: string;
+  tanggalBerangkat: string;
   alamat: string;
   job: string;
   perusahaan: string;
@@ -161,14 +161,17 @@ const Page = () => {
     const fetchAlumni = async () => {
       const { data, error } = await supabase
         .from("success_story")
-        .select("*")
+        .select("id, nama, angkatan, tanggalLahir, alamat, job, perusahaan, img")
         .order("id", { ascending: false })
         .limit(5);
 
-      if (error) {
-        console.error("Error fetching alumni:", error);
-      } else {
-        setAlumniData(data || []);
+      if (data) {
+        // Map tanggalLahir to tanggalBerangkat
+        const mappedData = data.map((item: any) => ({
+          ...item,
+          tanggalBerangkat: item.tanggalLahir
+        }));
+        setAlumniData(mappedData);
       }
     };
 
@@ -345,7 +348,7 @@ const Page = () => {
                   key={person.id}
                   name={person.nama}
                   angkatan={person.angkatan}
-                  tanggalLahir={person.tanggalLahir}
+                  tanggalBerangkat={person.tanggalBerangkat}
                   alamat={person.alamat}
                   job={person.job}
                   perusahaan={person.perusahaan}

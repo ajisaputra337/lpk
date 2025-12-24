@@ -7,7 +7,7 @@ import { MapPin, Calendar, Briefcase, Building2, X } from "lucide-react";
 interface SuccessStoryCardProps {
   name?: string;
   angkatan: string;
-  tanggalLahir: string;
+  tanggalBerangkat: string;
   alamat: string;
   job: string;
   perusahaan: string;
@@ -17,7 +17,7 @@ interface SuccessStoryCardProps {
 export default function SuccessStoryCard({
   name,
   angkatan,
-  tanggalLahir,
+  tanggalBerangkat,
   alamat,
   job,
   perusahaan,
@@ -129,8 +129,8 @@ export default function SuccessStoryCard({
 
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <Info
-                      label="Tanggal Lahir"
-                      value={tanggalLahir}
+                      label="Tanggal Berangkat"
+                      value={tanggalBerangkat}
                       icon={<Calendar className="h-4 w-4" />}
                     />
                     <Info

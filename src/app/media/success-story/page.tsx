@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "../../../lib/supabase"; 
+import { supabase } from "../../../lib/supabase";
 import SuccessStoryCard from "../../../styles/components/SuccessStoryCard";
 import { Loader2, Plus } from "lucide-react";
 
@@ -9,7 +9,7 @@ interface Alumni {
   id: number;
   nama: string;
   angkatan: string;
-  tanggalLahir: string;
+  tanggalBerangkat: string;
   alamat: string;
   job: string;
   perusahaan: string;
@@ -20,7 +20,7 @@ export default function SuccessStoryPage() {
   const [alumniData, setAlumniData] = useState<Alumni[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
-  
+
   // Kita mulai dengan nampilin 24 data (3 baris di grid 8)
   const [visibleCount, setVisibleCount] = useState(24);
 
@@ -35,7 +35,16 @@ export default function SuccessStoryPage() {
       if (error) {
         console.error("Gagal ambil data:", error.message);
       } else {
-        setAlumniData(data || []);
+        if (data) {
+          setAlumniData(
+            data.map((item: any) => ({
+              ...item,
+              tanggalBerangkat: item.tanggalLahir,
+            }))
+          );
+        } else {
+          setAlumniData([]);
+        }
       }
       setLoading(false);
     };
@@ -86,7 +95,7 @@ export default function SuccessStoryPage() {
               key={person.id}
               name={person.nama}
               angkatan={person.angkatan}
-              tanggalLahir={person.tanggalLahir}
+              tanggalBerangkat={person.tanggalBerangkat}
               alamat={person.alamat}
               job={person.job}
               perusahaan={person.perusahaan}
