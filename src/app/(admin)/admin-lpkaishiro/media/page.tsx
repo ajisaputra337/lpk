@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "../../../../lib/supabase";
-import { Trash2, Image as ImageIcon } from "lucide-react";
+import { Trash2, Image as ImageIcon, Pencil } from "lucide-react";
 
 export default function MediaPage() {
   const [title, setTitle] = useState("");
@@ -10,7 +10,7 @@ export default function MediaPage() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [mediaList, setMediaList] = useState<any[]>([]);
-  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<any>(null);
 
   const fetchMedia = async () => {
     const { data, error } = await supabase
@@ -31,7 +31,7 @@ export default function MediaPage() {
 
     setLoading(true);
     try {
-      let publicUrl = mediaList.find(m => m.id === editingId)?.image_url || "";
+      let publicUrl = mediaList.find(m => String(m.id) === String(editingId))?.image_url || "";
 
       if (file) {
         const fileExt = file.name.split(".").pop();
@@ -207,7 +207,7 @@ export default function MediaPage() {
                 className="bg-white/90 backdrop-blur-sm text-blue-600 p-3 rounded-2xl shadow-xl hover:bg-blue-600 hover:text-white transition"
                 title="Edit"
               >
-                <ImageIcon size={20} />
+                <Pencil size={20} />
               </button>
               <button
                 onClick={() => handleDelete(item.id, item.image_url)}
