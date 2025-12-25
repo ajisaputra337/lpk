@@ -27,7 +27,7 @@ export default function MediaPage() {
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validasi sederhana
     if (!title) return alert("Isi judul kegiatan dulu bro!");
     if (!file) return alert("Pilih foto dulu bro!");
@@ -53,24 +53,24 @@ export default function MediaPage() {
       // 3. SIMPAN DATA KE DATABASE (INSERT ONLY)
       const { error: insertError } = await supabase
         .from("media_gallery")
-        .insert([{ 
-            title, 
-            description, 
-            image_url: publicUrl 
+        .insert([{
+          title,
+          description,
+          image_url: publicUrl
         }]);
 
       if (insertError) throw insertError;
 
       alert("Foto & Cerita berhasil dipublikasikan!");
-      
+
       // Reset Form
       setTitle("");
       setDescription("");
       setFile(null);
-      
+
       // Refresh Data
       fetchMedia();
-      
+
     } catch (error: any) {
       alert("Error: " + error.message);
     } finally {
@@ -177,7 +177,7 @@ export default function MediaPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentMedia.map((item) => (
           <div key={item.id} className="group bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden relative">
-            
+
             {/* TOMBOL HAPUS */}
             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all z-10">
               <button
@@ -189,10 +189,10 @@ export default function MediaPage() {
             </div>
 
             <div className="relative h-48 w-full">
-              <img 
-                src={item.image_url} 
-                alt={item.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
+              <img
+                src={item.image_url}
+                alt={item.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />
             </div>
 
@@ -211,8 +211,8 @@ export default function MediaPage() {
         <div className="mt-10 flex items-center justify-between py-6 border-t border-slate-100">
           <button
             onClick={() => {
-                setCurrentPage(p => Math.max(p - 1, 1));
-                window.scrollTo({ top: 400, behavior: "smooth" });
+              setCurrentPage(p => Math.max(p - 1, 1));
+              window.scrollTo({ top: 400, behavior: "smooth" });
             }}
             disabled={currentPage === 1}
             className="flex items-center gap-1 px-5 py-2 bg-white border border-slate-200 rounded-xl text-sm font-bold disabled:opacity-30"
@@ -226,8 +226,8 @@ export default function MediaPage() {
 
           <button
             onClick={() => {
-                setCurrentPage(p => Math.min(p + 1, totalPages));
-                window.scrollTo({ top: 400, behavior: "smooth" });
+              setCurrentPage(p => Math.min(p + 1, totalPages));
+              window.scrollTo({ top: 400, behavior: "smooth" });
             }}
             disabled={currentPage === totalPages}
             className="flex items-center gap-1 px-5 py-2 bg-white border border-slate-200 rounded-xl text-sm font-bold disabled:opacity-30"
