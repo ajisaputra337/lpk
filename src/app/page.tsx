@@ -163,7 +163,7 @@ const Page = () => {
         .from("success_story")
         .select("id, nama, angkatan, tanggalLahir, alamat, job, perusahaan, img")
         .order("id", { ascending: false })
-        .limit(5);
+        .limit(6);
 
       if (data) {
         // Map tanggalLahir to tanggalBerangkat
@@ -342,7 +342,7 @@ const Page = () => {
             </div>
 
             {/* Grid untuk Testimoni */}
-            <div className="mx-auto grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+            <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
               {alumniData.map((person) => (
                 <SuccessStoryCard
                   key={person.id}

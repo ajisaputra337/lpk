@@ -46,9 +46,9 @@ export async function chatWithAishi(userMessage: string) {
 
     // Penanganan jika limit kuota tercapai (Error 429)
     if (response.status === 429) {
-      return { 
-        success: false, 
-        message: "Maaf, Aishi sedang menerima banyak pertanyaan. Tunggu sebentar atau coba lagi nanti ya!" 
+      return {
+        success: false,
+        message: "Maaf, Aishi sedang menerima banyak pertanyaan. Tunggu sebentar atau coba lagi nanti ya, atau kamu bisa langsung saja chat admin di WhatsApp!"
       };
     }
 
