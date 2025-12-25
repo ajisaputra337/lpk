@@ -27,8 +27,8 @@ export default function MediaPage() {
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title) return alert("Isi judul dulu bro!");
-    if (!file) return alert("Pilih foto dulu bro!");
+    if (!title) return alert("Isi judul terlebih dahulu!");
+    if (!file) return alert("Pilih foto terlebih dahulu!");
 
     setLoading(true);
     try {
@@ -71,7 +71,7 @@ export default function MediaPage() {
   };
 
   const handleDelete = async (id: string, imageUrl: string) => {
-    const confirmDelete = confirm("Yakin mau hapus foto ini dari galeri?");
+    const confirmDelete = confirm("Yakin ingin menghapus foto ini dari galeri?");
     if (!confirmDelete) return;
 
     try {

@@ -64,7 +64,7 @@ export default function AdminSuccessStory() {
       // 1. PROSES UPLOAD FOTO (Hanya jika ada file baru)
       if (file) {
         if (file.size > 2 * 1024 * 1024) {
-          throw new Error("Ukuran foto terlalu besar! Maksimal 2MB bro.");
+          throw new Error("Ukuran foto terlalu besar! Maksimal 2MB.");
         }
 
         const fileExt = file.name.split(".").pop();
@@ -151,7 +151,7 @@ export default function AdminSuccessStory() {
   };
 
   const handleDelete = async (id: number, imgUrl: string | null) => {
-    if (!confirm("Yakin mau hapus data dan foto ini secara permanen?")) return;
+    if (!confirm("Yakin ingin menghapus data dan foto ini secara permanen?")) return;
 
     try {
       // 1. HAPUS FOTO DI STORAGE (Jika ada)
@@ -325,8 +325,8 @@ export default function AdminSuccessStory() {
                   key={page}
                   onClick={() => setCurrentPage(page)}
                   className={`min-w-[40px] h-10 rounded-xl font-bold text-sm transition ${currentPage === page
-                      ? "bg-red-600 text-white shadow-lg shadow-red-200"
-                      : "bg-white border text-slate-600 hover:bg-slate-100"
+                    ? "bg-red-600 text-white shadow-lg shadow-red-200"
+                    : "bg-white border text-slate-600 hover:bg-slate-100"
                     }`}
                 >
                   {page}
