@@ -10,7 +10,7 @@ import Header from '../../../styles/components/Header';
 const programData = {
     title: 'Program Tokutei Ginou (SSW) Jepang',
     subheading: 'Jalur Resmi Kerja Profesional di Jepang dengan Skill Spesifik',
-    heroImage: '/images/tokutei-ginou.webp',
+    heroImage: '/images/breadcrumbtokuteiginou.jpeg',
     whatsappLink:
         'https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20Program%20Tokutei%20Ginou%20(SSW).%20Mohon%20info%20lebih%20lanjut.',
     description:
@@ -195,11 +195,10 @@ const TokuteiGinou = () => {
                             {stages.map((stage, i) => (
                                 <div
                                     key={i}
-                                    className={`mb-8 flex flex-col items-center lg:flex-row ${
-                                        i % 2 === 0
-                                            ? 'lg:flex-row-reverse'
-                                            : 'lg:flex-row'
-                                    }`}
+                                    className={`mb-8 flex flex-col items-center lg:flex-row ${i % 2 === 0
+                                        ? 'lg:flex-row-reverse'
+                                        : 'lg:flex-row'
+                                        }`}
                                 >
                                     <div className="relative w-full rounded-xl border border-gray-200 bg-white p-6 shadow-lg lg:w-5/12">
                                         <h3 className="mb-2 text-xl font-bold text-red-700">

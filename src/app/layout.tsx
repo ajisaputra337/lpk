@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import LayoutContent from "./LayoutContent"; 
+import LayoutContent from "./LayoutContent";
 import FloatingChat from "../styles/components/FloatingChat"; // Import cukup sekali di atas
 
 const inter = Inter({ subsets: ["latin"] });
