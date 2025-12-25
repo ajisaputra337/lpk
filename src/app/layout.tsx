@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import LayoutContent from "./LayoutContent"; // Import satpam yang kita buat tadi
+import LayoutContent from "./LayoutContent"; 
+import FloatingChat from "../styles/components/FloatingChat"; // Import cukup sekali di atas
 
 const inter = Inter({ subsets: ["latin"] });
 
-// --- METADATA LU TETAP DI SINI (SEO AMAN & TIDAK MODIFIKASI ISI) ---
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.lpk-aishiro.com"),
   title: {
@@ -54,8 +54,13 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={`${inter.className} flex min-h-screen flex-col antialiased`}>
-        {/* Panggil LayoutContent untuk filter Header/Footer tanpa merusak SEO */}
-        <LayoutContent>{children}</LayoutContent>
+        {/* LayoutContent mengatur Header/Footer */}
+        <LayoutContent>
+          {children}
+        </LayoutContent>
+
+        {/* FloatingChat ditaruh di sini agar muncul di semua halaman kecuali yang difilter di komponennya */}
+        <FloatingChat />
       </body>
     </html>
   );
