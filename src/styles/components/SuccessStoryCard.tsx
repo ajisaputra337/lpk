@@ -10,7 +10,7 @@ interface SuccessStoryCardProps {
   tanggalBerangkat: string;
   alamat: string;
   job: string;
-  perusahaan: string;
+  lokasi_perusahaan: string;
   img?: string;
 }
 
@@ -20,7 +20,7 @@ export default function SuccessStoryCard({
   tanggalBerangkat,
   alamat,
   job,
-  perusahaan,
+  lokasi_perusahaan,
   img,
 }: SuccessStoryCardProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -144,8 +144,8 @@ export default function SuccessStoryCard({
                       icon={<Briefcase className="h-4 w-4" />}
                     />
                     <Info
-                      label="Perusahaan"
-                      value={perusahaan}
+                      label="Lokasi Perusahaan"
+                      value={lokasi_perusahaan}
                       icon={<Building2 className="h-4 w-4" />}
                     />
                   </div>

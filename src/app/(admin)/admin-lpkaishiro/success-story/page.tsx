@@ -11,7 +11,7 @@ interface Alumni {
   img: string | null;
   alamat?: string;
   job?: string;
-  perusahaan?: string;
+  lokasi_perusahaan?: string;
   angkatan?: string;
   tanggalBerangkat?: string;
 }
@@ -29,7 +29,7 @@ export default function AdminSuccessStory() {
     nama: "",
     angkatan: "",
     job: "",
-    perusahaan: "",
+    lokasi_perusahaan: "",
     tanggalBerangkat: "",
     alamat: "",
   });
@@ -88,7 +88,7 @@ export default function AdminSuccessStory() {
         nama: formData.nama,
         angkatan: formData.angkatan,
         job: formData.job,
-        perusahaan: formData.perusahaan,
+        lokasi_perusahaan: formData.lokasi_perusahaan,
         tanggalLahir: formData.tanggalBerangkat || new Date().toISOString().split('T')[0],
         alamat: formData.alamat,
         img: publicUrl,
@@ -126,11 +126,11 @@ export default function AdminSuccessStory() {
 
       setShowModal(false);
       setEditingId(null);
-      setFormData({ nama: "", angkatan: "", job: "", perusahaan: "", tanggalBerangkat: "", alamat: "" });
+      setFormData({ nama: "", angkatan: "", job: "", lokasi_perusahaan: "", tanggalBerangkat: "", alamat: "" });
       setFile(null);
       await fetchAlumni();
     } catch (error: any) {
-      alert("Waduh Error: " + (error.message ?? "Koneksi bermasalah"));
+      alert("Error: " + (error.message ?? "Koneksi bermasalah"));
     } finally {
       setUploading(false);
     }
@@ -142,7 +142,7 @@ export default function AdminSuccessStory() {
       nama: item.nama,
       angkatan: item.angkatan || "",
       job: item.job || "",
-      perusahaan: item.perusahaan || "",
+      lokasi_perusahaan: item.lokasi_perusahaan || "",
       tanggalBerangkat: item.tanggalBerangkat || "",
       alamat: item.alamat || "",
     });
@@ -197,7 +197,7 @@ export default function AdminSuccessStory() {
         <button
           onClick={() => {
             setEditingId(null);
-            setFormData({ nama: "", angkatan: "", job: "", perusahaan: "", tanggalBerangkat: "", alamat: "" });
+            setFormData({ nama: "", angkatan: "", job: "", lokasi_perusahaan: "", tanggalBerangkat: "", alamat: "" });
             setFile(null);
             setShowModal(true);
           }}
@@ -239,7 +239,7 @@ export default function AdminSuccessStory() {
                   </td>
                   <td className="p-4 text-sm text-slate-600">
                     <span className="font-semibold text-slate-800">{item.job}</span> <br />
-                    <span className="text-xs text-slate-500 italic">{item.perusahaan}</span>
+                    <span className="text-xs text-slate-500 italic">{item.lokasi_perusahaan}</span>
                   </td>
                   <td className="p-4 text-right">
                     <div className="flex justify-end gap-3">
@@ -408,12 +408,12 @@ export default function AdminSuccessStory() {
               </div>
 
               <div>
-                <label className="text-xs font-bold text-slate-500 uppercase">Perusahaan di Jepang</label>
+                <label className="text-xs font-bold text-slate-500 uppercase">Lokasi Perusahaan</label>
                 <input
                   className="w-full border p-2 rounded-lg text-sm"
-                  placeholder="Yamaha Japan"
-                  value={formData.perusahaan}
-                  onChange={(e) => setFormData({ ...formData, perusahaan: e.target.value })}
+                  placeholder="Tokyo"
+                  value={formData.lokasi_perusahaan}
+                  onChange={(e) => setFormData({ ...formData, lokasi_perusahaan: e.target.value })}
                 />
               </div>
 

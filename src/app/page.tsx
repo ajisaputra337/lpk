@@ -18,7 +18,7 @@ interface Alumni {
   tanggalBerangkat: string;
   alamat: string;
   job: string;
-  perusahaan: string;
+  lokasi_perusahaan: string;
   img?: string;
 }
 
@@ -161,7 +161,7 @@ const Page = () => {
     const fetchAlumni = async () => {
       const { data, error } = await supabase
         .from("success_story")
-        .select("id, nama, angkatan, tanggalLahir, alamat, job, perusahaan, img")
+        .select("id, nama, angkatan, tanggalLahir, alamat, job, lokasi_perusahaan, img")
         .order("id", { ascending: false })
         .limit(6);
 
@@ -351,7 +351,7 @@ const Page = () => {
                   tanggalBerangkat={person.tanggalBerangkat}
                   alamat={person.alamat}
                   job={person.job}
-                  perusahaan={person.perusahaan}
+                  lokasi_perusahaan={person.lokasi_perusahaan}
                   img={person.img}
                 />
               ))}

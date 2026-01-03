@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
             <h3 className="mb-4 text-lg font-semibold text-white">
               Follow Us
             </h3>
-            <div className="flex space-x-2">
+            <div className="flex space-x-1">
               {/* TikTok */}
               <a
                 href="https://www.tiktok.com/@lpk_aishirogakuen"
@@ -155,7 +155,6 @@ const Footer: React.FC = () => {
                 <p className="mt-2 text-xs text-gray-400">
                   Scan to follow us on Instagram
                 </p>
-                {/* <Instagram className="h-6 w-6" /> */}
               </a>
               <a
                 href="https://line.me/R/ti/p/~aishiro426"
@@ -174,7 +173,6 @@ const Footer: React.FC = () => {
                   Scan for chat via LINE
                 </p>
               </a>
-              {/* Tambahkan ikon media sosial lain jika perlu */}
             </div>
           </div>
         </div>
