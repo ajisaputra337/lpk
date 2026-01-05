@@ -12,7 +12,7 @@ interface Alumni {
   alamat?: string;
   job?: string;
   lokasi_perusahaan?: string;
-  angkatan?: string;
+  angkatan?: number;
   tanggalBerangkat?: string;
 }
 
@@ -27,7 +27,7 @@ export default function AdminSuccessStory() {
   // State Form
   const [formData, setFormData] = useState({
     nama: "",
-    angkatan: "",
+    angkatan: "" as string | number,
     job: "",
     lokasi_perusahaan: "",
     tanggalBerangkat: "",
@@ -43,7 +43,7 @@ export default function AdminSuccessStory() {
     const { data } = await supabase
       .from("success_story")
       .select("*")
-      .order("id", { ascending: false });
+      .order("angkatan", { ascending: false });
     if (data) {
       setAlumni(
         data.map((item: any) => ({
@@ -217,6 +217,7 @@ export default function AdminSuccessStory() {
               <tr>
                 <th className="p-4 text-xs font-bold text-slate-500 uppercase">Foto</th>
                 <th className="p-4 text-xs font-bold text-slate-500 uppercase">Nama & Alamat</th>
+                <th className="p-4 text-xs font-bold text-slate-500 uppercase">Angkatan</th>
                 <th className="p-4 text-xs font-bold text-slate-500 uppercase">Job & Perusahaan</th>
                 <th className="p-4 text-xs font-bold text-slate-500 uppercase text-right">Aksi</th>
               </tr>
@@ -236,6 +237,11 @@ export default function AdminSuccessStory() {
                   <td className="p-4">
                     <p className="font-bold text-slate-800">{item.nama}</p>
                     <p className="text-xs text-slate-500">{item.alamat ?? "Alamat belum diisi"}</p>
+                  </td>
+                  <td className="p-4">
+                    <span className="inline-block px-2 py-1 rounded bg-red-50 text-red-600 text-xs font-bold">
+                      Angkatan {item.angkatan}
+                    </span>
                   </td>
                   <td className="p-4 text-sm text-slate-600">
                     <span className="font-semibold text-slate-800">{item.job}</span> <br />
@@ -287,7 +293,7 @@ export default function AdminSuccessStory() {
                 </div>
                 <div className="bg-slate-50 p-2 rounded-xl">
                   <p className="text-[10px] uppercase font-bold text-slate-400">Angkatan</p>
-                  <p className="font-semibold text-slate-700">{item.angkatan || "-"}</p>
+                  <p className="font-semibold text-slate-700">{item.angkatan ? `Angkatan ${item.angkatan}` : "-"}</p>
                 </div>
               </div>
               <div className="flex gap-2">
@@ -389,10 +395,11 @@ export default function AdminSuccessStory() {
                 <div>
                   <label className="text-xs font-bold text-slate-500 uppercase">Angkatan</label>
                   <input
+                    type="number"
                     className="w-full border p-2 rounded-lg text-sm"
-                    placeholder="Angkatan 2"
+                    placeholder="2"
                     value={formData.angkatan}
-                    onChange={(e) => setFormData({ ...formData, angkatan: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, angkatan: e.target.value === "" ? "" : parseInt(e.target.value) })}
                     required
                   />
                 </div>

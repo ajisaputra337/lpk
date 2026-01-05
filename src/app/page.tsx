@@ -14,7 +14,7 @@ import { supabase } from "../lib/supabase";
 interface Alumni {
   id: number;
   nama: string;
-  angkatan: string;
+  angkatan: number;
   tanggalBerangkat: string;
   alamat: string;
   job: string;
@@ -162,7 +162,7 @@ const Page = () => {
       const { data, error } = await supabase
         .from("success_story")
         .select("id, nama, angkatan, tanggalLahir, alamat, job, lokasi_perusahaan, img")
-        .order("id", { ascending: false })
+        .order("angkatan", { ascending: false })
         .limit(6);
 
       if (data) {

@@ -1,7 +1,7 @@
 export interface Alumni {
   id: number;
   nama: string;
-  angkatan: string;
+  angkatan: number;
   tanggalBerangkat: string;
   alamat: string;
   job: string;

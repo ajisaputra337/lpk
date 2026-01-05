@@ -6,7 +6,7 @@ import { MapPin, Calendar, Briefcase, Building2, X } from "lucide-react";
 
 interface SuccessStoryCardProps {
   name?: string;
-  angkatan: string;
+  angkatan: number;
   tanggalBerangkat: string;
   alamat: string;
   job: string;
@@ -60,7 +60,7 @@ export default function SuccessStoryCard({
 
           {/* Badge Angkatan */}
           <div className="absolute bottom-1 left-1 rounded-full bg-red-600 px-1.5 py-0.5 text-[0.5rem] font-bold text-white shadow-md sm:bottom-4 sm:left-4 sm:px-3 sm:py-1 sm:text-xs sm:shadow-lg">
-            🎓 {angkatan}
+            🎓 Angkatan {angkatan}
           </div>
 
           {/* Name Preview on Hover */}
@@ -117,7 +117,7 @@ export default function SuccessStoryCard({
                   </div>
 
                   <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-red-600 px-4 py-1.5 text-xs font-bold whitespace-nowrap text-white shadow-md">
-                    🎓 {angkatan}
+                    🎓 Angkatan {angkatan}
                   </div>
                 </div>
 

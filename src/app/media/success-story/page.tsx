@@ -8,7 +8,7 @@ import { Loader2, Plus } from "lucide-react";
 interface Alumni {
   id: number;
   nama: string;
-  angkatan: string;
+  angkatan: number;
   tanggalBerangkat: string;
   alamat: string;
   job: string;
@@ -30,7 +30,7 @@ export default function SuccessStoryPage() {
       const { data, error } = await supabase
         .from("success_story")
         .select("*")
-        .order("id", { ascending: false });
+        .order("angkatan", { ascending: false });
 
       if (error) {
         console.error("Gagal ambil data:", error.message);
