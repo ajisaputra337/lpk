@@ -187,7 +187,7 @@ export default function CompanyProfilePage() {
                     <tr>
                       <td className="py-2 font-medium text-gray-700">Email</td>
                       <td className="py-2 text-gray-600">
-                        info@aishiro.example
+                        aishiro426@gmail.com
                       </td>
                     </tr>
                     <tr>
