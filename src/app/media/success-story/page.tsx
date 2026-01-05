@@ -12,7 +12,7 @@ interface Alumni {
   tanggalBerangkat: string;
   alamat: string;
   job: string;
-  perusahaan: string;
+  lokasi_perusahaan: string;
   img?: string;
 }
 
@@ -98,7 +98,7 @@ export default function SuccessStoryPage() {
               tanggalBerangkat={person.tanggalBerangkat}
               alamat={person.alamat}
               job={person.job}
-              perusahaan={person.perusahaan}
+              lokasi_perusahaan={person.lokasi_perusahaan}
               img={person.img}
             />
           ))}
