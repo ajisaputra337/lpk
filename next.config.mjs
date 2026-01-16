@@ -1,20 +1,21 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // --- TAMBAHKAN INI (MULAI) ---
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  // --- TAMBAHKAN INI (SELESAI) ---
 
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "randomuser.me" },
       { protocol: "https", hostname: "lpk-aishiro.com" },
-      { protocol: "https", hostname: "**.supabase.co" }, 
+      { protocol: "https", hostname: "**.supabase.co" },
       { protocol: "https", hostname: "imgs.search.brave.com" },
     ],
   },
@@ -61,4 +62,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

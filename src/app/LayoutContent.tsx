@@ -6,13 +6,19 @@ import Footer from "../styles/components/Footer";
 
 export default function LayoutContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  // Cek apakah URL mengandung admin-lpkaishiro
-  const isAdmin = pathname?.includes("admin-lpkaishiro");
+
+  // Memastikan pathname tidak null dan mengecek rute admin
+  // Menggunakan includes sudah cukup oke, tapi pastikan string-nya unik
+  const isAdmin = pathname?.split('/').includes("admin-lpkaishiro");
 
   return (
     <>
+      {/* Jika BUKAN admin, tampilkan Header */}
       {!isAdmin && <Header />}
+      
       <main className="flex-grow">{children}</main>
+      
+      {/* Jika BUKAN admin, tampilkan Footer */}
       {!isAdmin && <Footer />}
     </>
   );

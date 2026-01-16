@@ -1,12 +1,15 @@
-// components/Footer.tsx
-import Link from "next/link";
+"use client"; // Tambahkan ini karena kita pakai useTranslations di client side
+import { Link } from "../../i18n/routing";
 import React from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 // Jika kamu pakai lucide-react untuk ikon lain:
 import { FaTiktok } from "react-icons/fa6";
 import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 
 const Footer: React.FC = () => {
+  const t = useTranslations("Footer");
+
   return (
     <footer className="bg-gray-800 pt-12 pb-8 text-white">
       <div className="mx-auto max-w-7xl px-6">
@@ -21,28 +24,19 @@ const Footer: React.FC = () => {
               </span>
             </Link>
             <p className="mt-2 text-sm text-gray-400">
-              Jalur sukses menuju karir impian di Jepang dengan pelatihan bahasa
-              dan fisik terbaik.
+              {t("description")}
             </p>
 
             {/* Navigasi di bawah deskripsi */}
             <div className="mt-6">
-              <h3 className="mb-4 text-lg font-semibold text-white">Navigation</h3>
+              <h3 className="mb-4 text-lg font-semibold text-white">{t("navTitle")}</h3>
               <ul className="space-y-2">
-                {/* <li>
-                  <Link
-                    href="https://jisannihon.vercel.app"
-                    className="text-sm text-gray-400 transition-colors hover:text-red-400"
-                  >
-                    Blog & Berita
-                  </Link>
-                </li> */}
                 <li>
                   <Link
                     href="/profil/company-profile"
                     className="text-sm text-gray-400 transition-colors hover:text-red-400"
                   >
-                    Company Profile
+                    {t("navCompany")}
                   </Link>
                 </li>
                 <li>
@@ -50,7 +44,7 @@ const Footer: React.FC = () => {
                     href="/media/galeri"
                     className="text-sm text-gray-400 transition-colors hover:text-red-400"
                   >
-                    Gallery
+                    {t("navGallery")}
                   </Link>
                 </li>
               </ul>
@@ -60,7 +54,7 @@ const Footer: React.FC = () => {
           {/* Kolom 2: Kontak */}
           <div>
             <h3 className="mb-4 text-lg font-semibold text-white">
-              Contact Us
+              {t("contactTitle")}
             </h3>
 
             <ul className="space-y-3">
@@ -90,7 +84,6 @@ const Footer: React.FC = () => {
               </li>
 
               {/* LINE contact */}
-              {/* LINE QR Code */}
               <li className="flex items-start text-sm text-gray-400">
                 <Phone className="mt-1 mr-2 h-4 w-4 flex-shrink-0 text-red-400" />
                 <div>
@@ -107,8 +100,7 @@ const Footer: React.FC = () => {
               <li className="flex items-start text-sm text-gray-400">
                 <MapPin className="mt-1 mr-2 h-4 w-4 flex-shrink-0 text-red-400" />
                 <span>
-                  Jl. Palebon VI No.5, Palebon, Kec. Pedurungan, Kota Semarang,
-                  Jawa Tengah 50199
+                  {t("address")}
                 </span>
               </li>
             </ul>
@@ -117,7 +109,7 @@ const Footer: React.FC = () => {
           {/* Kolom 3: Media Sosial */}
           <div>
             <h3 className="mb-4 text-lg font-semibold text-white">
-              Follow Us
+              {t("followTitle")}
             </h3>
             <div className="flex space-x-1">
               {/* TikTok */}
@@ -135,7 +127,7 @@ const Footer: React.FC = () => {
                   className="rounded-md border border-gray-600 transition-transform hover:scale-105"
                 />
                 <p className="mt-2 text-xs text-gray-400">
-                  Scan to follow us on TikTok
+                  {t("scanTiktok")}
                 </p>
               </a>
               {/* Instagram */}
@@ -153,7 +145,7 @@ const Footer: React.FC = () => {
                   className="rounded-md border border-gray-600 transition-transform hover:scale-105"
                 />
                 <p className="mt-2 text-xs text-gray-400">
-                  Scan to follow us on Instagram
+                  {t("scanInsta")}
                 </p>
               </a>
               <a
@@ -170,7 +162,7 @@ const Footer: React.FC = () => {
                   className="rounded-md border border-gray-600 transition-transform hover:scale-105"
                 />
                 <p className="mt-2 text-xs text-gray-400">
-                  Scan for chat via LINE
+                  {t("scanLine")}
                 </p>
               </a>
             </div>

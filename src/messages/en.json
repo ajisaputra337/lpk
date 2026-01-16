@@ -1,0 +1,489 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "subLogo": "Japan Program",
+    "contact": "Contact Us",
+    "register": "Register Now",
+    "mobileNavTitle": "Menu",
+    "program": {
+      "title": "Programs",
+      "magang": "Technical Intern Training Program",
+      "sekolah": "Study in Japan",
+      "tokutei": "Specified Skilled Worker"
+    },
+    "profile": {
+      "title": "Profile",
+      "company": "Company Profile",
+      "visi": "Vision & Mission"
+    },
+    "media": {
+      "title": "Media & Information",
+      "galeri": "Gallery",
+      "persyaratan": "Requirements",
+      "success": "Success Stories",
+      "fisik": "Afternoon Physical Activities"
+    }
+  },
+  "Footer": {
+    "description": "Achieve your career growth in Japan with the best language and physical training.",
+    "navTitle": "Navigation",
+    "navCompany": "Company Profile",
+    "navGallery": "Gallery",
+    "contactTitle": "Contact Us",
+    "address": "Jl. Palebon VI No.5, Palebon, Pedurungan District, Semarang City, Central Java, Indonesia",
+    "followTitle": "Follow Us",
+    "scanTiktok": "Follow us on TikTok",
+    "scanInsta": "Follow us on Instagram",
+    "scanLine": "Contact us on LINE"
+  },
+  "Chat": {
+    "welcome": "Hello! I'm Aishi, the AI assistant of LPK Aishiro. How can I help you today? 🇯🇵",
+    "status": "Online | Server Mode",
+    "typing": "Aishi is typing...",
+    "placeholder": "Ask Aishi...",
+    "error": "Failed to connect to the server."
+  },
+  "Language": {
+    "select": "Select Language"
+  },
+  "ProgramCard": {
+    "button": "View Program Details",
+    "altText": "Program Image"
+  },
+  "SuccessCard": {
+    "batch": "Batch",
+    "departureDate": "Departure Date",
+    "address": "Address",
+    "job": "Job Position",
+    "companyLocation": "Company Location",
+    "unknownName": "Unknown Name"
+  },
+  "Profile": {
+    "title1": "Discover",
+    "subtitle": "Building Discipline, Shaping the Future",
+    "videoTitle": "LPK Aishiro Gakuen Profile Video",
+    "point1Title": "Legality & Trust",
+    "point1Desc": "Established in 2009, officially recognized by the Labor Office and trusted as an LPTKS partner.",
+    "point2Title": "Job Placement Focus",
+    "point2Desc": "Specialized in Japan programs (Technical Internship).",
+    "point3Title": "Mental Discipline (Kibishii)",
+    "point3Desc": "Preparing students with strong work ethic, discipline, and independence.",
+    "desc1": ", founded in 2009 in Semarang, Central Java, is dedicated to education and workforce training. With official permits from the Labor and Education Offices, our main mission is to improve the quality and skills of the working-age generation.",
+    "desc2": "Government trust is reflected in our appointment as an organizer of free subsidized programs by the Central Java Provincial Labor Office.",
+    "descHighlight": "This is the benchmark of the training quality we guarantee.",
+    "goalTitle": "Our Goal: Kokoro Gamae (Strong Mindset)",
+    "goalDesc": "Our primary goal is to prepare young generations to be job-ready by prioritizing discipline. Students are trained early to live independently, stay disciplined, and care for their environment."
+  },
+  "HomePage": {
+    "heroTitle": "Study in <red>Japan</red> and turn your <yellow>dreams</yellow> into reality",
+    "heroSubtitle": "Together with Aishiro Gakuen, reach a brighter future.",
+    "programSectionTitle": "Recommended Programs",
+    "successSub": "Success Stories in <red>Japan</red>",
+    "seeMore": "See Details",
+    "mapSubtitle": "Location Map",
+    "addressDescription": "You can visit us at the following locations for consultation or direct registration.",
+    "addressTitle": "Address Information",
+    "addressInfo": "Jl. Palebon VI No.5, Palebon, Kec. Pedurungan, Kota Semarang, Jawa Tengah 50199",
+    "qualityQuote": "The quality of education is our top priority.",
+    "companyName": "LPK Aishiro Gakuen"
+  },
+  "Programs": {
+    "program1": {
+      "title": "Japan Internship",
+      "desc": "A step-by-step guide to technical training in Japan."
+    },
+    "program2": {
+      "title": "Japanese Language School",
+      "desc": "Preparation and process for studying in Japan until departure."
+    },
+    "program3": {
+      "title": "Specified Skilled Worker",
+      "desc": "An intensive preparation program for specified skilled workers."
+    }
+  },
+  "Metadata": {
+    "title": "LPK Aishiro Gakuen - Internship Training to Japan",
+    "description": "A trusted institution in Semarang since 2014..."
+  },
+  "MagangPage": {
+    "metadata": {
+      "title": "5-Step Japan Internship Program Flow | LPK Aishiro Gakuen",
+      "description": "Understand the complete 5 stages of the Japan Internship Program, from initial selection to job placement."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Japan Internship Flow"
+    },
+    "hero": {
+      "title": "Japan Internship Program Flow",
+      "subtitle": "Learn each stage in detail, from early preparation in Indonesia to your job placement in Japan."
+    },
+    "timeline": {
+      "title": "5 Steps Toward a Career in Japan",
+      "step1": {
+        "title": "Step 1: Selection & Initial Orientation",
+        "desc": "Registration, interviews, and initial physical tests. Detailed explanation of commitments, costs, and work contracts in Japan."
+      },
+      "step2": {
+        "title": "Step 2: Intensive Language & Cultural Training",
+        "desc": "Main focus on mastering Japanese (N5 Level), disciplined afternoon physical training, and introduction to work ethics."
+      },
+      "step3": {
+        "title": "Step 3: Skill Test",
+        "desc": "Formal physical and Japanese language examinations. Followed by technical job interviews with Japanese companies."
+      },
+      "step4": {
+        "title": "Step 4: Document & Visa Processing",
+        "desc": "After securing a job offer, focus on departure documents, CoE processing, and work visa application."
+      },
+      "step5": {
+        "title": "Step 5: Departure & Job Placement",
+        "desc": "Departure to Japan, company pickup, and placement at the workplace. 3-year internship contract."
+      }
+    },
+    "visual": {
+      "title": "Flow Diagram Visualization",
+      "desc1": "Aishiro Gakuen Education & Training Flow",
+      "desc2": "IM JAPAN Education & Training Flow"
+    }
+  },
+  "SekolahPage": {
+    "metadata": {
+      "title": "Japanese Language School & Study Program | LPK Aishiro Gakuen",
+      "description": "Your gateway to higher education and a global career through language schools in Japan."
+    },
+    "hero": {
+      "badge": "Study Program",
+      "title": "Japanese Language School & Study Program in Japan",
+      "subheading": "Your Gateway to Higher Education and a Global Career",
+      "cta": "Register & Consult Now"
+    },
+    "about": {
+      "title": "About the Program",
+      "desc": "This program is designed for students who wish to study Japanese at a language school before continuing to university, vocational school, or seeking employment in Japan.",
+      "advantageTitle": "Advantages of Studying in Japan",
+      "advantages": [
+        "Official pathway to higher education (University/Vocational) in Japan.",
+        "Opportunity to work part-time to cover living expenses.",
+        "Achieve high-level Japanese proficiency (N2/N1).",
+        "Full support for adaptation and accommodation search in Japan."
+      ],
+      "noteTitle": "Important Note:",
+      "noteDesc": "Applicants must prepare sufficient funds for living and tuition fees in accordance with Japanese Immigration requirements."
+    },
+    "facts": {
+      "title": "Quick Facts",
+      "durationLabel": "Study Duration:",
+      "durationValue": "1 – 2 Years",
+      "goalLabel": "Final Goal:",
+      "goalValue": "University/Vocational/Work",
+      "langLabel": "Initial Language Level:",
+      "langValue": "Not required (training provided)"
+    },
+    "stages": {
+      "badge": "Official Pathway",
+      "title": "Steps to Become a Student in Japan",
+      "step": "Step",
+      "list": [
+        {
+          "title": "Consultation & Registration",
+          "desc": "In-depth discussion of study goals, selection of a suitable language school, and collection of initial documents."
+        },
+        {
+          "title": "Document & Visa Preparation",
+          "desc": "Full assistance in preparing all required documents (Diploma, Bank Statement, COE) and student visa application."
+        },
+        {
+          "title": "Intensive Language Training",
+          "desc": "Japanese language training and JLPT/J-Test preparation at LPK Aishiro Gakuen until reaching N5/N4 level."
+        },
+        {
+          "title": "Departure & Orientation",
+          "desc": "Flight arrangements, airport pickup in Japan, and initial orientation on daily life and part-time work."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Make Your Dream of Studying in Japan Come True?",
+      "desc": "Don’t wait any longer. Consult your study plan with our professional team today.",
+      "button": "Contact Us via WhatsApp"
+    }
+  },
+  "TokuteiPage": {
+    "metadata": {
+      "title": "Tokutei Ginou (SSW) Program Japan | LPK Aishiro Gakuen",
+      "description": "An official pathway to professional work in Japan with specialized skills (SSW). Competitive salary and legal protection."
+    },
+    "hero": {
+      "badge": "Japan Work Program",
+      "title": "Tokutei Ginou (SSW) Program in Japan",
+      "subheading": "The Official Pathway to Professional Work in Japan with Specialized Skills",
+      "cta": "Tokutei Ginou Consultation"
+    },
+    "about": {
+      "title": "What is Tokutei Ginou?",
+      "desc": "Tokutei Ginou (Specified Skilled Worker/SSW) is an official scheme by the Japanese government for foreign workers with specialized skills. This program opens legal employment opportunities across various industrial sectors with competitive salaries, clear contracts, and legal protection.",
+      "advantageTitle": "Why Choose Tokutei Ginou?",
+      "advantages": [
+        "Official Tokutei Ginou (SSW) Work Visa issued by the Japanese Government.",
+        "Wide range of sectors: manufacturing, food, construction, hospitality, caregiving, and more.",
+        "Competitive salary equivalent to Japanese workers.",
+        "Clear employment contracts with legal protection.",
+        "Long-term career opportunities and visa extension."
+      ],
+      "noteTitle": "General Requirements:",
+      "noteDesc": "Participants must pass Japanese language exams and skill tests according to their Tokutei Ginou field and be ready to adapt to Japanese work culture."
+    },
+    "sidebar": {
+      "title": "Career Details",
+      "visaLabel": "Visa Type:",
+      "visaValue": "Tokutei Ginou (SSW)",
+      "sectorLabel": "Sector:",
+      "sectorValue": "Multi-Sector",
+      "salaryLabel": "Estimated Salary:",
+      "salaryValue": "¥180K – ¥250K / month",
+      "langLabel": "Language Level:",
+      "langValue": "N4"
+    },
+    "stages": {
+      "badge": "Legal Work Pathway",
+      "title": "Process to Become a Tokutei Ginou Worker",
+      "step": "Step",
+      "list": [
+        {
+          "title": "Selection & Administration",
+          "desc": "Registration, initial screening, interviews, and processing of documents and training contracts in accordance with Tokutei Ginou standards."
+        },
+        {
+          "title": "Language & Skill Training",
+          "desc": "Japanese language training up to at least N4 level and technical skill training based on the chosen sector."
+        },
+        {
+          "title": "Skill & Language Exams",
+          "desc": "Taking Tokutei Ginou skill exams and Japanese language tests (JLPT/JFT-Basic) as employment requirements."
+        },
+        {
+          "title": "Placement & Departure",
+          "desc": "Processing the Tokutei Ginou (SSW) visa and official job placement at a Japanese company according to the field."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Work Legally in Japan through Tokutei Ginou",
+      "desc": "Structured training, a legal pathway, and real job opportunities across Japan’s industrial sectors.",
+      "button": "Register for Tokutei Ginou Now"
+    }
+  },
+  "CompanyProfile": {
+    "metadata": {
+      "title": "Company Profile - LPK Aishiro Gakuen",
+      "description": "Profile of LPK Aishiro Gakuen — legality, mission, facilities, and Japan internship services."
+    },
+    "header": {
+      "title": "Company Profile",
+      "subtitle": "LPK Aishiro Gakuen",
+      "intro": "LPK AISHIRO GAKUEN is a Japanese language training institute specializing in internship programs to Japan. Established in 2009, it obtained official Sending Organization status in 2018. Accredited by LA-LPK No. 224/LALPK/XI/2024."
+    },
+    "philosophy": {
+      "trust": "With the trust of the community, LPK AISHIRO GAKUEN has successfully sent many interns to Japan. After returning to Indonesia, many alumni utilize their skills and experience to build independent businesses across various sectors.",
+      "vision": {
+        "title": "Vision",
+        "jp": "目標",
+        "desc": "To become a professional, independent, and character-driven education and training institution.",
+        "subDesc": "専門的、独立的、そして性格的に優秀な教育訓練機関になり"
+      },
+      "mission": {
+        "title": "Mission",
+        "jp": "使命",
+        "list": [
+          "Provide professional Japanese language education and training programs.",
+          "Educate young generations to have high work ethic, discipline, and independence.",
+          "Strengthen workforce cooperation between Indonesia and Japan."
+        ]
+      },
+      "goals": {
+        "title": "Goals",
+        "jp": "目的",
+        "list": [
+          "Prepare students to become members of society who can apply and develop workplace knowledge.",
+          "Produce graduates with strong character and high commitment to society."
+        ]
+      }
+    },
+    "sections": {
+      "structure": {
+        "title": "Organizational Structure",
+        "desc": "The LPK organizational structure consists of Management, Education & Training Team, Administration Team, and International Relations Team. (An organizational chart can be added here.)"
+      },
+      "facilities": {
+        "title": "Facilities",
+        "list": [
+          "Air-conditioned classrooms with audiovisual equipment",
+          "Language laboratory and interactive learning materials",
+          "Career consultation and document preparation rooms"
+        ]
+      },
+      "stats": {
+        "title": "Statistics",
+        "alumni": "Alumni",
+        "permit": "Sending Org Permit"
+      },
+      "services": {
+        "title": "Services",
+        "list": [
+          "Intensive Japanese language training",
+          "Assistance with internship application process",
+          "Document preparation and permit processing"
+        ]
+      },
+      "legality": {
+        "title": "Legality & Accreditation",
+        "list": [
+          "Established: 2009",
+          "Accredited: LA-LPK No. 224/LALPK/XI/2024",
+          "Permit: Sending Organization (Since 2018)"
+        ]
+      }
+    },
+    "sidebar": {
+      "infoTitle": "Company Information",
+      "table": {
+        "name": "Name",
+        "address": "Address",
+        "phone": "Phone",
+        "email": "Email",
+        "year": "Year Established",
+        "accreditation": "Accreditation",
+        "alumni": "Alumni"
+      },
+      "quickLinks": "Quick Links"
+    }
+  },
+  "VisiMisi": {
+    "metadata": {
+      "title": "Vision, Mission, and Goals | LPK Aishiro Gakuen",
+      "description": "Learn about LPK Aishiro Gakuen's Vision, Mission, and Goals in creating professional, independent, and character-driven graduates for careers in Japan.",
+      "ogTitle": "Vision, Mission, and Goals of LPK Aishiro Gakuen",
+      "ogDesc": "To become a professional, independent, and character-driven education and training institution."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Institution Vision & Mission"
+    },
+    "title": "Institution Vision, Mission, and Goals",
+    "visi": {
+      "label": "Vision",
+      "text": "To become a professional, independent, and character-driven education and training institution.",
+      "imgAlt": "Shinkansen bullet train symbolizing future and professionalism"
+    },
+    "misi": {
+      "label": "Mission",
+      "list": [
+        "Deliver professional Japanese language education and training programs.",
+        "Educate young generations to have high work ethic, discipline, and independence.",
+        "Strengthen workforce collaboration between Indonesia and Japan."
+      ]
+    },
+    "tujuan": {
+      "label": "Goals",
+      "list": [
+        "Prepare students to become members of society who can apply and develop workplace knowledge.",
+        "Produce graduates with strong character and high commitment to society."
+      ]
+    }
+  },
+  "SuccessStory": {
+    "loading": "Loading Success Stories...",
+    "header": {
+      "badge": "Hall of Fame",
+      "title": "Success Stories",
+      "subtitle": "Alumni",
+      "totalDesc": "A total of {count} students have successfully built careers in Japan"
+    },
+    "filter": {
+      "label": "Sort",
+      "default": "Default",
+      "batchDesc": "Batch (Newest)",
+      "batchAsc": "Batch (Oldest)",
+      "nameAZ": "Name (A - Z)",
+      "nameZA": "Name (Z - A)"
+    },
+    "loadMore": "VIEW MORE ALUMNI",
+    "allLoaded": "All alumni have been displayed"
+  },
+  "Gallery": {
+    "header": {
+      "title": "Aishiro Gakuen Gallery",
+      "subtitle": "Click on a photo to see activity details and full stories."
+    },
+    "card": {
+      "defaultDesc": "Documentation of LPK Aishiro Gakuen training activities.",
+      "detailBtn": "DETAIL"
+    },
+    "status": {
+      "loading": "Loading Gallery...",
+      "empty": "No activity photos yet."
+    }
+  },
+  "Requirements": {
+    "metadata": {
+      "title": "Japan Internship Requirements | LPK Aishiro Gakuen",
+      "description": "Complete requirements for the internship program to Japan through LPK Aishiro Gakuen."
+    },
+    "mainTitle": "Japan Internship Requirements 2026",
+    "subTitle": "( Government / Private )",
+    "sections": {
+      "special": {
+        "title": "Special Requirements",
+        "items": [
+          "Male/Female, age 18 – 27 years",
+          "Normal color vision (total/partial), glasses/contact lenses allowed",
+          "No tattoos",
+          "No piercings",
+          "Motivated and willing to learn Japanese at LPK"
+        ]
+      },
+      "admin": {
+        "title": "Administrative Requirements",
+        "items": [
+          "Copy of ID (KTP), Family Card (KK), Birth Certificate",
+          "Diplomas and Transcripts from Elementary to last education level",
+          "Police Clearance Certificate (SKCK)",
+          "Yellow Card (AK1) from local Disnaker office",
+          "Parental/Guardian Permission Letter (LPK format, stamped)",
+          "Passport photos 4x6 & 3x4, 3 copies each / Soft file"
+        ]
+      }
+    },
+    "cta": {
+      "text": "Already meet the requirements? Register yourself now!",
+      "button": "Register Now"
+    }
+  },
+  "SuccessStoryPage": {
+    "loading": "Loading Success Stories...",
+    "header": {
+      "badge": "Hall of Fame",
+      "title": "Success Stories",
+      "subtitle": "Alumni",
+      "totalDesc": "A total of {count} students have succeeded in building careers in Japan"
+    },
+    "filter": {
+      "label": "Sort By",
+      "default": "Default",
+      "batchDesc": "Batch (Newest)",
+      "batchAsc": "Batch (Oldest)",
+      "nameAZ": "Name (A - Z)",
+      "nameZA": "Name (Z - A)"
+    },
+    "loadMore": "SEE MORE ALUMNI",
+    "allLoaded": "All alumni have been displayed"
+  },
+  "GalleryDetail": {
+    "back": "Back to gallery",
+    "loading": "Loading...",
+    "notFound": "Data not found.",
+    "category": "Activity report",
+    "noDescription": "No additional description for this activity."
+  }
+}

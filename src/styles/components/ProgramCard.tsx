@@ -1,13 +1,15 @@
-// src/styles/components/ProgramCard.tsx
+"use client"; // Tambahkan ini karena pakai useTranslations
 
-import Link from "next/link";
+import { Link } from "../../i18n/routing"; // Ganti import link
 import Image from "next/image";
+import { useTranslations } from "next-intl"; // Tambah ini
 
 interface ProgramCardProps {
   title: string;
   description: string;
-  icon: React.ReactNode; // Digunakan sebagai ikon
+  icon: React.ReactNode;
   imageUrl: string;
+  href: string;
 }
 
 const ProgramCard: React.FC<ProgramCardProps> = ({
@@ -15,22 +17,19 @@ const ProgramCard: React.FC<ProgramCardProps> = ({
   description,
   icon,
   imageUrl,
+  href,
 }) => {
-  // Fungsi untuk mengkonversi title menjadi slug URL yang bersih
-  const slug = title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+  const t = useTranslations("ProgramCard"); // Hook untuk terjemahan
 
   return (
     // Menggunakan slug yang lebih bersih
-    <Link href={`/program/${slug}`} className="group block h-full">
+    <Link href={href} className="group block h-full">
       <div className="flex h-full flex-col rounded-lg border border-gray-100 bg-white p-0 shadow-sm transition-all duration-300 hover:border-red-700 hover:shadow-xl">
         {/* Area Foto / Gambar */}
         <div className="relative h-40 w-full overflow-hidden rounded-t-lg bg-gray-100">
           <Image
             src={imageUrl}
-            alt={`Gambar Program ${title}`}
+            alt={`${t("altText")} ${title}`} // Alt teks dinamis
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             style={{ objectFit: "cover" }}
@@ -56,7 +55,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({
 
           {/* Footer / Call to Action */}
           <span className="mt-auto inline-flex items-center font-medium text-red-600">
-            Lihat Detail Program →
+            {t("button")} →
           </span>
         </div>
       </div>

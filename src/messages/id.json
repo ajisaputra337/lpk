@@ -1,0 +1,489 @@
+{
+  "Navbar": {
+    "home": "HOME",
+    "subLogo": "Magang Jepang",
+    "contact": "KONTAK",
+    "register": "DAFTAR SEKARANG",
+    "mobileNavTitle": "NAVIGASI",
+    "program": {
+      "title": "PROGRAM",
+      "magang": "Magang Jepang",
+      "sekolah": "Sekolah di Jepang",
+      "tokutei": "Tokutei Ginou"
+    },
+    "profile": {
+      "title": "PROFIL",
+      "company": "Company Profile",
+      "visi": "Visi Misi"
+    },
+    "media": {
+      "title": "MEDIA & INFO",
+      "galeri": "Galeri",
+      "persyaratan": "Persyaratan",
+      "success": "Sukses Story",
+      "fisik": "Kegiatan Fisik Sore"
+    }
+  },
+  "Footer": {
+    "description": "Jalur sukses menuju karir impian di Jepang dengan pelatihan bahasa dan fisik terbaik.",
+    "navTitle": "Navigasi",
+    "navCompany": "Profil Perusahaan",
+    "navGallery": "Galeri",
+    "contactTitle": "Hubungi Kami",
+    "address": "Jl. Palebon VI No.5, Palebon, Kec. Pedurungan, Kota Semarang, Jawa Tengah 50199",
+    "followTitle": "Ikuti Kami",
+    "scanTiktok": "Scan untuk follow TikTok",
+    "scanInsta": "Scan untuk follow Instagram",
+    "scanLine": "Scan untuk chat via LINE"
+  },
+  "Chat": {
+    "welcome": "Halo! Saya Aishi, asisten AI LPK Aishiro. Ada yang bisa dibantu? 🇯🇵",
+    "status": "Online | Mode Server",
+    "typing": "Aishi sedang mengetik...",
+    "placeholder": "Tanya Aishi...",
+    "error": "Gagal terhubung ke server."
+  },
+  "Language": {
+    "select": "Pilih Bahasa"
+  },
+  "ProgramCard": {
+    "button": "Lihat Detail Program",
+    "altText": "Gambar Program"
+  },
+  "SuccessCard": {
+    "batch": "Angkatan",
+    "departureDate": "Tanggal Berangkat",
+    "address": "Alamat",
+    "job": "Pekerjaan",
+    "companyLocation": "Lokasi Perusahaan",
+    "unknownName": "Nama Tidak Diketahui"
+  },
+  "Profile": {
+    "title1": "Mengenal",
+    "subtitle": "Membangun Disiplin, Meraih Masa Depan",
+    "videoTitle": "Video Profil LPK Aishiro Gakuen",
+    "point1Title": "Legalitas & Kepercayaan",
+    "point1Desc": "Didirikan sejak 2009, dipercaya Disnaker dan menjadi pendamping LPTKS.",
+    "point2Title": "Fokus Penempatan Kerja",
+    "point2Desc": "Spesialisasi di Jepang (Magang Teknik).",
+    "point3Title": "Mental Disiplin (Kibishii)",
+    "point3Desc": "Menyiapkan siswa dengan etos kerja, kedisiplinan, dan kemandirian tinggi.",
+    "desc1": ", berdiri sejak tahun 2009 di Semarang, Jawa Tengah, berdedikasi dalam pendidikan dan pelatihan kerja. Dengan izin resmi dari Dinas Tenaga Kerja dan Dinas Pendidikan, misi utama kami adalah meningkatkan kualitas dan keterampilan usia kerja.",
+    "desc2": "Kepercayaan dari pemerintah tercermin melalui penetapan kami sebagai penyelenggara kegiatan subsidi program gratis oleh Dinas Tenaga Kerja Provinsi Jawa Tengah.",
+    "descHighlight": "Ini adalah tolak ukur kualitas pelatihan yang kami jamin.",
+    "goalTitle": "Tujuan Kami: Kokoro Gamae (Mental Kuat)",
+    "goalDesc": "Tujuan utama lembaga adalah menyiapkan generasi muda yang siap kerja dengan mengedepankan peraturan kedisiplinan. Siswa dilatih sejak dini untuk hidup mandiri, disiplin, dan peduli terhadap lingkungan."
+  },
+  "HomePage": {
+    "heroTitle": "Wujudkan <yellow>Mimpimu</yellow> Belajar & Berkarir di <red>Jepang</red>",
+    "heroSubtitle": "Bersama Aishiro Gakuen, Gapailah Masa Depan Gemilang.",
+    "programSectionTitle": "Program Unggulan Kami",
+    "successSub": "Mereka yang Sukses di <red>Jepang</red>",
+    "seeMore": "Lihat Selengkapnya",
+    "mapSubtitle": "Temukan Lokasi Kami",
+    "addressDescription": "Anda dapat mengunjungi kami di lokasi berikut untuk konsultasi atau pendaftaran langsung.",
+    "addressTitle": "Informasi Alamat",
+    "addressInfo": "Jl. Palebon VI No.5, Palebon, Kec. Pedurungan, Kota Semarang, Jawa Tengah 50199",
+    "qualityQuote": "Kualitas pendidikan adalah prioritas utama kami dalam membangun masa depan Anda.",
+    "companyName": "LPK Aishiro Gakuen"
+  },
+  "Programs": {
+    "program1": {
+      "title": "Magang Jepang",
+      "desc": "Panduan lengkap tahapan magang kerja di Jepang."
+    },
+    "program2": {
+      "title": "Sekolah Jepang",
+      "desc": "Tahapan sekolah hingga pemberangkatan."
+    },
+    "program3": {
+      "title": "Tokutei Ginou",
+      "desc": "Persiapan intensif untuk pekerja berketerampilan spesifik."
+    }
+  },
+  "Metadata": {
+    "title": "LPK Aishiro Gakuen - Pelatihan Magang ke Jepang",
+    "description": "Lembaga terpercaya di Semarang sejak 2014..."
+  },
+  "MagangPage": {
+    "metadata": {
+      "title": "Alur Program Magang Jepang 5 Tahap | LPK Aishiro Gakuen",
+      "description": "Pahami 5 Tahap lengkap Program Magang Jepang, mulai dari seleksi awal hingga penempatan kerja."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Alur Magang Jepang"
+    },
+    "hero": {
+      "title": "Alur Program Magang Jepang",
+      "subtitle": "Pelajari setiap tahapan secara detail, mulai dari persiapan awal di Indonesia hingga penempatan kerja Anda di Jepang."
+    },
+    "timeline": {
+      "title": "5 Tahap Menuju Karir di Jepang",
+      "step1": {
+        "title": "Tahap 1: Seleksi & Orientasi Awal",
+        "desc": "Pendaftaran, wawancara, dan tes fisik awal. Penjelasan detail mengenai komitmen, biaya, dan kontrak kerja di Jepang."
+      },
+      "step2": {
+        "title": "Tahap 2: Pelatihan Bahasa & Budaya Intensif",
+        "desc": "Fokus utama pada penguasaan bahasa Jepang (Level N5), pelatihan fisik sore yang disiplin, dan pengenalan etos kerja."
+      },
+      "step3": {
+        "title": "Tahap 3: Tes Kemampuan (Skill Test)",
+        "desc": "Ujian kemampuan fisik dan bahasa Jepang formal. Dilanjutkan dengan wawancara kerja teknis dengan perusahaan Jepang."
+      },
+      "step4": {
+        "title": "Tahap 4: Pengurusan Dokumen & Visa",
+        "desc": "Setelah mendapatkan kepastian kerja, fokus pada persiapan dokumen keberangkatan, pengurusan CoE, dan aplikasi visa kerja."
+      },
+      "step5": {
+        "title": "Tahap 5: Keberangkatan & Penempatan Kerja",
+        "desc": "Keberangkatan ke Jepang, penjemputan oleh pihak perusahaan, dan penempatan di lokasi kerja. Kontrak magang 3 tahun."
+      }
+    },
+    "visual": {
+      "title": "Visualisasi Diagram Alur",
+      "desc1": "Alur Pendidikan dan Pelatihan Aishiro Gakuen",
+      "desc2": "Alur Pendidikan dan Pelatihan IM JAPAN"
+    }
+  },
+  "SekolahPage": {
+    "metadata": {
+      "title": "Program Sekolah Bahasa & Studi di Jepang | LPK Aishiro Gakuen",
+      "description": "Gerbang menuju pendidikan tinggi dan karir global melalui sekolah bahasa di Jepang."
+    },
+    "hero": {
+      "badge": "Program Studi",
+      "title": "Program Sekolah Bahasa dan Studi di Jepang",
+      "subheading": "Gerbang Anda Menuju Pendidikan Tinggi dan Karir Global",
+      "cta": "Daftar & Konsultasi Sekarang"
+    },
+    "about": {
+      "title": "Mengenai Program",
+      "desc": "Program ini dirancang untuk siswa yang ingin melanjutkan studi bahasa Jepang di sekolah bahasa (Gakkou) sebelum melanjutkan ke universitas, Vokasi, atau mencari pekerjaan di Jepang.",
+      "advantageTitle": "Keunggulan Program Sekolah di Jepang",
+      "advantages": [
+        "Jalur resmi menuju pendidikan tinggi (Universitas/Vokasi) di Jepang.",
+        "Bisa sambil bekerja paruh waktu (Part-time job) untuk menutupi biaya hidup.",
+        "Mendapatkan kemampuan Bahasa Jepang tingkat tinggi (N2/N1).",
+        "Dukungan penuh adaptasi dan pencarian akomodasi di Jepang."
+      ],
+      "noteTitle": "Catatan Penting:",
+      "noteDesc": "Calon siswa harus mempersiapkan dana biaya hidup dan sekolah yang mencukupi sesuai persyaratan Imigrasi Jepang."
+    },
+    "facts": {
+      "title": "Fakta Singkat",
+      "durationLabel": "Durasi Studi:",
+      "durationValue": "1 - 2 Tahun",
+      "goalLabel": "Tujuan Akhir:",
+      "goalValue": "Universitas/Vokasi/Kerja",
+      "langLabel": "Level Bahasa Awal:",
+      "langValue": "Tidak wajib (akan dilatih)"
+    },
+    "stages": {
+      "badge": "Jalur Resmi",
+      "title": "Tahapan Menjadi Siswa di Jepang",
+      "step": "Langkah",
+      "list": [
+        {
+          "title": "Konsultasi & Pendaftaran",
+          "desc": "Diskusi mendalam mengenai tujuan studi, pemilihan sekolah bahasa yang sesuai, dan pengumpulan dokumen awal."
+        },
+        {
+          "title": "Persiapan Dokumen & Visa",
+          "desc": "Bantuan penuh dalam mempersiapkan semua dokumen yang diperlukan (Ijazah, Bank Statement, COE), dan aplikasi visa pelajar."
+        },
+        {
+          "title": "Pelatihan Intensif Bahasa",
+          "desc": "Pelatihan bahasa Jepang dan persiapan JLPT/J-Test di LPK Aishiro Gakuen hingga mencapai level N5/N4."
+        },
+        {
+          "title": "Keberangkatan & Orientasi",
+          "desc": "Pengurusan tiket, penjemputan di bandara Jepang, dan orientasi awal mengenai kehidupan dan part-time job."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Siap Wujudkan Mimpi Sekolah di Jepang?",
+      "desc": "Jangan tunda lagi! Konsultasikan rencana studi Anda bersama tim profesional kami hari ini.",
+      "button": "Hubungi Kami via WhatsApp"
+    }
+  },
+  "TokuteiPage": {
+    "metadata": {
+      "title": "Program Tokutei Ginou (SSW) Jepang | LPK Aishiro Gakuen",
+      "description": "Jalur resmi kerja profesional di Jepang dengan keterampilan khusus (SSW). Gaji kompetitif dan perlindungan hukum."
+    },
+    "hero": {
+      "badge": "Program Kerja Jepang",
+      "title": "Program Tokutei Ginou (SSW) Jepang",
+      "subheading": "Jalur Resmi Kerja Profesional di Jepang dengan Skill Spesifik",
+      "cta": "Konsultasi Tokutei Ginou"
+    },
+    "about": {
+      "title": "Apa itu Tokutei Ginou?",
+      "desc": "Program Tokutei Ginou (Specified Skilled Worker/SSW) adalah skema resmi pemerintah Jepang bagi tenaga kerja asing yang memiliki keterampilan khusus. Program ini membuka peluang kerja legal di berbagai sektor industri dengan gaji kompetitif, kontrak jelas, dan perlindungan hukum.",
+      "advantageTitle": "Mengapa Memilih Tokutei Ginou?",
+      "advantages": [
+        "Visa Kerja Resmi Tokutei Ginou (SSW) dari Pemerintah Jepang.",
+        "Pilihan sektor luas: manufaktur, makanan, konstruksi, perhotelan, kaigo, dan lainnya.",
+        "Gaji kompetitif setara tenaga kerja Jepang.",
+        "Kontrak kerja jelas dengan perlindungan hukum.",
+        "Peluang kerja jangka panjang dan perpanjangan visa."
+      ],
+      "noteTitle": "Persyaratan Umum:",
+      "noteDesc": "Peserta wajib lulus ujian bahasa Jepang dan ujian keterampilan sesuai bidang Tokutei Ginou serta siap beradaptasi dengan budaya kerja Jepang."
+    },
+    "sidebar": {
+      "title": "Detail Karir",
+      "visaLabel": "Jenis Visa:",
+      "visaValue": "Tokutei Ginou (SSW)",
+      "sectorLabel": "Sektor:",
+      "sectorValue": "Multi Sektor",
+      "salaryLabel": "Estimasi Gaji:",
+      "salaryValue": "¥180K - ¥250K / bulan",
+      "langLabel": "Level Bahasa:",
+      "langValue": "N4"
+    },
+    "stages": {
+      "badge": "Jalur Kerja Legal",
+      "title": "Proses Menjadi Pekerja Tokutei Ginou",
+      "step": "Langkah",
+      "list": [
+        {
+          "title": "Seleksi & Administrasi",
+          "desc": "Pendaftaran, seleksi awal, wawancara, serta pengurusan dokumen dan kontrak pelatihan sesuai standar Tokutei Ginou."
+        },
+        {
+          "title": "Pelatihan Bahasa & Skill",
+          "desc": "Pelatihan Bahasa Jepang hingga level minimal N4 serta pelatihan keterampilan teknis sesuai sektor yang dipilih."
+        },
+        {
+          "title": "Ujian Skill & Bahasa",
+          "desc": "Mengikuti ujian keterampilan Tokutei Ginou dan ujian bahasa Jepang (JLPT/JFT-Basic) sebagai syarat kerja."
+        },
+        {
+          "title": "Penempatan & Pemberangkatan",
+          "desc": "Pengurusan visa Tokutei Ginou (SSW) dan penempatan kerja resmi di perusahaan Jepang sesuai bidang."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Kerja Resmi di Jepang lewat Tokutei Ginou",
+      "desc": "Pelatihan terarah, jalur legal, dan peluang kerja nyata di berbagai sektor industri Jepang.",
+      "button": "Daftar Tokutei Ginou Sekarang"
+    }
+  },
+  "CompanyProfile": {
+    "metadata": {
+      "title": "Profil Perusahaan - LPK Aishiro Gakuen",
+      "description": "Profil LPK Aishiro Gakuen — legalitas, misi, fasilitas, dan layanan Magang Jepang."
+    },
+    "header": {
+      "title": "Profil Perusahaan",
+      "subtitle": "LPK Aishiro Gakuen",
+      "intro": "LPK AISHIRO GAKUEN adalah lembaga pelatihan bahasa Jepang yang bergerak di bidang pemagangan ke Jepang, berdiri sejak 2009 dan pada 2018 mendapatkan izin sebagai Sending Organization. Terakreditasi LA-LPK Nomor: 224/LALPK/XI/2024."
+    },
+    "philosophy": {
+      "trust": "Atas kepercayaan masyarakat, LPK AISHIRO GAKUEN telah meluluskan banyak peserta magang yang berangkat ke Jepang. Setelah kembali ke Indonesia, banyak alumni yang memanfaatkan keterampilan dan pengalaman untuk membuka usaha mandiri di berbagai sektor.",
+      "vision": {
+        "title": "Visi",
+        "jp": "目標",
+        "desc": "Menjadi lembaga pendidikan dan pelatihan yang profesional, mandiri, dan berkarakter.",
+        "subDesc": "専門的、独立的、そして性格的に優秀な教育訓練機関になり"
+      },
+      "mission": {
+        "title": "Misi",
+        "jp": "使命",
+        "list": [
+          "Menyelenggarakan program pendidikan dan pelatihan bahasa Jepang secara profesional.",
+          "Mendidik generasi muda agar memiliki semangat kerja tinggi, disiplin, dan mandiri.",
+          "Meningkatkan hubungan kerjasama bidang tenaga kerja antara Indonesia dan Jepang."
+        ]
+      },
+      "goals": {
+        "title": "Tujuan",
+        "jp": "目的",
+        "list": [
+          "Menyiapkan peserta didik menjadi anggota masyarakat yang mampu menerapkan dan mengembangkan wawasan dunia kerja.",
+          "Menghasilkan lulusan yang berkarakter dan memiliki komitmen tinggi terhadap masyarakat."
+        ]
+      }
+    },
+    "sections": {
+      "structure": {
+        "title": "Struktur Organisasi",
+        "desc": "Struktur organisasi LPK terdiri dari Direksi, Tim Pendidikan & Pelatihan, Tim Administrasi, dan Tim Hubungan Internasional. (Bagan organisasi dapat ditambahkan di sini.)"
+      },
+      "facilities": {
+        "title": "Fasilitas",
+        "list": [
+          "Ruang kelas ber-AC dan fasilitas audio visual",
+          "Laboratorium bahasa & materi pembelajaran interaktif",
+          "Ruang konsultasi karir dan persiapan dokumen"
+        ]
+      },
+      "stats": {
+        "title": "Statistik",
+        "alumni": "Alumni",
+        "permit": "Izin Sending Org"
+      },
+      "services": {
+        "title": "Layanan",
+        "list": [
+          "Pelatihan Bahasa Jepang intensif",
+          "Pendampingan proses aplikasi magang",
+          "Persiapan dokumen dan pengurusan izin"
+        ]
+      },
+      "legality": {
+        "title": "Legalitas & Akreditasi",
+        "list": [
+          "Didirikan: 2009",
+          "Terakreditasi: LA-LPK Nomor 224/LALPK/XI/2024",
+          "Izin: Sending Organization (Sejak 2018)"
+        ]
+      }
+    },
+    "sidebar": {
+      "infoTitle": "Informasi Perusahaan",
+      "table": {
+        "name": "Nama",
+        "address": "Alamat",
+        "phone": "Telepon",
+        "email": "Email",
+        "year": "Tahun berdiri",
+        "accreditation": "Akreditasi",
+        "alumni": "Alumni"
+      },
+      "quickLinks": "Tautan Cepat"
+    }
+  },
+  "VisiMisi": {
+    "metadata": {
+      "title": "Visi, Misi, dan Tujuan | LPK Aishiro Gakuen",
+      "description": "Pelajari Visi, Misi, dan Tujuan LPK Aishiro Gakuen dalam mewujudkan lulusan yang profesional, mandiri, dan berkarakter untuk berkarir di Jepang.",
+      "ogTitle": "Visi, Misi, dan Tujuan LPK Aishiro Gakuen",
+      "ogDesc": "Menjadikan lembaga pendidikan dan pelatihan yang profesional, mandiri dan berkarakter."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Visi Misi Lembaga"
+    },
+    "title": "Visi, Misi, dan Tujuan Lembaga",
+    "visi": {
+      "label": "Visi",
+      "text": "Menjadikan lembaga pendidikan dan pelatihan yang profesional, mandiri dan berkarakter.",
+      "imgAlt": "Kereta Cepat Shinkansen, melambangkan masa depan dan profesionalisme"
+    },
+    "misi": {
+      "label": "Misi",
+      "list": [
+        "Menyelenggarakan program pendidikan dan pelatihan bahasa Jepang secara profesional.",
+        "Mendidik generasi muda agar memiliki semangat kerja yang tinggi, disiplin, dan mandiri.",
+        "Meningkatkan hubungan kerjasama bidang tenaga kerja antara Indonesia dan Jepang."
+      ]
+    },
+    "tujuan": {
+      "label": "Tujuan",
+      "list": [
+        "Menyiapkan peserta didik menjadi anggota masyarakat yang mampu menerapkan dan mengembangkan wawasan dunia kerja.",
+        "Menghasilkan lulusan yang berkarakter dan memiliki komitmen yang tinggi terhadap masyarakat."
+      ]
+    }
+  },
+  "SuccessStory": {
+    "loading": "Memuat Kisah Sukses...",
+    "header": {
+      "badge": "Hall of Fame",
+      "title": "Kisah Sukses",
+      "subtitle": "Alumni",
+      "totalDesc": "Total {count} siswa telah sukses berkarir di Jepang"
+    },
+    "filter": {
+      "label": "Urutkan",
+      "default": "Default",
+      "batchDesc": "Angkatan (Terbaru)",
+      "batchAsc": "Angkatan (Terkecil)",
+      "nameAZ": "Nama (A - Z)",
+      "nameZA": "Nama (Z - A)"
+    },
+    "loadMore": "LIHAT ALUMNI LAINNYA",
+    "allLoaded": "Semua alumni telah ditampilkan"
+  },
+  "Gallery": {
+    "header": {
+      "title": "Galeri Aishiro Gakuen",
+      "subtitle": "Klik foto untuk melihat detail kegiatan dan cerita lengkapnya."
+    },
+    "card": {
+      "defaultDesc": "Dokumentasi kegiatan pelatihan LPK Aishiro Gakuen.",
+      "detailBtn": "DETAIL"
+    },
+    "status": {
+      "loading": "Memuat Galeri...",
+      "empty": "Belum ada foto kegiatan."
+    }
+  },
+  "Requirements": {
+    "metadata": {
+      "title": "Persyaratan Magang Jepang | LPK Aishiro Gakuen",
+      "description": "Persyaratan lengkap untuk program magang ke Jepang melalui LPK Aishiro Gakuen."
+    },
+    "mainTitle": "Persyaratan Magang Jepang 2026",
+    "subTitle": "( SO / SWASTA )",
+    "sections": {
+      "special": {
+        "title": "Persyaratan Khusus",
+        "items": [
+          "Pria / Wanita, usia minimal 18 s/d 27 tahun",
+          "Tidak buta warna (total/parsial), dan berkaca mata/kontak lens",
+          "Tidak bertato atau bekas tato",
+          "Tidak bertindik atau bekas tindik",
+          "Bersemangat dan bersedia belajar Bahasa Jepang di LPK."
+        ]
+      },
+      "admin": {
+        "title": "Persyaratan Administrasi",
+        "items": [
+          "Foto Copy KTP, KK, Akte Kelahiran",
+          "Ijazah dan Transkrip SD sampai terakhir.",
+          "SKCK (diurus di Polres)",
+          "Kartu Kuning (AK1) diurus di Disnaker setempat",
+          "Surat Ijin Orang Tua / Wali (Ada Format di LPK, bermaterai)",
+          "Pas poto 4x6 dan 3x4 @ 3 lembar / Soft-File"
+        ]
+      }
+    },
+    "cta": {
+      "text": "Sudah memenuhi persyaratan? Segera daftarkan diri Anda!",
+      "button": "Daftar Sekarang"
+    }
+  },
+  "SuccessStoryPage": {
+    "loading": "Memuat Kisah Sukses...",
+    "header": {
+      "badge": "Hall of Fame",
+      "title": "Kisah Sukses",
+      "subtitle": "Alumni",
+      "totalDesc": "Total {count} siswa telah sukses berkarir di Jepang"
+    },
+    "filter": {
+      "label": "Urutkan",
+      "default": "Default",
+      "batchDesc": "Angkatan (Terbaru)",
+      "batchAsc": "Angkatan (Terkecil)",
+      "nameAZ": "Nama (A - Z)",
+      "nameZA": "Nama (Z - A)"
+    },
+    "loadMore": "LIHAT ALUMNI LAINNYA",
+    "allLoaded": "Semua alumni telah ditampilkan"
+  },
+  "GalleryDetail": {
+    "back": "Kembali ke Galeri",
+    "loading": "Memuat Detail...",
+    "notFound": "Data tidak ditemukan.",
+    "category": "Liputan Kegiatan",
+    "noDescription": "Tidak ada deskripsi tambahan untuk kegiatan ini."
+  }
+}

@@ -29,6 +29,7 @@
     "@t3-oss/env-nextjs": "^0.12.0",
     "lucide-react": "^0.556.0",
     "next": "^15.2.3",
+    "next-intl": "^4.7.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icon": "^1.0.0",

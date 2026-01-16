@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "../../../lib/supabase";
-import SuccessStoryCard from "../../../styles/components/SuccessStoryCard";
+import SuccessStoryCard from "../../profil/ssc/SuccessStoryCard";
+import { supabase } from "../../../../lib/supabase";
 import { Loader2, Plus, Filter } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface Alumni {
   id: number;
@@ -19,12 +20,12 @@ interface Alumni {
 type SortOption = "default" | "batch-desc" | "batch-asc" | "name-az" | "name-za";
 
 export default function SuccessStoryPage() {
+  const t = useTranslations("SuccessStoryPage");
+
   const [alumniData, setAlumniData] = useState<Alumni[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [sortBy, setSortBy] = useState<SortOption>("default");
-
-  // Kita mulai dengan nampilin 24 data (3 baris di grid 8)
   const [visibleCount, setVisibleCount] = useState(24);
 
   useEffect(() => {
@@ -36,30 +37,26 @@ export default function SuccessStoryPage() {
         .order("angkatan", { ascending: false });
 
       if (error) {
-        console.error("Gagal ambil data:", error.message);
-      } else {
-        if (data) {
-          setAlumniData(
-            data.map((item: any) => ({
-              ...item,
-              tanggalBerangkat: item.tanggalLahir,
-            }))
-          );
-        } else {
-          setAlumniData([]);
-        }
+        console.error("Error fetching data:", error.message);
+      } else if (data) {
+        setAlumniData(
+          data.map((item: any) => ({
+            ...item,
+            // Fallback jika nama kolom di database sedikit berbeda
+            tanggalBerangkat: item.tanggalBerangkat || item.tanggalLahir,
+          }))
+        );
       }
       setLoading(false);
     };
 
-    fetchData().catch((e) => console.error(e));
+    fetchData();
   }, []);
 
   const handleLoadMore = () => {
     setLoadingMore(true);
-    // Simulasi delay dikit biar smooth pas loading
     setTimeout(() => {
-      setVisibleCount((prev) => prev + 24); // Tambah 24 data lagi
+      setVisibleCount((prev) => prev + 24);
       setLoadingMore(false);
     }, 500);
   };
@@ -67,18 +64,11 @@ export default function SuccessStoryPage() {
   const getSortedData = () => {
     const sorted = [...alumniData];
     switch (sortBy) {
-      case "default":
-        return sorted; // Original fetch order (angkatan DESC)
-      case "batch-desc":
-        return sorted.sort((a, b) => b.angkatan - a.angkatan);
-      case "batch-asc":
-        return sorted.sort((a, b) => a.angkatan - b.angkatan);
-      case "name-az":
-        return sorted.sort((a, b) => (a.nama || "").localeCompare(b.nama || ""));
-      case "name-za":
-        return sorted.sort((a, b) => (b.nama || "").localeCompare(a.nama || ""));
-      default:
-        return sorted;
+      case "batch-desc": return sorted.sort((a, b) => b.angkatan - a.angkatan);
+      case "batch-asc": return sorted.sort((a, b) => a.angkatan - b.angkatan);
+      case "name-az": return sorted.sort((a, b) => (a.nama || "").localeCompare(b.nama || ""));
+      case "name-za": return sorted.sort((a, b) => (b.nama || "").localeCompare(a.nama || ""));
+      default: return sorted;
     }
   };
 
@@ -86,28 +76,28 @@ export default function SuccessStoryPage() {
 
   if (loading) {
     return (
-      <div className="flex h-screen flex-col items-center justify-center gap-4">
+      <div className="flex h-screen flex-col items-center justify-center gap-4 bg-white">
         <Loader2 className="h-10 w-10 animate-spin text-red-600" />
         <p className="font-bold tracking-widest text-slate-400 uppercase">
-          Memuat Kisah Sukses...
+          {t('loading')}
         </p>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-white px-4 py-20 font-sans">
+    <main className="min-h-screen bg-white px-4 py-24 font-sans">
       <div className="mx-auto max-w-[1600px]">
         {/* Header */}
         <div className="mb-12 text-center">
           <div className="mb-4 inline-block rounded-full bg-red-100 px-4 py-1 text-[10px] font-black tracking-[0.2em] text-red-600 uppercase">
-            Hall of Fame
+            {t('header.badge')}
           </div>
           <h1 className="mb-4 text-4xl font-black tracking-tight text-slate-900 md:text-6xl">
-            Kisah Sukses <span className="text-red-600">Alumni</span>
+            {t('header.title')} <span className="text-red-600">{t('header.subtitle')}</span>
           </h1>
           <p className="font-medium italic text-slate-500">
-            Total {alumniData.length} siswa telah sukses berkarir di Jepang
+            {t('header.totalDesc', { count: alumniData.length })}
           </p>
         </div>
 
@@ -117,7 +107,7 @@ export default function SuccessStoryPage() {
             <Filter size={18} className="text-red-500 transition-colors group-hover:text-red-600" />
             <div className="h-4 w-px bg-slate-200"></div>
             <label htmlFor="sort" className="text-[10px] font-black tracking-widest text-slate-400 uppercase">
-              Urutkan
+              {t('filter.label')}
             </label>
             <select
               id="sort"
@@ -125,16 +115,16 @@ export default function SuccessStoryPage() {
               onChange={(e) => setSortBy(e.target.value as SortOption)}
               className="cursor-pointer bg-transparent text-sm font-bold text-slate-800 outline-none"
             >
-              <option value="default">Default</option>
-              <option value="batch-desc">Angkatan (Terbaru)</option>
-              <option value="batch-asc">Angkatan (Terkecil)</option>
-              <option value="name-az">Nama (A - Z)</option>
-              <option value="name-za">Nama (Z - A)</option>
+              <option value="default">{t('filter.default')}</option>
+              <option value="batch-desc">{t('filter.batchDesc')}</option>
+              <option value="batch-asc">{t('filter.batchAsc')}</option>
+              <option value="name-az">{t('filter.nameAZ')}</option>
+              <option value="name-za">{t('filter.nameZA')}</option>
             </select>
           </div>
         </div>
 
-        {/* Cards Grid - Responsif banget */}
+        {/* Cards Grid */}
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
           {currentData.map((person) => (
             <SuccessStoryCard
@@ -150,7 +140,7 @@ export default function SuccessStoryPage() {
           ))}
         </div>
 
-        {/* Tombol Load More / Status */}
+        {/* Tombol Load More */}
         <div className="mt-20 flex flex-col items-center">
           {visibleCount < alumniData.length ? (
             <button
@@ -163,7 +153,7 @@ export default function SuccessStoryPage() {
               ) : (
                 <>
                   <Plus className="h-5 w-5 transition-transform group-hover:rotate-90" />
-                  LIHAT ALUMNI LAINNYA
+                  {t('loadMore')}
                 </>
               )}
             </button>
@@ -171,7 +161,7 @@ export default function SuccessStoryPage() {
             <div className="text-center">
               <div className="mx-auto mb-4 h-px w-20 bg-slate-200"></div>
               <p className="text-xs font-bold tracking-widest text-slate-400 uppercase">
-                Semua alumni telah ditampilkan
+                {t('allLoaded')}
               </p>
             </div>
           )}

@@ -2,16 +2,22 @@
 
 import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl"; // Tambah useLocale
 import { MessageCircle, X, Send, Bot } from "lucide-react";
 // IMPORT SERVER ACTION TADI
 import { chatWithAishi } from "../../app/actions"; 
 
 export default function FloatingChat() {
+  const t = useTranslations("Chat");
+  const locale = useLocale(); // Ambil bahasa aktif (id, jp, atau en)
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  
+  // Pesan awal diambil dari JSON
   const [messages, setMessages] = useState([
-    { role: "ai", text: "Halo! Saya Aishi, asisten AI LPK Aishiro. Ada yang bisa dibantu? 🇯🇵" }
+    { role: "ai", text: t("welcome") }
   ]);
+  
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -35,7 +41,8 @@ export default function FloatingChat() {
 
     try {
       // PANGGIL SERVER ACTION
-      const response = await chatWithAishi(userMsg);
+      // Tips: Kirim locale ke AI biar dia tau harus jawab pake bahasa apa
+      const response = await chatWithAishi(userMsg + ` (respond in ${locale} language)`);
 
       if (response.success) {
         setMessages((prev) => [...prev, { role: "ai", text: response.message }]);
@@ -43,7 +50,7 @@ export default function FloatingChat() {
         setMessages((prev) => [...prev, { role: "ai", text: response.message }]);
       }
     } catch (error) {
-      setMessages((prev) => [...prev, { role: "ai", text: "Gagal terhubung ke server." }]);
+      setMessages((prev) => [...prev, { role: "ai", text: t("error") }]);
     } finally {
       setLoading(false);
     }
@@ -65,7 +72,7 @@ export default function FloatingChat() {
               <div className="bg-white/20 p-2 rounded-full"><Bot size={20} /></div>
               <div>
                 <p className="text-sm font-bold leading-tight">Aishi AI Support</p>
-                <p className="text-[10px] opacity-80">Online | Server Mode</p>
+                <p className="text-[10px] opacity-80">{t("status")}</p>
               </div>
             </div>
             <button onClick={() => setIsOpen(false)}><X size={18}/></button>
@@ -83,7 +90,7 @@ export default function FloatingChat() {
             ))}
             {loading && (
               <p className="text-xs text-slate-400 animate-pulse ml-2 flex items-center gap-1">
-                <Bot size={12}/> Aishi sedang mengetik...
+                <Bot size={12}/> {t("typing")}
               </p>
             )}
           </div>
@@ -95,7 +102,7 @@ export default function FloatingChat() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               disabled={loading}
-              placeholder="Tanya Aishi..."
+              placeholder={t("placeholder")}
             />
             <button disabled={loading || !input.trim()} className="bg-red-600 text-white p-2 rounded-xl hover:bg-red-700 disabled:opacity-50">
               <Send size={18} />

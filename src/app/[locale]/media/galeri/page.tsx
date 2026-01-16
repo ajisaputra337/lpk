@@ -1,28 +1,37 @@
 "use client";
+
 import Link from "next/link";
 import { Camera } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { supabase } from "../../../lib/supabase"; 
+import { supabase } from "../../../../lib/supabase"; 
+import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 
-// --- INTERFACE (DITAMBAH DESCRIPTION) ---
 interface GalleryItem {
   id: string;
-  title: string;
+  title_id: string; // Kolom bahasa Indonesia
+  title_jp: string; // Kolom bahasa Jepang
   image_url: string;
-  description: string; // Tambahin ini biar gak merah
+  description_id: string;
+  description_jp: string;
   created_at: string;
 }
 
-const GalleryCard: React.FC<{ item: GalleryItem }> = ({ item }) => {
+const GalleryCard: React.FC<{ item: GalleryItem; locale: string }> = ({ item, locale }) => {
+  const t = useTranslations("Gallery.card");
+  
+  // Pilih konten berdasarkan bahasa
+  const title = locale === "jp" ? item.title_jp : item.title_id;
+  const description = locale === "jp" ? item.description_jp : item.description_id;
+
   return (
-    // BUNGKUS DENGAN LINK KE DYNAMIC ROUTE [id]
     <Link href={`/gallery/${item.id}`}>
       <div className="group relative cursor-pointer transform overflow-hidden rounded-lg border-2 border-red-100 bg-white shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
         <div className="relative h-64 w-full bg-gray-200 overflow-hidden">
           <Image
             src={item.image_url}
-            alt={item.title}
+            alt={title || "Gallery Image"}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -35,18 +44,24 @@ const GalleryCard: React.FC<{ item: GalleryItem }> = ({ item }) => {
             <span className="mr-2 rounded-full bg-red-700 p-1.5 shrink-0">
               <Camera className="h-4 w-4 text-white" />
             </span>
-            <h3 className="text-xl font-bold text-slate-900 line-clamp-1">{item.title}</h3>
+            <h3 className="text-xl font-bold text-slate-900 line-clamp-1">{title}</h3>
           </div>
           
           <p className="text-sm text-slate-600 leading-relaxed line-clamp-2 mb-3">
-            {item.description || "Dokumentasi kegiatan pelatihan LPK Aishiro Gakuen."}
+            {description || t('defaultDesc')}
           </p>
 
           <div className="flex items-center justify-between border-t border-gray-100 pt-3">
             <p className="text-[10px] uppercase tracking-wider font-bold text-gray-400">
-              {new Date(item.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+              {new Date(item.created_at).toLocaleDateString(locale === 'jp' ? 'ja-JP' : 'id-ID', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+              })}
             </p>
-            <span className="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-1 rounded">DETAIL</span>
+            <span className="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-1 rounded">
+              {t('detailBtn')}
+            </span>
           </div>
         </div>
       </div>
@@ -55,6 +70,10 @@ const GalleryCard: React.FC<{ item: GalleryItem }> = ({ item }) => {
 };
 
 const GalleryPage: React.FC = () => {
+  const t = useTranslations("Gallery");
+  const params = useParams();
+  const locale = params.locale as string;
+
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -76,6 +95,7 @@ const GalleryPage: React.FC = () => {
 
   return (
     <main className="pt-20">
+      {/* Header Section */}
       <section className="relative overflow-hidden bg-gray-900 py-16 text-white">
         <div
           className="absolute inset-0 opacity-20"
@@ -87,29 +107,31 @@ const GalleryPage: React.FC = () => {
 
         <div className="relative z-20 mx-auto max-w-7xl px-6 text-center">
           <h1 className="mb-4 inline-block border-b-4 border-red-700/50 px-4 pb-2 text-4xl font-extrabold md:text-5xl">
-            Galeri Aishiro Gakuen
+            {t('header.title')}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-300">
-            Klik foto untuk melihat detail kegiatan dan cerita lengkapnya.
+            {t('header.subtitle')}
           </p>
         </div>
       </section>
 
+      {/* Gallery Grid Section */}
       <section className="relative min-h-[400px] bg-gray-50 py-20">
         <div className="relative z-10 mx-auto max-w-7xl px-6">
           {loading ? (
             <div className="flex flex-col items-center justify-center py-20">
               <div className="h-12 w-12 animate-spin rounded-full border-4 border-red-700 border-t-transparent"></div>
+              <p className="mt-4 text-gray-500 font-bold">{t('status.loading')}</p>
             </div>
           ) : galleryItems.length > 0 ? (
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {galleryItems.map((item) => (
-                <GalleryCard key={item.id} item={item} />
+                <GalleryCard key={item.id} item={item} locale={locale} />
               ))}
             </div>
           ) : (
             <div className="text-center py-20">
-              <p className="text-gray-400">Belum ada foto kegiatan.</p>
+              <p className="text-gray-400">{t('status.empty')}</p>
             </div>
           )}
         </div>

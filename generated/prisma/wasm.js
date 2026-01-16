@@ -125,7 +125,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\KazuSann\\Coding\\remake\\lpk\\generated\\prisma",
+      "value": "C:\\KazuSann\\Coding\\remake\\lpkujicoba\\lpk\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -139,12 +139,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\KazuSann\\Coding\\remake\\lpk\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\KazuSann\\Coding\\remake\\lpkujicoba\\lpk\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.19.0",
