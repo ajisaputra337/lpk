@@ -58,7 +58,7 @@ export default function PersyaratanPage() {
                         {t('cta.text')}
                     </p>
                     <Link
-                        href="/pendaftaran"
+                        href="https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut."
                         className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-10 rounded-full transition duration-300 shadow-md transform hover:-translate-y-1 active:scale-95"
                     >
                         {t('cta.button')}

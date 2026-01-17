@@ -16,7 +16,7 @@ export default function CompanyProfilePage() {
     const t = useTranslations('CompanyProfile');
 
     return (
-        <main className="bg-white pt-24 pb-16 md:pt-28">
+        <main className="bg-white pt-30 pb-16 md:pt-35">
             <div className="mx-auto max-w-6xl px-6">
                 <header className="mb-6 text-center md:text-left">
                     <h1 className="text-3xl font-extrabold text-gray-900 md:text-4xl">
@@ -42,19 +42,16 @@ export default function CompanyProfilePage() {
                         <section className="grid grid-cols-1 gap-6 md:grid-cols-2">
                             <div className="rounded-lg border border-gray-100 bg-white p-6 shadow-sm">
                                 <h3 className="mb-3 text-2xl font-semibold text-gray-800">
-                                    {t('philosophy.vision.title')} <span className="text-red-700">{t('philosophy.vision.jp')}</span>
+                                    {t('philosophy.vision.title')}
                                 </h3>
                                 <p className="text-lg">
                                     {t('philosophy.vision.desc')}
-                                </p>
-                                <p className="mt-2 text-sm text-gray-600">
-                                    {t('philosophy.vision.subDesc')}
                                 </p>
                             </div>
 
                             <div className="rounded-lg bg-red-50 p-6 shadow-lg">
                                 <h3 className="mb-3 text-2xl font-semibold text-red-700">
-                                    {t('philosophy.mission.title')} <span className="text-gray-700">{t('philosophy.mission.jp')}</span>
+                                    {t('philosophy.mission.title')}
                                 </h3>
                                 <ul className="list-disc space-y-3 pl-5 text-lg text-gray-700">
                                     {[0, 1, 2].map((i) => (
@@ -66,7 +63,7 @@ export default function CompanyProfilePage() {
 
                         <section className="rounded-lg border border-gray-100 bg-white p-6 shadow-sm">
                             <h3 className="mb-3 text-2xl font-semibold text-gray-800">
-                                {t('philosophy.goals.title')} <span className="text-red-700">{t('philosophy.goals.jp')}</span>
+                                {t('philosophy.goals.title')}
                             </h3>
                             <ul className="list-disc space-y-3 pl-5 text-lg text-gray-700">
                                 {[0, 1].map((i) => (

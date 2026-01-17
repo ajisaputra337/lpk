@@ -288,13 +288,10 @@
       "trust": "Atas kepercayaan masyarakat, LPK AISHIRO GAKUEN telah meluluskan banyak peserta magang yang berangkat ke Jepang. Setelah kembali ke Indonesia, banyak alumni yang memanfaatkan keterampilan dan pengalaman untuk membuka usaha mandiri di berbagai sektor.",
       "vision": {
         "title": "Visi",
-        "jp": "目標",
-        "desc": "Menjadi lembaga pendidikan dan pelatihan yang profesional, mandiri, dan berkarakter.",
-        "subDesc": "専門的、独立的、そして性格的に優秀な教育訓練機関になり"
+        "desc": "Menjadi lembaga pendidikan dan pelatihan yang profesional, mandiri, dan berkarakter."
       },
       "mission": {
         "title": "Misi",
-        "jp": "使命",
         "list": [
           "Menyelenggarakan program pendidikan dan pelatihan bahasa Jepang secara profesional.",
           "Mendidik generasi muda agar memiliki semangat kerja tinggi, disiplin, dan mandiri.",
@@ -303,7 +300,6 @@
       },
       "goals": {
         "title": "Tujuan",
-        "jp": "目的",
         "list": [
           "Menyiapkan peserta didik menjadi anggota masyarakat yang mampu menerapkan dan mengembangkan wawasan dunia kerja.",
           "Menghasilkan lulusan yang berkarakter dan memiliki komitmen tinggi terhadap masyarakat."
@@ -485,5 +481,12 @@
     "notFound": "Data tidak ditemukan.",
     "category": "Liputan Kegiatan",
     "noDescription": "Tidak ada deskripsi tambahan untuk kegiatan ini."
+  },
+  "AfternoonActivityPage": {
+    "title": "Kegiatan Fisik Sore",
+    "description": "Kegiatan fisik sore adalah kegiatan yang dilakukan setelah magang di LPK Aishiro Gakuen.",
+    "subtitle": "Video Kegiatan dan Latihan",
+    "video1": "Kegiatan Fisik Sore Calon Magang LPK Aishiro",
+    "video2": "PMD Belajar Sore (Fisik Lari)"
   }
 }

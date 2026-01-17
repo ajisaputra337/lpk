@@ -48,14 +48,9 @@ const AlurMagangPage = () => {
   ];
 
   return (
-    <main className="bg-white pt-24 pb-16">
+    <main className="bg-white pt-40 pb-16">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Breadcrumb */}
-        <div className="mb-6 text-sm text-gray-500">
-          <Link href="/" className="hover:text-red-700">{t("breadcrumb.home")}</Link>
-          <span className="mx-1 text-gray-400">/</span>
-          <span className="font-semibold text-gray-700">{t("breadcrumb.current")}</span>
-        </div>
+
 
         {/* Hero Section */}
         <div className="mb-12 text-center">

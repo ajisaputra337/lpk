@@ -1,18 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
-// Data Video YouTube (ID video)
-const youtubeVideos = [
-  {
-    title: "Kegiatan Fisik Sore Calon Magang LPK Aishiro",
-    videoId: "eFWoYZvto6A", // ID video YouTube
-  },
-  {
-    title: "PMD Belajar Sore (Fisik Lari)",
-    videoId: "w4UUzPjPYTs", // ID video YouTube
-  },
-];
+
 
 // Komponen Iframe YouTube yang Responsif
 const ResponsiveYouTubeEmbed: React.FC<{ videoId: string; title: string }> = ({
@@ -36,10 +27,24 @@ const ResponsiveYouTubeEmbed: React.FC<{ videoId: string; title: string }> = ({
 );
 
 const KegiatanFisikSorePage = () => {
+  const t = useTranslations("AfternoonActivityPage");
+
+  // Data Video YouTube (ID video)
+  const youtubeVideos = [
+    {
+      title: t("video1"),
+      videoId: "eFWoYZvto6A", // ID video YouTube
+    },
+    {
+      title: t("video2"),
+      videoId: "w4UUzPjPYTs", // ID video YouTube
+    },
+  ];
+
   // Asumsi: Anda menyimpan foto grup di public/images/fisik-sore-grup.jpg
   const heroImage = {
     src: "/Images/kegiatan_fisik1.jpg",
-    alt: "Foto kegiatan fisik sore LPK Aishiro Gakuen",
+    alt: t("title"),
     width: 1200, // Tentukan lebar dan tinggi agar Next/Image bekerja
     height: 600,
   };
@@ -48,26 +53,14 @@ const KegiatanFisikSorePage = () => {
     // pt-24 untuk mengimbangi fixed header
     <main className="bg-white pt-24 pb-16">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Breadcrumb */}
-        <div className="mb-6 text-sm text-gray-500">
-          <Link href="/" className="hover:text-red-700">
-            Home
-          </Link>
-          <span className="mx-1 text-gray-400">/</span>
-          <span className="font-semibold text-gray-700">
-            Kegiatan Fisik Sore
-          </span>
-        </div>
 
         {/* Hero Visual dan Deskripsi */}
-        <div className="mb-12">
+        <div className="mb-12 pt-20">
           <h1 className="mb-4 text-center text-4xl font-extrabold text-gray-900 md:text-5xl">
-            Kegiatan Fisik Sore
+            {t("title")}
           </h1>
           <p className="mx-auto mb-8 max-w-4xl text-center text-xl text-gray-600">
-            Persiapan fisik adalah fondasi utama etos kerja Jepang. Program
-            fisik sore kami dirancang untuk membentuk mental baja, daya tahan
-            prima, dan disiplin tinggi sebelum keberangkatan.
+            {t("description")}
           </p>
 
           {/* Foto Besar di Atas */}
@@ -85,7 +78,7 @@ const KegiatanFisikSorePage = () => {
         {/* Bagian Video YouTube (Bersampingan) */}
         <div className="mt-16">
           <h2 className="mb-8 text-center text-3xl font-bold text-gray-800">
-            Video Kegiatan dan Latihan
+            {t("subtitle")}
           </h2>
 
           {/* Grid 2-Kolom Responsif */}

@@ -288,13 +288,10 @@
       "trust": "With the trust of the community, LPK AISHIRO GAKUEN has successfully sent many interns to Japan. After returning to Indonesia, many alumni utilize their skills and experience to build independent businesses across various sectors.",
       "vision": {
         "title": "Vision",
-        "jp": "目標",
-        "desc": "To become a professional, independent, and character-driven education and training institution.",
-        "subDesc": "専門的、独立的、そして性格的に優秀な教育訓練機関になり"
+        "desc": "To become a professional, independent, and character-driven education and training institution."
       },
       "mission": {
         "title": "Mission",
-        "jp": "使命",
         "list": [
           "Provide professional Japanese language education and training programs.",
           "Educate young generations to have high work ethic, discipline, and independence.",
@@ -303,7 +300,6 @@
       },
       "goals": {
         "title": "Goals",
-        "jp": "目的",
         "list": [
           "Prepare students to become members of society who can apply and develop workplace knowledge.",
           "Produce graduates with strong character and high commitment to society."
@@ -485,5 +481,12 @@
     "notFound": "Data not found.",
     "category": "Activity report",
     "noDescription": "No additional description for this activity."
+  },
+  "AfternoonActivityPage": {
+    "title": "Afternoon Physical Activity",
+    "description": "Afternoon Physical Activity is an activity that is done after the internship at LPK Aishiro Gakuen.",
+    "subtitle": "Video Activity and Training",
+    "video1": "Afternoon Physical Activities for Internship Candidates at LPK Aishiro",
+    "video2": "Afternoon Mental Discipline Training for Study (Running Exercise)"
   }
 }
