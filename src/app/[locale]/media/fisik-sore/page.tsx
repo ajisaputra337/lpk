@@ -2,8 +2,34 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
+// METADATA untuk SEO - Halaman Fisik Sore
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'AfternoonActivityPage' });
 
+  const baseUrl = "https://www.lpk-aishiro.com";
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `${baseUrl}/${locale}/media/fisik-sore`,
+      languages: {
+        'id': `${baseUrl}/id/media/fisik-sore`,
+        'en': `${baseUrl}/en/media/fisik-sore`,
+        'ja': `${baseUrl}/jp/media/fisik-sore`,
+      },
+    },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: `${baseUrl}/${locale}/media/fisik-sore`,
+      type: 'website',
+    },
+  };
+}
 
 // Komponen Iframe YouTube yang Responsif
 const ResponsiveYouTubeEmbed: React.FC<{ videoId: string; title: string }> = ({

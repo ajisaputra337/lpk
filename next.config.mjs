@@ -21,44 +21,105 @@ const nextConfig = {
   },
 
   async redirects() {
-    return [
-      { source: "/program", destination: "/#program", permanent: true },
-      { source: "/admin", destination: "/admin-lpkaishiro", permanent: true },
-      { source: "/persyaratan", destination: "/media/persyaratan", permanent: true },
-      { source: "/sample-page", destination: "/profil/company-profile", permanent: true },
-      { source: "/program-gakkou", destination: "/program/sekolah-jepang", permanent: true },
-      { source: "/alur-program-lpk-aishiro", destination: "/program/magang-jepang", permanent: true },
-      { source: "/visi-misi.php", destination: "/company-profile", permanent: true },
-      { source: "/program/jepang", destination: "/", permanent: true },
-      { source: "/2023/08", destination: "/", permanent: true },
-      { source: "/2157-2", destination: "/media/success-story", permanent: true },
-      { source: "/im-japan", destination: "/program/magang-jepang", permanent: true },
-      { source: "/sample-page/identitas-lembaga", destination: "/profil/company-profile", permanent: true },
-      { source: "/kumiai-組合", destination: "/", permanent: true },
-      { source: "/page/3", destination: "/media/galeri", permanent: true },
-      { source: "/semangat-baru-belajar-di-gedung-baru", destination: "/", permanent: true },
-      { source: "/kunjungan-dari-kumiai-jepang", destination: "/", permanent: true },
-      { source: "/program-pelatihan-bahasa-dan-budaya-jepang-siswa-smk", destination: "/", permanent: true },
-      { source: "/penandatanganan-kontrak-kerja-job-tobi-dan-tekkin", destination: "/", permanent: true },
-      { source: "/849", destination: "/", permanent: true },
-      { source: "/visi-misi-dan-tujuan-lembaga", destination: "/profil/visi-misi", permanent: true },
-      { source: "/tag/magang-jepang-2022", destination: "/", permanent: true },
-      { source: "/formulir-pendaftaran", destination: "/", permanent: true },
-      { source: "/business-trip-to-japan", destination: "/", permanent: true },
-      { source: "/program-perawat", destination: "/", permanent: true },
-      { source: "/pelatihan-job-tobi-scaffolding-perancah-bangunan", destination: "/", permanent: true },
-      { source: "/kerja-di-jepang-kenapa-tidak", destination: "/", permanent: true },
-      { source: "/tips-untuk-belajar-bahasa-jepang-yang-efektif", destination: "/", permanent: true },
-      { source: "/rahasia-sukses-orang-jepang", destination: "/", permanent: true },
-      { source: "/shikenujian-kerja-tahun-pertama-job-tobi-scaffolding", destination: "/", permanent: true },
-      { source: "/kebudayaan-dan-tradisi-jepang", destination: "/", permanent: true },
-      { source: "/sample-page/visi-misi-dan-tujuan-lembaga", destination: "/", permanent: true },
-      { source: "/tag/seiketsu", destination: "/", permanent: true },
-      { source: "/forums/forum/tentang-lpk-dan-magang-jepang", destination: "/", permanent: true },
-      { source: "/cgi-sys/suspendedpage.cgi", destination: "/", permanent: true },
-      { source: "/wp-content/uploads/2014/05/FORMULIR-PENDAFTARAN.docx", destination: "/", permanent: true },
-      { source: "/login.php", destination: "/", permanent: true },
+    // Default locale untuk redirect dari URL WordPress lama
+    const defaultLocale = 'id';
+
+    // Daftar redirect dari URL WordPress lama ke URL baru
+    // URL WordPress lama tidak memiliki locale prefix
+    // Jadi kita redirect ke URL dengan locale default
+const wordpressRedirects = [
+      // --- 1. HALAMAN PROFIL & IDENTITAS ---
+      { from: "/company-profile", to: "/profil/company-profile" },
+      { from: "/sample-page/company-profil-lpk-aishiro", to: "/profil/company-profile" },
+      { from: "/sample-page/identitas-lembaga", to: "/profil/company-profile" },
+      { from: "/identitas-lembaga", to: "/profil/company-profile" },
+      { from: "/akreditasi-la-lpk-2024", to: "/profil/company-profile" },
+      { from: "/sample-page", to: "/profil/company-profile" },
+      { from: "/visi-misi.php", to: "/profil/visi-misi" },
+      { from: "/visi-misi-dan-tujuan-lembaga", to: "/profil/visi-misi" },
+      { from: "/sample-page/visi-misi-dan-tujuan-lembaga", to: "/profil/visi-misi" },
+      { from: "/persyaratan", to: "/media/persyaratan" },
+
+      // --- 2. HALAMAN PROGRAM ---
+      { from: "/program-gakkou", to: "/program/sekolah-jepang" },
+      { from: "/im-japan", to: "/program/magang-jepang" },
+      { from: "/alur-program-lpk-aishiro", to: "/program/magang-jepang" },
+      { from: "/program/jepang", to: "/program/magang-jepang" },
+      { from: "/job-tersedia-di-lpk-aishiro", to: "/program/tokutei-ginou" },
+      { from: "/program-ssw", to: "/program/tokutei-ginou" },
+      { from: "/program-perawat", to: "/" },
+      { from: "/program", to: "/program/magang-jepang" },
+
+      // --- 3. SUCCESS STORIES (Testimoni & Keberangkatan) ---
+      { from: "/2157-2", to: "/media/success-story" },
+      { from: "/2325-2", to: "/media/success-story" },
+      { from: "/keberangkatan-14", to: "/media/success-story" },
+      { from: "/sukses-story-di-jepang", to: "/media/success-story" },
+      { from: "/sukses-story-di-jepang-2", to: "/media/success-story" },
+      { from: "/galeri/alumni/sukses-story-di-jepang", to: "/media/success-story" },
+      { from: "/galeri/alumni", to: "/media/success-story" },
+      { from: "/penandatanganan-kontrak-kerja-job-tobi-dan-tekkin", to: "/media/success-story" },
+
+      // --- 4. MEDIA & EVENT SPESIFIK ---
+      { from: "/kegiatan-fisik-sore-lpk-aishiro", to: "/media/fisik-sore" },
+      { from: "/galeri/kegiatan-magang-jepang-lpk", to: "/media/galeri" },
+      { from: "/foto-kegiatan", to: "/media/galeri" },
+      { from: "/kunjungan-direktur-binalavogan-kementrian-tenaga-kerja-dan-kepala-bbpvp-kota-semarang", to: "/media/galeri" },
+      { from: "/pelatihan-job-tobi-scaffolding-perancah-bangunan", to: "/media/galeri" },
+      { from: "/kunjungan-perusahaan-jepang-dan-wawancara", to: "/media/galeri" },
+      { from: "/kunjungan-dari-disnaker-kabupaten-sleman", to: "/media/galeri" },
+      { from: "/kunjungan-kadin-provinsi-jateng-ke-lpk-aishiro-gakuen", to: "/media/galeri" },
+      { from: "/job-matching-lpk-aishiro-gakuen-di-nagoya-jepang", to: "/media/galeri" },
+      { from: "/kunjungan-dari-kumiai-jepang", to: "/media/galeri" },
+      { from: "/kunjungan-dari-kumiai-dan-wawancara-job", to: "/media/galeri" },
+      { from: "/semangat-baru-belajar-di-gedung-baru", to: "/media/galeri" },
+
+      // --- 5. MAPPING TAG SPESIFIK ---
+      { from: "/tag/persyaratan-magang-jepang", to: "/media/persyaratan" },
+      { from: "/tag/persyaratan-kerja-dijepang", to: "/media/persyaratan" },
+      { from: "/tag/sekolah-di-jepang", to: "/program/sekolah-jepang" },
+      { from: "/tag/sukses-di-jepang", to: "/media/success-story" },
+      { from: "/tag/sukses", to: "/media/success-story" },
+      { from: "/tag/im-japan", to: "/program/magang-jepang" },
+
+      // --- 6. CATCH-ALL (Wildcards / Penyelamat 404) ---
+      { from: "/tag/:path*", to: "/media/galeri" },
+      { from: "/category/:path*", to: "/media/galeri" },
+      { from: "/blog/:path*", to: "/media/galeri" },
+      { from: "/galeri/:path*", to: "/media/galeri" },
+      { from: "/page/:path*", to: "/media/galeri" },
+      { from: "/post-archive/:path*", to: "/media/galeri" },
+
+      // --- 7. FALLBACK & CLEANUP ---
+      { from: "/formulir-pendaftaran", to: "/" },
+      { from: "/login.php", to: "/login" },
+      { from: "/forum/:path*", to: "/" },
+      { from: "/topic/:path*", to: "/" },
+      { from: "/wpgform/:path*", to: "/" },
+      { from: "/849", to: "/" },
+      { from: "/k", to: "/" },
+      { from: "/addl-sitemap.xml", to: "/sitemap.xml" },
+      { from: "/post-sitemap.xml", to: "/sitemap.xml" },
+      { from: "/page-sitemap.xml", to: "/sitemap.xml" },
+      { from: "/category-sitemap.xml", to: "/sitemap.xml" },
+      { from: "/post_tag-sitemap.xml", to: "/sitemap.xml" },
+      { from: "/wp-content/uploads/2014/05/FORMULIR-PENDAFTARAN.docx", to: "/" },
     ];
+    
+    
+    // Generate redirects dengan locale prefix di destination
+    const redirectsWithLocale = wordpressRedirects.map(({ from, to }) => ({
+      source: from,
+      destination: to === "/" ? `/${defaultLocale}` : `/${defaultLocale}${to}`,
+      permanent: true,
+    }));
+
+    // Redirects internal (admin, dll) - tidak perlu locale
+    const internalRedirects = [
+      { source: "/admin", destination: "/admin-lpkaishiro", permanent: true },
+    ];
+
+    return [...redirectsWithLocale, ...internalRedirects];
   },
 };
 

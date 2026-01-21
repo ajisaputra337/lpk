@@ -1,220 +1,36 @@
-"use client";
+import { getTranslations } from 'next-intl/server';
+import SuccessStoryClient from './SuccessStoryClient';
 
-import { useState, useEffect, useRef } from "react";
-import SuccessStoryCard from "../../profil/ssc/SuccessStoryCard";
-import { supabase } from "../../../../lib/supabase";
-import { Loader2, Plus, Filter, ChevronDown, Check } from "lucide-react";
-import { useTranslations } from "next-intl";
+// METADATA untuk SEO - Halaman Success Story
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'SuccessStoryPage' });
 
-interface Alumni {
-  id: number;
-  nama: string;
-  angkatan: number;
-  tanggalBerangkat: string;
-  alamat: string;
-  job: string;
-  lokasi_perusahaan: string;
-  img?: string;
+  const baseUrl = "https://www.lpk-aishiro.com";
+  const title = `${t('header.title')} ${t('header.subtitle')} | LPK Aishiro Gakuen`;
+  const description = "Kisah sukses alumni LPK Aishiro Gakuen yang berhasil berkarir di Jepang melalui program magang dan tokutei ginou.";
+
+  return {
+    title: title,
+    description: description,
+    alternates: {
+      canonical: `${baseUrl}/${locale}/media/success-story`,
+      languages: {
+        'id': `${baseUrl}/id/media/success-story`,
+        'en': `${baseUrl}/en/media/success-story`,
+        'ja': `${baseUrl}/jp/media/success-story`,
+      },
+    },
+    openGraph: {
+      title: title,
+      description: description,
+      url: `${baseUrl}/${locale}/media/success-story`,
+      type: 'website',
+    },
+  };
 }
 
-type SortOption = "batch-desc" | "batch-asc" | "name-az" | "name-za";
-
+// Page sebagai Server Component yang merender Client Component
 export default function SuccessStoryPage() {
-  const t = useTranslations("SuccessStoryPage");
-
-  const [alumniData, setAlumniData] = useState<Alumni[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [loadingMore, setLoadingMore] = useState(false);
-  const [sortBy, setSortBy] = useState<SortOption>("batch-desc");
-  const [visibleCount, setVisibleCount] = useState(24);
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  const sortOptions: { value: SortOption; label: string }[] = [
-    { value: "batch-desc", label: t('filter.batchDesc') },
-    { value: "batch-asc", label: t('filter.batchAsc') },
-    { value: "name-az", label: t('filter.nameAZ') },
-    { value: "name-za", label: t('filter.nameZA') },
-  ];
-
-  const currentLabel = sortOptions.find(opt => opt.value === sortBy)?.label;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from("success_story")
-        .select("*")
-        .order("angkatan", { ascending: false });
-
-      if (error) {
-        console.error("Error fetching data:", error.message);
-      } else if (data) {
-        setAlumniData(
-          data.map((item: any) => ({
-            ...item,
-            tanggalBerangkat: item.tanggalBerangkat || item.tanggalLahir,
-          }))
-        );
-      }
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  const handleLoadMore = () => {
-    setLoadingMore(true);
-    setTimeout(() => {
-      setVisibleCount((prev) => prev + 24);
-      setLoadingMore(false);
-    }, 500);
-  };
-
-  const getSortedData = () => {
-    const sorted = [...alumniData];
-    switch (sortBy) {
-      case "batch-desc": return sorted.sort((a, b) => b.angkatan - a.angkatan);
-      case "batch-asc": return sorted.sort((a, b) => a.angkatan - b.angkatan);
-      case "name-az": return sorted.sort((a, b) => (a.nama || "").localeCompare(b.nama || ""));
-      case "name-za": return sorted.sort((a, b) => (b.nama || "").localeCompare(a.nama || ""));
-      default: return sorted;
-    }
-  };
-
-  const currentData = getSortedData().slice(0, visibleCount);
-
-  if (loading) {
-    return (
-      <div className="flex h-screen flex-col items-center justify-center gap-4 bg-white">
-        <Loader2 className="h-10 w-10 animate-spin text-red-600" />
-        <p className="font-bold tracking-widest text-slate-400 uppercase">
-          {t('loading')}
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <main className="min-h-screen bg-white px-4 py-24 font-sans">
-      <div className="mx-auto max-w-[1600px]">
-        {/* Header */}
-        <div className="mb-12 pt-10 text-center">
-
-          <h1 className="mb-4 text-4xl font-black tracking-tight text-slate-900 md:text-6xl">
-            {t('header.title')} <span className="text-red-600">{t('header.subtitle')}</span>
-          </h1>
-          <p className="font-medium italic text-slate-500">
-            {t('header.totalDesc', { count: alumniData.length })}
-          </p>
-        </div>
-
-        {/* Sort Controls */}
-        <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={`group flex items-center gap-3 rounded-2xl border-2 bg-white px-5 py-2.5 text-slate-600 shadow-sm transition-all hover:shadow-md ${isOpen ? 'border-red-500 ring-2 ring-red-100' : 'border-slate-100 hover:border-red-200'
-                }`}
-            >
-              <Filter size={18} className={`transition-colors ${isOpen ? 'text-red-600' : 'text-red-500 group-hover:text-red-600'}`} />
-              <div className="h-4 w-px bg-slate-200"></div>
-              <span className="text-[10px] font-black tracking-widest text-slate-400 uppercase">
-                {t('filter.label')}
-              </span>
-              <span className="min-w-[140px] text-left text-sm font-bold text-slate-800">
-                {currentLabel}
-              </span>
-              <ChevronDown
-                size={16}
-                className={`text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-
-            {/* Dropdown Menu */}
-            {isOpen && (
-              <div className="absolute right-0 top-full z-50 mt-2 w-full min-w-[240px] origin-top-right rounded-2xl border border-slate-100 bg-white p-2 shadow-xl ring-1 ring-slate-900/5 animate-in fade-in zoom-in-95 duration-200">
-                <div className="flex flex-col gap-1">
-                  {sortOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      onClick={() => {
-                        setSortBy(option.value);
-                        setIsOpen(false);
-                      }}
-                      className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-left text-sm font-medium transition-all ${sortBy === option.value
-                        ? 'bg-red-50 text-red-600'
-                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-                        }`}
-                    >
-                      {option.label}
-                      {sortBy === option.value && (
-                        <Check size={16} className="text-red-600" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Cards Grid */}
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
-          {currentData.map((person) => (
-            <SuccessStoryCard
-              key={person.id}
-              name={person.nama}
-              angkatan={person.angkatan}
-              tanggalBerangkat={person.tanggalBerangkat}
-              alamat={person.alamat}
-              job={person.job}
-              lokasi_perusahaan={person.lokasi_perusahaan}
-              img={person.img}
-            />
-          ))}
-        </div>
-
-        {/* Tombol Load More */}
-        <div className="mt-20 flex flex-col items-center">
-          {visibleCount < alumniData.length ? (
-            <button
-              onClick={handleLoadMore}
-              disabled={loadingMore}
-              className="group flex items-center gap-3 rounded-2xl bg-slate-900 px-8 py-4 text-sm font-black text-white shadow-xl transition-all active:scale-95 hover:bg-red-600 disabled:opacity-50"
-            >
-              {loadingMore ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
-              ) : (
-                <>
-                  <Plus className="h-5 w-5 transition-transform group-hover:rotate-90" />
-                  {t('loadMore')}
-                </>
-              )}
-            </button>
-          ) : (
-            <div className="text-center">
-              <div className="mx-auto mb-4 h-px w-20 bg-slate-200"></div>
-              <p className="text-xs font-bold tracking-widest text-slate-400 uppercase">
-                {t('allLoaded')}
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
-    </main>
-  );
+  return <SuccessStoryClient />;
 }

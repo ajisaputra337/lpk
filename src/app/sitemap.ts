@@ -1,75 +1,60 @@
-import type { MetadataRoute } from "next";
+import { MetadataRoute } from "next";
+import { supabase } from "../lib/supabase"; // Pastikan path import benar
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://www.lpk-aishiro.com";
+  const locales = ["id", "jp"];
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/program/magang-jepang`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/program/sekolah-jepang`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/program/tokutei-ginou`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/profil/company-profile`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/profil/visi-misi`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/media/galeri`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/media/persyaratan`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/media/success-story`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/media/fisik-sore`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    // Kalau nanti ada halaman program spesifik, tambah di sini
-    // {
-    //   url: `${baseUrl}/program/tokutei-ginou`,
-    //   lastModified: new Date(),
-    //   changeFrequency: 'monthly',
-    //   priority: 0.9,
-    // },
+  // 1. Rute Statis Utama
+  const staticPages = [
+    "",
+    "/program/magang-jepang",
+    "/program/sekolah-jepang",
+    "/program/tokutei-ginou",
+    "/profil/company-profile",
+    "/profil/visi-misi",
+    "/media/galeri",
+    "/media/persyaratan",
+    "/media/success-story",
+    "/media/fisik-sore",
   ];
+
+  const sitemapEntries: MetadataRoute.Sitemap = [];
+
+  // Generate rute statis untuk setiap bahasa
+  locales.forEach((locale) => {
+    staticPages.forEach((page) => {
+      sitemapEntries.push({
+        url: `${baseUrl}/${locale}${page}`,
+        lastModified: new Date(),
+        changeFrequency: page === "/media/galeri" ? "weekly" : "monthly",
+        priority: page === "" ? 1 : 0.8,
+      });
+    });
+  });
+
+  // 2. Rute Dinamis (Data dari Supabase)
+  try {
+    const { data: galleryItems } = await supabase
+      .from("media_gallery")
+      .select("id, updated_at")
+      .order("created_at", { ascending: false });
+
+    if (galleryItems) {
+      galleryItems.forEach((item) => {
+        locales.forEach((locale) => {
+          sitemapEntries.push({
+            url: `${baseUrl}/${locale}/media/galeri/${item.id}`,
+            lastModified: new Date(item.updated_at || new Date()),
+            changeFrequency: "monthly",
+            priority: 0.6,
+          });
+        });
+      });
+    }
+  } catch (error) {
+    console.error("Sitemap dynamic fetch error:", error);
+  }
+
+  return sitemapEntries;
 }

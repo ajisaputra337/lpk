@@ -3,13 +3,11 @@ import { routing } from './i18n/routing';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
-// 1. Inisialisasi Middleware Bahasa
 const handleI18nRouting = createMiddleware(routing);
 
 export default async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // --- BAGIAN A: SETUP SUPABASE (AUTH) ---
   let response = NextResponse.next({
     request: { headers: request.headers },
   });
@@ -30,45 +28,38 @@ export default async function middleware(request: NextRequest) {
     }
   );
 
-  // Ambil user untuk proteksi admin
   const { data: { user } } = await supabase.auth.getUser();
 
-  // --- BAGIAN B: PROTEKSI ROUTE ADMIN ---
-  // Sesuaikan '/admin-lpkaishiro' dengan folder admin lu
+  // PROTEKSI ADMIN
   if (pathname.startsWith('/admin-lpkaishiro') && !user) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  // Jika sudah login, dilarang ke halaman login lagi
   if (pathname === '/login' && user) {
     return NextResponse.redirect(new URL('/admin-lpkaishiro', request.url));
   }
 
-  // --- BAGIAN C: LOGIKA i18n (BAHASA) ---
-  // Abaikan redirect bahasa jika sedang di path Admin, Login, atau API
+  // LOGIKA BYPASS i18n
+  // Tambahkan pengecekan agar file di folder /Images atau /siswa tidak kena i18n
   const isInternalPath = 
     pathname.startsWith('/admin-lpkaishiro') || 
     pathname.startsWith('/login') || 
     pathname.startsWith('/api') ||
-    pathname.includes('.'); // Abaikan file statis (favicon, images)
+    pathname.startsWith('/Images') || // Tambahan untuk aset
+    pathname.startsWith('/siswa') ||  // Tambahan untuk aset
+    pathname.includes('.');
 
   if (isInternalPath) {
     return response;
   }
 
-  // Jalankan i18n untuk halaman publik (Home, Profil, dll)
   return handleI18nRouting(request);
 }
 
 export const config = {
-  // Matcher untuk menangkap semua route yang perlu diproses
+  // Gunakan matcher yang lebih inklusif tapi mengecualikan yang tidak perlu
   matcher: [
-    // Jalankan i18n di root dan folder bahasa
-    '/', 
-    '/(id|en|jp)/:path*', 
-    
-    // Jalankan proteksi di path admin & login
-    '/admin-lpkaishiro/:path*', 
-    '/login'
+    // Jalankan pada semua rute kecuali yang disebut di dalam (?!...)
+    '/((?!api|_next/static|_next/image|favicon.ico|Images|siswa|.*\\..*).*)',
   ],
 };

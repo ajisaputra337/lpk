@@ -1,11 +1,36 @@
-"use client";
-
-import React from 'react';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
-export default function PersyaratanPage() {
-    const t = useTranslations("Requirements");
+// METADATA untuk SEO - Halaman Persyaratan
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'Requirements.metadata' });
+
+    const baseUrl = "https://www.lpk-aishiro.com";
+
+    return {
+        title: t('title'),
+        description: t('description'),
+        alternates: {
+            canonical: `${baseUrl}/${locale}/media/persyaratan`,
+            languages: {
+                'id': `${baseUrl}/id/media/persyaratan`,
+                'en': `${baseUrl}/en/media/persyaratan`,
+                'ja': `${baseUrl}/jp/media/persyaratan`,
+            },
+        },
+        openGraph: {
+            title: t('title'),
+            description: t('description'),
+            url: `${baseUrl}/${locale}/media/persyaratan`,
+            type: 'website',
+        },
+    };
+}
+
+export default async function PersyaratanPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'Requirements' });
 
     // Mengambil array dari JSON untuk mapping
     const specialReqs = ["0", "1", "2", "3", "4"];
