@@ -1,12 +1,15 @@
 import { getTranslations } from 'next-intl/server';
+import { env } from '~/env';
 import GalleryPageClient from './GalleryClient';
+import Header from "../../../../styles/components/Header";
+import Breadcrumbs from "../../../../styles/components/Breadcrumbs";
 
 // METADATA untuk SEO - Halaman Galeri
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Gallery' });
 
-  const baseUrl = "https://www.lpk-aishiro.com";
+  const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
   return {
     title: t('header.title'),
@@ -29,6 +32,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 // Page sebagai Server Component yang merender Client Component
-export default function GalleryPage() {
-  return <GalleryPageClient />;
+export default async function GalleryPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Gallery' });
+
+  return (
+    <>
+      <Header />
+      <div className="pt-24 bg-gray-900">
+        <Breadcrumbs items={[{ label: t("header.title"), href: "/media/galeri" }]} />
+      </div>
+      <GalleryPageClient />
+    </>
+  );
 }

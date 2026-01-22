@@ -1,6 +1,7 @@
 import React from "react";
 import { CheckCircle, Clock, BookOpen, Briefcase, Plane } from "lucide-react";
-import Link from "next/link";
+import Header from "../../../../styles/components/Header";
+import Breadcrumbs from "../../../../styles/components/Breadcrumbs";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
@@ -48,44 +49,46 @@ const AlurMagangPage = () => {
   ];
 
   return (
-    <main className="bg-white pt-40 pb-16">
-      <div className="mx-auto max-w-7xl px-6">
-
-
-        {/* Hero Section */}
-        <div className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-extrabold text-gray-900 md:text-5xl">{t("hero.title")}</h1>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">{t("hero.subtitle")}</p>
-        </div>
-
-        {/* Timeline Section */}
-        <div className="mx-auto max-w-4xl">
-          <h2 className="mb-8 text-center text-3xl font-bold text-gray-800 md:text-left">{t("timeline.title")}</h2>
-          <div className="rounded-xl border bg-gray-50 p-6 shadow-lg md:p-10">
-            {programSteps.map((step, index) => (
-              <TimelineStep key={index} icon={step.icon} title={step.title} description={step.description} />
-            ))}
+    <>
+      <Header />
+      <main className="bg-white pt-24 pb-16">
+        <Breadcrumbs items={[{ label: t("breadcrumb.current"), href: "/program/magang-jepang" }]} />
+        <div className="mx-auto max-w-7xl px-6">
+          {/* Hero Section */}
+          <div className="mb-12 text-center">
+            <h1 className="mb-4 text-4xl font-extrabold text-gray-900 md:text-5xl">{t("hero.title")}</h1>
+            <p className="mx-auto max-w-3xl text-xl text-gray-600">{t("hero.subtitle")}</p>
           </div>
-        </div>
 
-        {/* Foto Diagram */}
-        <div className="mx-auto mt-16 max-w-6xl space-y-8">
-          <h2 className="text-center text-3xl font-bold text-gray-800">{t("visual.title")}</h2>
-          <div className="text-center">
-            <h3 className="mb-4 text-xl font-semibold text-gray-700">{t("visual.desc1")}</h3>
-            <div className="relative h-[500px] w-full">
-              <Image src="/Images/alur_penerimaan_magang.jpeg" alt="Diagram Alur 1" fill style={{ objectFit: "contain" }} priority />
+          {/* Timeline Section */}
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-8 text-center text-3xl font-bold text-gray-800 md:text-left">{t("timeline.title")}</h2>
+            <div className="rounded-xl border bg-gray-50 p-6 shadow-lg md:p-10">
+              {programSteps.map((step, index) => (
+                <TimelineStep key={index} icon={step.icon} title={step.title} description={step.description} />
+              ))}
             </div>
           </div>
-          <div className="text-center">
-            <h3 className="mb-4 text-xl font-semibold text-gray-700">{t("visual.desc2")}</h3>
-            <div className="relative h-[500px] w-full">
-              <Image src="/Images/alur_im_japan.jpeg" alt="Diagram Alur 2" fill style={{ objectFit: "contain" }} priority />
+
+          {/* Foto Diagram */}
+          <div className="mx-auto mt-16 max-w-6xl space-y-8">
+            <h2 className="text-center text-3xl font-bold text-gray-800">{t("visual.title")}</h2>
+            <div className="text-center">
+              <h3 className="mb-4 text-xl font-semibold text-gray-700">{t("visual.desc1")}</h3>
+              <div className="relative h-[500px] w-full">
+                <Image src="/Images/alur_penerimaan_magang.jpeg" alt="Diagram Alur Pendidikan dan Pelatihan Magang ke Jepang - LPK Aishiro Gakuen" fill style={{ objectFit: "contain" }} priority />
+              </div>
+            </div>
+            <div className="text-center">
+              <h3 className="mb-4 text-xl font-semibold text-gray-700">{t("visual.desc2")}</h3>
+              <div className="relative h-[500px] w-full">
+                <Image src="/Images/alur_im_japan.jpeg" alt="Diagram Alur Pendidikan dan Pelatihan IM Japan - Pelatihan Keberangkatan Siswa" fill style={{ objectFit: "contain" }} priority />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 };
 

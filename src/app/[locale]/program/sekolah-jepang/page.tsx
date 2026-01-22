@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, Globe, GraduationCap, MapPin, Zap } from 'lucide-react';
-import Header from '../../../../styles/components/Header'; 
+import Header from '../../../../styles/components/Header';
+import Breadcrumbs from '../../../../styles/components/Breadcrumbs';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 const SekolahJepangPage = () => {
     const t = useTranslations('SekolahPage');
-    
+
     const whatsappLink = "https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20Program%20Sekolah%20di%20Jepang.%20Mohon%20info%20lebih%20lanjut.";
 
     // Mapping Icon untuk Tahapan
@@ -33,6 +34,7 @@ const SekolahJepangPage = () => {
             <Header />
 
             <main className="pt-20">
+                <Breadcrumbs items={[{ label: t('hero.badge'), href: '/program/sekolah-jepang' }]} />
                 {/* 1. Hero Section */}
                 <section className="relative h-[400px] md:h-[500px] overflow-hidden">
                     <Image

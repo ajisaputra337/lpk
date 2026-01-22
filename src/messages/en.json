@@ -32,9 +32,9 @@
     "contactTitle": "Contact Us",
     "address": "Jl. Palebon VI No.5, Palebon, Pedurungan District, Semarang City, Central Java, Indonesia",
     "followTitle": "Follow Us",
-    "scanTiktok": "Follow us on TikTok",
-    "scanInsta": "Follow us on Instagram",
-    "scanLine": "Contact us on LINE"
+    "scanTiktok": "TikTok",
+    "scanInsta": "Instagram",
+    "scanLine": "LINE"
   },
   "Chat": {
     "welcome": "Hello! I'm Aishi, the AI assistant of LPK Aishiro. How can I help you today? 🇯🇵",
@@ -488,5 +488,8 @@
     "subtitle": "Video Activity and Training",
     "video1": "Afternoon Physical Activities for Internship Candidates at LPK Aishiro",
     "video2": "Afternoon Mental Discipline Training for Study (Running Exercise)"
+  },
+  "Breadcrumbs": {
+    "home": "Home"
   }
 }

@@ -2,12 +2,17 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import Header from '../../../../styles/components/Header';
+import Breadcrumbs from '../../../../styles/components/Breadcrumbs';
+import { env } from '~/env';
 import { getTranslations } from 'next-intl/server';
 
 // 1. METADATA DINAMIS (SEO Multibahasa)
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'VisiMisi.metadata' });
+
+    const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
     return {
         title: t('title'),
@@ -16,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         openGraph: {
             title: t('ogTitle'),
             description: t('ogDesc'),
-            url: `https://aishiro-gakuen.com/${locale}/profil/visi-misi`,
+            url: `${baseUrl}/${locale}/profil/visi-misi`,
             siteName: 'LPK Aishiro Gakuen',
             type: 'website',
             images: [
@@ -36,14 +41,9 @@ const VisiMisiPage = () => {
 
     return (
         <main className="pt-24 pb-16 bg-white min-h-screen">
+            <Header />
+            <Breadcrumbs items={[{ label: t('breadcrumb.current'), href: '/profil/visi-misi' }]} />
             <div className="mx-auto max-w-5xl px-6">
-
-                {/* Breadcrumb */}
-                <div className="text-sm text-gray-500 mb-6">
-                    <Link href="/" className="hover:text-red-700">{t('breadcrumb.home')}</Link>
-                    <span className="mx-1 text-gray-400">/</span>
-                    <span className="font-semibold text-gray-700">{t('breadcrumb.current')}</span>
-                </div>
 
                 <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 text-center">
                     {t('title')}

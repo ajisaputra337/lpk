@@ -32,9 +32,9 @@
     "contactTitle": "お問い合わせ",
     "address": "インドネシア共和国、中ジャワ州スマラン市、ペドゥルンガン、パレボン、パレボンVI通り5番",
     "followTitle": "フォローする",
-    "scanTiktok": "TikTokでフォロー",
-    "scanInsta": "Instagramでフォロー",
-    "scanLine": "LINEでお問い合わせ"
+    "scanTiktok": "TikTok",
+    "scanInsta": "Instagram",
+    "scanLine": "LINE"
   },
   "Chat": {
     "welcome": "こんにちは！LPKアイシロのAIアシスタント、アイシです。何かお手伝いしましょうか？ 🇯🇵",
@@ -488,5 +488,8 @@
     "subtitle": "活動およびトレーニングの動画",
     "video1": "LPK Aishiroのインターン候補生のための夕方の運動",
     "video2": "夕方の学習規律を高めるためのメンタルトレーニング（ランニング）"
+  },
+  "Breadcrumbs": {
+    "home": "ホーム"
   }
 }

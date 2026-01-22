@@ -1,6 +1,8 @@
 import React from "react";
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import Header from "../../../../styles/components/Header";
+import Breadcrumbs from "../../../../styles/components/Breadcrumbs";
 
 // Metadata Dinamis
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -16,7 +18,9 @@ export default function CompanyProfilePage() {
     const t = useTranslations('CompanyProfile');
 
     return (
-        <main className="bg-white pt-30 pb-16 md:pt-35">
+        <main className="bg-white pt-24 pb-16">
+            <Header />
+            <Breadcrumbs items={[{ label: t('header.title'), href: '/profil/company-profile' }]} />
             <div className="mx-auto max-w-6xl px-6">
                 <header className="mb-6 text-center md:text-left">
                     <h1 className="text-3xl font-extrabold text-gray-900 md:text-4xl">

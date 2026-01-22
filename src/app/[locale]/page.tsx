@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { env } from '~/env';
 import HomePageClient from './HomePageClient';
 
 // METADATA untuk SEO - Homepage
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const title = t.has('title') ? t('title') : "LPK Aishiro Gakuen - Pelatihan Magang Jepang & Sekolah Bahasa";
   const description = t.has('description') ? t('description') : "LPK Aishiro Gakuen adalah lembaga pelatihan terpercaya untuk program magang ke Jepang, sekolah bahasa (Gakkou), dan Tokutei Ginou. Berizin resmi dan berpengalaman sejak 2009.";
 
-  const baseUrl = "https://www.lpk-aishiro.com";
+  const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
   return {
     title: {

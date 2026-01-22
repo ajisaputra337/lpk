@@ -3,13 +3,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import { env } from "~/env";
+import Header from "../../../../styles/components/Header";
+import Breadcrumbs from "../../../../styles/components/Breadcrumbs";
 
 // METADATA untuk SEO - Halaman Fisik Sore
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'AfternoonActivityPage' });
 
-  const baseUrl = "https://www.lpk-aishiro.com";
+  const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
   return {
     title: t('title'),
@@ -78,6 +81,8 @@ const KegiatanFisikSorePage = () => {
   return (
     // pt-24 untuk mengimbangi fixed header
     <main className="bg-white pt-24 pb-16">
+      <Header />
+      <Breadcrumbs items={[{ label: t("title"), href: "/media/fisik-sore" }]} />
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Hero Visual dan Deskripsi */}

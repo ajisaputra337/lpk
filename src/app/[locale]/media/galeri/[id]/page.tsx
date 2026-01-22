@@ -1,4 +1,5 @@
 import { supabase } from "../../../../../lib/supabase";
+import { env } from "~/env";
 import GalleryDetailPageClient from "./GalleryDetailClient";
 
 // 1. METADATA DINAMIS untuk detail galeri
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const title = locale === 'jp' && item.title_jp ? item.title_jp : item.title_id;
   const description = locale === 'jp' && item.description_jp ? item.description_jp : item.description_id;
 
-  const baseUrl = "https://www.lpk-aishiro.com";
+  const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
   return {
     title: title,

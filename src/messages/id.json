@@ -32,9 +32,9 @@
     "contactTitle": "Hubungi Kami",
     "address": "Jl. Palebon VI No.5, Palebon, Kec. Pedurungan, Kota Semarang, Jawa Tengah 50199",
     "followTitle": "Ikuti Kami",
-    "scanTiktok": "Scan untuk follow TikTok",
-    "scanInsta": "Scan untuk follow Instagram",
-    "scanLine": "Scan untuk chat via LINE"
+    "scanTiktok": "TikTok",
+    "scanInsta": "Instagram",
+    "scanLine": "LINE"
   },
   "Chat": {
     "welcome": "Halo! Saya Aishi, asisten AI LPK Aishiro. Ada yang bisa dibantu? 🇯🇵",
@@ -488,5 +488,8 @@
     "subtitle": "Video Kegiatan dan Latihan",
     "video1": "Kegiatan Fisik Sore Calon Magang LPK Aishiro",
     "video2": "PMD Belajar Sore (Fisik Lari)"
+  },
+  "Breadcrumbs": {
+    "home": "Home"
   }
 }

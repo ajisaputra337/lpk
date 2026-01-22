@@ -4,6 +4,7 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import LayoutContent from "../LayoutContent";
 import FloatingChat from "../../styles/components/FloatingChat";
 import LanguageSwitcher from "../../styles/components/LanguageSwitcher";
+import { env } from '~/env';
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
-  const baseUrl = "https://www.lpk-aishiro.com";
+  const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
   return {
     metadataBase: new URL(baseUrl),
@@ -58,7 +59,22 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       images: ['/og-image.jpg'],
     },
 
-    robots: { index: true, follow: true },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    verification: {
+      // Masukkan kode verifikasi jika ada
+      // google: 'google-site-verification-id',
+    },
+    category: 'education',
   };
 }
 
@@ -82,8 +98,8 @@ export default async function LocaleLayout({
     "@type": "EducationalOrganization",
     "name": "LPK Aishiro Gakuen",
     "alternateName": "愛城学園",
-    "url": "https://www.lpk-aishiro.com",
-    "logo": "https://www.lpk-aishiro.com/Images/logo_aishiro.png",
+    "url": env.NEXT_PUBLIC_BASE_URL,
+    "logo": `${env.NEXT_PUBLIC_BASE_URL}/Images/logo_aishiro.png`,
     "description": "Lembaga pelatihan bahasa Jepang dan penempatan magang ke Jepang yang berdiri sejak 2009 di Semarang.",
     "foundingDate": "2009",
     "address": {
@@ -101,8 +117,9 @@ export default async function LocaleLayout({
       "availableLanguage": ["Indonesian", "Japanese", "English"]
     },
     "sameAs": [
-      "https://www.instagram.com/lpk_aishiro_gakuen",
-      "https://www.tiktok.com/@lpk_aishiro_gakuen"
+      "https://www.instagram.com/lpk_aishiro/",
+      "https://www.tiktok.com/@lpk_aishirogakuen",
+      "https://line.me/R/ti/p/~aishiro426"
     ],
     "areaServed": {
       "@type": "Country",
@@ -114,7 +131,7 @@ export default async function LocaleLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "LPK Aishiro Gakuen",
-    "image": "https://www.lpk-aishiro.com/og-image.jpg",
+    "image": `${env.NEXT_PUBLIC_BASE_URL}/og-image.jpg`,
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",

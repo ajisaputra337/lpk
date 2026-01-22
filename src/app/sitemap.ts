@@ -1,9 +1,10 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { env } from "~/env";
 import { supabase } from "../lib/supabase"; // Pastikan path import benar
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://www.lpk-aishiro.com";
-  const locales = ["id", "jp"];
+  const baseUrl = env.NEXT_PUBLIC_BASE_URL;
+  const locales = ["id", "jp", "en"];
 
   // 1. Rute Statis Utama
   const staticPages = [

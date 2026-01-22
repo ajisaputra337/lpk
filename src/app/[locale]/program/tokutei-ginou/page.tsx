@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Heart, Briefcase, FileText, Zap, DollarSign, MapPin } from 'lucide-react';
 import Header from '../../../../styles/components/Header';
+import Breadcrumbs from '../../../../styles/components/Breadcrumbs';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 const TokuteiGinou = () => {
     const t = useTranslations('TokuteiPage');
-    
+
     const whatsappLink = 'https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20Program%20Tokutei%20Ginou%20(SSW).%20Mohon%20info%20lebih%20lanjut.';
 
     // Mapping Icons
@@ -33,6 +34,7 @@ const TokuteiGinou = () => {
             <Header />
 
             <main className="pt-20">
+                <Breadcrumbs items={[{ label: t('hero.badge'), href: '/program/tokutei-ginou' }]} />
                 {/* Hero Section */}
                 <section className="relative h-[400px] md:h-[500px] overflow-hidden">
                     <Image
