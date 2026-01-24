@@ -2,7 +2,6 @@ import { getTranslations } from 'next-intl/server';
 import { env } from '~/env';
 import SuccessStoryClient from './SuccessStoryClient';
 import Header from "../../../../styles/components/Header";
-import Breadcrumbs from "../../../../styles/components/Breadcrumbs";
 
 // METADATA untuk SEO - Halaman Success Story
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -41,8 +40,7 @@ export default async function SuccessStoryPage({ params }: { params: Promise<{ l
   return (
     <>
       <Header />
-      <div className="pt-24">
-        <Breadcrumbs items={[{ label: t("header.title"), href: "/media/success-story" }]} />
+      <div className="pt-12">
       </div>
       <SuccessStoryClient />
     </>

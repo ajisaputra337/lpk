@@ -38,38 +38,33 @@ export default function SuccessStoryCard({
         onClick={() => setIsOpen(true)}
         className="group relative cursor-pointer overflow-hidden rounded-xl border-2 border-transparent bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-red-300 hover:shadow-xl"
       >
-        <div className="aspect-[3/4] w-full overflow-hidden bg-gray-100">
-          <div className="aspect-[3/4] w-full overflow-hidden bg-gray-100">
-            {/* Logika baru: Cek apakah img ada isinya? */}
-            {img && img.length > 5 ? (
-              <Image
-                src={img}
-                alt={safeName}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-            ) : (
-              /* Kalau nggak ada gambar, kasih kotak merah dengan inisial nama */
-              <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-red-500 to-red-600">
-                <span className="text-6xl font-black text-white">{initial}</span>
-              </div>
-            )}
-          </div>
-          {/* Overlay Gradient on Hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="relative aspect-[3/4] w-full overflow-hidden bg-gray-100">
+          {img && img.length > 5 ? (
+            <Image
+              src={img}
+              alt={safeName}
+              fill
+              className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-red-500 to-red-600">
+              <span className="text-6xl font-black text-white">{initial}</span>
+            </div>
+          )}
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          {/* Badge Angkatan */}
-          <div className="absolute bottom-1 left-1 rounded-full bg-red-600 px-1.5 py-0.5 text-[0.5rem] font-bold text-white shadow-md sm:bottom-4 sm:left-4 sm:px-3 sm:py-1 sm:text-xs sm:shadow-lg">
-            🎓 {t("batch")} {angkatan}
-          </div>
+        {/* Badge Angkatan */}
+        <div className="absolute bottom-1 left-1 rounded-full bg-red-600 px-1.5 py-0.5 text-[0.5rem] font-bold text-white shadow-md sm:bottom-4 sm:left-4 sm:px-3 sm:py-1 sm:text-xs sm:shadow-lg">
+          🎓 {t("batch")} {angkatan}
+        </div>
 
-          {/* Name Preview on Hover */}
-          <div className="absolute right-4 bottom-12 left-4 translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-            <p className="border-l-4 border-red-500 pl-3 font-bold text-white drop-shadow-md">
-              {safeName}
-            </p>
-          </div>
+        {/* Name Preview on Hover */}
+        <div className="absolute right-4 bottom-12 left-4 translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+          <p className="border-l-4 border-red-500 pl-3 font-bold text-white drop-shadow-md">
+            {safeName}
+          </p>
         </div>
       </div>
 

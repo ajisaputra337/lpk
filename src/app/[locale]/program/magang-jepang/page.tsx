@@ -1,7 +1,6 @@
 import React from "react";
 import { CheckCircle, Clock, BookOpen, Briefcase, Plane } from "lucide-react";
 import Header from "../../../../styles/components/Header";
-import Breadcrumbs from "../../../../styles/components/Breadcrumbs";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
@@ -51,8 +50,7 @@ const AlurMagangPage = () => {
   return (
     <>
       <Header />
-      <main className="bg-white pt-24 pb-16">
-        <Breadcrumbs items={[{ label: t("breadcrumb.current"), href: "/program/magang-jepang" }]} />
+      <main className="bg-white pt-36 pb-16">
         <div className="mx-auto max-w-7xl px-6">
           {/* Hero Section */}
           <div className="mb-12 text-center">

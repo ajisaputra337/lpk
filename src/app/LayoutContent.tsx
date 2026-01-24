@@ -3,13 +3,14 @@
 import { usePathname } from "next/navigation";
 import Header from "../styles/components/Header";
 import Footer from "../styles/components/Footer";
+import SakuraBackground from "../styles/components/SakuraBackground";
 
 export default function LayoutContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   // 1. Cek apakah ini halaman admin
   const isAdmin = pathname?.split('/').includes("admin-lpkaishiro");
-  
+
   // 2. Cek apakah ini halaman login
   const isLoginPage = pathname === "/login";
 
@@ -18,11 +19,14 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
 
   return (
     <>
+      {/* Efek Sakura Global (Kecuali Admin/Login) */}
+      {!isCleanPage && <SakuraBackground />}
+
       {/* Jika BUKAN clean page, tampilkan Header */}
       {!isCleanPage && <Header />}
-      
+
       <main className="flex-grow">{children}</main>
-      
+
       {/* Jika BUKAN clean page, tampilkan Footer */}
       {!isCleanPage && <Footer />}
     </>

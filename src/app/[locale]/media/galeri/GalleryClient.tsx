@@ -38,13 +38,13 @@ const GalleryCard: React.FC<{ item: GalleryItem; locale: string }> = ({ item, lo
     return (
         <Link href={`/${locale}/media/galeri/${item.id}`}>
             <div className="group relative cursor-pointer transform overflow-hidden rounded-lg border-2 border-red-100 bg-white shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
-                <div className="relative h-64 w-full bg-gray-200 overflow-hidden">
+                <div className="relative aspect-video w-full bg-gray-200 overflow-hidden">
                     <Image
                         src={item.image_url}
                         alt={title || "Gallery Image"}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-red-900 opacity-10 transition-opacity group-hover:opacity-0"></div>
                 </div>
@@ -104,14 +104,15 @@ export default function GalleryPageClient() {
     }, []);
 
     return (
-        <main className="pt-20">
+        <main className="">
             {/* Header Section */}
-            <section className="relative overflow-hidden bg-gray-900 py-16 text-white">
+            <section className="relative overflow-hidden bg-gray-900 pt-24 md:pt-32 pb-16 text-white">
                 <div
                     className="absolute inset-0 opacity-20"
                     style={{
                         backgroundImage: `url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 0 L50 25 L75 0 L100 25 L50 75 L0 25 L25 0 z' fill='none' stroke='%23ff0000' stroke-width='1.5' /%3E%3C/svg%3E")`,
                         backgroundSize: "150px 150px",
+                        backgroundPosition: "center",
                     }}
                 ></div>
 

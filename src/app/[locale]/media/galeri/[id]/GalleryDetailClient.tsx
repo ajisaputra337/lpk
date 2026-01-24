@@ -41,7 +41,7 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
     if (!data) return <div className="min-h-screen flex items-center justify-center font-bold text-red-600">{t('notFound')}</div>;
 
     return (
-        <main className="pt-32 pb-20 bg-white">
+        <main className="pt-24 md:pt-32 pb-20 bg-white">
             <div className="max-w-4xl mx-auto px-6">
                 {/* Tombol Back - Teks dari JSON, Link tetap di locale yang sama */}
                 <Link href={`/${locale}/media/galeri`} className="inline-flex items-center text-red-600 font-bold mb-6 hover:gap-2 transition-all">
@@ -49,8 +49,8 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
                 </Link>
 
                 {/* Gambar Utama */}
-                <div className="relative h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl mb-8">
-                    <Image src={data.image_url} alt={data.title} fill className="object-cover" priority />
+                <div className="relative aspect-[3/2] md:aspect-video w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl mb-8">
+                    <Image src={data.image_url} alt={data.title} fill className="object-cover object-center" priority />
                 </div>
 
                 <div className="space-y-4">
@@ -65,20 +65,20 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
                         </span>
                     </div>
 
-{/* Judul */}
-<h1 className="text-4xl font-black text-slate-900 leading-tight">
-    {locale === 'jp' ? (data.title_jp || data.title_id) : (data.title_id || data.title)}
-</h1>
+                    {/* Judul */}
+                    <h1 className="text-2xl md:text-4xl font-black text-slate-900 leading-tight">
+                        {locale === 'jp' ? (data.title_jp || data.title_id) : (data.title_id || data.title)}
+                    </h1>
 
-{/* Deskripsi */}
-<div className="prose prose-lg max-w-none text-slate-700 leading-relaxed">
-    <p style={{ whiteSpace: 'pre-line' }}>
-        {locale === 'jp' 
-            ? (data.description_jp || data.description_id || t('noDescription')) 
-            : (data.description_id || data.description || t('noDescription'))
-        }
-    </p>
-</div>                </div>
+                    {/* Deskripsi */}
+                    <div className="prose prose-base md:prose-lg max-w-none text-slate-700 leading-relaxed">
+                        <p style={{ whiteSpace: 'pre-line' }}>
+                            {locale === 'jp'
+                                ? (data.description_jp || data.description_id || t('noDescription'))
+                                : (data.description_id || data.description || t('noDescription'))
+                            }
+                        </p>
+                    </div>                </div>
             </div>
         </main>
     );

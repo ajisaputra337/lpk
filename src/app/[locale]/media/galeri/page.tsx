@@ -2,7 +2,6 @@ import { getTranslations } from 'next-intl/server';
 import { env } from '~/env';
 import GalleryPageClient from './GalleryClient';
 import Header from "../../../../styles/components/Header";
-import Breadcrumbs from "../../../../styles/components/Breadcrumbs";
 
 // METADATA untuk SEO - Halaman Galeri
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -39,8 +38,7 @@ export default async function GalleryPage({ params }: { params: Promise<{ locale
   return (
     <>
       <Header />
-      <div className="pt-24 bg-gray-900">
-        <Breadcrumbs items={[{ label: t("header.title"), href: "/media/galeri" }]} />
+      <div className="pt-8 bg-gray-900">
       </div>
       <GalleryPageClient />
     </>

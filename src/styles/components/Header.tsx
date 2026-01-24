@@ -43,22 +43,6 @@ const SakuraDecor = () => (
         <path d="M50 50 L20 50 A15 15 0 1 1 35 30 L50 50" fill="#FFB7C5" stroke="#F472B6" strokeWidth="1" />
       </svg>
     </div>
-    {/* Kelopak Bunga 2D Melayang */}
-    <div className="animate-petal-fall absolute top-0 left-[10%] opacity-80">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFB7C5" stroke="#F472B6" strokeWidth="0.5">
-        <path d="M12,21.5C12,21.5 15,18 15,15C15,12 12,10.5 12,10.5C12,10.5 9,12 9,15C9,18 12,21.5 12,21.5Z" />
-      </svg>
-    </div>
-    <div className="animate-petal-fall-delayed absolute top-0 left-[40%] opacity-80">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFB7C5" stroke="#F472B6" strokeWidth="0.5">
-        <path d="M12,21.5C12,21.5 15,18 15,15C15,12 12,10.5 12,10.5C12,10.5 9,12 9,15C9,18 12,21.5 12,21.5Z" />
-      </svg>
-    </div>
-    <div className="animate-petal-fall absolute top-0 right-[35%] opacity-80">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="#FDA4AF" stroke="#F43F5E" strokeWidth="0.5">
-        <path d="M12,21.5C12,21.5 15,18 15,15C15,12 12,10.5 12,10.5C12,10.5 9,12 9,15C9,18 12,21.5 12,21.5Z" />
-      </svg>
-    </div>
   </div>
 );
 
@@ -140,12 +124,12 @@ const Header = () => {
             closeMobileMenu();
           }}
         >
-          <div className="relative mr-2 h-12 w-12 lg:h-20 lg:w-20">
+          <div className="relative mr-2 h-10 w-10 lg:h-20 lg:w-20">
             <Image src={LOGO_PATH} alt={LOGO_ALT} fill style={{ objectFit: "contain" }} priority />
           </div>
           <div className="ml-2 flex flex-col">
-            <span className="text-sm font-semibold text-gray-900 lg:text-lg lg:leading-none">AISHIRO GAKUEN</span>
-            <span className="text-sm text-red-600 lg:text-lg lg:leading-none">{t("subLogo")}</span>
+            <span className="text-xs font-semibold text-gray-900 lg:text-lg lg:leading-none">AISHIRO GAKUEN</span>
+            <span className="text-xs text-red-600 lg:text-lg lg:leading-none">{t("subLogo")}</span>
           </div>
           <div className="ml-2 hidden flex-col justify-center rounded-md bg-yellow-300 px-3 py-1 lg:flex">
             <span className="text-lg leading-none font-semibold text-gray-900">インドネシア送り出し機関</span>
@@ -213,7 +197,7 @@ const Header = () => {
       {/* MOBILE MENU */}
       <div className={`fixed inset-0 z-50 bg-white transition-transform lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
         <div className="flex h-16 items-center justify-between border-b px-6">
-          <span className="font-bold uppercase">{t("mobileNavTitle")}</span>
+          <span className="font-bold uppercase text-red-600">{t("mobileNavTitle")}</span>
           <button onClick={closeMobileMenu}><X className="h-6 w-6" /></button>
         </div>
 
@@ -222,13 +206,18 @@ const Header = () => {
             {navItems.map((item) => (
               <li key={item.label}>
                 <div className="flex items-center justify-between">
-                  <Link href={item.href} className="text-lg font-bold text-yellow-700" onClick={() => !item.subMenu && closeMobileMenu()}>
-                    {item.label}
-                  </Link>
-                  {item.subMenu && (
-                    <button onClick={() => setOpenMobileSubMenu(openMobileSubMenu === item.label ? null : item.label)}>
+                  {item.subMenu ? (
+                    <button
+                      onClick={() => setOpenMobileSubMenu(openMobileSubMenu === item.label ? null : item.label)}
+                      className="flex w-full items-center justify-between text-lg font-bold text-yellow-500"
+                    >
+                      <span>{item.label}</span>
                       {openMobileSubMenu === item.label ? <ChevronDown /> : <ChevronRight />}
                     </button>
+                  ) : (
+                    <Link href={item.href} className="text-lg font-bold text-yellow-500" onClick={closeMobileMenu}>
+                      {item.label}
+                    </Link>
                   )}
                 </div>
                 {item.subMenu && openMobileSubMenu === item.label && (
@@ -248,7 +237,7 @@ const Header = () => {
         </nav>
 
         <div className="space-y-3 p-6">
-          <button onClick={scrollToBottom} className="w-full rounded-md border-2 border-yellow-700 px-4 py-3 font-bold text-yellow-700">
+          <button onClick={scrollToBottom} className="w-full rounded-md border-2 border-yellow-700 px-4 py-3 font-bold text-yellow-500">
             {t("contact")}
           </button>
           <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block w-full rounded-md bg-red-700 px-4 py-3 text-center font-bold text-white" onClick={closeMobileMenu}>
@@ -258,14 +247,7 @@ const Header = () => {
       </div>
 
       <style jsx>{`
-        @keyframes petal-fall {
-          0% { transform: translateY(-20%) rotate(0deg); opacity: 0; }
-          20% { opacity: 0.8; }
-          80% { opacity: 0.8; }
-          100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-        .animate-petal-fall { animation: petal-fall 8s linear infinite; }
-        .animate-petal-fall-delayed { animation: petal-fall 11s linear infinite; animation-delay: 3s; }
+        /* Custom non-animation styles can go here if needed */
       `}</style>
     </header>
   );

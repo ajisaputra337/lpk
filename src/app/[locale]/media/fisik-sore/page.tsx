@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { env } from "~/env";
 import Header from "../../../../styles/components/Header";
-import Breadcrumbs from "../../../../styles/components/Breadcrumbs";
 
 // METADATA untuk SEO - Halaman Fisik Sore
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -82,7 +81,6 @@ const KegiatanFisikSorePage = () => {
     // pt-24 untuk mengimbangi fixed header
     <main className="bg-white pt-24 pb-16">
       <Header />
-      <Breadcrumbs items={[{ label: t("title"), href: "/media/fisik-sore" }]} />
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Hero Visual dan Deskripsi */}

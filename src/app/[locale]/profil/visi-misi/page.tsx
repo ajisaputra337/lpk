@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import Header from '../../../../styles/components/Header';
-import Breadcrumbs from '../../../../styles/components/Breadcrumbs';
 import { env } from '~/env';
 import { getTranslations } from 'next-intl/server';
 
@@ -40,9 +39,8 @@ const VisiMisiPage = () => {
     const t = useTranslations('VisiMisi');
 
     return (
-        <main className="pt-24 pb-16 bg-white min-h-screen">
+        <main className="pt-36 pb-16 bg-white min-h-screen">
             <Header />
-            <Breadcrumbs items={[{ label: t('breadcrumb.current'), href: '/profil/visi-misi' }]} />
             <div className="mx-auto max-w-5xl px-6">
 
                 <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 text-center">

@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
+import { GoogleAnalytics } from '@next/third-parties/google'; // Import GA
 import LayoutContent from "../LayoutContent";
 import FloatingChat from "../../styles/components/FloatingChat";
 import LanguageSwitcher from "../../styles/components/LanguageSwitcher";
@@ -9,7 +10,7 @@ import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// METADATA DINAMIS (Mengambil dari JSON Metadata)
+// METADATA DINAMIS
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata' });
@@ -28,19 +29,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'sekolah jepang', 'pelatihan bahasa jepang', 'lpk aishiro gakuen',
       '日本語研修', '技能実習', '特定技能'
     ],
-
-    // HREFLANG & CANONICAL - Penting untuk SEO multi-bahasa
-    // Memberitahu Google bahwa halaman ini tersedia dalam bahasa lain
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
         'id': `${baseUrl}/id`,
         'en': `${baseUrl}/en`,
         'ja': `${baseUrl}/jp`,
-        'x-default': `${baseUrl}/id`, // Default untuk user yang tidak match bahasa apapun
+        'x-default': `${baseUrl}/id`,
       },
     },
-
     openGraph: {
       title: "LPK Aishiro Gakuen",
       description: t('description'),
@@ -50,15 +47,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       locale: locale === 'jp' ? 'ja_JP' : locale === 'en' ? 'en_US' : 'id_ID',
       type: "website",
     },
-
-    // Twitter Card untuk sharing di Twitter/X
     twitter: {
       card: 'summary_large_image',
       title: "LPK Aishiro Gakuen",
       description: t('description'),
       images: ['/og-image.jpg'],
     },
-
     robots: {
       index: true,
       follow: true,
@@ -69,10 +63,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
-    },
-    verification: {
-      // Masukkan kode verifikasi jika ada
-      // google: 'google-site-verification-id',
     },
     category: 'education',
   };
@@ -87,12 +77,9 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
-  // Mengambil pesan kamus sesuai bahasa yang aktif
   const messages = await getMessages();
 
-  // STRUCTURED DATA (JSON-LD) - Membantu Google memahami bisnis
-  // Berpotensi menampilkan Knowledge Panel di hasil pencarian
+  // STRUCTURED DATA (JSON-LD)
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -158,7 +145,6 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        {/* Structured Data JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -169,16 +155,16 @@ export default async function LocaleLayout({
         />
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col antialiased`}>
-        {/* NextIntlClientProvider membungkus semua agar komponen client bisa pakai translate */}
         <NextIntlClientProvider messages={messages} locale={locale}>
           <LayoutContent>
             {children}
           </LayoutContent>
-
-          {/* Komponen Global Melayang */}
           <FloatingChat />
           <LanguageSwitcher />
         </NextIntlClientProvider>
+
+        {/* Google Analytics - Dipasang di luar provider agar tidak mengganggu rendering */}
+        <GoogleAnalytics gaId="G-575YSE1LMK" />
       </body>
     </html>
   );

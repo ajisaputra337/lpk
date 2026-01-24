@@ -2,7 +2,6 @@ import { getTranslations } from 'next-intl/server';
 import { env } from '~/env';
 import Link from 'next/link';
 import Header from "../../../../styles/components/Header";
-import Breadcrumbs from "../../../../styles/components/Breadcrumbs";
 
 // METADATA untuk SEO - Halaman Persyaratan
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -41,8 +40,7 @@ export default async function PersyaratanPage({ params }: { params: Promise<{ lo
     return (
         <>
             <Header />
-            <main className="min-h-screen bg-gray-50 pt-24 pb-20 font-sans">
-                <Breadcrumbs items={[{ label: t("mainTitle"), href: "/media/persyaratan" }]} />
+            <main className="min-h-screen bg-gray-50 pt-36 pb-20 font-sans">
 
                 <div className="mx-auto max-w-4xl px-6">
                     <div className="bg-white shadow-2xl rounded-3xl p-8 md:p-12 border border-gray-100 transform transition-all hover:shadow-red-900/5">

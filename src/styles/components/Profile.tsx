@@ -5,10 +5,11 @@ import { Landmark, Briefcase, Smile } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 // Komponen Hiasan Sakura (Tetap sama)
-const SakuraDecoration = ({ className = "" }) => {
+const SakuraDecoration = ({ className = "", style = {} }) => {
   return (
     <svg
       className={`absolute opacity-50 ${className}`}
+      style={style}
       width="80"
       height="80"
       viewBox="0 0 80 80"
@@ -28,10 +29,10 @@ const Profile: React.FC = () => {
 
   return (
     <section id="Profile" className="relative overflow-hidden bg-white py-20">
-      <SakuraDecoration className="animate-float-slow top-10 left-10" />
-      <SakuraDecoration className="animate-float-medium top-1/4 right-16" />
-      <SakuraDecoration className="animate-float-fast bottom-20 left-1/4" />
-      <SakuraDecoration className="animate-float-slow right-10 bottom-10" />
+      <SakuraDecoration className="animate-float-premium top-10 left-10" style={{ animationDelay: '0s' }} />
+      <SakuraDecoration className="animate-float-premium top-1/4 right-16" style={{ animationDelay: '1.5s' }} />
+      <SakuraDecoration className="animate-float-premium bottom-20 left-1/4" style={{ animationDelay: '3s' }} />
+      <SakuraDecoration className="animate-float-premium right-10 bottom-10" style={{ animationDelay: '4.5s' }} />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Header Section */}
@@ -114,12 +115,7 @@ const Profile: React.FC = () => {
       </div>
 
       <style jsx>{`
-        @keyframes float-slow { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
-        @keyframes float-medium { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(-5deg); } }
-        @keyframes float-fast { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-        .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
-        .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
-        .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
+        /* Cleaned up redundant animations */
       `}</style>
     </section>
   );

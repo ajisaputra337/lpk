@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, Globe, GraduationCap, MapPin, Zap } from 'lucide-react';
 import Header from '../../../../styles/components/Header';
-import Breadcrumbs from '../../../../styles/components/Breadcrumbs';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
@@ -34,7 +33,6 @@ const SekolahJepangPage = () => {
             <Header />
 
             <main className="pt-20">
-                <Breadcrumbs items={[{ label: t('hero.badge'), href: '/program/sekolah-jepang' }]} />
                 {/* 1. Hero Section */}
                 <section className="relative h-[400px] md:h-[500px] overflow-hidden">
                     <Image

@@ -4,3 +4,64 @@
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+@layer utilities {
+  /* Sakura Petal Fall Animation - GPU Optimized */
+  @keyframes sakura-fall {
+    0% {
+      transform: translate3d(0, -10%, 0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate3d(100px, 110vh, 0) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Sakura Sway (Natural fluttering) */
+  @keyframes sakura-sway {
+    0%, 100% {
+      margin-left: 0;
+    }
+    50% {
+      margin-left: 50px;
+    }
+  }
+
+  /* Floating Animations for Static Decor */
+  @keyframes float-natural {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate3d(5px, -15px, 0) rotate(2deg);
+    }
+    66% {
+      transform: translate3d(-5px, -10px, 0) rotate(-2deg);
+    }
+  }
+
+  .animate-sakura-fall {
+    animation: sakura-fall 10s linear infinite, sakura-sway 4s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
+  .animate-float-premium {
+    animation: float-natural 6s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  /* Reduce motion for mobile or slow devices if needed, 
+     but keeping it smooth with translate3d for now */
+  @media (max-width: 768px) {
+    .animate-sakura-fall {
+      animation-duration: 12s, 5s; /* Slower on mobile */
+    }
+  }
+}
