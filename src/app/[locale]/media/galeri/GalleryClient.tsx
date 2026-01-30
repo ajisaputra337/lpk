@@ -121,7 +121,17 @@ export default function GalleryPageClient() {
                         {t('header.title')}
                     </h1>
                     <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-300">
-                        {t('header.subtitle')}
+                        {t.rich('header.subtitle', {
+                            link: (chunks) => (
+                                <Link
+                                    href="https://lpk-aishiro.com/#"
+                                    target="_blank"
+                                    className="text-red-400 hover:text-red-300 underline font-extrabold"
+                                >
+                                    {chunks}
+                                </Link>
+                            )
+                        })}
                     </p>
                 </div>
             </section>

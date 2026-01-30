@@ -78,6 +78,8 @@
     "heroTitle": "Study in <red>Japan</red> and turn your <yellow>dreams</yellow> into reality",
     "heroSubtitle": "Together with Aishiro Gakuen, reach a brighter future.",
     "programSectionTitle": "Recommended Programs",
+    "galleryTitle": "Activity Gallery",
+    "gallerySubtitle": "Documentation of activities and valuable moments at <red>LPK Aishiro Gakuen</red>.",
     "successSub": "Success Stories in <red>Japan</red>",
     "seeMore": "See Details",
     "mapSubtitle": "Location Map",
@@ -410,7 +412,7 @@
   "Gallery": {
     "header": {
       "title": "Aishiro Gakuen Gallery",
-      "subtitle": "Click on a photo to see activity details and full stories."
+      "subtitle": "Click on a photo to see activity details and full stories. Or check our other documentation <link>here...</link>"
     },
     "card": {
       "defaultDesc": "Documentation of LPK Aishiro Gakuen training activities.",

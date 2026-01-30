@@ -7,6 +7,7 @@ import Header from "../../styles/components/Header";
 import Profile from "../../styles/components/Profile";
 import ProgramCard from "../../styles/components/ProgramCard";
 import SuccessStoryCard from "../../styles/components/SuccessStoryCard";
+import HomeGallery from "../../styles/components/HomeGallery";
 import { BookOpen, Zap, Users } from "lucide-react";
 import { supabase } from "../../lib/supabase";
 import { useTranslations } from "next-intl";
@@ -63,10 +64,10 @@ export default function HomePageClient() {
                 .limit(6);
 
             if (data) {
-                const mappedData = data.map((item: any) => ({
+                const mappedData = data.map((item) => ({
                     ...item,
                     tanggalBerangkat: item.tanggalLahir
-                }));
+                })) as Alumni[]; // Type assertion to ensure state consistency
                 setAlumniData(mappedData);
             }
         };
@@ -98,7 +99,13 @@ export default function HomePageClient() {
                             </Link>
                         </div>
                     </div>
+
+                    {/* Gradient Transition Overlay - Refined for subtle transparency */}
+                    <div className="absolute bottom-0 left-0 z-20 h-10 w-full bg-gradient-to-t from-white to-transparent backdrop-blur-[0.5px]"></div>
                 </section>
+
+                {/* Gallery Section */}
+                <HomeGallery />
 
                 {/* Profile Section */}
                 <Profile />

@@ -12,15 +12,24 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const t = await getTranslations({ locale, namespace: 'VisiMisi.metadata' });
 
     const baseUrl = env.NEXT_PUBLIC_BASE_URL;
+    const path = "profil/visi-misi";
 
     return {
         title: t('title'),
         description: t('description'),
         keywords: ['Visi Misi LPK', 'Tujuan LPK Aishiro', 'Lembaga Pelatihan Jepang', 'Visi Lembaga Profesional'],
+        alternates: {
+            canonical: `${baseUrl}/${locale}/${path}`,
+            languages: {
+                'id': `${baseUrl}/id/${path}`,
+                'en': `${baseUrl}/en/${path}`,
+                'ja': `${baseUrl}/jp/${path}`,
+            },
+        },
         openGraph: {
             title: t('ogTitle'),
             description: t('ogDesc'),
-            url: `${baseUrl}/${locale}/profil/visi-misi`,
+            url: `${baseUrl}/${locale}/${path}`,
             siteName: 'LPK Aishiro Gakuen',
             type: 'website',
             images: [
@@ -31,6 +40,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                     alt: t('title'),
                 },
             ],
+            locale: locale === 'jp' ? 'ja_JP' : locale === 'en' ? 'en_US' : 'id_ID',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: t('ogTitle'),
+            description: t('ogDesc'),
+            images: ['/Images/shinkansen.jpg'],
         },
     };
 }

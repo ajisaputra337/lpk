@@ -10,30 +10,36 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   // Fetch data galeri langsung dari Supabase di server side
   const { data: item } = await supabase
     .from("media_gallery")
-    .select("title_id, title_jp, description_id, description_jp, image_url")
+    .select("*")
     .eq("id", id)
     .single();
 
   if (!item) {
     return {
-      title: "Galeri Tidak Ditemukan",
+      title: "Galeri",
     };
   }
 
-  // Pilih judul/deskripsi sesuai bahasa
-  const title = locale === 'jp' && item.title_jp ? item.title_jp : item.title_id;
-  const description = locale === 'jp' && item.description_jp ? item.description_jp : item.description_id;
+  // Pilih judul/deskripsi sesuai bahasa (Sama dengan logic di client)
+  const title = locale === "jp"
+    ? (item.title_jp || item.title_id || item.title)
+    : (item.title_id || item.title);
+
+  const description = locale === "jp"
+    ? (item.description_jp || item.description_id || item.description)
+    : (item.description_id || item.description);
 
   const baseUrl = env.NEXT_PUBLIC_BASE_URL;
+  const pageUrl = `${baseUrl}/${locale}/media/galeri/${id}`;
 
   return {
     title: title,
-    description: description?.substring(0, 160), // Limit description length
+    description: description?.substring(0, 160),
     openGraph: {
       title: title,
       description: description,
       images: [item.image_url],
-      url: `${baseUrl}/${locale}/gallery/${id}`,
+      url: pageUrl,
       type: 'article',
     },
     twitter: {
@@ -43,11 +49,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       images: [item.image_url],
     },
     alternates: {
-      canonical: `${baseUrl}/${locale}/gallery/${id}`,
+      canonical: pageUrl,
       languages: {
-        'id': `${baseUrl}/id/gallery/${id}`,
-        'en': `${baseUrl}/en/gallery/${id}`,
-        'ja': `${baseUrl}/jp/gallery/${id}`,
+        'id': `${baseUrl}/id/media/galeri/${id}`,
+        'en': `${baseUrl}/en/media/galeri/${id}`,
+        'ja': `${baseUrl}/jp/media/galeri/${id}`,
       },
     },
   };

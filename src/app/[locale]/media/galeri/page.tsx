@@ -10,9 +10,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
+  // Untuk metadata description, kita hilangkan tag <link> agar jadi plain text
+  const subtitle = t.rich('header.subtitle', {
+    link: (chunks) => chunks
+  });
+
   return {
     title: t('header.title'),
-    description: t('header.subtitle'),
+    description: subtitle,
     alternates: {
       canonical: `${baseUrl}/${locale}/media/galeri`,
       languages: {
@@ -23,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     openGraph: {
       title: t('header.title'),
-      description: t('header.subtitle'),
+      description: subtitle,
       url: `${baseUrl}/${locale}/media/galeri`,
       type: 'website',
     },

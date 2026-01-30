@@ -11,6 +11,7 @@ const nextConfig = {
   },
 
   images: {
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "randomuser.me" },
@@ -27,7 +28,7 @@ const nextConfig = {
     // Daftar redirect dari URL WordPress lama ke URL baru
     // URL WordPress lama tidak memiliki locale prefix
     // Jadi kita redirect ke URL dengan locale default
-const wordpressRedirects = [
+    const wordpressRedirects = [
       // --- 1. HALAMAN PROFIL & IDENTITAS ---
       { from: "/company-profile", to: "/profil/company-profile" },
       { from: "/sample-page/company-profil-lpk-aishiro", to: "/profil/company-profile" },
@@ -105,8 +106,8 @@ const wordpressRedirects = [
       { from: "/post_tag-sitemap.xml", to: "/sitemap.xml" },
       { from: "/wp-content/uploads/2014/05/FORMULIR-PENDAFTARAN.docx", to: "/" },
     ];
-    
-    
+
+
     // Generate redirects dengan locale prefix di destination
     const redirectsWithLocale = wordpressRedirects.map(({ from, to }) => ({
       source: from,

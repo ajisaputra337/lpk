@@ -78,6 +78,8 @@
     "heroTitle": "<red>日本</red>で学び、<yellow>夢</yellow>を現実にしましょう",
     "heroSubtitle": "アイシロ学園と共に、輝かしい未来を掴みましょう。",
     "programSectionTitle": "おすすめプログラム",
+    "galleryTitle": "活動ギャラリー",
+    "gallerySubtitle": "<red>LPK Aishiro Gakuen</red>での活動と貴重な瞬間の記録。",
     "successSub": "<red>日本</red>での成功事例",
     "seeMore": "詳細を見る",
     "mapSubtitle": "アクセスマップ",
@@ -410,7 +412,7 @@
   "Gallery": {
     "header": {
       "title": "アイシロ学園ギャラリー",
-      "subtitle": "写真をクリックして、活動内容や詳細ストーリーを確認できます。"
+      "subtitle": "写真をクリックして、活動内容や詳細ストーリーを確認できます。または、<link>こちら</link>から他のドキュメントを確認してください..."
     },
     "card": {
       "defaultDesc": "LPK Aishiro Gakuenの研修活動の記録。",

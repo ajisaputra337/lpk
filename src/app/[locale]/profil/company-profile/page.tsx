@@ -2,14 +2,41 @@ import React from "react";
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import Header from "../../../../styles/components/Header";
+import { env } from '~/env';
 
 // Metadata Dinamis
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'CompanyProfile.metadata' });
+    const baseUrl = env.NEXT_PUBLIC_BASE_URL;
+    const path = "profil/company-profile";
+
     return {
         title: t('title'),
         description: t('description'),
+        alternates: {
+            canonical: `${baseUrl}/${locale}/${path}`,
+            languages: {
+                'id': `${baseUrl}/id/${path}`,
+                'en': `${baseUrl}/en/${path}`,
+                'ja': `${baseUrl}/jp/${path}`,
+            },
+        },
+        openGraph: {
+            title: t("title"),
+            description: t("description"),
+            url: `${baseUrl}/${locale}/${path}`,
+            siteName: "LPK Aishiro Gakuen",
+            images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: t("title") }],
+            locale: locale === 'jp' ? 'ja_JP' : locale === 'en' ? 'en_US' : 'id_ID',
+            type: "article",
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: t("title"),
+            description: t("description"),
+            images: ['/og-image.jpg'],
+        },
     };
 }
 

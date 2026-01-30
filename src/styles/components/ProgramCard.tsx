@@ -1,8 +1,8 @@
-"use client"; // Tambahkan ini karena pakai useTranslations
+"use client";
 
-import { Link } from "../../i18n/routing"; // Ganti import link
+import { Link } from "../../i18n/routing";
 import Image from "next/image";
-import { useTranslations } from "next-intl"; // Tambah ini
+import { useTranslations } from "next-intl" // Tambah ini
 
 interface ProgramCardProps {
   title: string;
@@ -19,17 +19,16 @@ const ProgramCard: React.FC<ProgramCardProps> = ({
   imageUrl,
   href,
 }) => {
-  const t = useTranslations("ProgramCard"); // Hook untuk terjemahan
+  const t = useTranslations("ProgramCard");
 
   return (
-    // Menggunakan slug yang lebih bersih
     <Link href={href} className="group block h-full">
       <div className="flex h-full flex-col rounded-lg border border-gray-100 bg-white p-0 shadow-sm transition-all duration-300 hover:border-red-700 hover:shadow-xl">
         {/* Area Foto / Gambar */}
         <div className="relative h-40 w-full overflow-hidden rounded-t-lg bg-gray-100">
           <Image
             src={imageUrl}
-            alt={`${t("altText")} ${title}`} // Alt teks dinamis
+            alt={`${t("altText")} ${title}`}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             style={{ objectFit: "cover" }}
@@ -37,9 +36,9 @@ const ProgramCard: React.FC<ProgramCardProps> = ({
           />
         </div>
 
-        {/* Konten Card (p-6) */}
+        {/* Content Card (p-6) */}
         <div className="flex flex-grow flex-col p-6">
-          {/* Header: Icon dan Title */}
+          {/* Header: Icon and Title */}
           <div className="mb-3 flex items-center">
             {/* Area Icon (Menggunakan properti icon) */}
             <div className="mr-3 flex-shrink-0 text-red-700">{icon}</div>
@@ -50,7 +49,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({
             </h3>
           </div>
 
-          {/* Deskripsi */}
+          {/* Description */}
           <p className="mb-4 flex-grow text-sm text-gray-600">{description}</p>
 
           {/* Footer / Call to Action */}

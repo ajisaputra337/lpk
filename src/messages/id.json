@@ -78,6 +78,8 @@
     "heroTitle": "Wujudkan <yellow>Mimpimu</yellow> Belajar & Berkarir di <red>Jepang</red>",
     "heroSubtitle": "Bersama Aishiro Gakuen, Gapailah Masa Depan Gemilang.",
     "programSectionTitle": "Program Unggulan Kami",
+    "galleryTitle": "Galeri Kegiatan",
+    "gallerySubtitle": "Dokumentasi kegiatan dan momen berharga di <red>LPK Aishiro Gakuen</red>.",
     "successSub": "Mereka yang Sukses di <red>Jepang</red>",
     "seeMore": "Lihat Selengkapnya",
     "mapSubtitle": "Temukan Lokasi Kami",
@@ -410,7 +412,7 @@
   "Gallery": {
     "header": {
       "title": "Galeri Aishiro Gakuen",
-      "subtitle": "Klik foto untuk melihat detail kegiatan dan cerita lengkapnya."
+      "subtitle": "Klik foto untuk melihat detail kegiatan dan cerita lengkapnya. Atau cek dokumentasi kami yang lain <link>di sini...</link>"
     },
     "card": {
       "defaultDesc": "Dokumentasi kegiatan pelatihan LPK Aishiro Gakuen.",
