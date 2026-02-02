@@ -41,25 +41,25 @@ export default function KokoroGamaePage() {
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-neutral-50"></div>
                     </div>
 
-                    <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-                        <h1 className="text-4xl font-extrabold tracking-tight text-white md:text-6xl lg:text-7xl">
+                    <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center pt-10">
+                        <h1 className="text-4xl font-extrabold tracking-tight text-red-600 md:text-6xl lg:text-7xl">
                             {t("title")}
                         </h1>
                         <p className="mt-4 max-w-2xl text-lg font-medium text-white md:text-xl">
                             {t("subtitle")}
                         </p>
-                        <div className="mt-8 flex items-center justify-center space-x-4">
+                        {/* <div className="mt-8 flex items-center justify-center space-x-4">
                             <div className="h-px w-12 bg-white/30"></div>
                             <span className="text-2xl font-japanese text-white/50 tracking-widest">心構え</span>
                             <div className="h-px w-12 bg-white/30"></div>
-                        </div>
+                        </div> */}
                     </div>
                 </section>
 
                 <div className="relative z-20 -mt-10 mx-auto max-w-4xl px-6">
-                    <div className="rounded-xl bg-white/70 p-2 shadow-sm backdrop-blur-lg border border-white/50 inline-block mb-8">
+                    {/* <div className="rounded-xl bg-white/70 p-2 shadow-sm backdrop-blur-lg border border-white/50 inline-block mb-8">
                         <Breadcrumbs items={breadcrumbItems} />
-                    </div>
+                    </div> */}
 
                     {/* LIST SECTION */}
                     <div className="space-y-6">
@@ -83,15 +83,6 @@ export default function KokoroGamaePage() {
                                         {item}
                                     </p>
                                     <div className="mt-2 h-0.5 w-full bg-red-600 opacity-10 group-hover:opacity-40 transition-all duration-500"></div>
-                                </div>
-
-                                {/* Aesthetic Right Arrow indicator (now always visible but subtle) */}
-                                <div className="relative z-10 ml-4 lg:transform lg:translate-x-4 opacity-30 lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:translate-x-0 transition-all">
-                                    <div className="h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </div>
                                 </div>
                             </div>
                         ))}

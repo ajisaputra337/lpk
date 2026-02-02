@@ -3,6 +3,8 @@
 import { Link } from "../../i18n/routing";
 import { ChevronRight, Home } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { env } from "~/env";
+
 
 interface BreadcrumbItem {
     label: string;
@@ -54,13 +56,13 @@ export default function Breadcrumbs({ items = [] }: BreadcrumbsProps) {
                                 "@type": "ListItem",
                                 position: 1,
                                 name: t("home"),
-                                item: `${window.location.origin}/`,
+                                item: `${env.NEXT_PUBLIC_BASE_URL}/`,
                             },
                             ...items.map((item, index) => ({
                                 "@type": "ListItem",
                                 position: index + 2,
                                 name: item.label,
-                                item: `${window.location.origin}${item.href}`,
+                                item: `${env.NEXT_PUBLIC_BASE_URL}${item.href}`,
                             })),
                         ],
                     }),
