@@ -71,6 +71,7 @@ const Header = () => {
       subMenu: [
         { label: t("profile.company"), href: "/profil/company-profile" },
         { label: t("profile.visi"), href: "/profil/visi-misi" },
+        { label: t("profile.kokoro"), href: "/profil/kokoro-gamae" },
       ],
     },
     {
