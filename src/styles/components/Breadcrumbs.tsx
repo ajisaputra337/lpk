@@ -13,7 +13,7 @@ interface BreadcrumbsProps {
     items: BreadcrumbItem[];
 }
 
-export default function Breadcrumbs({ items }: BreadcrumbsProps) {
+export default function Breadcrumbs({ items = [] }: BreadcrumbsProps) {
     const t = useTranslations("Breadcrumbs");
 
     return (
@@ -25,6 +25,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
                         <span className="sr-only">{t("home")}</span>
                     </Link>
                 </li>
+
                 {items.map((item, index) => (
                     <li key={item.href} className="flex items-center">
                         <ChevronRight className="h-4 w-4 mx-1 text-gray-400" />
@@ -48,21 +49,21 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "BreadcrumbList",
-                        "itemListElement": [
+                        itemListElement: [
                             {
                                 "@type": "ListItem",
-                                "position": 1,
-                                "name": t("home"),
-                                "item": `${window.location.origin}/`
+                                position: 1,
+                                name: t("home"),
+                                item: `${window.location.origin}/`,
                             },
                             ...items.map((item, index) => ({
                                 "@type": "ListItem",
-                                "position": index + 2,
-                                "name": item.label,
-                                "item": `${window.location.origin}${item.href}`
-                            }))
-                        ]
-                    })
+                                position: index + 2,
+                                name: item.label,
+                                item: `${window.location.origin}${item.href}`,
+                            })),
+                        ],
+                    }),
                 }}
             />
         </nav>

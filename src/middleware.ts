@@ -25,6 +25,11 @@ export default async function middleware(request: NextRequest) {
           response.cookies.set({ name, value: '', ...options });
         },
       },
+      auth: {
+        flowType: 'pkce',
+        persistSession: false,
+        detectSessionInUrl: false,
+      },
     }
   );
 
@@ -41,9 +46,9 @@ export default async function middleware(request: NextRequest) {
 
   // LOGIKA BYPASS i18n
   // Tambahkan pengecekan agar file di folder /Images atau /siswa tidak kena i18n
-  const isInternalPath = 
-    pathname.startsWith('/admin-lpkaishiro') || 
-    pathname.startsWith('/login') || 
+  const isInternalPath =
+    pathname.startsWith('/admin-lpkaishiro') ||
+    pathname.startsWith('/login') ||
     pathname.startsWith('/api') ||
     pathname.startsWith('/Images') || // Tambahan untuk aset
     pathname.startsWith('/siswa') ||  // Tambahan untuk aset
