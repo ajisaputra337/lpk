@@ -14,7 +14,8 @@
     "profile": {
       "title": "PROFIL",
       "company": "Company Profile",
-      "visi": "Visi Misi"
+      "visi": "Visi Misi",
+      "kokoro": "Kokoro Gamae"
     },
     "media": {
       "title": "MEDIA & INFO",
@@ -493,5 +494,49 @@
   },
   "Breadcrumbs": {
     "home": "Home"
+  },
+  "KokoroGamae": {
+    "metadata": {
+      "title": "Kokoro Gamae - Sikap Mental Jisshusei | LPK Aishiro Gakuen",
+      "description": "Pelajari sikap mental dan karakter Kokoro Gamae bagi calon Jisshusei di LPK Aishiro Gakuen."
+    },
+    "title": "KOKORO GAMAE",
+    "subtitle": "Sikap Mental Jisshusei",
+    "list": [
+      "Pelatihan Disiplin Tinggi 1",
+      "Etika dan Sopan Santun 2",
+      "Kemandirian di Asrama 3",
+      "Ketepatan Waktu (On Time) 4",
+      "Kebersihan Lingkungan (5S) 5",
+      "Semangat Kerja (Genki) 6",
+      "Tanggung Jawab Pekerjaan 7",
+      "Kejujuran dan Integritas 8",
+      "Kerjasama Tim (Teamwork) 9",
+      "Kepatuhan pada Aturan 10",
+      "Place Holder 11",
+      "Place Holder 12",
+      "Place Holder 13",
+      "Place Holder 14",
+      "Place Holder 15",
+      "Place Holder 16",
+      "Place Holder 17",
+      "Place Holder 18",
+      "Place Holder 19",
+      "Place Holder 20",
+      "Place Holder 21",
+      "Place Holder 22",
+      "Place Holder 23",
+      "Place Holder 24",
+      "Place Holder 25",
+      "Place Holder 26",
+      "Place Holder 27",
+      "Place Holder 28",
+      "Place Holder 29",
+      "Place Holder 30"
+    ],
+    "breadcrumb": {
+      "profil": "Profil",
+      "current": "Kokoro Gamae"
+    }
   }
 }

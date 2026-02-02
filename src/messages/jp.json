@@ -14,7 +14,8 @@
     "profile": {
       "title": "プロフィール",
       "company": "会社概要",
-      "visi": "ビジョンとミッション"
+      "visi": "ビジョンとミッション",
+      "kokoro": "心構え (Kokoro Gamae)"
     },
     "media": {
       "title": "メディアと情報",
@@ -493,5 +494,49 @@
   },
   "Breadcrumbs": {
     "home": "ホーム"
+  },
+  "KokoroGamae": {
+    "metadata": {
+      "title": "心構え (Kokoro Gamae) - 実習生の心構え | LPK Aishiro Gakuen",
+      "description": "LPK Aishiro Gakuen の実習生候補生のための心構えと性格について学びます。"
+    },
+    "title": "心構え (KOKORO GAMAE)",
+    "subtitle": "実習生の心構え",
+    "list": [
+      "Pelatihan Disiplin Tinggi 1",
+      "Etika dan Sopan Santun 2",
+      "Kemandirian di Asrama 3",
+      "Ketepatan Waktu (On Time) 4",
+      "Kebersihan Lingkungan (5S) 5",
+      "Semangat Kerja (Genki) 6",
+      "Tanggung Jawab Pekerjaan 7",
+      "Kejujuran dan Integritas 8",
+      "Kerjasama Tim (Teamwork) 9",
+      "Kepatuhan pada Aturan 10",
+      "Place Holder 11",
+      "Place Holder 12",
+      "Place Holder 13",
+      "Place Holder 14",
+      "Place Holder 15",
+      "Place Holder 16",
+      "Place Holder 17",
+      "Place Holder 18",
+      "Place Holder 19",
+      "Place Holder 20",
+      "Place Holder 21",
+      "Place Holder 22",
+      "Place Holder 23",
+      "Place Holder 24",
+      "Place Holder 25",
+      "Place Holder 26",
+      "Place Holder 27",
+      "Place Holder 28",
+      "Place Holder 29",
+      "Place Holder 30"
+    ],
+    "breadcrumb": {
+      "profil": "プロフィール",
+      "current": "心構え"
+    }
   }
 }
