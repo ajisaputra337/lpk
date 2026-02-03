@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import Header from "../../../../styles/components/Header";
-import Breadcrumbs from "../../../../styles/components/Breadcrumbs";
 import SakuraBackground from "../../../../styles/components/SakuraBackground";
 import Image from "next/image";
 

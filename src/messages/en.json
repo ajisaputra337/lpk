@@ -15,7 +15,16 @@
       "title": "Profile",
       "company": "Company Profile",
       "visi": "Vision & Mission",
-      "kokoro": "Kokoro Gamae"
+      "kokoro": "Kokoro Gamae",
+      "tataTertib": {
+        "title": "Rules & Regulations",
+        "instruktur": "Instructor Rules",
+        "asrama": "Dormitory Rules",
+        "asramaPutri": "Girls' Dormitory Rules",
+        "siswa": "Student Rules"
+      },
+      "rules": "Rules & Sanctions",
+      "schedule": "Activity Schedule"
     },
     "media": {
       "title": "Media & Information",
@@ -538,5 +547,330 @@
       "profil": "Profile",
       "current": "Mental Attitude"
     }
+  },
+  "TataTertibPage": {
+    "title": "RULES & REGULATIONS",
+    "lpkaishiro": "LPK. AISHIRO GAKUEN",
+    "instruktur": {
+      "title": "INSTRUCTOR RULES",
+      "rules": [
+        "Instructors must arrive 10 minutes before the teaching and learning activities begin.",
+        "Instructors must adhere to the teaching code of ethics and the regulations applicable at the LPK.",
+        "Instructors shall prepare the necessary learning materials to ensure the smooth flow of the Teaching and Learning Activities (KBM).",
+        "Instructors are responsible for creating and preparing Lesson Plans (RPP), syllabi, and the learning curriculum.",
+        "Instructors must maintain and take care of office facilities, equipment, and the surrounding office area.",
+        "If an instructor is absent or needs to change the schedule, it must be coordinated with the administration department.",
+        "Instructors must dress neatly and professionally in accordance with LPK regulations.",
+        "Any ideas, input, criticism, or suggestions regarding LPK policies should be coordinated with the management.",
+        "Instructors must be available if students wish to consult on the material even after the class session has ended.",
+        "Instructors should act as motivators for both themselves and the students.",
+        "Other provisions will be communicated verbally."
+      ]
+    },
+    "asrama": {
+      "title": "DORMITORY RULES",
+      "rules": [
+        "Students must arrive at the dormitory one day before teaching and learning activities begin.",
+        "Students are required to maintain dormitory facilities, furniture, and the area around the training dormitory.",
+        "Students must maintain order and cleanliness in and around the training dormitory.",
+        "Students are requested to conserve water and electricity.",
+        "Students must perform duty/toban according to the specified schedule. If a student is unable, they can swap with another student.",
+        "Smoking is prohibited inside the dormitory and the surrounding environment.",
+        "Students are not allowed to leave the dormitory past 10 PM without permission.",
+        "Male students are not allowed to visit the female dormitory, and vice versa.",
+        "If friends or relatives visit, please host them in the guest room.",
+        "Students are prohibited from having romantic relationships or 'cinlok' around the training dormitory.",
+        "Students are prohibited from bringing sharp weapons, drugs, or alcoholic beverages (miras) to the training dormitory area. Anyone found carrying them will be immediately dismissed.",
+        "Students are prohibited from performing immoral acts around the training dormitory area. Anyone found doing so will be immediately dismissed.",
+        "Students must dress neatly and politely around the training dormitory. Female students are requested to wear modest clothing and reasonable makeup.",
+        "Students must use polite language and not shout when speaking.",
+        "Students are requested not to bring vehicles/motorcycles. If one is brought, the LPK is not responsible for loss or damage.",
+        "Students who bring motorcycles must not speed around the dormitory.",
+        "Students must prioritize a culture of queuing for activities such as bathing, eating, etc.",
+        "Students must return and clean equipment after using it.",
+        "Students are requested to increase care for fellow friends and the environment.",
+        "Students are requested to cooperate, socialize, and help each other. Individualistic living is not permitted.",
+        "Students must report any problems to instructors or sensei.",
+        "LPK. AISHIRO GAKUEN reserves the right to unilaterally return or dishonorably discharge participants who violate the specified rules (undisciplined).",
+        "And other provisions that will be conveyed verbally."
+      ]
+    },
+    "asramaPutri": {
+      "title": "GIRLS' DORMITORY RULES",
+      "rules": [
+        "Students must arrive at the dormitory one day before the teaching and learning activities begin.",
+        "Students must maintain and take care of dormitory facilities, furniture, and the surrounding dormitory area.",
+        "Students must maintain order and cleanliness around the training dormitory.",
+        "Students must perform duty (toban) according to the established schedule. If a student is unable to attend, they may swap with another student.",
+        "Smoking is prohibited inside the dormitory and the surrounding environment.",
+        "Students are not allowed to leave the dormitory without the instructor's permission.",
+        "Students are not allowed to stay out past 10 PM without permission.",
+        "Male students are not allowed to enter the female dormitory, and vice versa.",
+        "Students are not permitted to engage in romantic relationships within the dormitory area.",
+        "Possession of sharp weapons, drugs, and alcoholic beverages within the dormitory area is strictly prohibited.",
+        "Immoral acts within the dormitory area are strictly prohibited. Any student caught committing such acts will be immediately dismissed.",
+        "Students must dress neatly and appropriately around the dormitory area.",
+        "Students must use polite language and refrain from shouting when speaking.",
+        "Students using motorcycles are requested not to speed around the dormitory area.",
+        "Students must prioritize the culture of queuing for all activities, such as bathing, eating, etc.",
+        "Students must clean and return all equipment to its original place after use.",
+        "Students are expected to cooperate, socialize, and help each other. Individualistic lifestyles are not permitted.",
+        "Students must report any problems or issues to the instructor or sensei.",
+        "LPK. AISHIRO GAKUEN reserves the right to unilaterally dismiss or dishonorably discharge participants who violate the established rules (disciplinary action).",
+        "Other provisions will be communicated verbally."
+      ]
+    },
+    "siswa": {
+      "title": "STUDENT RULES",
+      "rules": [
+        "Students must arrive 15 minutes before the teaching and learning activities begin.",
+        "Students must comply with all applicable regulations.",
+        "Students must maintain and take care of the building facilities, classroom equipment, and the area surrounding the training center.",
+        "Students must maintain order and cleanliness around the training center.",
+        "Eating and drinking are not allowed inside the classroom.",
+        "Smoking is prohibited in the classroom and the surrounding areas.",
+        "Students must collect/submit their mobile phones/smartphones during class sessions.",
+        "Students must participate in all training activities in an orderly manner according to the established schedule.",
+        "Students who cannot attend training due to illness must notify the instructor.",
+        "Students are not allowed to leave the training center without the instructor's permission.",
+        "Students must report any problems or issues to the instructor.",
+        "Possession of sharp weapons, drugs, and alcoholic beverages within the training center area is strictly prohibited.",
+        "Immoral acts within the training center area are strictly prohibited.",
+        "Students are requested not to bring vehicles/motorcycles. LPK. Aishiro Gakuen is not responsible for any loss or damage if a vehicle is brought.",
+        "Students must bring their own toiletries, cutlery, prayer equipment, and study materials. (Will be checked by the respective sensei).",
+        "Students must wear the designated uniform:\n• Monday: White shirt, black trousers, and tie\n• Tuesday: Sportswear and black trousers\n• Wednesday: White shirt, black trousers, and tie\n• Thursday: Casual clothes and black trousers\n• Friday: White shirt, black trousers, and tie\n• Saturday: Sports uniform",
+        "Female students are requested not to wear excessive jewelry except for earrings and rings, and to avoid excessive makeup.",
+        "Students must prioritize the culture of queuing during all activities (e.g., bathing, eating, etc.).",
+        "Students are requested to increase their care for fellow friends and the environment.",
+        "Students are expected to cooperate, socialize, and help each other. Individualistic lifestyles are not permitted.",
+        "LPK. AISHIRO GAKUEN reserves the right to unilaterally dismiss or dishonorably discharge participants who violate the established rules (disciplinary action).",
+        "Other provisions will be communicated verbally."
+      ]
+    }
+  },
+  "SchedulePage": {
+    "title": "ACTIVITY SCHEDULE",
+    "lpkaishiro": "LPK. AISHIRO GAKUEN",
+    "tableSchedule": {
+      "thTime": "TIME",
+      "thActivity": "ACTIVITY",
+      "rows": [
+        [
+          "04.30 – 05.00",
+          "MORNING PRAYER (SUBUH)"
+        ],
+        [
+          "05.30 – 06.30",
+          "FMD (Jogging, Push Up, Sit Up)"
+        ],
+        [
+          "06.30 – 07.00",
+          "CLEANING (TOBAN)"
+        ],
+        [
+          "07.00 – 08.00",
+          "SHOWER AND BREAKFAST"
+        ],
+        [
+          "08.00 – 08.30",
+          "CHOREI (MORNING ASSEMBLY)"
+        ],
+        [
+          "08.30 – 10.00",
+          "LEARNING MATERIAL"
+        ],
+        [
+          "10.00 – 10.15",
+          "BREAK (KYUUKEI)"
+        ],
+        [
+          "10.15 – 11.45",
+          "LEARNING MATERIAL"
+        ],
+        [
+          "11.45 – 13.15",
+          "ISOMA (Rest, Prayer, Lunch)"
+        ],
+        [
+          "13.15 – 15.00",
+          "LEARNING MATERIAL"
+        ],
+        [
+          "15.00 – 16.00",
+          "BREAK (ASHAR PRAYER)"
+        ],
+        [
+          "16.00 – 16.15",
+          "TAISHOU (EXERCISE)"
+        ],
+        [
+          "16.15 – 17.00",
+          "FMD (Running, Push Up, Sit Up)"
+        ],
+        [
+          "17.00 – 19.00",
+          "ISOMA (Rest, Prayer, Dinner)"
+        ],
+        [
+          "19.00 – 23.00",
+          "SELF STUDY/HOMEWORK"
+        ],
+        [
+          "23.00 – 04.30",
+          "SLEEP/REST"
+        ]
+      ]
+    },
+    "fmdMateri": {
+      "title": "FMD MATERIAL",
+      "subtitle": "(Physical, Mental and Discipline)",
+      "morning": "EVERY MORNING",
+      "afternoon": "EVERY AFTERNOON",
+      "thActivity": "ACTIVITY",
+      "thAmount": "AMOUNT",
+      "morningRows": [
+        [
+          "05.30 – 06.30",
+          "MORNING JOGGING",
+          "4 LAPS"
+        ],
+        [
+          "",
+          "PUSH UP",
+          "35 TIMES"
+        ],
+        [
+          "",
+          "SIT UP",
+          "25 TIMES"
+        ],
+        [
+          "",
+          "PULL UP",
+          "10 TIMES"
+        ],
+        [
+          "",
+          "LIFTING 5 KG WEIGHT",
+          "20 TIMES"
+        ]
+      ],
+      "afternoonRows": [
+        [
+          "16.00 – 16.15",
+          "TAISHO",
+          "1 TIME"
+        ],
+        [
+          "16.15 – 17.00",
+          "RUNNING",
+          "6 LAPS"
+        ],
+        [
+          "",
+          "PUSH UP",
+          "40 TIMES"
+        ],
+        [
+          "",
+          "SIT UP",
+          "30 TIMES"
+        ],
+        [
+          "",
+          "PULL UP",
+          "10 TIMES"
+        ],
+        [
+          "",
+          "LIFTING 5 KG WEIGHT",
+          "20 TIMES"
+        ]
+      ]
+    }
+  },
+  "RulesContent": {
+    "title": "Student Rules & Sanctions",
+    "description": "List of rules and disciplinary sanctions for LPK Aishiro Gakuen students.",
+    "personalTitle": "PERSONAL REGULATIONS",
+    "sanctionTitle": "DISCIPLINARY SANCTIONS",
+    "tableHeaderViolation": "Type of Violation",
+    "tableHeaderPenalty": "Sanction / Penalty",
+    "personalList": [
+      "Male students: 1 cm buzz cut hairstyle.",
+      "Female students: Hair must be tied back.",
+      "No mustache or beard allowed.",
+      "Short and clean nails, no accessories or nail polish.",
+      "No excessive jewelry allowed except for earrings and rings.",
+      "Neat and polite clothing according to LPK regulations.",
+      "Must wear a belt and an analog wristwatch.",
+      "Must wear a name tag or nafuda.",
+      "Always carry a handkerchief.",
+      "Must wear black socks.",
+      "Must wear black formal shoes and sports shoes (for FMD).",
+      "Must bring your own stationery and textbooks."
+    ],
+    "sanctionsList": [
+      {
+        "v": "Missing morning FMD",
+        "p": "50 Push-ups"
+      },
+      {
+        "v": "Missing afternoon FMD",
+        "p": "50 Push-ups"
+      },
+      {
+        "v": "Late for Chorei (Morning Assembly)",
+        "p": "Write 'Kokoro Gamae' 1 time"
+      },
+      {
+        "v": "Late for class",
+        "p": "Memorize 30 vocabularies"
+      },
+      {
+        "v": "Wearing wrong uniform schedule",
+        "p": "Memorize 30 vocabularies"
+      },
+      {
+        "v": "Using foul language / Swearing",
+        "p": "50 Push-ups"
+      },
+      {
+        "v": "Failing to do or submit homework",
+        "p": "Redo the homework 5 times"
+      },
+      {
+        "v": "Failing to perform duty (piket/toban)",
+        "p": "Clean the dormitory and classroom alone"
+      },
+      {
+        "v": "Caught smoking",
+        "p": "Warning, Counseling, SP 1-3, Expulsion"
+      },
+      {
+        "v": "Leaving or going home without permission",
+        "p": "Warning, Counseling, SP 1-3, Expulsion"
+      },
+      {
+        "v": "Disobeying LPK Aishiro Gakuen regulations",
+        "p": "Warning, Counseling, SP 1-3, Expulsion"
+      },
+      {
+        "v": "Bringing weapons, drugs, or alcohol",
+        "p": "Expelled"
+      },
+      {
+        "v": "Committing immoral acts",
+        "p": "Expelled"
+      },
+      {
+        "v": "Fighting",
+        "p": "Warning, Counseling, SP 1-3, Expulsion"
+      },
+      {
+        "v": "Caught stealing",
+        "p": "Warning, Immediate SP 3, Expulsion"
+      }
+    ]
   }
 }

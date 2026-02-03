@@ -15,7 +15,16 @@
       "title": "PROFIL",
       "company": "Company Profile",
       "visi": "Visi Misi",
-      "kokoro": "Kokoro Gamae"
+      "kokoro": "Kokoro Gamae",
+      "tataTertib": {
+        "title": "Tata Tertib",
+        "instruktur": "Tata Tertib Instruktur",
+        "asrama": "Tata Tertib Asrama",
+        "asramaPutri": "Tata Tertib Asrama Putri",
+        "siswa": "Tata Tertib Siswa"
+      },
+      "rules": "Peraturan & Sanksi",
+      "schedule": "Jadwal Kegiatan"
     },
     "media": {
       "title": "MEDIA & INFO",
@@ -538,5 +547,330 @@
       "profil": "Profil",
       "current": "Kokoro Gamae"
     }
+  },
+  "TataTertibPage": {
+    "title": "TATA TERTIB",
+    "lpkaishiro": "LPK. AISHIRO GAKUEN",
+    "instruktur": {
+      "title": "TATA TERTIB INSTRUKTUR",
+      "rules": [
+        "Instruktur wajib hadir 10 menit sebelum kegiatan belajar mengajar di mulai.",
+        "Instruktur wajib mentaati kode-etik pengajaran dan aturan yang berlaku di LPK.",
+        "Instruktur menyiapkan perlengkapan proses pembelajaran yang diperlukan untuk kelancaran proses Kegiatan Belajar Mengajar ( KBM )",
+        "Instruktur membuat dan menyiapkan RPP, silabus dan kurikulum pembelajaran.",
+        "Instruktur wajib menjaga dan memelihara fasilitas kantor, peralatan kantor, maupun area sekitar kantor.",
+        "Jika Instruktur absen ( tidak masuk ) ataupun merubah jadwal, mohon di koordinasikan dengan bidang administrasi.",
+        "Instruktur wajib berpakaian rapih dan sopan sesuai dengan ketentuan di LPK.",
+        "Apabila ada ide, masukan , kritik dan saran terkait dengan kebijakan LPK, harap di koordinasikan kepada pimpinan.",
+        "Instruktur harus siap jika ada peserta didik yang ingin berkonsultasi materi walaupun pertemuan di kelas sudah selesai.",
+        "Instruktur menjadi motivator diri sendiri maupun peserta didik.",
+        "Dan ketentuan lainnya akan disampaikan secara lisan."
+      ]
+    },
+    "asrama": {
+      "title": "TATA TERTIB ASRAMA",
+      "rules": [
+        "Siswa wajib datang ke asrama sehari sebelum kegiatan belajar mengajar.",
+        "Siswa wajib menjaga dan memelihara fasilitas asrama, perabotan asrama, maupun area disekitar asrama pelatihan.",
+        "Siswa wajib menjaga ketertiban dan kebersihan di sekitar asrama pelatihan.",
+        "Siswa dimohon untuk menghemat air dan listrik.",
+        "Siswa wajib piket/toban sesuai jadwal yang telah ditentukan. Jika siswa berhalangan, bisa tukeran dengan siswa yang lain.",
+        "Siswa dilarang merokok di dalam asrama dan lingkungan sekitar asrama.",
+        "Siswa tidak diperkenankan meninggalkan asrama melebihi jam 10 malam tanpa ijin.",
+        "Siswa laki-laki tidak diperkenankan datang ke asrama perempuan, begitu juga sebaliknya.",
+        "Jika ada teman atau saudara yang berkunjung mohon di tempatkan di ruang tamu.",
+        "Siswa dilarang menjalin hubungan asmara atau cinlok di sekitar asrama pelatihan.",
+        "Siswa dilarang membawa senjata tajam, narkoba, minuman keras ( miras ) di area sekitar asrama pelatihan. Jika kedapatan membawa akan langsung di keluarkan",
+        "Siswa dilarang melakukan tindakan asusila di area sekitar asrama pelatihan. Jika kedapatan melakukan tindakan asusila akan langsung dikeluarkan.",
+        "Siswa wajib berpakaian rapih dan sopan di sekitar asrama pelatihan. Bagi siswa perempuan mohon menggunakan baju yang menutup aurat dan ber-make up yang wajar.",
+        "Siswa wajib menggunakan bahasa yang sopan dan tidak berteriak kalau berbicara.",
+        "Siswa di mohon untuk tidak membawa kendaraan / motor. Apabila membawa motor jika terjadi kehilangan dan kerusakan bukan menjadi tanggung jawab LPK",
+        "Bagi siswa yang membawa motor mohon tidak ngebut-ngebut disekitar asrama.",
+        "Siswa wajib mengutamakan budaya antri setiap melakukan kegiatan contoh: mandi, makan dan sebagainya.",
+        "Siswa wajib mengembalikan dan membersihkan peralatan setelah dipakai sendiri.",
+        "Siswa dimohon meningkatkan kepedulian dengan sesama teman dan lingkungan.",
+        "Siswa dimohon bisa bekerjasama, bisa bersosialisasi dan saling tolong menolong. Tidak diperkenankan hidup individualis.",
+        "Siswa wajib melapor ke instruktur atau sensei jika ada permasalahan..",
+        "LPK. AISHIRO GAKUEN berhak sepihak memulangkan atau memberhentikan secara tidak hormat kepada peserta yang melakukan tindakan yang melanggar aturan yang telah ditentukan ( indisipliner ).",
+        "Dan ketentuan lain yang akan disampaikan secara lisan."
+      ]
+    },
+    "asramaPutri": {
+      "title": "TATA TERTIB ASRAMA PUTRI",
+      "rules": [
+        "Siswa wajib datang ke asrama sehari sebelum kegiatan belajar mengajar.",
+        "Siswa wajib menjaga fasilitas asrama, perabotan asrama, maupun area disekitar asrama pelatihan.",
+        "Siswa wajib menjaga ketertiban dan kebersihan di sekitar asrama pelatihan.",
+        "Siswa wajib piket/toban sesuai jadwal yang telah ditentukan. Jika siswa berhalangan , bisa bertukar dengan siswa yang lain.",
+        "Siswa dilarang  merokok di dalam asrama dan lingkungan sekitar asrama.",
+        "Siswa tidak diperkenankan meninggalkan asrama pelatihan tanpa ijin instruktur.",
+        "Siswa tidak di perkenankan keluar asrama melebihi jam 10 malam tanpa ijin.",
+        "Siswa laki-laki tidak diperkenankan datang ke asrama perempuan, begitu juga sebaliknya.",
+        "Siswa tidak diperkenankan menjalin hubungan asmara atau cinlok di sekitar asrama.",
+        "Siswa tidak di perkenankan membawa senjata tajam, narkoba, minuman keras ( miras ) di area sekitar asrama pelatihan.",
+        "Siswa dilarang  melakukan tindakan asusila di area sekitar asrama pelatihan. Jika kedapatan melakukan tindakan asusila akan langsung dikeluarkan",
+        "Siswa wajib berpakaian rapi dan sopan di sekitar asrama pelatihan.",
+        "Siswa wajib menggunakan bahasa yang sopan dan tidak berteriak kalau berbicara.",
+        "Siswa yang menggunakan motor mohon tidak ngebut-ngebut disekitar asrama.",
+        "Siswa wajib mengutamakan budaya antri setiap melakukan kegiatan contoh nya mandi, makan dan sebagainya.",
+        "Siswa wajib mengembalikan dan membersihkan peralatan setelah dipakai sendiri.",
+        "Siswa dimohon bisa bekerjasama, bisa bersosialisasi dan saling tolong menolong. Tidak diperkenankan hidup individualis.",
+        "Siswa wajib melapor ke instruktur atau sensei jika ada permasalahan.",
+        "LPK. AISHIRO GAKUEN berhak sepihak memulangkan atau memberhentikan secara tidak hormat kepada peserta yang melakukan tindakan yang melanggar aturan yang telah ditentukan ( indisipliner ).",
+        "Dan ketentuan lain yang akan disampaikan secara lisan."
+      ]
+    },
+    "siswa": {
+      "title": "TATA TERTIB SISWA",
+      "rules": [
+        "Siswa wajib hadir 15 menit sebelum kegiatan belajar mengajar di mulai.",
+        "Siswa wajib mentaati peraturan yang berlaku.",
+        "Siswa wajib menjaga dan memelihara fasilitas gedung, peralatan dikelas, maupun area disekitar tempat pelatihan.",
+        "Siswa wajib menjaga ketertiban dan kebersihan di sekitar tempat pelatihan.",
+        "Siswa tidak diperkenankan makan dan minum  di dalam kelas.",
+        "Siswa dilarang merokok di ruang kelas dan sekitar kelas.",
+        "Siswa mengumpulkan telepon seluler/smartphone saat pembelajaran di kelas.",
+        "Siswa wajib mengikuti seluruh kegiatan pelatihan dengan tertib sesuai jadwal pelatihan yang telah ditetapkan.",
+        "Siswa yang tidak mengikuti pelatihan karena sakit, wajib ijin ke instruktur.",
+        "Siswa tidak diperkenankan meninggalkan tempat pelatihan tanpa ijin instruktur.",
+        "Siswa wajib melapor ke instruktur jika ada permasalahan.",
+        "Siswa dilarang membawa senjata tajam, narkoba, minuman keras ( miras ) di area sekitar tempat pelatihan.",
+        "Siswa dilarang melakukan  tindakan asusila di area sekitar tempat pelatihan.",
+        "Siswa di mohon untuk tidak membawa kendaraan/motor. Apabila membawa motor jika terjadi kehilangan dan kerusakan bukan menjadi tanggung jawab LPK. Aishiro Gakuen.",
+        "Siswa wajib membawa sendiri peralatan mandi, peralatan makan, peralatan sholat, dan peralatan belajar secara mandiri. ( akan di cek sensei masing2 kelas ).",
+        "Siswa wajib memakai seragam yang telah ditentukan:\n• Senin : baju putih, celana hitam kain dan dasi\n• Selasa : kaos olahraga dan celana hitam kain\n• Rabu : baju putih, celana hitam kain dan dasi\n• Kamis : baju bebas dan celana hitam kain\n• Jumat : baju putih, celana hitam kain dan dasi\n• Sabtu : kaos seragam olahraga",
+        "Untuk siswa perempuan mohon untuk tidak mengunakan perhiasan berlebihan kecuali anting2 dan cincin dan mohon untuk tidak bermake up yang berlebihan",
+        "Siswa wajib mengutamakan budaya antri setiap melakukan kegiatan (misal saat mandi, makan dan sebagainya).",
+        "Siswa dimohon meningkatkan kepedulian dengan sesama teman dan lingkungan.",
+        "Siswa dimohon bisa bekerjasama, bisa bersosialisasi dan saling tolong menolong. Tidak diperkenankan hidup individualis.",
+        "LPK. AISHIRO GAKUEN berhak sepihak memulangkan atau memberhentikan secara tidak hormat kepada peserta yang melakukan tindakan yang melanggar aturan yang telah ditentukan ( indisipliner ).",
+        "Dan ketentuan lain yang akan disampaikan secara lisan."
+      ]
+    }
+  },
+  "SchedulePage": {
+    "title": "JADWAL KEGIATAN",
+    "lpkaishiro": "LPK. AISHIRO GAKUEN",
+    "tableSchedule": {
+      "thTime": "JAM",
+      "thActivity": "KEGIATAN",
+      "rows": [
+        [
+          "04.30 – 05.00",
+          "SHOLAT SUBUH"
+        ],
+        [
+          "05.30 – 06.30",
+          "FMD (Jogging, Push Up, Sit Up)"
+        ],
+        [
+          "06.30 – 07.00",
+          "PIKET/TOBAN"
+        ],
+        [
+          "07.00 – 08.00",
+          "MANDI DAN SARAPAN"
+        ],
+        [
+          "08.00 – 08.30",
+          "CHOREI"
+        ],
+        [
+          "08.30 – 10.00",
+          "MATERI BELAJAR"
+        ],
+        [
+          "10.00 – 10.15",
+          "ISTIRAHAT (KYUUKEI)"
+        ],
+        [
+          "10.15 – 11.45",
+          "MATERI BELAJAR"
+        ],
+        [
+          "11.45 – 13.15",
+          "ISOMA (Istirahat, Sholat, Makan)"
+        ],
+        [
+          "13.15 – 15.00",
+          "MATERI BELAJAR"
+        ],
+        [
+          "15.00 – 16.00",
+          "ISTIRAHAT (Sholat Ashar)"
+        ],
+        [
+          "16.00 – 16.15",
+          "TAISHOU (SENAM)"
+        ],
+        [
+          "16.15 – 17.00",
+          "FMD (Lari, Push Up, Sit Up)"
+        ],
+        [
+          "17.00 – 19.00",
+          "ISOMA (Istirahat, Sholat, Makan)"
+        ],
+        [
+          "19.00 – 23.00",
+          "BELAJAR MANDIRI/MENGERJAKAN PR"
+        ],
+        [
+          "23.00 – 04.30",
+          "ISTIRAHAT TIDUR"
+        ]
+      ]
+    },
+    "fmdMateri": {
+      "title": "MATERI FMD",
+      "subtitle": "(Fisik, Mental dan Disiplin)",
+      "morning": "SETIAP PAGI",
+      "afternoon": "SETIAP SORE",
+      "thActivity": "KEGIATAN",
+      "thAmount": "BESARAN",
+      "morningRows": [
+        [
+          "05.30 – 06.30",
+          "JOGGING PAGI",
+          "4 KALI PUTARAN"
+        ],
+        [
+          "",
+          "PUSH UP",
+          "35 KALI"
+        ],
+        [
+          "",
+          "SIT UP",
+          "25 KALI"
+        ],
+        [
+          "",
+          "PULL UP",
+          "10 KALI"
+        ],
+        [
+          "",
+          "ANGKAT BEBAN 5 KG",
+          "20 KALI"
+        ]
+      ],
+      "afternoonRows": [
+        [
+          "16.00 – 16.15",
+          "TAISHO",
+          "1 KALI"
+        ],
+        [
+          "16.15 – 17.00",
+          "LARI",
+          "6 KALI PUTARAN"
+        ],
+        [
+          "",
+          "PUSH UP",
+          "40 KALI"
+        ],
+        [
+          "",
+          "SIT UP",
+          "30 KALI"
+        ],
+        [
+          "",
+          "PULL UP",
+          "10 KALI"
+        ],
+        [
+          "",
+          "ANGKAT BEBAN 5 KG",
+          "20 KALI"
+        ]
+      ]
+    }
+  },
+  "RulesContent": {
+    "title": "Peraturan & Sanksi Siswa",
+    "description": "Daftar peraturan dan sanksi LPK Aishiro Gakuen",
+    "personalTitle": "PERATURAN PERSONAL",
+    "sanctionTitle": "SANKSI PELANGGARAN",
+    "tableHeaderViolation": "Jenis Pelanggaran",
+    "tableHeaderPenalty": "Sanksi",
+    "personalList": [
+      "Potong rambut cepak 1 cm bagi laki-laki.",
+      "Bagi siswa perempuan mohon dikuncir rambutnya.",
+      "Tidak berkumis dan berjenggot.",
+      "Kuku pendek dan bersih tanpa aksesoris dan kutek.",
+      "Tidak boleh menggunakan perhiasan yang berlebihan kecuali anting2 dan cincin.",
+      "Pakaian rapih dan sopan sesuai ketentuan LPK.",
+      "Memakai ikat pinggang dan jam tangan analog.",
+      "Memakai name-tag atau nafuda.",
+      "Selalu membawa sapu tangan.",
+      "Memakai kaos kaki hitam.",
+      "Memakai sepatu pantofel hitam dan sepatu olah raga ( FMD ).",
+      "Harus membawa alat tulis dan buku pelajaran sendiri."
+    ],
+    "sanctionsList": [
+      {
+        "v": "Tidak ikut FMD pagi",
+        "p": "Setor 50 kali Push Up"
+      },
+      {
+        "v": "Tidak ikut FMD sore",
+        "p": "Setor 50 kali Push Up"
+      },
+      {
+        "v": "Terlambat ikut Chorei",
+        "p": "Menulis Kokoro Game 1 kali"
+      },
+      {
+        "v": "Terlambat masuk kelas",
+        "p": "Hafalan kotoba 30"
+      },
+      {
+        "v": "Seragam tidak sesuai jadwal",
+        "p": "Hafalan 30 kotoba"
+      },
+      {
+        "v": "Mengucapkan kata2 kotor",
+        "p": "Setor Push up 50 kali"
+      },
+      {
+        "v": "Tidak mengerjakan dan mengumpulkan PR",
+        "p": "Mengulang PR tersebut 5 kali"
+      },
+      {
+        "v": "Tidak melaksanakan piket/toban",
+        "p": "Membersihkan asrama dan kelas sendiri"
+      },
+      {
+        "v": "Ketahuan merokok",
+        "p": "Teguran, Pembinaan, SP 1 2 3, Dikeluarkan"
+      },
+      {
+        "v": "Pergi keluar dan pulang kampung tanpa ijin",
+        "p": "Teguran, Pembinaan, SP 1 2 3, Dikeluarkan"
+      },
+      {
+        "v": "Tidak mentaati peraturan2 yang berlaku di LPK. Aishiro Gakuen",
+        "p": "Teguran, Pembinaan, SP 1 2 3, Dikeluarkan"
+      },
+      {
+        "v": "Membawa senjata tajam, narkoba, minuman keras",
+        "p": "Di keluarkan"
+      },
+      {
+        "v": "Melakukan tindakan asusila",
+        "p": "Di keluarkan"
+      },
+      {
+        "v": "Berkelahi",
+        "p": "Teguran, Pembinaan, SP 1 2 3, Dikeluarkan"
+      },
+      {
+        "v": "Ketahuan mencuri",
+        "p": "Teguran dan langsung SP 3, Dikeluarkan"
+      }
+    ]
   }
 }

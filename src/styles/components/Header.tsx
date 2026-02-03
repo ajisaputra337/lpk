@@ -52,9 +52,11 @@ const Header = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileSubMenu, setOpenMobileSubMenu] = useState<string | null>(null);
+  const [openMobileNestedSubMenu, setOpenMobileNestedSubMenu] = useState<string | null>(null);
 
   // Data Navigasi menggunakan Translation
   const navItems: NavItem[] = [
+    // ... (lines omitted for brevity in instruction, but I will apply correctly)
     { label: t("home"), href: "/" },
     {
       label: t("program.title"),
@@ -72,6 +74,18 @@ const Header = () => {
         { label: t("profile.company"), href: "/profil/company-profile" },
         { label: t("profile.visi"), href: "/profil/visi-misi" },
         { label: t("profile.kokoro"), href: "/profil/kokoro-gamae" },
+        { label: t("profile.rules"), href: "/profil/peraturan-sanksi" },
+        { label: t("profile.schedule"), href: "/profil/jadwal-kegiatan" },
+        {
+          label: t("profile.tataTertib.title"),
+          href: "#",
+          subMenu: [
+            { label: t("profile.tataTertib.instruktur"), href: "/profil/tata-tertib/instruktur" },
+            { label: t("profile.tataTertib.asrama"), href: "/profil/tata-tertib/asrama" },
+            { label: t("profile.tataTertib.asramaPutri"), href: "/profil/tata-tertib/asrama-putri" },
+            { label: t("profile.tataTertib.siswa"), href: "/profil/tata-tertib/siswa" },
+          ],
+        },
       ],
     },
     {
@@ -165,10 +179,29 @@ const Header = () => {
                     {item.subMenu && (
                       <ul className={`absolute top-full left-1/2 z-50 mt-2 w-56 -translate-x-1/2 overflow-visible rounded-md border-t-4 border-red-700 bg-white shadow-xl transition-all duration-200 ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}>
                         {item.subMenu.map((sub) => (
-                          <li key={sub.label}>
-                            <Link href={sub.href} onClick={() => setOpenDropdown(null)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700">
-                              {sub.label}
-                            </Link>
+                          <li key={sub.label} className="group/sub relative">
+                            {sub.subMenu ? (
+                              <div className="flex cursor-default items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700">
+                                <span>{sub.label}</span>
+                                <ChevronRight className="h-4 w-4" />
+                              </div>
+                            ) : (
+                              <Link href={sub.href} onClick={() => setOpenDropdown(null)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700">
+                                {sub.label}
+                              </Link>
+                            )}
+
+                            {sub.subMenu && (
+                              <ul className="invisible absolute top-0 left-full ml-0 w-56 overflow-visible rounded-md border-l-4 border-red-700 bg-white shadow-xl opacity-0 transition-all duration-200 group-hover/sub:visible group-hover/sub:opacity-100">
+                                {sub.subMenu.map((nestedSub) => (
+                                  <li key={nestedSub.label}>
+                                    <Link href={nestedSub.href} onClick={() => setOpenDropdown(null)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700">
+                                      {nestedSub.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
                           </li>
                         ))}
                       </ul>
@@ -225,9 +258,32 @@ const Header = () => {
                   <ul className="mt-2 space-y-2 border-l-2 border-red-600 pl-4">
                     {item.subMenu.map((sub) => (
                       <li key={sub.label}>
-                        <Link href={sub.href} onClick={closeMobileMenu} className="block p-1 font-medium text-gray-700">
-                          {sub.label}
-                        </Link>
+                        {sub.subMenu ? (
+                          <>
+                            <button
+                              onClick={() => setOpenMobileNestedSubMenu(openMobileNestedSubMenu === sub.label ? null : sub.label)}
+                              className="flex w-full items-center justify-between p-1 font-medium text-gray-700"
+                            >
+                              <span>{sub.label}</span>
+                              {openMobileNestedSubMenu === sub.label ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                            </button>
+                            {openMobileNestedSubMenu === sub.label && (
+                              <ul className="mt-1 space-y-1 border-l-2 border-yellow-500 pl-4">
+                                {sub.subMenu.map((nested) => (
+                                  <li key={nested.label}>
+                                    <Link href={nested.href} onClick={closeMobileMenu} className="block p-1 text-sm text-gray-600">
+                                      {nested.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </>
+                        ) : (
+                          <Link href={sub.href} onClick={closeMobileMenu} className="block p-1 font-medium text-gray-700">
+                            {sub.label}
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>

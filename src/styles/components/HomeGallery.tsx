@@ -104,15 +104,9 @@ export default function HomeGallery() {
 
                                     {/* Badge mimicking Success Story */}
                                     <div className="absolute bottom-2 left-2 rounded-full bg-red-600 px-2 py-0.5 text-[0.6rem] font-bold text-white shadow-md sm:px-3 sm:py-1 sm:text-xs">
-                                        📸 {tg("detailBtn") || "Detail"}
+                                        {title}
                                     </div>
 
-                                    {/* Title Preview on Hover */}
-                                    <div className="absolute right-2 bottom-10 left-2 translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                                        <p className="border-l-4 border-red-500 pl-2 text-[0.7rem] font-bold text-white drop-shadow-md sm:text-xs">
-                                            {title}
-                                        </p>
-                                    </div>
                                 </div>
                             </Link>
                         );
