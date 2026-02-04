@@ -40,10 +40,35 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
     if (loading) return <div className="min-h-screen flex items-center justify-center font-bold text-slate-400">{t('loading')}</div>;
     if (!data) return <div className="min-h-screen flex items-center justify-center font-bold text-red-600">{t('notFound')}</div>;
 
+    // Fungsi untuk decode HTML Entities (biar gak muncul tag mentah kalo kena escape)
+    const decodeHtml = (html: string) => {
+        if (!html) return "";
+        const txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    };
+
+    let content = locale === 'jp'
+        ? (data.description_jp || data.description)
+        : locale === 'en'
+            ? (data.description_en || data.description)
+            : (data.description || "");
+
+    // Jika konten mengandung &lt; (artinya kena escape), kita decode
+    if (content.includes("&lt;") || content.includes("&gt;")) {
+        content = decodeHtml(content);
+    }
+
+    const title = locale === 'jp'
+        ? (data.title_jp || data.title)
+        : locale === 'en'
+            ? (data.title_en || data.title)
+            : (data.title || "");
+
     return (
         <main className="pt-24 md:pt-32 pb-20 bg-white">
             <div className="max-w-4xl mx-auto px-6">
-                {/* Tombol Back - Teks dari JSON, Link tetap di locale yang sama */}
+                {/* Tombol Back */}
                 <Link href={`/${locale}/media/galeri`} className="inline-flex items-center text-red-600 font-bold mb-6 hover:gap-2 transition-all">
                     <ChevronLeft className="h-5 w-5" /> {t('back')}
                 </Link>
@@ -57,7 +82,6 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
                     <div className="flex items-center gap-4 text-gray-400 text-sm">
                         <span className="flex items-center gap-1">
                             <Calendar className="h-4 w-4" />
-                            {/* Format tanggal otomatis menyesuaikan negara */}
                             {new Date(data.created_at).toLocaleDateString(locale === 'jp' ? 'ja-JP' : 'id-ID')}
                         </span>
                         <span className="flex items-center gap-1">
@@ -67,27 +91,54 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
 
                     {/* Judul */}
                     <h1 className="text-2xl md:text-4xl font-black text-slate-900 leading-tight">
-                        {locale === 'jp'
-                            ? (data.title_jp || data.title)
-                            : locale === 'en'
-                                ? (data.title_en || data.title)
-                                : (data.title_id || data.title)
-                        }
+                        {title}
                     </h1>
 
-                    {/* Deskripsi */}
-                    <div className="prose prose-base md:prose-lg max-w-none text-slate-700 leading-relaxed">
-                        <p style={{ whiteSpace: 'pre-line' }}>
-                            {locale === 'jp'
-                                ? (data.description_jp || data.description)
-                                : locale === 'en'
-                                    ? (data.description_en || data.description)
-                                    : (data.description_id || data.description)
-                            }
-                        </p>
+                    {/* Deskripsi (Konten Rich Text) */}
+                    <div className="prose prose-base md:prose-lg max-w-none text-slate-700 leading-relaxed quill-content mt-8">
+                        <div
+                            dangerouslySetInnerHTML={{ __html: content }}
+                        />
                     </div>
                 </div>
             </div>
+
+            <style jsx global>{`
+                .quill-content img {
+                    max-width: 100%;
+                    height: auto !important;
+                    border-radius: 1.5rem;
+                    margin: 2rem auto;
+                    display: block;
+                    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+                }
+                .quill-content p {
+                    margin-bottom: 1.5rem;
+                }
+                .quill-content h1, .quill-content h2, .quill-content h3 {
+                    font-weight: 800;
+                    color: #0f172a;
+                    margin-top: 2.5rem;
+                    margin-bottom: 1rem;
+                }
+                .quill-content ul, .quill-content ol {
+                    margin-bottom: 1.5rem;
+                    padding-left: 1.5rem;
+                }
+                .quill-content li {
+                    margin-bottom: 0.5rem;
+                }
+                .quill-content a {
+                    color: #dc2626;
+                    text-decoration: underline;
+                    font-weight: 700;
+                    transition: all 0.2s;
+                }
+                .quill-content a:hover {
+                    color: #991b1b;
+                    text-decoration: none;
+                }
+            `}</style>
         </main>
     );
 }

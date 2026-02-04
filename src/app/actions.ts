@@ -113,6 +113,7 @@ export async function translateContent(content: Record<string, string>) {
     3. Contoh: Input {"title": "Halo"} -> Output {"title_en": "Hello", "title_jp": "こんにちは"}
     4. Bahasa Jepang gunakan dialek standar bisnis/formal yang natural.
     5. JANGAN tambahkan teks penjelasan apapun diluar JSON.
+    6. JIKA input berisi tag HTML (seperti <img>, <p>, <strong>), JANGAN ubah, jangan hapus, dan JANGAN melakukan escaping pada tag tersebut (tetap gunakan < dan > , jangan gunakan &lt; atau &gt;). Terjemahkan hanya teks di dalamnya.
   `;
 
   try {

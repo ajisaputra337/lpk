@@ -1,0 +1,45 @@
+LAPORAN PERUBAHAN UPGRADE MEDIA ADMIN & RICH TEXT EDITOR
+=======================================================
+
+Halo bro! Berikut adalah rangkuman lengkap perubahan yang udah kita lakuin di sistem Media/Galeri:
+
+1. INTEGRASI RICH TEXT EDITOR (MS WORD STYLE)
+---------------------------------------------
+- Ganti input deskripsi biasa jadi "Rich Text Editor" pake library `react-quill-new`.
+- Editor ini udah support: Tebal, Miring, Warna Teks, List (Poin/Nomor), Alignment, Link, dan Sisip Gambar.
+- Fix error "findDOMNode" (masalah kecocokan sama React 19).
+
+2. FITUR MULTI-PHOTO & STORAGE
+------------------------------
+- Tombol sisip gambar di dalem editor: Foto yang diupload bakal langsung masuk ke Supabase Storage (alumni-photos) dan dapet URL publik.
+- Foto Utama (Cover): Masih tetep ada buat tampilan di kartu galeri luar.
+
+3. SISTEM TERJEMAHAN OTOMATIS (AI)
+----------------------------------
+- Update logic AI di `actions.ts`: Sekarang AI Groq bakal nerjemahin konten tanpa ngerusak tag HTML (gambar/formatting lu gak bakal ilang pas pindah bahasa).
+- Fix masalah "Teks Mentah": Teks yang kena escape (muncul kode <p> dll) udah otomatis di-decode biar tampil cakep lagi.
+
+4. FITUR EDIT DATA
+------------------
+- Tombol Edit (Ikon Pensil Oranye): Klik buat narik data lama ke form atas.
+- Logic Update: Sistem bakal deteksi apakah harus INSERT (baru) atau UPDATE (lama).
+- Tombol Batal: Buat balik ke mode tambah baru.
+
+5. PEMBERSIHAN OTOMATIS (CLEANUP)
+---------------------------------
+- Hapus Cerdas: Pas lu hapus satu galeri, sistem bakal otomatis nge-scan isi ceritanya dan ngehapus SEMUA foto yang terkait di Supabase (biar storage lu gak penuh sampah).
+- Ganti Foto: Kalo lu ganti foto utama pas edit, foto yang lama otomatis dihapus dari storage.
+
+6. PERBAIKAN TAMPILAN (UI/UX)
+-----------------------------
+- Preview Kartu: Teks yang nempel ("JudulIsi") udah dikasih spasi dan kode HTML sudah dibersihkan.
+- Link di Web Utama: Dibuat warna Merah Tebal biar pengunjung tau itu bisa diklik.
+- Editor nyaman: Foto di dalem admin dibatasi ukurannya biar lu gak pegel scrolling pas lagi ngetik teks panjang.
+
+7. PENTING (DATABASE)
+---------------------
+- Penambahan Policy RLS: Lu udah nambahin izin "UPDATE" di Supabase biar sistem bisa nyimpen perubahan pas lu edit data.
+
+Semua sistem sekarang udah sinkron dan siap dipakai! Mantap bro! 🚀🔥
+-------------------------------------------------------
+LPK Aishiro Gakuen - Management Galeri Upgrade

@@ -22,24 +22,40 @@ interface GalleryItem {
     created_at: string;
 }
 
+const stripHtml = (html: string) => {
+    if (!html) return "";
+    // 1. Ganti tag dengan spasi biar teks gak nempel (contoh: </h1><p> biar jadi spasi)
+    const withSpaces = html.replace(/<[^>]*>?/gm, ' ');
+
+    // 2. Decode entities
+    const decoded = withSpaces
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, '&')
+        .replace(/&nbsp;/g, ' ');
+
+    // 3. Bersihkan spasi ganda dan trim
+    return decoded.replace(/\s+/g, ' ').trim();
+};
+
 const GalleryCard: React.FC<{ item: GalleryItem; locale: string }> = ({ item, locale }) => {
     const t = useTranslations("Gallery.card");
 
-    // FALLBACK LOGIC:
-    // 1. Coba ambil text sesuai locale (title_jp / title_id)
-    // 2. Jika tidak ada, ambil text generic (title)
-    // 3. Jika title_id/description_id kosong, tetap fallback ke title/description biasa
     const title = locale === "jp"
         ? (item.title_jp || item.title)
         : locale === "en"
             ? (item.title_en || item.title)
             : (item.title_id || item.title);
 
-    const description = locale === "jp"
+    const rawDescription = locale === "jp"
         ? (item.description_jp || item.description)
         : locale === "en"
             ? (item.description_en || item.description)
             : (item.description_id || item.description);
+
+    const description = stripHtml(rawDescription || "");
 
     return (
         <Link href={`/${locale}/media/galeri/${item.id}`}>
