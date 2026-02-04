@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
-        'id': `${baseUrl}/id`,
-        'en': `${baseUrl}/en`,
-        'ja': `${baseUrl}/jp`,
-        'x-default': `${baseUrl}/id`,
+        'id': `https://aishiro.id/id`,
+        'en': `https://aishiro.id/en`,
+        'ja': `https://aishiro.id/jp`,
+        'x-default': `https://aishiro.id/id`,
       },
     },
     openGraph: {
