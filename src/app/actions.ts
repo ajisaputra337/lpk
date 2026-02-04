@@ -94,3 +94,58 @@ export async function chatWithAishi(chatHistory: { role: string; text: string }[
     return { success: false, message: "Koneksi ke server terputus." };
   }
 }
+
+/**
+ * Server Action untuk translate konten dinamis secara otomatis (Indo -> English & Japan)
+ * Digunakan di Admin Panel agar admin tidak perlu input manual JSON.
+ */
+export async function translateContent(content: Record<string, string>) {
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey) return { success: false, message: "API Key Groq tidak ditemukan." };
+
+  const systemInstructions = `
+    Kamu adalah penerjemah profesional untuk website LPK Aishiro Gakuen (Lembaga Pelatihan Kerja ke Jepang).
+    Tugasmu: Menerjemahkan JSON berisi teks Bahasa Indonesia ke dalam Bahasa Inggris (en) dan Bahasa Jepang (jp).
+    
+    ATURAN:
+    1. Output HARUS dalam bentuk JSON murni.
+    2. Gunakan key asli dari input, tapi tambahkan suffix _en dan _jp.
+    3. Contoh: Input {"title": "Halo"} -> Output {"title_en": "Hello", "title_jp": "こんにちは"}
+    4. Bahasa Jepang gunakan dialek standar bisnis/formal yang natural.
+    5. JANGAN tambahkan teks penjelasan apapun diluar JSON.
+  `;
+
+  try {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: [
+          { role: "system", content: systemInstructions },
+          { role: "user", content: JSON.stringify(content) }
+        ],
+        temperature: 0.1, // Rendah agar konsisten
+        response_format: { type: "json_object" }
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      console.error("GROQ TRANSLATE ERROR:", data.error.message);
+      return { success: false, message: data.error.message };
+    }
+
+    const jsonString = data.choices[0].message.content;
+    const translatedData = JSON.parse(jsonString);
+    return { success: true, data: translatedData };
+
+  } catch (err) {
+    console.error("TRANSLATION EXCEPTION:", err);
+    return { success: false, message: "Gagal melakukan translasi otomatis." };
+  }
+}

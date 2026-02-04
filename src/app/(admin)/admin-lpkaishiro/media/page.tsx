@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "../../../../lib/supabase";
-import { Trash2, Image as ImageIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import { Trash2, Image as ImageIcon, ChevronLeft, ChevronRight, Languages } from "lucide-react";
+import { translateContent } from "../../../actions";
 
 export default function MediaPage() {
   const [title, setTitle] = useState("");
@@ -52,9 +53,28 @@ export default function MediaPage() {
         publicUrl = newUrl;
       }
 
+      // 1.5 OTOMATIS TRANSLATE
+      let translated = { title_en: "", title_jp: "", description_en: "", description_jp: "" };
+      try {
+        const transResult = await translateContent({ title, description });
+        if (transResult.success) {
+          translated = transResult.data;
+        }
+      } catch (e) {
+        console.error("Translation fail:", e);
+      }
+
       const { error: insertError } = await supabase
         .from("media_gallery")
-        .insert([{ title, description, image_url: publicUrl }]);
+        .insert([{
+          title,
+          description,
+          image_url: publicUrl,
+          title_en: translated.title_en,
+          title_jp: translated.title_jp,
+          description_en: translated.description_en,
+          description_jp: translated.description_jp
+        }]);
 
       if (insertError) throw insertError;
       alert("Foto & Deskripsi berhasil diupload!");
@@ -153,9 +173,15 @@ export default function MediaPage() {
           <div className="flex gap-3">
             <button
               disabled={loading}
-              className="flex-1 bg-red-600 hover:bg-red-700 text-white py-4 rounded-2xl font-black transition-all shadow-lg disabled:opacity-50 active:scale-95"
+              className="flex-1 bg-red-600 hover:bg-red-700 text-white py-4 rounded-2xl font-black transition-all shadow-lg disabled:opacity-50 active:scale-95 flex items-center justify-center gap-2"
             >
-              {loading ? "PROSES..." : "PUBLIKASIKAN KE WEB UTAMA"}
+              {loading ? (
+                <>PROSES...</>
+              ) : (
+                <>
+                  PUBLIKASIKAN KE WEB UTAMA
+                </>
+              )}
             </button>
           </div>
         </form>

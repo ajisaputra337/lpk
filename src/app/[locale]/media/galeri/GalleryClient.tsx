@@ -12,10 +12,12 @@ interface GalleryItem {
     id: string;
     title: string;          // Generic title (usually ID)
     title_id?: string;      // Explicit ID title
+    title_en?: string;      // Explicit EN title (New)
     title_jp?: string;      // Explicit JP title
     image_url: string;
     description: string;    // Generic description
     description_id?: string;// Explicit ID description
+    description_en?: string;// Explicit EN description (New)
     description_jp?: string;// Explicit JP description
     created_at: string;
 }
@@ -29,11 +31,15 @@ const GalleryCard: React.FC<{ item: GalleryItem; locale: string }> = ({ item, lo
     // 3. Jika title_id/description_id kosong, tetap fallback ke title/description biasa
     const title = locale === "jp"
         ? (item.title_jp || item.title)
-        : (item.title_id || item.title);
+        : locale === "en"
+            ? (item.title_en || item.title)
+            : (item.title_id || item.title);
 
     const description = locale === "jp"
         ? (item.description_jp || item.description)
-        : (item.description_id || item.description);
+        : locale === "en"
+            ? (item.description_en || item.description)
+            : (item.description_id || item.description);
 
     return (
         <Link href={`/${locale}/media/galeri/${item.id}`}>
