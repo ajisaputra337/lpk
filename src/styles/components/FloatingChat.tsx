@@ -5,19 +5,19 @@ import { usePathname } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl"; // Tambah useLocale
 import { MessageCircle, X, Send, Bot } from "lucide-react";
 // IMPORT SERVER ACTION TADI
-import { chatWithAishi } from "../../app/actions"; 
+import { chatWithAishi } from "../../app/actions";
 
 export default function FloatingChat() {
   const t = useTranslations("Chat");
   const locale = useLocale(); // Ambil bahasa aktif (id, jp, atau en)
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  
+
   // Pesan awal diambil dari JSON
   const [messages, setMessages] = useState([
     { role: "ai", text: t("welcome") }
   ]);
-  
+
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -40,9 +40,16 @@ export default function FloatingChat() {
     setLoading(true);
 
     try {
-      // PANGGIL SERVER ACTION
-      // Tips: Kirim locale ke AI biar dia tau harus jawab pake bahasa apa
-      const response = await chatWithAishi(userMsg + ` (respond in ${locale} language)`);
+      // PANGGIL SERVER ACTION dengan membawa History Pesan
+      // Sisipkan instruksi bahasa ke pesan terakhir agar AI konsisten
+      const currentHistory = [...messages, { role: "user", text: userMsg }];
+      const historyWithLocale = currentHistory.map((m, idx) =>
+        idx === currentHistory.length - 1
+          ? { ...m, text: m.text + ` (respond in ${locale} language)` }
+          : m
+      );
+
+      const response = await chatWithAishi(historyWithLocale);
 
       if (response.success) {
         setMessages((prev) => [...prev, { role: "ai", text: response.message }]);
@@ -75,22 +82,21 @@ export default function FloatingChat() {
                 <p className="text-[10px] opacity-80">{t("status")}</p>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)}><X size={18}/></button>
+            <button onClick={() => setIsOpen(false)}><X size={18} /></button>
           </div>
 
           <div ref={scrollRef} className="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50">
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[85%] p-3 rounded-2xl text-sm shadow-sm ${
-                  msg.role === "user" ? "bg-red-600 text-white rounded-tr-none" : "bg-white text-slate-700 border border-slate-100 rounded-tl-none"
-                }`}>
+                <div className={`max-w-[85%] p-3 rounded-2xl text-sm shadow-sm ${msg.role === "user" ? "bg-red-600 text-white rounded-tr-none" : "bg-white text-slate-700 border border-slate-100 rounded-tl-none"
+                  }`}>
                   {msg.text}
                 </div>
               </div>
             ))}
             {loading && (
               <p className="text-xs text-slate-400 animate-pulse ml-2 flex items-center gap-1">
-                <Bot size={12}/> {t("typing")}
+                <Bot size={12} /> {t("typing")}
               </p>
             )}
           </div>
