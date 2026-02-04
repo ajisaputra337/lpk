@@ -20,6 +20,7 @@ interface GalleryItem {
     description_en?: string;// Explicit EN description (New)
     description_jp?: string;// Explicit JP description
     created_at: string;
+    tags?: string[];        // Multi-select tags (New)
 }
 
 const stripHtml = (html: string) => {
@@ -72,6 +73,19 @@ const GalleryCard: React.FC<{ item: GalleryItem; locale: string }> = ({ item, lo
                 </div>
 
                 <div className="p-5 bg-white">
+                    {item.tags && item.tags.length > 0 && (
+                        <div className="mb-2 flex flex-wrap gap-1.5">
+                            {item.tags.map((tag, idx) => (
+                                <span
+                                    key={idx}
+                                    className="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-black rounded uppercase tracking-wider border border-slate-200"
+                                >
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    )}
+
                     <div className="mb-2 flex items-center">
                         <span className="mr-2 rounded-full bg-red-700 p-1.5 shrink-0">
                             <Camera className="h-4 w-4 text-white" />

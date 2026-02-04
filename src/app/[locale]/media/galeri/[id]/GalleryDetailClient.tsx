@@ -79,14 +79,25 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
                 </div>
 
                 <div className="space-y-4">
-                    <div className="flex items-center gap-4 text-gray-400 text-sm">
+                    <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm">
                         <span className="flex items-center gap-1">
                             <Calendar className="h-4 w-4" />
                             {new Date(data.created_at).toLocaleDateString(locale === 'jp' ? 'ja-JP' : 'id-ID')}
                         </span>
-                        <span className="flex items-center gap-1">
-                            <Camera className="h-4 w-4" /> {t('category')}
-                        </span>
+
+                        {/* Tag Badges */}
+                        {data.tags && data.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-2">
+                                {data.tags.map((tag: string, idx: number) => (
+                                    <span
+                                        key={idx}
+                                        className="px-2 py-0.5 bg-red-50 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-100"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     {/* Judul */}

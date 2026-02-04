@@ -9,6 +9,8 @@ import "react-quill-new/dist/quill.snow.css";
 
 const RichTextEditor = dynamic(() => import("./RichTextEditor"), { ssr: false });
 
+const AVAILABLE_TAGS = ["Media Pembelajaran", "Berita Terkini", "Liputan Kegiatan", "Info LPK", "Siswa & Alumni"];
+
 export default function MediaPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -19,6 +21,9 @@ export default function MediaPage() {
   const itemsPerPage = 8;
   const quillRef = useRef<any>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [isTagDropdownOpen, setIsTagDropdownOpen] = useState(false);
+  const tagDropdownRef = useRef<HTMLDivElement>(null);
 
   const stripHtml = (html: string) => {
     if (!html) return "";
@@ -45,12 +50,22 @@ export default function MediaPage() {
 
   useEffect(() => {
     fetchMedia();
+
+    // Close dropdown on click outside
+    const handleClickOutside = (event: MouseEvent) => {
+      if (tagDropdownRef.current && !tagDropdownRef.current.contains(event.target as Node)) {
+        setIsTagDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const editItem = (item: any) => {
     setEditingId(item.id);
     setTitle(item.title);
     setDescription(item.description || "");
+    setSelectedTags(item.tags || []);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -59,6 +74,13 @@ export default function MediaPage() {
     setTitle("");
     setDescription("");
     setFile(null);
+    setSelectedTags([]);
+  };
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev =>
+      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
+    );
   };
 
   // Custom Image Handler for Quill
@@ -160,7 +182,8 @@ export default function MediaPage() {
         ...(translated.title_en && { title_en: translated.title_en }),
         ...(translated.title_jp && { title_jp: translated.title_jp }),
         ...(translated.description_en && { description_en: translated.description_en }),
-        ...(translated.description_jp && { description_jp: translated.description_jp })
+        ...(translated.description_jp && { description_jp: translated.description_jp }),
+        tags: selectedTags
       };
 
       if (editingId) {
@@ -287,6 +310,45 @@ export default function MediaPage() {
         <form onSubmit={handleUpload} className="space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="space-y-4">
+              {/* CUSTOM MULTI-SELECT TAGS */}
+              <div className="relative" ref={tagDropdownRef}>
+                <label className="block text-sm font-bold mb-2 text-slate-600">Pilih Kategori / Tags</label>
+                <div
+                  onClick={() => setIsTagDropdownOpen(!isTagDropdownOpen)}
+                  className="w-full border border-slate-200 p-3 rounded-2xl bg-white cursor-pointer min-h-[52px] flex flex-wrap gap-2 items-center hover:border-red-300 transition"
+                >
+                  {selectedTags.length === 0 ? (
+                    <span className="text-slate-400 text-sm">Klik untuk memilih kategori...</span>
+                  ) : (
+                    selectedTags.map(tag => (
+                      <span key={tag} className="bg-red-50 text-red-600 px-3 py-1 rounded-full text-xs font-black flex items-center gap-1 border border-red-100">
+                        {tag}
+                        <X size={14} onClick={(e) => { e.stopPropagation(); toggleTag(tag); }} className="hover:bg-red-200 rounded-full" />
+                      </span>
+                    ))
+                  )}
+                  <div className="ml-auto">
+                    <ChevronRight size={18} className={`text-slate-400 transition-transform ${isTagDropdownOpen ? 'rotate-90' : ''}`} />
+                  </div>
+                </div>
+
+                {isTagDropdownOpen && (
+                  <div className="absolute z-50 w-full mt-2 bg-white border border-slate-100 rounded-2xl shadow-2xl py-2 overflow-hidden animate-in fade-in zoom-in duration-200">
+                    {AVAILABLE_TAGS.map(tag => (
+                      <div
+                        key={tag}
+                        onClick={() => toggleTag(tag)}
+                        className={`px-4 py-3 text-sm font-bold cursor-pointer transition flex items-center justify-between ${selectedTags.includes(tag) ? 'bg-red-50 text-red-700' : 'text-slate-600 hover:bg-slate-50'
+                          }`}
+                      >
+                        {tag}
+                        {selectedTags.includes(tag) && <Plus size={16} className="rotate-45" />}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               <div>
                 <label className="block text-sm font-bold mb-2 text-slate-600">Judul Kegiatan</label>
                 <input
