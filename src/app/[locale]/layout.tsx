@@ -7,6 +7,12 @@ import FloatingChat from "../../styles/components/FloatingChat";
 import LanguageSwitcher from "../../styles/components/LanguageSwitcher";
 import { env } from '~/env';
 import "../globals.css";
+import type { Viewport } from "next";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -144,7 +150,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <head>
+      <body className={`${inter.className} flex min-h-screen flex-col antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -153,8 +159,6 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
-      </head>
-      <body className={`${inter.className} flex min-h-screen flex-col antialiased`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <LayoutContent>
             {children}

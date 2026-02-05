@@ -130,6 +130,28 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
                         box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
                     }
                 }
+                .quill-content {
+                    width: 100%;
+                    max-width: 100%;
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                    word-break: normal;
+                }
+                /* Reset paksa untuk mengatasi 'konflik settingan' dari Editor Database atau Tailwind Prose */
+                .quill-content * {
+                    word-break: normal !important;
+                    overflow-wrap: break-word !important;
+                    white-space: normal !important;
+                    max-width: 100% !important;
+                    box-sizing: border-box !important;
+                    word-spacing: normal !important;
+                    letter-spacing: normal !important;
+                }
+                .quill-content p, .quill-content span, .quill-content h1, .quill-content h2, .quill-content h3, .quill-content li {
+                    text-align: left;
+                    display: inline-block; /* Bantu browser kalkulasi lebar lebih akurat sebelum membungkus */
+                    width: 100%;
+                }
                 .quill-content p {
                     margin-bottom: 1rem;
                 }

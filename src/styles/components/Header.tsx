@@ -126,10 +126,10 @@ const Header = () => {
   }, []);
 
   return (
-    <header ref={headerRef} className="fixed top-0 z-50 w-full bg-white shadow-md">
+    <header ref={headerRef} className="fixed top-0 z-50 w-full bg-white shadow-md overflow-hidden">
       <SakuraDecor />
 
-      <div className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-4 md:px-6 py-4">
         {/* LOGO */}
         <Link
           href="/"

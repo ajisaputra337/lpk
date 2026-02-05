@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 
 const Petal = ({ delay, left, size, duration }: { delay: string, left: string, size: number, duration: string }) => (
     <div
-        className="animate-sakura-fall fixed z-[100] opacity-80 pointer-events-none"
+        className="animate-sakura-fall absolute z-[100] opacity-80 pointer-events-none"
         style={{
-            top: '-5%',
+            top: '-10%',
             left,
             animationDelay: delay,
             animationDuration: `${duration}, 4s`
