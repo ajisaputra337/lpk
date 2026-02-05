@@ -66,8 +66,8 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
             : (data.title || "");
 
     return (
-        <main className="pt-24 md:pt-32 pb-20 bg-white">
-            <div className="max-w-4xl mx-auto px-6">
+        <main className="pt-20 md:pt-32 pb-20 bg-white">
+            <div className="max-w-4xl mx-auto px-4 md:px-6">
                 {/* Tombol Back */}
                 <Link href={`/${locale}/media/galeri`} className="inline-flex items-center text-red-600 font-bold mb-6 hover:gap-2 transition-all">
                     <ChevronLeft className="h-5 w-5" /> {t('back')}
@@ -106,7 +106,7 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
                     </h1>
 
                     {/* Deskripsi (Konten Rich Text) */}
-                    <div className="prose prose-base md:prose-lg max-w-none text-slate-700 leading-relaxed quill-content mt-8">
+                    <div className="prose prose-sm md:prose-base max-w-none text-slate-700 leading-relaxed quill-content mt-8">
                         <div
                             dangerouslySetInnerHTML={{ __html: content }}
                         />
@@ -118,23 +118,48 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
                 .quill-content img {
                     max-width: 100%;
                     height: auto !important;
-                    border-radius: 1.5rem;
-                    margin: 2rem auto;
+                    border-radius: 1rem;
+                    margin: 1.5rem auto;
                     display: block;
-                    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+                    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+                }
+                @media (min-width: 768px) {
+                    .quill-content img {
+                        border-radius: 1.5rem;
+                        margin: 2rem auto;
+                        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+                    }
                 }
                 .quill-content p {
-                    margin-bottom: 1.5rem;
+                    margin-bottom: 1rem;
+                }
+                @media (min-width: 768px) {
+                    .quill-content p {
+                        margin-bottom: 1.5rem;
+                    }
                 }
                 .quill-content h1, .quill-content h2, .quill-content h3 {
                     font-weight: 800;
                     color: #0f172a;
-                    margin-top: 2.5rem;
-                    margin-bottom: 1rem;
+                    margin-top: 1.5rem;
+                    margin-bottom: 0.75rem;
+                    line-height: 1.2;
+                }
+                @media (min-width: 768px) {
+                    .quill-content h1, .quill-content h2, .quill-content h3 {
+                        margin-top: 2.5rem;
+                        margin-bottom: 1rem;
+                    }
                 }
                 .quill-content ul, .quill-content ol {
-                    margin-bottom: 1.5rem;
-                    padding-left: 1.5rem;
+                    margin-bottom: 1rem;
+                    padding-left: 1.25rem;
+                }
+                @media (min-width: 768px) {
+                    .quill-content ul, .quill-content ol {
+                        margin-bottom: 1.5rem;
+                        padding-left: 1.5rem;
+                    }
                 }
                 .quill-content li {
                     margin-bottom: 0.5rem;
