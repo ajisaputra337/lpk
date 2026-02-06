@@ -22,14 +22,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  // Generate rute statis untuk setiap bahasa
-  locales.forEach((locale) => {
-    staticPages.forEach((page) => {
+  // 1. Rute Statis Utama
+  staticPages.forEach((page) => {
+    locales.forEach((locale) => {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${page}`,
         lastModified: new Date(),
         changeFrequency: page === "/media/galeri" ? "weekly" : "monthly",
         priority: page === "" ? 1 : 0.8,
+        alternates: {
+          languages: {
+            id: `${baseUrl}/id${page}`,
+            en: `${baseUrl}/en${page}`,
+            ja: `${baseUrl}/jp${page}`,
+          },
+        },
       });
     });
   });
@@ -49,6 +56,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             lastModified: new Date(item.updated_at || new Date()),
             changeFrequency: "monthly",
             priority: 0.6,
+            alternates: {
+              languages: {
+                id: `${baseUrl}/id/media/galeri/${item.id}`,
+                en: `${baseUrl}/en/media/galeri/${item.id}`,
+                ja: `${baseUrl}/jp/media/galeri/${item.id}`,
+              },
+            },
           });
         });
       });
