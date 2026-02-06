@@ -20,7 +20,9 @@ interface GalleryItem {
     description_en?: string;// Explicit EN description (New)
     description_jp?: string;// Explicit JP description
     created_at: string;
-    tags?: string[];        // Multi-select tags (New)
+    tags?: string[];        // Multi-select tags (Default/ID)
+    tags_en?: string[];     // Localized EN tags
+    tags_jp?: string[];     // Localized JP tags
 }
 
 const stripHtml = (html: string) => {
@@ -58,6 +60,12 @@ const GalleryCard: React.FC<{ item: GalleryItem; locale: string }> = ({ item, lo
 
     const description = stripHtml(rawDescription || "");
 
+    const tags = locale === 'jp' && item.tags_jp && item.tags_jp.length > 0
+        ? item.tags_jp
+        : locale === 'en' && item.tags_en && item.tags_en.length > 0
+            ? item.tags_en
+            : item.tags;
+
     return (
         <Link href={`/${locale}/media/galeri/${item.id}`}>
             <div className="group relative cursor-pointer transform overflow-hidden rounded-lg border-2 border-red-100 bg-white shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
@@ -73,20 +81,16 @@ const GalleryCard: React.FC<{ item: GalleryItem; locale: string }> = ({ item, lo
                 </div>
 
                 <div className="p-5 bg-white">
-                    {item.tags && item.tags.length > 0 && (
+                    {tags && tags.length > 0 && (
                         <div className="mb-2 flex flex-wrap gap-1.5">
-                            {item.tags.map((tag, idx) => {
-                                const tagKey = tag.toLowerCase();
-                                const translatedTag = t.has(`tags.${tagKey}`) ? t(`tags.${tagKey}`) : tag;
-                                return (
-                                    <span
-                                        key={idx}
-                                        className="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-black rounded uppercase tracking-wider border border-slate-200"
-                                    >
-                                        {translatedTag}
-                                    </span>
-                                );
-                            })}
+                            {tags.map((tag, idx) => (
+                                <span
+                                    key={idx}
+                                    className="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-black rounded uppercase tracking-wider border border-slate-200"
+                                >
+                                    {tag}
+                                </span>
+                            ))}
                         </div>
                     )}
 

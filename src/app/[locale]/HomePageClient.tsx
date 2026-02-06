@@ -84,7 +84,7 @@ export default function HomePageClient() {
                         <Image src="/Images/kyoto.jpg" alt="Kyoto" fill priority className="object-cover brightness-50" />
                     </div>
 
-                    <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
+                    <div className="relative z-0 mx-auto flex h-full max-w-7xl items-center px-6">
                         <div className="w-full max-w-xl text-left">
                             <h1 className="mb-4 text-4xl leading-tight font-extrabold text-white md:text-5xl">
                                 {t.rich("heroTitle", {
@@ -101,7 +101,7 @@ export default function HomePageClient() {
                     </div>
 
                     {/* Gradient Transition Overlay - Refined for subtle transparency */}
-                    <div className="absolute bottom-0 left-0 z-20 h-10 w-full bg-gradient-to-t from-white to-transparent backdrop-blur-[0.5px]"></div>
+                    <div className="absolute bottom-0 left-0 z-10 h-10 w-full bg-gradient-to-t from-white to-transparent backdrop-blur-[0.5px]"></div>
                 </section>
 
                 {/* Gallery Section */}

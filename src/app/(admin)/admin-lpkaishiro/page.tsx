@@ -99,7 +99,7 @@ export default function AdminOverview() {
               ></div>
             </div>
             <p className="text-[10px] text-slate-400 mt-2 font-medium">
-              {storagePercentage.toFixed(1)}% terpakai di bucket alumni-photos
+              {storagePercentage.toFixed(1)}% terpakai di database
             </p>
           </div>
         </div>

@@ -59,6 +59,12 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
         content = decodeHtml(content);
     }
 
+    const tags = locale === 'jp' && data.tags_jp && data.tags_jp.length > 0
+        ? data.tags_jp
+        : locale === 'en' && data.tags_en && data.tags_en.length > 0
+            ? data.tags_en
+            : data.tags;
+
     const title = locale === 'jp'
         ? (data.title_jp || data.title)
         : locale === 'en'
@@ -66,7 +72,7 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
             : (data.title || "");
 
     return (
-        <main className="pt-20 md:pt-32 pb-20 bg-white">
+        <main className="pt-40 md:pt-48 pb-20 bg-white">
             <div className="max-w-4xl mx-auto px-4 md:px-6">
                 {/* Tombol Back */}
                 <Link href={`/${locale}/media/galeri`} className="inline-flex items-center text-red-600 font-bold mb-6 hover:gap-2 transition-all">
@@ -86,9 +92,9 @@ export default function GalleryDetailPageClient({ initialData }: GalleryDetailCl
                         </span>
 
                         {/* Tag Badges */}
-                        {data.tags && data.tags.length > 0 && (
+                        {tags && tags.length > 0 && (
                             <div className="flex flex-wrap gap-2">
-                                {data.tags.map((tag: string, idx: number) => (
+                                {tags.map((tag: string, idx: number) => (
                                     <span
                                         key={idx}
                                         className="px-2 py-0.5 bg-red-50 text-red-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-red-100"

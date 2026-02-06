@@ -11,6 +11,14 @@ const RichTextEditor = dynamic(() => import("./RichTextEditor"), { ssr: false })
 
 const AVAILABLE_TAGS = ["Media Pembelajaran", "Berita Terkini", "Liputan Kegiatan", "Info LPK", "Siswa & Alumni"];
 
+const TAG_TRANSLATIONS: Record<string, { en: string; jp: string }> = {
+  "Media Pembelajaran": { en: "Learning Material", jp: "学習教材" },
+  "Berita Terkini": { en: "Latest News", jp: "最新ニュース" },
+  "Liputan Kegiatan": { en: "Activity Coverage", jp: "活動報告" },
+  "Info LPK": { en: "LPK Info", jp: "LPK情報" },
+  "Siswa & Alumni": { en: "Students & Alumni", jp: "生徒・卒業生" },
+};
+
 export default function MediaPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -182,8 +190,11 @@ export default function MediaPage() {
         ...(translated.title_en && { title_en: translated.title_en }),
         ...(translated.title_jp && { title_jp: translated.title_jp }),
         ...(translated.description_en && { description_en: translated.description_en }),
+        ...(translated.description_en && { description_en: translated.description_en }),
         ...(translated.description_jp && { description_jp: translated.description_jp }),
-        tags: selectedTags
+        tags: selectedTags,
+        tags_en: selectedTags.map(tag => TAG_TRANSLATIONS[tag]?.en || tag),
+        tags_jp: selectedTags.map(tag => TAG_TRANSLATIONS[tag]?.jp || tag),
       };
 
       if (editingId) {
@@ -258,8 +269,10 @@ export default function MediaPage() {
         const imgRegex = /<img[^>]+src="([^">]+)"/g;
         let match;
         while ((match = imgRegex.exec(html)) !== null) {
-          const path = match[1].split('/alumni-photos/')[1];
-          if (path) paths.push(path);
+          if (match[1]) {
+            const path = match[1].split('/alumni-photos/')[1];
+            if (path) paths.push(path);
+          }
         }
         return paths;
       };

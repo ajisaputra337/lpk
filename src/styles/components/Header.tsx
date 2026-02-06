@@ -126,7 +126,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header ref={headerRef} className="fixed top-0 z-50 w-full bg-white shadow-md overflow-hidden">
+    <header ref={headerRef} className="fixed top-0 z-50 w-full bg-white shadow-md overflow-visible">
       <SakuraDecor />
 
       <div className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-4 md:px-6 py-4">
@@ -177,7 +177,7 @@ const Header = () => {
                     )}
 
                     {item.subMenu && (
-                      <ul className={`absolute top-full left-1/2 z-50 mt-2 w-56 -translate-x-1/2 overflow-visible rounded-md border-t-4 border-red-700 bg-white shadow-xl transition-all duration-200 ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}>
+                      <ul className={`absolute top-full left-1/2 z-[100] mt-2 w-56 -translate-x-1/2 overflow-visible rounded-md border-t-4 border-red-700 bg-white shadow-xl transition-all duration-200 ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}>
                         {item.subMenu.map((sub) => (
                           <li key={sub.label} className="group/sub relative">
                             {sub.subMenu ? (
@@ -192,7 +192,7 @@ const Header = () => {
                             )}
 
                             {sub.subMenu && (
-                              <ul className="invisible absolute top-0 left-full ml-0 w-56 overflow-visible rounded-md border-l-4 border-red-700 bg-white shadow-xl opacity-0 transition-all duration-200 group-hover/sub:visible group-hover/sub:opacity-100">
+                              <ul className="invisible absolute top-0 left-full ml-0 w-56 overflow-visible rounded-md border-l-4 border-red-700 bg-white shadow-xl opacity-0 transition-all duration-200 group-hover/sub:visible group-hover/sub:opacity-100 z-[100]">
                                 {sub.subMenu.map((nestedSub) => (
                                   <li key={nestedSub.label}>
                                     <Link href={nestedSub.href} onClick={() => setOpenDropdown(null)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-red-700">
