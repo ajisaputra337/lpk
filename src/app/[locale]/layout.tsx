@@ -38,10 +38,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
-        'id': `https://aishiro.id/id`,
-        'en': `https://aishiro.id/en`,
-        'ja': `https://aishiro.id/jp`,
-        'x-default': `https://aishiro.id/id`,
+        'id': `${baseUrl}/id`,
+        'en': `${baseUrl}/en`,
+        'ja': `${baseUrl}/jp`,
+        'x-default': `${baseUrl}/id`,
       },
     },
     openGraph: {
@@ -71,6 +71,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     category: 'education',
+    verification: {
+      google: 'KODE-DARI-GOOGLE-SEARCH-CONSOLE', // Ganti dengan kode asli
+    },
   };
 }
 
