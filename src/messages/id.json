@@ -433,6 +433,13 @@
     "status": {
       "loading": "Memuat Galeri...",
       "empty": "Belum ada foto kegiatan."
+    },
+    "tags": {
+      "kegiatan": "Kegiatan",
+      "pembelajaran": "Pembelajaran",
+      "fisik": "Fisik",
+      "sosialisasi": "Sosialisasi",
+      "keberangkatan": "Keberangkatan"
     }
   },
   "Requirements": {

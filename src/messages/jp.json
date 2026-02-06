@@ -433,6 +433,13 @@
     "status": {
       "loading": "ギャラリーを読み込み中...",
       "empty": "活動写真はまだありません。"
+    },
+    "tags": {
+      "kegiatan": "活動",
+      "pembelajaran": "学習",
+      "fisik": "体力トレーニング",
+      "sosialisasi": "社会化",
+      "keberangkatan": "出発"
     }
   },
   "Requirements": {

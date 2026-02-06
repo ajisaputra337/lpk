@@ -75,14 +75,18 @@ const GalleryCard: React.FC<{ item: GalleryItem; locale: string }> = ({ item, lo
                 <div className="p-5 bg-white">
                     {item.tags && item.tags.length > 0 && (
                         <div className="mb-2 flex flex-wrap gap-1.5">
-                            {item.tags.map((tag, idx) => (
-                                <span
-                                    key={idx}
-                                    className="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-black rounded uppercase tracking-wider border border-slate-200"
-                                >
-                                    {tag}
-                                </span>
-                            ))}
+                            {item.tags.map((tag, idx) => {
+                                const tagKey = tag.toLowerCase();
+                                const translatedTag = t.has(`tags.${tagKey}`) ? t(`tags.${tagKey}`) : tag;
+                                return (
+                                    <span
+                                        key={idx}
+                                        className="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-black rounded uppercase tracking-wider border border-slate-200"
+                                    >
+                                        {translatedTag}
+                                    </span>
+                                );
+                            })}
                         </div>
                     )}
 

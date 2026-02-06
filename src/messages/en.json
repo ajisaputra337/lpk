@@ -433,6 +433,13 @@
     "status": {
       "loading": "Loading Gallery...",
       "empty": "No activity photos yet."
+    },
+    "tags": {
+      "kegiatan": "Activities",
+      "pembelajaran": "Learning",
+      "fisik": "Physical",
+      "sosialisasi": "Socialization",
+      "keberangkatan": "Departure"
     }
   },
   "Requirements": {
