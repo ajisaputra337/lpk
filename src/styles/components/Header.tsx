@@ -140,7 +140,7 @@ const Header = () => {
           }}
         >
           <div className="relative mr-2 h-10 w-10 lg:h-20 lg:w-20">
-            <Image src={LOGO_PATH} alt={LOGO_ALT} fill style={{ objectFit: "contain" }} priority />
+            <Image src={LOGO_PATH} alt={LOGO_ALT} fill sizes="(max-width: 1024px) 40px, 80px" style={{ objectFit: "contain" }} priority />
           </div>
           <div className="ml-2 flex flex-col">
             <span className="text-xs font-semibold text-gray-900 lg:text-lg lg:leading-none">AISHIRO GAKUEN</span>

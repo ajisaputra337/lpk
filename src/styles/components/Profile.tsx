@@ -62,6 +62,7 @@ const Profile: React.FC = () => {
                 className="absolute inset-0 h-full w-full"
                 src="https://www.youtube.com/embed/moYG25nBxNg"
                 title={t("videoTitle")}
+                loading="lazy"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

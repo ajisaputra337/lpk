@@ -81,7 +81,7 @@ export default function HomePageClient() {
                 {/* Hero Section */}
                 <section className="relative h-[600px] overflow-hidden bg-gray-50">
                     <div className="absolute inset-0">
-                        <Image src="/Images/kyoto.jpg" alt="Kyoto" fill priority className="object-cover brightness-50" />
+                        <Image src="/Images/kyoto.jpg" alt="Kyoto" fill priority sizes="100vw" className="object-cover brightness-50" />
                     </div>
 
                     <div className="relative z-0 mx-auto flex h-full max-w-7xl items-center px-6">
@@ -95,7 +95,7 @@ export default function HomePageClient() {
                             </h1>
                             <p className="mb-8 text-lg text-gray-200">{t("heroSubtitle")}</p>
                             <Link href={whatsappLink} target="_blank" className="hover:opacity-90">
-                                <Image src="/Images/daftarsekarang.png" alt="Register" width={300} height={42} className="object-contain" />
+                                <Image src="/Images/daftarsekarang.png" alt="Register" width={300} height={42} loading="lazy" className="object-contain" />
                             </Link>
                         </div>
                     </div>
