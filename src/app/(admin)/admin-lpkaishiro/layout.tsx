@@ -84,7 +84,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             className="flex items-center gap-3 text-gray-400 text-sm hover:text-white transition"
           >
             <ArrowLeft size={16} />
-            Balik ke Web
+            Kembali ke Web
           </Link>
           <button
             onClick={handleLogout}

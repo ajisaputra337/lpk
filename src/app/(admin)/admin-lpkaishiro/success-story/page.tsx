@@ -325,19 +325,37 @@ export default function AdminSuccessStory() {
               <ChevronLeft size={18} /> Prev
             </button>
 
-            <div className="flex items-center gap-2 overflow-x-auto py-1">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  className={`min-w-[40px] h-10 rounded-xl font-bold text-sm transition ${currentPage === page
-                    ? "bg-red-600 text-white shadow-lg shadow-red-200"
-                    : "bg-white border text-slate-600 hover:bg-slate-100"
-                    }`}
-                >
-                  {page}
-                </button>
-              ))}
+            <div className="flex items-center gap-2 py-1">
+              {(() => {
+                const pages: (number | "...")[] = [];
+                if (totalPages <= 7) {
+                  for (let i = 1; i <= totalPages; i++) pages.push(i);
+                } else {
+                  pages.push(1);
+                  if (currentPage > 4) pages.push("...");
+                  for (let i = Math.max(2, currentPage - 2); i <= Math.min(totalPages - 1, currentPage + 2); i++) {
+                    pages.push(i);
+                  }
+                  if (currentPage < totalPages - 3) pages.push("...");
+                  pages.push(totalPages);
+                }
+                return pages.map((page, idx) =>
+                  page === "..." ? (
+                    <span key={`e-${idx}`} className="px-1 text-slate-400 select-none">…</span>
+                  ) : (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page as number)}
+                      className={`min-w-[40px] h-10 rounded-xl font-bold text-sm transition ${currentPage === page
+                          ? "bg-red-600 text-white shadow-lg shadow-red-200"
+                          : "bg-white border text-slate-600 hover:bg-slate-100"
+                        }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                );
+              })()}
             </div>
 
             <button

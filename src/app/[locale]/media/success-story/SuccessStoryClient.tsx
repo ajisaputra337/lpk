@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import SuccessStoryCard from "../../profil/ssc/SuccessStoryCard";
 import { supabase } from "../../../../lib/supabase";
-import { Loader2, Plus, Filter, ChevronDown, Check } from "lucide-react";
+import { Loader2, Filter, ChevronDown, Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 interface Alumni {
@@ -19,18 +19,18 @@ interface Alumni {
 
 type SortOption = "batch-desc" | "batch-asc" | "name-az" | "name-za";
 
+const ITEMS_PER_PAGE = 24;
+
 export default function SuccessStoryClient() {
     const t = useTranslations("SuccessStoryPage");
 
     const [alumniData, setAlumniData] = useState<Alumni[]>([]);
     const [loading, setLoading] = useState(true);
-    const [loadingMore, setLoadingMore] = useState(false);
     const [sortBy, setSortBy] = useState<SortOption>("batch-desc");
-    const [visibleCount, setVisibleCount] = useState(24);
+    const [currentPage, setCurrentPage] = useState(1);
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    // Close dropdown when clicking outside
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -38,9 +38,7 @@ export default function SuccessStoryClient() {
             }
         }
         document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
+        return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     const sortOptions: { value: SortOption; label: string }[] = [
@@ -72,17 +70,8 @@ export default function SuccessStoryClient() {
             }
             setLoading(false);
         };
-
         fetchData();
     }, []);
-
-    const handleLoadMore = () => {
-        setLoadingMore(true);
-        setTimeout(() => {
-            setVisibleCount((prev) => prev + 24);
-            setLoadingMore(false);
-        }, 500);
-    };
 
     const getSortedData = () => {
         const sorted = [...alumniData];
@@ -95,7 +84,39 @@ export default function SuccessStoryClient() {
         }
     };
 
-    const currentData = getSortedData().slice(0, visibleCount);
+    const sortedData = getSortedData();
+    const totalPages = Math.ceil(sortedData.length / ITEMS_PER_PAGE);
+    const currentData = sortedData.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const handleSortChange = (value: SortOption) => {
+        setSortBy(value);
+        setCurrentPage(1); // reset ke halaman 1 saat sort berubah
+        setIsOpen(false);
+    };
+
+    // Generate nomor halaman dengan ellipsis
+    const getPageNumbers = () => {
+        const pages: (number | "...")[] = [];
+        if (totalPages <= 7) {
+            return Array.from({ length: totalPages }, (_, i) => i + 1);
+        }
+        pages.push(1);
+        if (currentPage > 4) pages.push("...");
+        for (let i = Math.max(2, currentPage - 2); i <= Math.min(totalPages - 1, currentPage + 2); i++) {
+            pages.push(i);
+        }
+        if (currentPage < totalPages - 3) pages.push("...");
+        pages.push(totalPages);
+        return pages;
+    };
 
     if (loading) {
         return (
@@ -113,7 +134,6 @@ export default function SuccessStoryClient() {
             <div className="mx-auto max-w-[1600px]">
                 {/* Header */}
                 <div className="mb-12 pt-10 text-center">
-
                     <h1 className="mb-4 text-4xl font-black tracking-tight text-slate-900 md:text-6xl">
                         {t('header.title')} <span className="text-red-600">{t('header.subtitle')}</span>
                     </h1>
@@ -127,8 +147,7 @@ export default function SuccessStoryClient() {
                     <div className="relative" ref={dropdownRef}>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className={`group flex items-center gap-3 rounded-2xl border-2 bg-white px-5 py-2.5 text-slate-600 shadow-sm transition-all hover:shadow-md ${isOpen ? 'border-red-500 ring-2 ring-red-100' : 'border-slate-100 hover:border-red-200'
-                                }`}
+                            className={`group flex items-center gap-3 rounded-2xl border-2 bg-white px-5 py-2.5 text-slate-600 shadow-sm transition-all hover:shadow-md ${isOpen ? 'border-red-500 ring-2 ring-red-100' : 'border-slate-100 hover:border-red-200'}`}
                         >
                             <Filter size={18} className={`transition-colors ${isOpen ? 'text-red-600' : 'text-red-500 group-hover:text-red-600'}`} />
                             <div className="h-4 w-px bg-slate-200"></div>
@@ -143,27 +162,17 @@ export default function SuccessStoryClient() {
                                 className={`text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
                             />
                         </button>
-
-                        {/* Dropdown Menu */}
                         {isOpen && (
                             <div className="absolute right-0 top-full z-50 mt-2 w-full min-w-[240px] origin-top-right rounded-2xl border border-slate-100 bg-white p-2 shadow-xl ring-1 ring-slate-900/5 animate-in fade-in zoom-in-95 duration-200">
                                 <div className="flex flex-col gap-1">
                                     {sortOptions.map((option) => (
                                         <button
                                             key={option.value}
-                                            onClick={() => {
-                                                setSortBy(option.value);
-                                                setIsOpen(false);
-                                            }}
-                                            className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-left text-sm font-medium transition-all ${sortBy === option.value
-                                                ? 'bg-red-50 text-red-600'
-                                                : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-                                                }`}
+                                            onClick={() => handleSortChange(option.value)}
+                                            className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-left text-sm font-medium transition-all ${sortBy === option.value ? 'bg-red-50 text-red-600' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}`}
                                         >
                                             {option.label}
-                                            {sortBy === option.value && (
-                                                <Check size={16} className="text-red-600" />
-                                            )}
+                                            {sortBy === option.value && <Check size={16} className="text-red-600" />}
                                         </button>
                                     ))}
                                 </div>
@@ -188,32 +197,53 @@ export default function SuccessStoryClient() {
                     ))}
                 </div>
 
-                {/* Tombol Load More */}
-                <div className="mt-20 flex flex-col items-center">
-                    {visibleCount < alumniData.length ? (
+                {/* Pagination */}
+                {totalPages > 1 && (
+                    <div className="mt-16 flex items-center justify-center gap-2 flex-wrap">
+                        {/* Prev */}
                         <button
-                            onClick={handleLoadMore}
-                            disabled={loadingMore}
-                            className="group flex items-center gap-3 rounded-2xl bg-slate-900 px-8 py-4 text-sm font-black text-white shadow-xl transition-all active:scale-95 hover:bg-red-600 disabled:opacity-50"
+                            onClick={() => handlePageChange(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            className="flex items-center gap-1 rounded-2xl border-2 border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition-all hover:border-slate-300 disabled:opacity-40 disabled:cursor-not-allowed"
                         >
-                            {loadingMore ? (
-                                <Loader2 className="h-5 w-5 animate-spin" />
-                            ) : (
-                                <>
-                                    <Plus className="h-5 w-5 transition-transform group-hover:rotate-90" />
-                                    {t('loadMore')}
-                                </>
-                            )}
+                            ‹ Prev
                         </button>
-                    ) : (
-                        <div className="text-center">
-                            <div className="mx-auto mb-4 h-px w-20 bg-slate-200"></div>
-                            <p className="text-xs font-bold tracking-widest text-slate-400 uppercase">
-                                {t('allLoaded')}
-                            </p>
-                        </div>
-                    )}
-                </div>
+
+                        {/* Page Numbers */}
+                        {getPageNumbers().map((page, idx) =>
+                            page === "..." ? (
+                                <span key={`ellipsis-${idx}`} className="px-1 text-slate-400 select-none">
+                                    …
+                                </span>
+                            ) : (
+                                <button
+                                    key={page}
+                                    onClick={() => handlePageChange(page as number)}
+                                    className={`min-w-[40px] rounded-2xl border-2 py-2 text-sm font-semibold transition-all ${currentPage === page
+                                            ? "border-red-600 bg-red-600 text-white"
+                                            : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+                                        }`}
+                                >
+                                    {page}
+                                </button>
+                            )
+                        )}
+
+                        {/* Next */}
+                        <button
+                            onClick={() => handlePageChange(currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                            className="flex items-center gap-1 rounded-2xl border-2 border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition-all hover:border-slate-300 disabled:opacity-40 disabled:cursor-not-allowed"
+                        >
+                            Next ›
+                        </button>
+                    </div>
+                )}
+
+                {/* Info halaman */}
+                <p className="mt-4 text-center text-xs text-slate-400">
+                    Halaman {currentPage} dari {totalPages} • {alumniData.length} alumni
+                </p>
             </div>
         </main>
     );
