@@ -12,9 +12,9 @@ export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
 
   const languages = [
-    { code: "id", label: "ID", name: "Indonesia", flag: "🇮🇩" },
-    { code: "en", label: "EN", name: "English", flag: "🇺🇸" },
-    { code: "jp", label: "JP", name: "Japan", flag: "🇯🇵" },
+    { code: "id", label: "ID", name: "Indonesia" },
+    { code: "en", label: "EN", name: "English" },
+    { code: "jp", label: "JP", name: "日本語" },
   ];
 
   const handleLanguageChange = (newLocale: string) => {
@@ -28,34 +28,41 @@ export default function LanguageSwitcher() {
         {/* Button Utama */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="bg-white border-2 border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-4 py-2.5 rounded-full flex items-center gap-3 hover:bg-gray-50 transition-all active:scale-95 font-bold text-sm text-slate-800"
+          className="bg-red-600 border-2 border-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-4 py-2.5 rounded-full flex items-center gap-3 transition-all duration-300 active:scale-75 font-bold text-sm text-white group"
         >
-          <Globe size={18} className="text-red-600" />
-          <span className="uppercase">{locale}</span>
-          <ChevronUp size={16} className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+          <Globe size={18} className="text-white group-hover:scale-110 transition-transform" />
+          <span className="uppercase text-white">{locale}</span>
+          <ChevronUp size={16} className={`text-white transition-transform duration-500 ${isOpen ? "rotate-180" : ""}`} />
         </button>
 
         {/* Dropdown Menu */}
-        {isOpen && (
-          <div className="absolute bottom-full mb-3 left-0 bg-white border border-slate-100 shadow-2xl rounded-2xl overflow-hidden min-w-[160px] animate-in fade-in zoom-in-95 slide-in-from-bottom-2">
-            <div className="p-2 border-b border-slate-50">
-              <p className="text-[10px] font-bold text-slate-400 px-3 uppercase tracking-wider">Select Language</p>
-            </div>
+        <div
+          className={`absolute bottom-full mb-3 left-0 bg-white border-2 border-red-600 shadow-2xl rounded-2xl overflow-hidden min-w-[160px] transition-all duration-500 origin-bottom-left ${isOpen
+            ? "opacity-100 scale-100 translate-y-0 visible"
+            : "opacity-0 scale-90 translate-y-10 invisible pointer-events-none"
+            }`}
+        >
+          <div className="p-3 border-b border-red-600 bg-red-600">
+            <p className="text-[10px] font-black text-white px-1 uppercase tracking-widest">Select Language</p>
+          </div>
+          <div className="p-1.5 bg-white">
             {languages.map((lang) => (
               <button
                 key={lang.code}
                 onClick={() => handleLanguageChange(lang.code)}
-                className={`w-full text-left px-4 py-3 text-sm hover:bg-slate-50 transition-colors flex items-center gap-3 ${
-                  locale === lang.code ? "bg-red-50 text-red-600 font-bold" : "text-slate-700"
-                }`}
+                className={`w-full text-left px-4 py-3 text-sm transition-all duration-300 flex items-center gap-3 rounded-xl mb-1 last:mb-0 border-2 ${locale === lang.code
+                  ? "bg-red-600 text-white border-red-600 font-bold shadow-lg scale-[1.02]"
+                  : "bg-white text-red-600 border-transparent hover:bg-red-50 hover:border-red-100"
+                  }`}
               >
-                <span className="text-lg">{lang.flag}</span>
                 <span className="flex-1">{lang.name}</span>
-                {locale === lang.code && <div className="h-1.5 w-1.5 rounded-full bg-red-600"></div>}
+                {locale === lang.code && (
+                  <div className="h-2 w-2 rounded-full bg-white animate-pulse"></div>
+                )}
               </button>
             ))}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

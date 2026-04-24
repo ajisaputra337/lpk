@@ -100,8 +100,7 @@ export default function HomePageClient() {
                         </div>
                     </div>
 
-                    {/* Gradient Transition Overlay - Refined for subtle transparency */}
-                    <div className="absolute bottom-0 left-0 z-10 h-10 w-full bg-gradient-to-t from-white to-transparent backdrop-blur-[0.5px]"></div>
+
                 </section>
 
                 {/* Gallery Section */}
