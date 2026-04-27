@@ -23,16 +23,16 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="fixed bottom-6 left-6 z-[999]">
+    <div className="fixed sm:bottom-6 bottom-4 sm:left-6 left-4 z-[999]">
       <div className="relative">
         {/* Button Utama */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="bg-red-600 border-2 border-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-4 py-2.5 rounded-full flex items-center gap-3 transition-all duration-300 active:scale-75 font-bold text-sm text-white group"
+          className="bg-red-600 border-2 border-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] sm:px-4 sm:py-2.5 px-3 py-2 rounded-full flex items-center gap-2 sm:gap-3 transition-all duration-300 active:scale-75 font-bold sm:text-sm text-xs text-white group"
         >
-          <Globe size={18} className="text-white group-hover:scale-110 transition-transform" />
+          <Globe size={16} className="text-white group-hover:scale-110 transition-transform sm:w-[18px] sm:h-[18px]" />
           <span className="uppercase text-white">{locale}</span>
-          <ChevronUp size={16} className={`text-white transition-transform duration-500 ${isOpen ? "rotate-180" : ""}`} />
+          <ChevronUp size={14} className={`text-white transition-transform duration-500 sm:w-[16px] sm:h-[16px] ${isOpen ? "rotate-180" : ""}`} />
         </button>
 
         {/* Dropdown Menu */}

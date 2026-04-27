@@ -64,18 +64,18 @@ export default function FloatingChat() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999] font-sans">
+    <div className="fixed sm:bottom-6 bottom-4 sm:right-6 right-4 z-[9999] font-sans">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-red-600 hover:bg-red-700 text-white p-4 rounded-full shadow-2xl transition-all duration-300 active:scale-75 flex items-center justify-center border-2 border-white group"
+        className="bg-red-600 hover:bg-red-700 text-white sm:p-4 p-3 rounded-full shadow-2xl transition-all duration-300 active:scale-75 flex items-center justify-center border-2 border-white group"
       >
         <div className="flex items-center justify-center">
-          {isOpen ? <X size={28} /> : <MessageCircle size={28} className="group-hover:scale-110 transition-transform" />}
+          {isOpen ? <X className="w-6 h-6 sm:w-7 sm:h-7" /> : <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 group-hover:scale-110 transition-transform" />}
         </div>
       </button>
 
       <div
-        className={`absolute bottom-20 right-0 w-[350px] md:w-[380px] h-[500px] bg-white rounded-3xl shadow-2xl border border-slate-100 flex flex-col overflow-hidden transition-all duration-500 origin-bottom-right ${isOpen
+        className={`absolute sm:bottom-20 bottom-16 right-0 w-[90vw] sm:w-[350px] md:w-[380px] h-[500px] max-h-[70vh] bg-white rounded-3xl shadow-2xl border border-slate-100 flex flex-col overflow-hidden transition-all duration-500 origin-bottom-right ${isOpen
           ? "opacity-100 scale-100 translate-y-0 visible"
           : "opacity-0 scale-90 translate-y-10 invisible pointer-events-none"
           }`}

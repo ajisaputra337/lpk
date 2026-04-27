@@ -8,7 +8,11 @@ import Profile from "../../styles/components/Profile";
 import ProgramCard from "../../styles/components/ProgramCard";
 import SuccessStoryCard from "../../styles/components/SuccessStoryCard";
 import HomeGallery from "../../styles/components/HomeGallery";
-import { BookOpen, Zap, Users } from "lucide-react";
+import TrustBar from "../../styles/components/TrustBar";
+import BenefitSection from "../../styles/components/BenefitSection";
+import FAQSection from "../../styles/components/FAQSection";
+import MobileCTABar from "../../styles/components/MobileCTABar";
+import { BookOpen, Zap, Users, MessageCircle } from "lucide-react";
 import { supabase } from "../../lib/supabase";
 import { useTranslations } from "next-intl";
 
@@ -23,7 +27,7 @@ interface Alumni {
     img?: string;
 }
 
-const whatsappLink = "https://wa.me/6288215751500?text=Halo...";
+const whatsappLink = "https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut.";
 
 export default function HomePageClient() {
     const t = useTranslations("HomePage");
@@ -77,8 +81,8 @@ export default function HomePageClient() {
     return (
         <>
             <Header />
-            <main className="pt-20">
-                {/* Hero Section */}
+            <main className="pt-20 pb-24 md:pb-12">
+                {/* ===== HERO SECTION ===== */}
                 <section className="relative h-[600px] overflow-hidden bg-gray-50">
                     <div className="absolute inset-0">
                         <Image src="/Images/kyoto.jpg" alt="Kyoto" fill priority sizes="100vw" className="object-cover brightness-50" />
@@ -86,6 +90,13 @@ export default function HomePageClient() {
 
                     <div className="relative z-0 mx-auto flex h-full max-w-7xl items-center px-6">
                         <div className="w-full max-w-xl text-left">
+                            {/* Urgency Banner */}
+                            <div className="mb-4 inline-flex items-center rounded-full border border-yellow-400/30 bg-yellow-500/20 px-4 py-1.5 backdrop-blur-sm">
+                                <span className="text-xs font-bold text-yellow-300 md:text-sm">
+                                    {t("urgencyText")}
+                                </span>
+                            </div>
+
                             <h1 className="mb-4 text-4xl leading-tight font-extrabold text-white md:text-5xl">
                                 {t.rich("heroTitle", {
                                     yellow: (chunks) => <span className="text-yellow-500">{chunks}</span>,
@@ -93,23 +104,41 @@ export default function HomePageClient() {
                                     br: () => <br />
                                 })}
                             </h1>
-                            <p className="mb-8 text-lg text-gray-200">{t("heroSubtitle")}</p>
-                            <Link href={whatsappLink} target="_blank" className="hover:opacity-90">
-                                <Image src="/Images/daftarsekarang.png" alt="Register" width={300} height={42} loading="lazy" className="object-contain" />
-                            </Link>
+                            <p className="mb-8 text-base leading-relaxed text-gray-200 md:text-lg">{t("heroSubtitle")}</p>
+
+                            {/* Primary CTA — HTML button */}
+                            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                                <a
+                                    href={whatsappLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center gap-2 rounded-full bg-red-600 px-8 py-4 text-base font-bold text-white shadow-xl transition-all duration-300 hover:bg-red-700 hover:shadow-red-500/30 active:scale-95"
+                                >
+                                    <MessageCircle className="h-5 w-5" />
+                                    {t("ctaButton")}
+                                </a>
+
+                                {/* Secondary CTA */}
+                                <Link
+                                    href="/media/persyaratan"
+                                    className="inline-flex items-center justify-center rounded-full border-2 border-white/30 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-white hover:bg-white/10"
+                                >
+                                    {t("ctaSecondary")} →
+                                </Link>
+                            </div>
+
+                            {/* Micro-copy */}
+                            <p className="mt-3 text-xs text-gray-400">
+                                {t("ctaMicro")}
+                            </p>
                         </div>
                     </div>
-
-
                 </section>
 
-                {/* Gallery Section */}
-                <HomeGallery />
+                {/* ===== TRUST BAR ===== */}
+                <TrustBar />
 
-                {/* Profile Section */}
-                <Profile />
-
-                {/* Section Program Unggulan */}
+                {/* ===== PROGRAM UNGGULAN ===== */}
                 <section className="relative overflow-hidden bg-white py-20">
                     <div className="relative mx-auto max-w-7xl px-6">
                         <div className="mb-12 flex flex-col items-center">
@@ -126,7 +155,10 @@ export default function HomePageClient() {
                     </div>
                 </section>
 
-                {/* BAGIAN SUCCESS STORY */}
+                {/* ===== BENEFIT SECTION (WHY CHOOSE US) ===== */}
+                <BenefitSection />
+
+                {/* ===== SUCCESS STORY ===== */}
                 <section className="relative overflow-hidden bg-white py-20">
                     <div className="relative mx-auto max-w-7xl px-6">
                         <div className="mb-12 flex flex-col items-center">
@@ -151,7 +183,16 @@ export default function HomePageClient() {
                     </div>
                 </section>
 
-                {/* LOKASI GOOGLE MAPS */}
+                {/* ===== PROFILE SECTION ===== */}
+                <Profile />
+
+                {/* ===== GALLERY ===== */}
+                <HomeGallery />
+
+                {/* ===== FAQ SECTION ===== */}
+                <FAQSection />
+
+                {/* ===== LOKASI GOOGLE MAPS ===== */}
                 <section className="relative overflow-hidden bg-white py-20">
                     {/* Background dengan motif asanoha (pattern tradisional Jepang) */}
                     <div className="absolute inset-0 opacity-10">
@@ -258,6 +299,9 @@ export default function HomePageClient() {
                     </div>
                 </section>
             </main>
+
+            {/* ===== STICKY MOBILE CTA BAR ===== */}
+            <MobileCTABar />
         </>
     );
 };
