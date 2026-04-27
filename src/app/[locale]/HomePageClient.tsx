@@ -92,7 +92,7 @@ export default function HomePageClient({ alumniCount }: HomePageClientProps) {
             <main className="pt-20 pb-24 md:pb-12">
                 <section className="relative h-[600px] overflow-hidden bg-gray-900">
                     <div className="absolute inset-0">
-                        <Image src="/Images/kyoto.jpg" alt="Kyoto" fill priority sizes="100vw" className="object-cover brightness-50" />
+                        <Image src="/Images/kyoto.jpg" alt="Pemandangan Kyoto Jepang - Pelatihan Magang LPK Aishiro Gakuen" fill priority sizes="100vw" className="object-cover brightness-50" />
                     </div>
 
                     <div className="relative z-0 mx-auto flex h-full max-w-7xl items-center px-6">

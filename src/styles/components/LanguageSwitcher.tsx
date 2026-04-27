@@ -37,6 +37,7 @@ export default function LanguageSwitcher() {
         {/* Button Utama */}
         <button
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle language menu"
           className="bg-red-600 border-2 border-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] sm:px-4 sm:py-2.5 px-3 py-2 rounded-full flex items-center gap-2 sm:gap-3 transition-all duration-300 active:scale-75 font-bold sm:text-sm text-xs text-white group"
         >
           <Globe size={16} className="text-white group-hover:scale-110 transition-transform sm:w-[18px] sm:h-[18px]" />
@@ -59,6 +60,7 @@ export default function LanguageSwitcher() {
               <button
                 key={lang.code}
                 onClick={() => handleLanguageChange(lang.code)}
+                aria-label={`Switch to ${lang.name}`}
                 className={`w-full text-left px-4 py-3 text-sm transition-all duration-300 flex items-center gap-3 rounded-xl mb-1 last:mb-0 border-2 ${locale === lang.code
                   ? "bg-red-600 text-white border-red-600 font-bold shadow-lg scale-[1.02]"
                   : "bg-white text-red-600 border-transparent hover:bg-red-50 hover:border-red-100"

@@ -144,6 +144,7 @@ export default function FloatingChat() {
             onChange={(e) => setInput(e.target.value)}
             disabled={loading}
             placeholder={t("placeholder")}
+            aria-label={t("placeholder")}
           />
           <button
             disabled={loading || !input.trim()}

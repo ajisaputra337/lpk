@@ -165,6 +165,8 @@ const Header = () => {
                           e.preventDefault();
                           toggleDropdown(item.label);
                         }}
+                        aria-expanded={isOpen}
+                        aria-label={`Buka menu ${item.label}`}
                         className={`font-bold transition-colors ${isOpen ? "text-red-700" : "text-red-700 hover:text-yellow-500"}`}
                       >
                         {item.label}
@@ -242,6 +244,8 @@ const Header = () => {
                   {item.subMenu ? (
                     <button
                       onClick={() => setOpenMobileSubMenu(openMobileSubMenu === item.label ? null : item.label)}
+                      aria-expanded={openMobileSubMenu === item.label}
+                      aria-label={`Buka submenu ${item.label}`}
                       className="flex w-full items-center justify-between text-lg font-bold text-yellow-700"
                     >
                       <span>{item.label}</span>
