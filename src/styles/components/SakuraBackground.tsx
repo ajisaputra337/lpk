@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 const Petal = ({ delay, left, size, duration }: { delay: string, left: string, size: number, duration: string }) => (
     <div
@@ -34,7 +34,7 @@ const SakuraBackground = () => {
     }, []);
 
     // Optimized petal count (~30 petals for balanced density)
-    const petals = [
+    const petals = useMemo(() => [
         { delay: '0s', left: '2%', size: 24, duration: '10s' },
         { delay: '1s', left: '8%', size: 18, duration: '12s' },
         { delay: '4s', left: '15%', size: 26, duration: '11s' },
@@ -61,7 +61,7 @@ const SakuraBackground = () => {
         { delay: '5.2s', left: '92%', size: 24, duration: '12s' },
         { delay: '11s', left: '45%', size: 18, duration: '13s' },
         { delay: '10s', left: '85%', size: 26, duration: '11s' },
-    ];
+    ], []);
 
     if (!mounted) return null;
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { ChevronDown } from "lucide-react";
 
@@ -8,13 +8,13 @@ export default function FAQSection() {
     const t = useTranslations("HomePage");
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-    const faqs = [
+    const faqs = useMemo(() => [
         { q: t("faq1Q"), a: t("faq1A") },
         { q: t("faq2Q"), a: t("faq2A") },
         { q: t("faq3Q"), a: t("faq3A") },
         { q: t("faq4Q"), a: t("faq4A") },
         { q: t("faq5Q"), a: t("faq5A") },
-    ];
+    ], [t]);
 
     const toggle = (idx: number) => {
         setOpenIndex(openIndex === idx ? null : idx);

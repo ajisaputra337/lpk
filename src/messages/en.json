@@ -87,7 +87,7 @@
     "showLess": "Hide"
   },
   "HomePage": {
-    "heroTitle": "<yellow>500+ Graduates</yellow> Built Successful Careers in <red>Japan</red> — You're Next!",
+    "heroTitle": "<yellow>Graduates</yellow> Built Successful Careers in <red>Japan</red> — You're Next!",
     "heroSubtitle": "Established since 2009 • LA-LPK Accredited • Central Java Labor Office Subsidized — Trusted by hundreds of Indonesian families.",
     "ctaButton": "FREE Consultation via WhatsApp",
     "ctaMicro": "Limited spots — only 30 students per batch",
@@ -109,7 +109,6 @@
     "trustStat1Label": "Established",
     "trustStat1Value": "2009",
     "trustStat2Label": "Successful Alumni",
-    "trustStat2Value": "500+",
     "trustStat3Label": "Accreditation",
     "trustStat3Value": "LA-LPK",
     "trustBadge": "Accredited & Official Sending Organization",

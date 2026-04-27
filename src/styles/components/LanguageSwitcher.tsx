@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "../../i18n/routing";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Globe, ChevronUp } from "lucide-react"; // Tambah ikon biar cakep
 
 export default function LanguageSwitcher() {
@@ -10,6 +10,15 @@ export default function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 600);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const languages = [
     { code: "id", label: "ID", name: "Indonesia" },
@@ -23,7 +32,7 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="fixed sm:bottom-6 bottom-4 sm:left-6 left-4 z-[999]">
+    <div className={`fixed transition-all duration-300 sm:bottom-6 bottom-4 sm:left-6 left-4 z-[10000] ${isScrolled ? "bottom-[80px] sm:bottom-6" : "bottom-4"}`}>
       <div className="relative">
         {/* Button Utama */}
         <button

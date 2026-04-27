@@ -87,7 +87,7 @@
     "showLess": "Sembunyikan"
   },
   "HomePage": {
-    "heroTitle": "<yellow>500+ Alumni</yellow> Sukses Berkarir di <red>Jepang</red> — Giliran Kamu!",
+    "heroTitle": "<yellow>Alumni</yellow> Sukses Berkarir di <red>Jepang</red> — Giliran Kamu!",
     "heroSubtitle": "Berdiri sejak 2009 • Terakreditasi LA-LPK • Subsidi Disnaker Jateng — Dipercaya ratusan keluarga Indonesia.",
     "ctaButton": "Konsultasi GRATIS via WhatsApp",
     "ctaMicro": "Kuota terbatas — hanya 30 siswa per angkatan",
@@ -109,7 +109,6 @@
     "trustStat1Label": "Tahun Berdiri",
     "trustStat1Value": "2009",
     "trustStat2Label": "Alumni Sukses",
-    "trustStat2Value": "500+",
     "trustStat3Label": "Akreditasi",
     "trustStat3Value": "LA-LPK",
     "trustBadge": "Terakreditasi & Sending Organization Resmi",

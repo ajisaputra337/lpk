@@ -87,7 +87,7 @@
     "showLess": "閉じる"
   },
   "HomePage": {
-    "heroTitle": "<yellow>500名以上の卒業生</yellow>が<red>日本</red>でキャリアを成功 — 次はあなたの番！",
+    "heroTitle": "<yellow>名以上の卒業生</yellow>が<red>日本</red>でキャリアを成功 — 次はあなたの番！",
     "heroSubtitle": "2009年設立 • LA-LPK認証 • 中部ジャワ州労働局補助金対象 — 数百のインドネシア家族に信頼されています。",
     "ctaButton": "WhatsAppで無料相談",
     "ctaMicro": "定員限定 — 1期あたり30名のみ",
@@ -109,7 +109,6 @@
     "trustStat1Label": "設立年",
     "trustStat1Value": "2009",
     "trustStat2Label": "卒業生の成功",
-    "trustStat2Value": "500+",
     "trustStat3Label": "認証",
     "trustStat3Value": "LA-LPK",
     "trustBadge": "認証済み・公式送出機関",

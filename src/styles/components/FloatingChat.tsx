@@ -19,8 +19,17 @@ export default function FloatingChat() {
   ]);
 
   const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
+   const [loading, setLoading] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 600);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -64,7 +73,7 @@ export default function FloatingChat() {
   };
 
   return (
-    <div className="fixed sm:bottom-6 bottom-4 sm:right-6 right-4 z-[9999] font-sans">
+    <div className={`fixed transition-all duration-300 sm:bottom-6 bottom-4 sm:right-6 right-4 z-[10000] font-sans ${isScrolled ? "bottom-[80px] sm:bottom-6" : "bottom-4"}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Close Chat" : "Open Chat"}

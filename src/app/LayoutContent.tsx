@@ -1,9 +1,11 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Header from "../styles/components/Header";
-import Footer from "../styles/components/Footer";
-import SakuraBackground from "../styles/components/SakuraBackground";
+import dynamic from "next/dynamic";
+
+const Header = dynamic(() => import("../styles/components/Header"), { ssr: true });
+const Footer = dynamic(() => import("../styles/components/Footer"), { ssr: true });
+const SakuraBackground = dynamic(() => import("../styles/components/SakuraBackground"), { ssr: false }); // Disable SSR for Sakura particles for performance
 
 export default function LayoutContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

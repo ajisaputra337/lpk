@@ -1,24 +1,24 @@
 import { getTranslations } from 'next-intl/server';
 import { env } from '~/env';
 import HomePageClient from './HomePageClient';
+import { createClient } from '@supabase/supabase-js';
 
-// METADATA untuk SEO - Homepage
-// Karena ini adalah halaman utama, kita tidak perlu menambahkan suffix | LPK Aishiro Gakuen
-// karena sudah ada di template layout
+const supabaseServer = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'HomePage.metadata' });
 
-  // Jika key metadata belum ada di JSON, gunakan default ini
   const title = t.has('title') ? t('title') : "LPK Aishiro Gakuen - Pelatihan Magang Jepang & Sekolah Bahasa";
   const description = t.has('description') ? t('description') : "LPK Aishiro Gakuen adalah lembaga pelatihan terpercaya untuk program magang ke Jepang, sekolah bahasa (Gakkou), dan Tokutei Ginou. Berizin resmi dan berpengalaman sejak 2009.";
 
   const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
   return {
-    title: {
-      absolute: title, // Override template dari layout
-    },
+    title: { absolute: title },
     description: description,
     alternates: {
       canonical: `${baseUrl}/${locale}`,
@@ -38,7 +38,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-// Page sebagai Server Component yang merender Client Component
-export default function HomePage() {
-  return <HomePageClient />;
+export default async function HomePage() {
+  const { count } = await supabaseServer
+    .from("success_story")
+    .select("*", { count: "exact", head: true });
+
+  const alumniCount = count ?? 0;
+
+  return <HomePageClient alumniCount={alumniCount} />;
 }

@@ -1,12 +1,17 @@
 "use client";
 
+import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { Award, Users, Calendar } from "lucide-react";
 
-export default function TrustBar() {
+interface TrustBarProps {
+    alumniCount: string;
+}
+
+export default function TrustBar({ alumniCount }: TrustBarProps) {
     const t = useTranslations("HomePage");
 
-    const stats = [
+    const stats = useMemo(() => [
         {
             icon: <Calendar className="h-7 w-7 text-red-600" />,
             value: t("trustStat1Value"),
@@ -14,7 +19,7 @@ export default function TrustBar() {
         },
         {
             icon: <Users className="h-7 w-7 text-red-600" />,
-            value: t("trustStat2Value"),
+            value: alumniCount,
             label: t("trustStat2Label"),
         },
         {
@@ -22,12 +27,11 @@ export default function TrustBar() {
             value: t("trustStat3Value"),
             label: t("trustStat3Label"),
         },
-    ];
+    ], [t, alumniCount]);
 
     return (
         <section className="relative border-b border-gray-100 bg-white py-6">
             <div className="mx-auto max-w-7xl px-6">
-                {/* Badge */}
                 <div className="mb-4 flex justify-center">
                     <span className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-1.5 text-xs font-bold text-red-700">
                         <Award className="h-3.5 w-3.5" />
@@ -35,7 +39,6 @@ export default function TrustBar() {
                     </span>
                 </div>
 
-                {/* Stats grid */}
                 <div className="grid grid-cols-3 gap-4">
                     {stats.map((stat, idx) => (
                         <div

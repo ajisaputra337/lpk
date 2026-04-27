@@ -2,7 +2,7 @@
 // Import Link dari routing kita agar prefix /id /en /jp otomatis nempel
 import { Link } from "../../i18n/routing";
 import { useTranslations } from "next-intl";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 
@@ -54,9 +54,8 @@ const Header = () => {
   const [openMobileSubMenu, setOpenMobileSubMenu] = useState<string | null>(null);
   const [openMobileNestedSubMenu, setOpenMobileNestedSubMenu] = useState<string | null>(null);
 
-  // Data Navigasi menggunakan Translation
-  const navItems: NavItem[] = [
-    // ... (lines omitted for brevity in instruction, but I will apply correctly)
+  // Data Navigasi menggunakan Translation - Memoized for performance
+  const navItems: NavItem[] = useMemo(() => [
     { label: t("home"), href: "/" },
     {
       label: t("program.title"),
@@ -98,7 +97,7 @@ const Header = () => {
         { label: t("media.fisik"), href: "/media/fisik-sore" },
       ],
     },
-  ];
+  ], [t]);
 
   const toggleDropdown = (label: string) => {
     setOpenDropdown(openDropdown === label ? null : label);
