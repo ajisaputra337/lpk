@@ -46,7 +46,7 @@ const Profile: React.FC = () => {
         <div className="mb-16 flex flex-col items-center text-center">
           <h2 className="text-4xl font-extrabold tracking-wider text-gray-800">
             {t("title1")} <span className="text-red-700">Aishiro</span>{" "}
-            <span className="text-yellow-500">Gakuen</span>
+            <span className="text-yellow-600">Gakuen</span>
           </h2>
           <p className="mt-2 text-xl italic text-gray-600">
             {t("subtitle")}

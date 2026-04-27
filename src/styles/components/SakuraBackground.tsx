@@ -9,12 +9,20 @@ const Petal = ({ delay, left, size, duration }: { delay: string, left: string, s
             top: '-10%',
             left,
             animationDelay: delay,
-            animationDuration: `${duration}, 4s`
+            animationDuration: duration,
         }}
     >
-        <svg width={size} height={size} viewBox="0 0 24 24" fill="#FFB7C5" stroke="#F472B6" strokeWidth="0.5">
-            <path d="M12,21.5C12,21.5 15,18 15,15C15,12 12,10.5 12,10.5C12,10.5 9,12 9,15C9,18 12,21.5 12,21.5Z" />
-        </svg>
+        <div
+            className="animate-sakura-sway"
+            style={{
+                animationDelay: delay,
+                animationDuration: '4s'
+            }}
+        >
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="#FFB7C5" stroke="#F472B6" strokeWidth="0.5">
+                <path d="M12,21.5C12,21.5 15,18 15,15C15,12 12,10.5 12,10.5C12,10.5 9,12 9,15C9,18 12,21.5 12,21.5Z" />
+            </svg>
+        </div>
     </div>
 );
 

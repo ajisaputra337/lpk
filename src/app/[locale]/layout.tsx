@@ -152,7 +152,7 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale}>
+    <html lang={locale === 'jp' ? 'ja' : locale}>
       <body className={`${inter.className} flex min-h-screen flex-col antialiased`}>
         <script
           type="application/ld+json"

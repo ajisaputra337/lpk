@@ -83,7 +83,7 @@ export default function HomePageClient() {
             <Header />
             <main className="pt-20 pb-24 md:pb-12">
                 {/* ===== HERO SECTION ===== */}
-                <section className="relative h-[600px] overflow-hidden bg-gray-50">
+                <section className="relative h-[600px] overflow-hidden bg-gray-900">
                     <div className="absolute inset-0">
                         <Image src="/Images/kyoto.jpg" alt="Kyoto" fill priority sizes="100vw" className="object-cover brightness-50" />
                     </div>
@@ -99,8 +99,8 @@ export default function HomePageClient() {
 
                             <h1 className="mb-4 text-4xl leading-tight font-extrabold text-white md:text-5xl">
                                 {t.rich("heroTitle", {
-                                    yellow: (chunks) => <span className="text-yellow-500">{chunks}</span>,
-                                    red: (chunks) => <span className="text-red-500">{chunks}</span>,
+                                    yellow: (chunks) => <span className="text-yellow-400">{chunks}</span>,
+                                    red: (chunks) => <span className="text-red-400">{chunks}</span>,
                                     br: () => <br />
                                 })}
                             </h1>
@@ -162,9 +162,9 @@ export default function HomePageClient() {
                 <section className="relative overflow-hidden bg-white py-20">
                     <div className="relative mx-auto max-w-7xl px-6">
                         <div className="mb-12 flex flex-col items-center">
-                            <h2 className="mb-2 text-center text-3xl font-bold text-gray-800">成功ストーリー</h2>
+                            <h2 className="mb-2 text-center text-3xl font-bold text-gray-800">{t("successTitle")}</h2>
                             <p className="mb-6 text-center text-lg text-gray-600">
-                                {t.rich("successSub", { red: (c) => <span className="text-red-500">{c}</span> })}
+                                {t.rich("successSub", { red: (c) => <span className="text-red-600">{c}</span> })}
                             </p>
                             <div className="h-1 w-20 rounded-full bg-red-700"></div>
                         </div>
@@ -176,8 +176,8 @@ export default function HomePageClient() {
                         </div>
 
                         <div className="mt-12 text-center">
-                            <Link href="/media/success-story" className="inline-flex items-center rounded-full bg-red-600 px-8 py-3 text-sm font-bold text-white shadow-lg hover:bg-red-700">
-                                {t("seeMore")}
+                            <Link href="/media/success-story" className="inline-flex items-center rounded-full bg-red-600 px-8 py-3 text-sm font-black text-white shadow-xl transition-all active:scale-95 hover:bg-red-700 hover:shadow-red-200">
+                                {t("seeSuccess")}
                             </Link>
                         </div>
                     </div>
@@ -211,7 +211,7 @@ export default function HomePageClient() {
                             <div className="mb-6 flex items-center">
                                 <div className="mr-4 h-8 w-8 rounded-full border-2 border-red-700"></div>
                                 <h2 className="text-center text-3xl font-bold text-gray-800">
-                                    所在地
+                                    {t("mapTitle")}
                                 </h2>
                                 <div className="ml-4 h-8 w-8 rounded-full border-2 border-red-700"></div>
                             </div>

@@ -107,7 +107,7 @@ export default function HomeGallery() {
                                         {title}
                                     </h3>
                                     <div className="mt-3 flex items-center justify-between border-t border-slate-50 pt-3">
-                                        <span className="text-[10px] font-black tracking-widest text-slate-400 uppercase">
+                                        <span className="text-[10px] font-black tracking-widest text-slate-600 uppercase">
                                             {new Date(item.created_at || "").toLocaleDateString(locale === 'jp' ? 'ja-JP' : 'id-ID', {
                                                 day: 'numeric',
                                                 month: 'short'
@@ -127,7 +127,7 @@ export default function HomeGallery() {
                         href="/media/galeri"
                         className="inline-flex items-center rounded-full bg-red-600 px-8 py-3 text-sm font-black text-white shadow-xl transition-all active:scale-95 hover:bg-red-700 hover:shadow-red-200"
                     >
-                        {t("seeMore")}
+                        {t("seeGallery")}
                     </Link>
                 </div>
             </div>

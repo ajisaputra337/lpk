@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
                 AISHIRO GAKUEN
               </span>
             </Link>
-            <p className="mt-2 text-sm text-gray-400">
+            <p className="mt-2 text-sm text-gray-300">
               {t("description")}
             </p>
 
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
                 <li>
                   <Link
                     href="/profil/company-profile"
-                    className="text-sm text-gray-400 transition-colors hover:text-red-400"
+                    className="text-sm text-gray-300 transition-colors hover:text-red-400"
                   >
                     {t("navCompany")}
                   </Link>
@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
             </h3>
 
             <ul className="space-y-3">
-              <li className="flex items-start text-sm text-gray-400">
+              <li className="flex items-start text-sm text-gray-300">
                 <Mail className="mt-1 mr-2 h-4 w-4 flex-shrink-0 text-red-400" />
                 <a
                   href="mailto:aishiro426@gmail.com"
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
                 </a>
               </li>
 
-              <li className="flex items-start text-sm text-gray-400">
+              <li className="flex items-start text-sm text-gray-300">
                 <Phone className="mt-1 mr-2 h-4 w-4 flex-shrink-0 text-red-400" />
 
                 <span>
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
               </li>
 
               {/* LINE contact */}
-              <li className="flex items-start text-sm text-gray-400">
+              <li className="flex items-start text-sm text-gray-300">
                 <Phone className="mt-1 mr-2 h-4 w-4 flex-shrink-0 text-red-400" />
                 <div>
                   <a
@@ -97,7 +97,7 @@ const Footer: React.FC = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-start text-sm text-gray-400">
+              <li className="flex items-start text-sm text-gray-300">
                 <MapPin className="mt-1 mr-2 h-4 w-4 flex-shrink-0 text-red-400" />
                 <span>
                   {t("address")}
@@ -171,7 +171,7 @@ const Footer: React.FC = () => {
 
         {/* Garis pemisah & copyright */}
         <div className="mt-12 border-t border-gray-700 pt-8 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-400">
             &copy; {new Date().getFullYear()} LPK Aishiro Gakuen Semarang. All
             rights reserved.
           </p>

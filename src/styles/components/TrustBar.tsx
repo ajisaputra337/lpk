@@ -48,7 +48,7 @@ export default function TrustBar() {
                             <span className="text-2xl font-black text-gray-900 md:text-3xl">
                                 {stat.value}
                             </span>
-                            <span className="text-xs font-medium tracking-wide text-gray-500 uppercase">
+                            <span className="text-xs font-medium tracking-wide text-gray-600 uppercase">
                                 {stat.label}
                             </span>
                         </div>

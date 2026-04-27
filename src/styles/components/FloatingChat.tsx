@@ -67,6 +67,7 @@ export default function FloatingChat() {
     <div className="fixed sm:bottom-6 bottom-4 sm:right-6 right-4 z-[9999] font-sans">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close Chat" : "Open Chat"}
         className="bg-red-600 hover:bg-red-700 text-white sm:p-4 p-3 rounded-full shadow-2xl transition-all duration-300 active:scale-75 flex items-center justify-center border-2 border-white group"
       >
         <div className="flex items-center justify-center">
@@ -90,6 +91,7 @@ export default function FloatingChat() {
           </div>
           <button
             onClick={() => setIsOpen(false)}
+            aria-label="Close Chat"
             className="hover:bg-white/20 p-1 rounded-lg transition-colors"
           >
             <X size={18} />
@@ -119,7 +121,7 @@ export default function FloatingChat() {
                   <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-bounce [animation-delay:0.2s]"></span>
                   <span className="w-1.5 h-1.5 bg-red-600 rounded-full animate-bounce [animation-delay:0.4s]"></span>
                 </div>
-                <span className="text-[10px] text-slate-400 font-medium">{t("typing")}</span>
+                <span className="text-[10px] text-slate-600 font-medium">{t("typing")}</span>
               </div>
             </div>
           )}
@@ -136,6 +138,7 @@ export default function FloatingChat() {
           />
           <button
             disabled={loading || !input.trim()}
+            aria-label="Send Message"
             className="bg-red-600 text-white p-2 rounded-xl hover:bg-red-700 disabled:opacity-50 transition-all active:scale-90 shadow-md hover:shadow-lg"
           >
             <Send size={18} />

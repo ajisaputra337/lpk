@@ -144,7 +144,7 @@ const Header = () => {
           </div>
           <div className="ml-2 flex flex-col">
             <span className="text-xs font-semibold text-gray-900 lg:text-lg lg:leading-none">AISHIRO GAKUEN</span>
-            <span className="text-xs text-red-600 lg:text-lg lg:leading-none">{t("subLogo")}</span>
+            <span className="text-xs text-red-700 lg:text-lg lg:leading-none">{t("subLogo")}</span>
           </div>
           <div className="ml-2 hidden flex-col justify-center rounded-md bg-yellow-300 px-3 py-1 lg:flex">
             <span className="text-lg leading-none font-semibold text-gray-900">インドネシア送り出し機関</span>
@@ -171,7 +171,7 @@ const Header = () => {
                         {item.label}
                       </button>
                     ) : (
-                      <Link href={item.href} className="font-bold text-red-700 transition-colors hover:text-yellow-500">
+                      <Link href={item.href} className="font-bold text-red-700 transition-colors hover:text-yellow-600">
                         {item.label}
                       </Link>
                     )}
@@ -213,7 +213,7 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <button onClick={scrollToBottom} className="rounded-md border-2 border-yellow-700 px-4 py-2 text-sm font-bold text-yellow-500 transition-all hover:bg-yellow-50">
+            <button onClick={scrollToBottom} className="rounded-md border-2 border-yellow-700 px-4 py-2 text-sm font-bold text-yellow-700 transition-all hover:bg-yellow-50">
               {t("contact")}
             </button>
             <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" className="rounded-md bg-red-700 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-red-800">
@@ -223,7 +223,7 @@ const Header = () => {
         </div>
 
         {/* HAMBURGER */}
-        <button className="relative z-20 lg:hidden" onClick={() => setIsMobileMenuOpen(true)}>
+        <button className="relative z-20 lg:hidden" onClick={() => setIsMobileMenuOpen(true)} aria-label="Open Menu">
           <Menu className="h-6 w-6" />
         </button>
       </div>
@@ -232,7 +232,7 @@ const Header = () => {
       <div className={`fixed inset-0 z-50 bg-white transition-transform lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
         <div className="flex h-16 items-center justify-between border-b px-6">
           <span className="font-bold uppercase text-red-600">{t("mobileNavTitle")}</span>
-          <button onClick={closeMobileMenu}><X className="h-6 w-6" /></button>
+          <button onClick={closeMobileMenu} aria-label="Close Menu"><X className="h-6 w-6" /></button>
         </div>
 
         <nav className="p-6">
@@ -243,13 +243,13 @@ const Header = () => {
                   {item.subMenu ? (
                     <button
                       onClick={() => setOpenMobileSubMenu(openMobileSubMenu === item.label ? null : item.label)}
-                      className="flex w-full items-center justify-between text-lg font-bold text-yellow-500"
+                      className="flex w-full items-center justify-between text-lg font-bold text-yellow-700"
                     >
                       <span>{item.label}</span>
                       {openMobileSubMenu === item.label ? <ChevronDown /> : <ChevronRight />}
                     </button>
                   ) : (
-                    <Link href={item.href} className="text-lg font-bold text-yellow-500" onClick={closeMobileMenu}>
+                    <Link href={item.href} className="text-lg font-bold text-yellow-700" onClick={closeMobileMenu}>
                       {item.label}
                     </Link>
                   )}
@@ -268,7 +268,7 @@ const Header = () => {
                               {openMobileNestedSubMenu === sub.label ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                             </button>
                             {openMobileNestedSubMenu === sub.label && (
-                              <ul className="mt-1 space-y-1 border-l-2 border-yellow-500 pl-4">
+                              <ul className="mt-1 space-y-1 border-l-2 border-yellow-600 pl-4">
                                 {sub.subMenu.map((nested) => (
                                   <li key={nested.label}>
                                     <Link href={nested.href} onClick={closeMobileMenu} className="block p-1 text-sm text-gray-600">
@@ -294,7 +294,7 @@ const Header = () => {
         </nav>
 
         <div className="space-y-3 p-6">
-          <button onClick={scrollToBottom} className="w-full rounded-md border-2 border-yellow-700 px-4 py-3 font-bold text-yellow-500">
+          <button onClick={scrollToBottom} className="w-full rounded-md border-2 border-yellow-700 px-4 py-3 font-bold text-yellow-700">
             {t("contact")}
           </button>
           <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block w-full rounded-md bg-red-700 px-4 py-3 text-center font-bold text-white" onClick={closeMobileMenu}>

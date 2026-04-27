@@ -5,7 +5,8 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-html, body {
+html,
+body {
   scroll-behavior: smooth;
   overflow-x: hidden;
   max-width: 100vw;
@@ -17,18 +18,22 @@ html, body {
 }
 
 @layer utilities {
+
   /* Sakura Petal Fall Animation - GPU Optimized */
   @keyframes sakura-fall {
     0% {
       transform: translate3d(0, -10%, 0) rotate(0deg);
       opacity: 0;
     }
+
     10% {
       opacity: 0.8;
     }
+
     90% {
       opacity: 0.8;
     }
+
     100% {
       transform: translate3d(100px, 110vh, 0) rotate(360deg);
       opacity: 0;
@@ -37,30 +42,42 @@ html, body {
 
   /* Sakura Sway (Natural fluttering) */
   @keyframes sakura-sway {
-    0%, 100% {
-      margin-left: 0;
+
+    0%,
+    100% {
+      transform: translateX(0);
     }
+
     50% {
-      margin-left: 50px;
+      transform: translateX(50px);
     }
   }
 
   /* Floating Animations for Static Decor */
   @keyframes float-natural {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translate3d(0, 0, 0) rotate(0deg);
     }
+
     33% {
       transform: translate3d(5px, -15px, 0) rotate(2deg);
     }
+
     66% {
       transform: translate3d(-5px, -10px, 0) rotate(-2deg);
     }
   }
 
   .animate-sakura-fall {
-    animation: sakura-fall 10s linear infinite, sakura-sway 4s ease-in-out infinite alternate;
+    animation: sakura-fall 10s linear infinite;
     will-change: transform, opacity;
+  }
+
+  .animate-sakura-sway {
+    animation: sakura-sway 4s ease-in-out infinite alternate;
+    will-change: transform;
   }
 
   .animate-float-premium {
@@ -72,7 +89,8 @@ html, body {
      but keeping it smooth with translate3d for now */
   @media (max-width: 768px) {
     .animate-sakura-fall {
-      animation-duration: 12s, 5s; /* Slower on mobile */
+      animation-duration: 12s, 5s;
+      /* Slower on mobile */
     }
   }
 }
