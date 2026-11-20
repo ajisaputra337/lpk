@@ -49,16 +49,9 @@ export default function FloatingChat() {
     setLoading(true);
 
     try {
-      // PANGGIL SERVER ACTION dengan membawa History Pesan
-      // Sisipkan instruksi bahasa ke pesan terakhir agar AI konsisten
+      // PANGGIL SERVER ACTION dengan membawa History Pesan dan bahasa aktif
       const currentHistory = [...messages, { role: "user", text: userMsg }];
-      const historyWithLocale = currentHistory.map((m, idx) =>
-        idx === currentHistory.length - 1
-          ? { ...m, text: m.text + ` (respond in ${locale} language)` }
-          : m
-      );
-
-      const response = await chatWithAishi(historyWithLocale);
+      const response = await chatWithAishi(currentHistory, locale);
 
       if (response.success) {
         setMessages((prev) => [...prev, { role: "ai", text: response.message }]);

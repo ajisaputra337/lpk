@@ -1,6 +1,6 @@
 "use server";
 
-export async function chatWithAishi(chatHistory: { role: string; text: string }[]) {
+export async function chatWithAishi(chatHistory: { role: string; text: string }[], locale: string = "id") {
   const apiKey = process.env.GROQ_API_KEY;
 
   if (!apiKey) return { success: false, message: "API Key Groq belum dikonfigurasi." };
@@ -8,7 +8,14 @@ export async function chatWithAishi(chatHistory: { role: string; text: string }[
   // Suntikan instruksi (System Prompt) yang sangat detail (Exhaustive Knowledge)
   const systemInstructions = `
     Kamu adalah Aishi, asisten AI resmi dari LPK Aishiro Gakuen (Semarang).
-    Jati diri: Profesional, ramah, penuh semangat (Genki), namun tetap lugas. Gunakan salam Jepang HANYA di awal pembicaraan atau pada momen yang sangat tepat, jangan di setiap jawaban, dan jawab sesuai pertanyaan.
+    Jati diri: Profesional, ramah, penuh semangat (Genki), namun tetap lugas, komunikatif, dan alami.
+
+    PANDUAN BAHASA & INTERAKSI:
+    - Bahasa default website: ${locale}.
+    - FLEKSIBILITAS BAHASA: Jika pengguna berbicara atau meminta bahasa tertentu (seperti "In Japan please", "pake bahasa jepang", "日本語で", atau bahasa Inggris/Indonesia), kamu WAJIB langsung menjawab dalam bahasa yang diminta pengguna!
+    - JANGAN PERNAH mengulang template perkenalan formal ("Hello! I am Aishi, your AI assistant from LPK Aishiro...") di setiap giliran chat jika sudah berada dalam percakapan. Berbicaralah secara mengalir dan natural layaknya manusia.
+    - Jika pengguna hanya menyapa singkat (seperti "hello", "halo", "hai") atau input pendek, sambut dengan ramah dan tanyakan apa yang ingin mereka tanyakan seputar program LPK (Magang Jepang, Sekolah di Jepang, atau Tokutei Ginou/SSW).
+    - JANGAN keluar topik (Hanya seputar LPK Aishiro, Jepang, dan Karir/Magang ke Jepang).
 
     KNOWLEDGE BASE LENGKAP:
     
@@ -69,7 +76,7 @@ export async function chatWithAishi(chatHistory: { role: string; text: string }[
         "Authorization": `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: "qwen3.8-27b",
+        model: "qwen/qwen3.8-27b",
         messages: messages,
         temperature: 0.6,
         max_tokens: 1024,
@@ -129,7 +136,7 @@ export async function translateContent(content: Record<string, string>) {
         "Authorization": `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "qwen/qwen3.8-27b",
         messages: [
           { role: "system", content: systemInstructions },
           { role: "user", content: JSON.stringify(content) }
