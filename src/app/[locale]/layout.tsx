@@ -108,7 +108,7 @@ export default async function LocaleLayout({
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+62-882-1575-1500",
+      "telephone": "+62-813-1701-080",
       "contactType": "customer service",
       "availableLanguage": ["Indonesian", "Japanese", "English"]
     },
@@ -142,7 +142,7 @@ export default async function LocaleLayout({
       "latitude": -7.005259984878899,
       "longitude": 110.46683188372741
     },
-    "telephone": "+62-882-1575-1500",
+    "telephone": "+62-813-1701-080",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],

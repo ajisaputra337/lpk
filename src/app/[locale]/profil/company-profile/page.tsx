@@ -179,7 +179,7 @@ export default function CompanyProfilePage() {
                                         </tr>
                                         <tr>
                                             <td className="py-2 font-medium text-gray-700">{t('sidebar.table.phone')}</td>
-                                            <td className="py-2 text-gray-600">+62 882-1575-1500</td>
+                                            <td className="py-2 text-gray-600">+62 813-1701-080</td>
                                         </tr>
                                         <tr>
                                             <td className="py-2 font-medium text-gray-700">{t('sidebar.table.email')}</td>

@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 const TokuteiGinou = () => {
     const t = useTranslations('TokuteiPage');
 
-    const whatsappLink = 'https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20Program%20Tokutei%20Ginou%20(SSW).%20Mohon%20info%20lebih%20lanjut.';
+    const whatsappLink = 'https://wa.me/628131701080?text=Halo%2C%20saya%20tertarik%20dengan%20Program%20Tokutei%20Ginou%20(SSW).%20Mohon%20info%20lebih%20lanjut.';
 
     // Mapping Icons
     const stageIcons = [

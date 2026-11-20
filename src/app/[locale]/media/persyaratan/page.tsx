@@ -106,7 +106,7 @@ export default async function PersyaratanPage({ params }: { params: Promise<{ lo
                                 {t('cta.text')}
                             </p>
                             <Link
-                                href="https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut."
+                                href="https://wa.me/628131701080?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut."
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center bg-red-600 hover:bg-slate-900 text-white font-black py-4 px-12 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-red-600/20 transform hover:-translate-y-1 active:scale-95"

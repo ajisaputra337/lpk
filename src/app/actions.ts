@@ -69,7 +69,7 @@ export async function chatWithAishi(chatHistory: { role: string; text: string }[
         "Authorization": `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "qwen3.8-27b",
         messages: messages,
         temperature: 0.6,
         max_tokens: 1024,

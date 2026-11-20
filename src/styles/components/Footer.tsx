@@ -73,12 +73,12 @@ const Footer: React.FC = () => {
 
                 <span>
                   <a
-                    href="https://wa.me/6288215751500"
+                    href="https://wa.me/628131701080"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ml-1 text-gray-400 hover:underline"
                   >
-                    +62 882-1575-1500 (WhatsApp)
+                    +62 813-1701-080 (WhatsApp)
                   </a>
                 </span>
               </li>
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
                     rel="noopener noreferrer"
                     className="inline-block text-gray-400 hover:underline"
                   >
-                    +62 882-1575-1500 (LINE)
+                    +62 813-1701-080 (LINE)
                   </a>
                 </div>
               </li>

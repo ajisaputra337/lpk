@@ -35,7 +35,7 @@ interface HomePageClientProps {
     alumniCount: number;
 }
 
-const whatsappLink = "https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut.";
+const whatsappLink = "https://wa.me/628131701080?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut.";
 
 export default function HomePageClient({ alumniCount }: HomePageClientProps) {
     const t = useTranslations("HomePage");

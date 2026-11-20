@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { MessageCircle } from "lucide-react";
 
 const whatsappLink =
-    "https://wa.me/6288215751500?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut.";
+    "https://wa.me/628131701080?text=Halo%2C%20saya%20tertarik%20dengan%20program%20LPK%20Aishiro%20Gakuen%20dan%20ingin%20mendaftar.%20Mohon%20info%20lebih%20lanjut.";
 
 export default function MobileCTABar() {
     const t = useTranslations("HomePage");
